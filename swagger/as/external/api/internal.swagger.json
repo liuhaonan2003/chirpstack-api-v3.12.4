@@ -1,0 +1,662 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/internal.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/internal/api-keys": {
+      "get": {
+        "summary": "ListAPIKeys lists the available API keys.",
+        "operationId": "ListAPIKeys",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListAPIKeysResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "isAdmin",
+            "description": "Return only admin keys.",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "organizationID",
+            "description": "Filter on organization ID.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "applicationID",
+            "description": "Filter on application ID.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      },
+      "post": {
+        "summary": "CreateAPIKey creates the given API key.",
+        "operationId": "CreateAPIKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateAPIKeyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateAPIKeyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/api-keys/{id}": {
+      "delete": {
+        "summary": "DeleteAPIKey deletes the API key.",
+        "operationId": "DeleteAPIKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "API key ID.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/devices/summary": {
+      "get": {
+        "summary": "GetDevicesSummary returns an aggregated summary of the devices.",
+        "operationId": "GetDevicesSummary",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetDevicesSummaryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationID",
+            "description": "Organization ID.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/gateways/summary": {
+      "get": {
+        "summary": "GetGatewaysSummary returns an aggregated summary of the gateways.",
+        "operationId": "GetGatewaysSummary",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetGatewaysSummaryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationID",
+            "description": "Organization ID.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/login": {
+      "post": {
+        "summary": "Log in a user",
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiLoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/oidc/login": {
+      "get": {
+        "summary": "OpenID Connect login.",
+        "operationId": "OpenIDConnectLogin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiOpenIDConnectLoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "code",
+            "description": "OpenID Connect callback code.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "OpenID Connect callback state.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/profile": {
+      "get": {
+        "summary": "Get the current user's profile",
+        "operationId": "Profile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiProfileResponse"
+            }
+          }
+        },
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/search": {
+      "get": {
+        "summary": "Perform a global search.",
+        "operationId": "GlobalSearch",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGlobalSearchResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "Search query.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "description": "Max number of results to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset offset of the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/settings": {
+      "get": {
+        "summary": "Get the global settings.",
+        "operationId": "Settings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiSettingsResponse"
+            }
+          }
+        },
+        "tags": [
+          "InternalService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiAPIKey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "API key ID.\nThis value will be automatically generated on create."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name."
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Is global admin key."
+        },
+        "organizationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Organization ID.\nIn case this API key is to manage resources within a single organization\nset this to the ID of this organization."
+        },
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "title": "Application ID.\nIn case the API key is to manage resources within an application, set\nthis to the ID of this application.message"
+        }
+      }
+    },
+    "apiBranding": {
+      "type": "object",
+      "properties": {
+        "registration": {
+          "type": "string",
+          "description": "Registration html."
+        },
+        "footer": {
+          "type": "string",
+          "description": "Footer html."
+        }
+      }
+    },
+    "apiCreateAPIKeyRequest": {
+      "type": "object",
+      "properties": {
+        "apiKey": {
+          "$ref": "#/definitions/apiAPIKey",
+          "description": "The API key to create."
+        }
+      }
+    },
+    "apiCreateAPIKeyResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "API key ID."
+        },
+        "jwtToken": {
+          "type": "string",
+          "description": "JWT token for this API Key."
+        }
+      }
+    },
+    "apiGetDevicesSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "activeCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Active count."
+        },
+        "inactiveCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Inactive count."
+        },
+        "drCount": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "per data-rate count.\nDevices that have never been seen are excluded."
+        },
+        "neverSeenCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Never seen count."
+        }
+      }
+    },
+    "apiGetGatewaysSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "activeCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Active count."
+        },
+        "inactiveCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Inactive count."
+        },
+        "neverSeenCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Never seen count."
+        }
+      }
+    },
+    "apiGlobalSearchResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiGlobalSearchResult"
+          }
+        }
+      }
+    },
+    "apiGlobalSearchResult": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "description": "Record kind."
+        },
+        "score": {
+          "type": "number",
+          "format": "float",
+          "description": "Search score."
+        },
+        "organizationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Organization id."
+        },
+        "organizationName": {
+          "type": "string",
+          "description": "Organization name."
+        },
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application id."
+        },
+        "applicationName": {
+          "type": "string",
+          "description": "Application name."
+        },
+        "deviceDevEUI": {
+          "type": "string",
+          "description": "Device DevEUI (hex encoded)."
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "Device name."
+        },
+        "gatewayMAC": {
+          "type": "string",
+          "description": "Gateway MAC (hex encoded)."
+        },
+        "gatewayName": {
+          "type": "string",
+          "description": "Gateway name."
+        }
+      }
+    },
+    "apiListAPIKeysResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of API keys."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiAPIKey"
+          }
+        }
+      }
+    },
+    "apiLoginRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of the user."
+        },
+        "password": {
+          "type": "string",
+          "description": "Password of the user."
+        }
+      }
+    },
+    "apiLoginResponse": {
+      "type": "object",
+      "properties": {
+        "jwt": {
+          "type": "string",
+          "description": "The JWT tag to be used to access chirpstack-application-server interfaces."
+        }
+      }
+    },
+    "apiOpenIDConnect": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Enable OpenID Connect authentication."
+        },
+        "loginURL": {
+          "type": "string",
+          "description": "Login url."
+        },
+        "loginLabel": {
+          "type": "string",
+          "description": "Login label."
+        },
+        "logoutURL": {
+          "type": "string",
+          "description": "Logout url."
+        }
+      }
+    },
+    "apiOpenIDConnectLoginResponse": {
+      "type": "object",
+      "properties": {
+        "jwtToken": {
+          "type": "string",
+          "description": "JWT token to use for authentication."
+        }
+      }
+    },
+    "apiOrganizationLink": {
+      "type": "object",
+      "properties": {
+        "organizationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Organization ID."
+        },
+        "organizationName": {
+          "type": "string",
+          "description": "Organization name."
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "User is admin within the context of this organization.\nThere is no need to set the is_device_admin and is_gateway_admin flags."
+        },
+        "isDeviceAdmin": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "User is able to modify device related resources (applications,\ndevice-profiles, devices, multicast-groups)."
+        },
+        "isGatewayAdmin": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "User is able to modify gateways."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      },
+      "description": "Defines an organization to which an user is associated."
+    },
+    "apiProfileResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/apiUser",
+          "description": "User object."
+        },
+        "organizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiOrganizationLink"
+          },
+          "description": "Organizations to which the user is associated."
+        }
+      }
+    },
+    "apiSettingsResponse": {
+      "type": "object",
+      "properties": {
+        "branding": {
+          "$ref": "#/definitions/apiBranding",
+          "description": "Branding settings."
+        },
+        "openidConnect": {
+          "$ref": "#/definitions/apiOpenIDConnect",
+          "description": "OpenID Connect settings."
+        }
+      }
+    },
+    "apiUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "sessionTTL": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The session timeout, in minutes."
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Set to true to make the user a global administrator."
+        },
+        "isActive": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Set to false to disable the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "E-mail of the user."
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional note to store with the user."
+        }
+      }
+    }
+  }
+}
