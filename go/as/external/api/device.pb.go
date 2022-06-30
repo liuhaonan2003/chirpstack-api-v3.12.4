@@ -8,7 +8,7 @@ import (
 	fmt "fmt"
 	common "github.com/brocaar/chirpstack-api/go/v3/common"
 	_ "github.com/brocaar/chirpstack-api/go/v3/gw"
-	ns "github.com/brocaar/chirpstack-api/ns"
+	ns "github.com/brocaar/chirpstack-api/go/v3/ns"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
