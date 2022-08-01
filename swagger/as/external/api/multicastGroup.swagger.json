@@ -485,6 +485,11 @@
           "format": "int64",
           "description": "Ping-slot period.\nMandatory for Class-B multicast groups."
         },
+        "preambleSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "RF preamble size .\nMandatory for Class-D multicast groups."
+        },
         "applicationID": {
           "type": "string",
           "format": "int64",
@@ -518,10 +523,11 @@
       "type": "string",
       "enum": [
         "CLASS_C",
-        "CLASS_B"
+        "CLASS_B",
+        "CLASS_D"
       ],
       "default": "CLASS_C",
-      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
+      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B.\n - CLASS_D: Class-D."
     },
     "apiMulticastQueueItem": {
       "type": "object",

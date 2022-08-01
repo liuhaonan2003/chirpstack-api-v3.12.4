@@ -268,6 +268,32 @@
         ]
       }
     },
+    "/api/devices/{dev_eui}/devnonce": {
+      "delete": {
+        "summary": "ClearDeviceNonces deletes the device older activation records for the given DevEUI.\n  * These are clear older DevNonce records from device activation records in Network Server\n  * These clears all DevNonce records but keeps latest 20 records for maintain device activation status",
+        "operationId": "ClearDeviceNonces",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "Device EUI (HEX encoded).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
     "/api/devices/{dev_eui}/events": {
       "get": {
         "summary": "StreamEventLogs stream the device events (uplink payloads, ACKs, joins, errors).\n  * This endpoint is intended for debugging only.\n  * This endpoint does not work from a web-browser.",
@@ -1299,6 +1325,11 @@
           "type": "boolean",
           "format": "boolean",
           "title": "classd模式会发长包唤醒,目的是拓展低功耗实时唤醒(上行classA,下行classC)\n下行要求 server不需要缓存应用服务数据 直接下发（类似class c）\n上行任务  rxwin1 rxwin2 信道要求按照class a  这里主要是修改时间信道等mac参数"
+        },
+        "preambleSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "RF preamble size ."
         }
       }
     },

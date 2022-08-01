@@ -95,6 +95,9 @@ enum MulticastGroupType {
 
     // Class-B.
     CLASS_B = 1;
+
+    // Class-D.
+    CLASS_D = 2;
 }
 
 message MulticastGroup {
@@ -129,6 +132,10 @@ message MulticastGroup {
     // Ping-slot period.
     // Mandatory for Class-B multicast groups.
     uint32 ping_slot_period = 10;
+
+    // RF preamble size .
+    // Mandatory for Class-D multicast groups.
+    uint32 preamble_size = 11;
 
     // Application ID.
     // After creation, this can not be updated.

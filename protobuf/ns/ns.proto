@@ -170,6 +170,11 @@ service NetworkServerService {
     // GetADRAlgorithms returns the available ADR algorithms.
     rpc GetADRAlgorithms(google.protobuf.Empty) returns (GetADRAlgorithmsResponse) {}
 
+    // ClearDeviceNonces deletes the device older activation records for the given DevEUI.
+    //   * These are clear older DevNonce records from device activation records
+    //   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
+    rpc ClearDeviceNonces(ClearDeviceNoncesRequest) returns (google.protobuf.Empty) {}
+    
     // GetLastRxInfo returns Upstream and downstream data for a particular device.
     rpc GetLastRxInfo(GetLastRxInfoRequest) returns (GetLastRxInfoResponse) {}
 }
@@ -801,6 +806,9 @@ enum MulticastGroupType {
 
     // Class-B.
     CLASS_B = 1;
+
+    // Class-D.
+    CLASS_D = 2;
 }
 
 message MulticastGroup {
@@ -818,7 +826,7 @@ message MulticastGroup {
     // Frame-counter (downlink).
     uint32 f_cnt = 4;
 
-    // Multicast-group type (Class-B or Class-C).
+    // Multicast-group type (Class-B or Class-C or Class-D).
     MulticastGroupType group_type = 5;
 
     // Data-rate.
@@ -831,11 +839,15 @@ message MulticastGroup {
     // Mandatory for Class-B multicast groups.
     uint32 ping_slot_period = 8;
 
+    // RF preamble size .
+    // Mandatory for Class-D multicast groups.
+    uint32 preamble_size = 9;
+
     // Service-profile ID.
-    bytes service_profile_id = 9;
+    bytes service_profile_id = 10;
 
     // Routing-profile ID.
-    bytes routing_profile_id = 10;
+    bytes routing_profile_id = 11;
 }
 
 message CreateMulticastGroupRequest {
@@ -934,6 +946,11 @@ message ADRAlgorithm {
 
     // ADR algorithm name.
     string name = 2;
+}
+
+message ClearDeviceNoncesRequest {
+    // Device EUI (8 bytes).
+    bytes dev_eui = 1;
 }
 
 message GetLastRxInfoRequest {

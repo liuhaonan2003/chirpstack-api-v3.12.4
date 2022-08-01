@@ -326,6 +326,9 @@ message DownlinkTXInfo {
     //下行要求 server不需要缓存应用服务数据 直接下发（类似class c）
     //上行任务  rxwin1 rxwin2 信道要求按照class a  这里主要是修改时间信道等mac参数
     bool supports_class_d = 17;
+
+    // RF preamble size .
+    uint32 preamble_size = 18;
 }
 
 message ImmediatelyTimingInfo {
