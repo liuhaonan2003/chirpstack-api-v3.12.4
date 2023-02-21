@@ -1,0 +1,172 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ModulesProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ModulesService is the service managing test.
+service ModulesService {
+  // Create creates module.
+  rpc Create(CreateModulesRequest) returns (CreateModulesResponse) {
+    option(google.api.http) = {
+      post: "/api/modules"
+      body: "*"
+    };
+  }
+
+  // Get returns the modules matching the given id.
+  rpc Get(GetModulesRequest) returns (GetModulesResponse) {
+    option(google.api.http) = {
+      get: "/api/modules/{id}"
+    };
+  }
+
+  // Update updates the given module.
+  rpc Update(UpdateModulesRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/modules/{module.id}"
+      body: "*"
+    };
+  }
+
+  // Delete deletes the module matching the given id.
+  rpc Delete(DeleteModulesRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/modules/{id}"
+    };
+  };
+
+
+  // List lists the available module.
+  rpc List(ListModulesRequest) returns (ListModulesResponse) {
+    option(google.api.http) = {
+      get: "/api/modules"
+    };
+  }
+
+  // GetMenu 获取菜单层级信息
+  rpc GetMenu(GetMenuModulesRequest) returns (GetMenuModulesResponse) {
+    option(google.api.http) = {
+      get: "/api/modules/{parent}/get-menu"
+    };
+  }
+
+  //获取，获取菜单层级测试信息
+  rpc GetMenuTest(MyTestRequest) returns (MyTestResponse) {
+    option(google.api.http) = {
+      get: "/api/modules/get-menu/{parent}"
+    };
+  }
+}
+
+message Module {
+  // Module ID.
+  // Will be set automatically on create.
+  int64 id = 1;
+
+  int32 parent = 2;
+
+  string name = 3;
+
+  string url = 4;
+
+  string icon = 5;
+
+  bool is_show = 6;
+  //是否可以点击触发URL
+  bool is_target = 7;
+  //是否是下拉菜单
+  bool is_select = 8;
+  int32 sort  =9;
+  //记录日志方法
+  string log_method = 10;
+
+  int32 status = 11;
+  string author =12;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 13;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 14;
+  string remark  = 15;
+}
+
+
+message CreateModulesRequest {
+  // Test object to create.
+  Module module = 1;
+}
+
+message CreateModulesResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetModulesRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetModulesResponse {
+  // Test object.
+  Module module = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateModulesRequest {
+  // Test object to update.
+  Module module = 1;
+}
+
+message DeleteModulesRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListModulesRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+}
+
+message ListModulesResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated Module result = 2;
+}
+
+message GetMenuModulesRequest {
+  int64 parent = 1;
+  bool isShowValid = 2;//true is_show作为过滤条件参与过滤，false：is_show不生效，将全部显示树结构
+}
+
+message GetMenuModulesResponse {
+  string result = 1;
+}
+
+message MyTestRequest {
+  int64 parent = 1;
+
+}
+
+message MyTestResponse {
+  string result = 1;
+
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "StatisticsProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// StatisticsService is the service managing statistics.
+service StatisticsService {
+    // Get returns the statistics matching the given cmd.
+    rpc Get(GetStatisticsRequest) returns (GetStatisticsResponse) {
+        option(google.api.http) = {
+            get: "/api/statistics/{cmd}"
+        };
+    }
+}
+
+message GetStatisticsRequest {
+    string cmd = 1;
+    string date = 2;
+}
+
+message GetStatisticsResponse {
+    int64 status = 1;
+}

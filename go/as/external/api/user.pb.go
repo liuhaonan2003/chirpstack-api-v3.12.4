@@ -32,7 +32,7 @@ type User struct {
 	// Will be set automatically on create.
 	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// The session timeout, in minutes.
-	SessionTtl int32 `protobuf:"varint,3,opt,name=session_ttl,json=sessionTTL,proto3" json:"session_ttl,omitempty"`
+	SessionTtl int32 `protobuf:"varint,3,opt,name=session_ttl,json=sessionTtl,proto3" json:"session_ttl,omitempty"`
 	// Set to true to make the user a global administrator.
 	IsAdmin bool `protobuf:"varint,4,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
 	// Set to false to disable the user.
@@ -40,10 +40,34 @@ type User struct {
 	// E-mail of the user.
 	Email string `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
 	// Optional note to store with the user.
-	Note                 string   `protobuf:"bytes,7,opt,name=note,proto3" json:"note,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Note           string `protobuf:"bytes,7,opt,name=note,proto3" json:"note,omitempty"`
+	Username       string `protobuf:"bytes,8,opt,name=username,proto3" json:"username,omitempty"`
+	IsAuditing     bool   `protobuf:"varint,9,opt,name=is_auditing,json=isAuditing,proto3" json:"is_auditing,omitempty"`
+	Realname       string `protobuf:"bytes,10,opt,name=realname,proto3" json:"realname,omitempty"`
+	CompanyName    string `protobuf:"bytes,11,opt,name=company_name,json=companyName,proto3" json:"company_name,omitempty"`
+	Roles          string `protobuf:"bytes,12,opt,name=roles,proto3" json:"roles,omitempty"`
+	OrganizationId int64  `protobuf:"varint,13,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Phone          string `protobuf:"bytes,14,opt,name=phone,proto3" json:"phone,omitempty"`
+	// 帐户类型1、企业帐户2、个人帐户
+	ProvinceId int32   `protobuf:"varint,15,opt,name=province_id,json=provinceId,proto3" json:"province_id,omitempty"`
+	CityId     int32   `protobuf:"varint,16,opt,name=city_id,json=cityId,proto3" json:"city_id,omitempty"`
+	AreaId     int32   `protobuf:"varint,17,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
+	Address    string  `protobuf:"bytes,18,opt,name=address,proto3" json:"address,omitempty"`
+	Latitude   float64 `protobuf:"fixed64,19,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude  float64 `protobuf:"fixed64,20,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Type       int32   `protobuf:"varint,21,opt,name=type,proto3" json:"type,omitempty"`
+	Status     int32   `protobuf:"varint,22,opt,name=status,proto3" json:"status,omitempty"`
+	Author     string  `protobuf:"bytes,23,opt,name=author,proto3" json:"author,omitempty"`
+	Remark     string  `protobuf:"bytes,24,opt,name=remark,proto3" json:"remark,omitempty"`
+	// Created at timestamp.
+	CreatedAt *timestamp.Timestamp `protobuf:"bytes,25,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Last update timestamp.
+	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,26,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	RoleName             string               `protobuf:"bytes,27,opt,name=roleName,proto3" json:"roleName,omitempty"`
+	OrganizationName     string               `protobuf:"bytes,28,opt,name=organizationName,proto3" json:"organizationName,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *User) Reset()         { *m = User{} }
@@ -113,99 +137,151 @@ func (m *User) GetNote() string {
 	return ""
 }
 
-type UserListItem struct {
-	// User ID.
-	// Will be set automatically on create.
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Email of the user.
-	Email string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	// The session timeout, in minutes.
-	SessionTtl int32 `protobuf:"varint,3,opt,name=session_ttl,json=sessionTTL,proto3" json:"session_ttl,omitempty"`
-	// Set to true to make the user a global administrator.
-	IsAdmin bool `protobuf:"varint,4,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
-	// Set to false to disable the user.
-	IsActive bool `protobuf:"varint,5,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *UserListItem) Reset()         { *m = UserListItem{} }
-func (m *UserListItem) String() string { return proto.CompactTextString(m) }
-func (*UserListItem) ProtoMessage()    {}
-func (*UserListItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{1}
-}
-
-func (m *UserListItem) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UserListItem.Unmarshal(m, b)
-}
-func (m *UserListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UserListItem.Marshal(b, m, deterministic)
-}
-func (m *UserListItem) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UserListItem.Merge(m, src)
-}
-func (m *UserListItem) XXX_Size() int {
-	return xxx_messageInfo_UserListItem.Size(m)
-}
-func (m *UserListItem) XXX_DiscardUnknown() {
-	xxx_messageInfo_UserListItem.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UserListItem proto.InternalMessageInfo
-
-func (m *UserListItem) GetId() int64 {
+func (m *User) GetUsername() string {
 	if m != nil {
-		return m.Id
-	}
-	return 0
-}
-
-func (m *UserListItem) GetEmail() string {
-	if m != nil {
-		return m.Email
+		return m.Username
 	}
 	return ""
 }
 
-func (m *UserListItem) GetSessionTtl() int32 {
+func (m *User) GetIsAuditing() bool {
 	if m != nil {
-		return m.SessionTtl
+		return m.IsAuditing
+	}
+	return false
+}
+
+func (m *User) GetRealname() string {
+	if m != nil {
+		return m.Realname
+	}
+	return ""
+}
+
+func (m *User) GetCompanyName() string {
+	if m != nil {
+		return m.CompanyName
+	}
+	return ""
+}
+
+func (m *User) GetRoles() string {
+	if m != nil {
+		return m.Roles
+	}
+	return ""
+}
+
+func (m *User) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
 	}
 	return 0
 }
 
-func (m *UserListItem) GetIsAdmin() bool {
+func (m *User) GetPhone() string {
 	if m != nil {
-		return m.IsAdmin
+		return m.Phone
 	}
-	return false
+	return ""
 }
 
-func (m *UserListItem) GetIsActive() bool {
+func (m *User) GetProvinceId() int32 {
 	if m != nil {
-		return m.IsActive
+		return m.ProvinceId
 	}
-	return false
+	return 0
 }
 
-func (m *UserListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *User) GetCityId() int32 {
+	if m != nil {
+		return m.CityId
+	}
+	return 0
+}
+
+func (m *User) GetAreaId() int32 {
+	if m != nil {
+		return m.AreaId
+	}
+	return 0
+}
+
+func (m *User) GetAddress() string {
+	if m != nil {
+		return m.Address
+	}
+	return ""
+}
+
+func (m *User) GetLatitude() float64 {
+	if m != nil {
+		return m.Latitude
+	}
+	return 0
+}
+
+func (m *User) GetLongitude() float64 {
+	if m != nil {
+		return m.Longitude
+	}
+	return 0
+}
+
+func (m *User) GetType() int32 {
+	if m != nil {
+		return m.Type
+	}
+	return 0
+}
+
+func (m *User) GetStatus() int32 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
+func (m *User) GetAuthor() string {
+	if m != nil {
+		return m.Author
+	}
+	return ""
+}
+
+func (m *User) GetRemark() string {
+	if m != nil {
+		return m.Remark
+	}
+	return ""
+}
+
+func (m *User) GetCreatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *UserListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *User) GetUpdatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
 	return nil
+}
+
+func (m *User) GetRoleName() string {
+	if m != nil {
+		return m.RoleName
+	}
+	return ""
+}
+
+func (m *User) GetOrganizationName() string {
+	if m != nil {
+		return m.OrganizationName
+	}
+	return ""
 }
 
 type UserOrganization struct {
@@ -228,7 +304,7 @@ func (m *UserOrganization) Reset()         { *m = UserOrganization{} }
 func (m *UserOrganization) String() string { return proto.CompactTextString(m) }
 func (*UserOrganization) ProtoMessage()    {}
 func (*UserOrganization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{2}
+	return fileDescriptor_213a97a4df8a40e1, []int{1}
 }
 
 func (m *UserOrganization) XXX_Unmarshal(b []byte) error {
@@ -280,7 +356,7 @@ func (m *UserOrganization) GetIsGatewayAdmin() bool {
 type CreateUserRequest struct {
 	// User object to create.
 	User *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
-	// Password of the user.
+	// // Password of the user.
 	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	// Add the user to the following organizations.
 	Organizations        []*UserOrganization `protobuf:"bytes,3,rep,name=organizations,proto3" json:"organizations,omitempty"`
@@ -293,7 +369,7 @@ func (m *CreateUserRequest) Reset()         { *m = CreateUserRequest{} }
 func (m *CreateUserRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateUserRequest) ProtoMessage()    {}
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{3}
+	return fileDescriptor_213a97a4df8a40e1, []int{2}
 }
 
 func (m *CreateUserRequest) XXX_Unmarshal(b []byte) error {
@@ -347,7 +423,7 @@ func (m *CreateUserResponse) Reset()         { *m = CreateUserResponse{} }
 func (m *CreateUserResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateUserResponse) ProtoMessage()    {}
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{4}
+	return fileDescriptor_213a97a4df8a40e1, []int{3}
 }
 
 func (m *CreateUserResponse) XXX_Unmarshal(b []byte) error {
@@ -387,7 +463,7 @@ func (m *GetUserRequest) Reset()         { *m = GetUserRequest{} }
 func (m *GetUserRequest) String() string { return proto.CompactTextString(m) }
 func (*GetUserRequest) ProtoMessage()    {}
 func (*GetUserRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{5}
+	return fileDescriptor_213a97a4df8a40e1, []int{4}
 }
 
 func (m *GetUserRequest) XXX_Unmarshal(b []byte) error {
@@ -431,7 +507,7 @@ func (m *GetUserResponse) Reset()         { *m = GetUserResponse{} }
 func (m *GetUserResponse) String() string { return proto.CompactTextString(m) }
 func (*GetUserResponse) ProtoMessage()    {}
 func (*GetUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{6}
+	return fileDescriptor_213a97a4df8a40e1, []int{5}
 }
 
 func (m *GetUserResponse) XXX_Unmarshal(b []byte) error {
@@ -485,7 +561,7 @@ func (m *UpdateUserRequest) Reset()         { *m = UpdateUserRequest{} }
 func (m *UpdateUserRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserRequest) ProtoMessage()    {}
 func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{7}
+	return fileDescriptor_213a97a4df8a40e1, []int{6}
 }
 
 func (m *UpdateUserRequest) XXX_Unmarshal(b []byte) error {
@@ -525,7 +601,7 @@ func (m *DeleteUserRequest) Reset()         { *m = DeleteUserRequest{} }
 func (m *DeleteUserRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteUserRequest) ProtoMessage()    {}
 func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{8}
+	return fileDescriptor_213a97a4df8a40e1, []int{7}
 }
 
 func (m *DeleteUserRequest) XXX_Unmarshal(b []byte) error {
@@ -554,9 +630,9 @@ func (m *DeleteUserRequest) GetId() int64 {
 }
 
 type ListUserRequest struct {
-	// Max number of user to return in the result-set.
+	// 每页条数
 	Limit int64 `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
-	// Offset in the result-set (for pagination).
+	// 页码
 	Offset               int64    `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -567,7 +643,7 @@ func (m *ListUserRequest) Reset()         { *m = ListUserRequest{} }
 func (m *ListUserRequest) String() string { return proto.CompactTextString(m) }
 func (*ListUserRequest) ProtoMessage()    {}
 func (*ListUserRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{9}
+	return fileDescriptor_213a97a4df8a40e1, []int{8}
 }
 
 func (m *ListUserRequest) XXX_Unmarshal(b []byte) error {
@@ -604,19 +680,19 @@ func (m *ListUserRequest) GetOffset() int64 {
 
 type ListUserResponse struct {
 	// Total number of users.
-	TotalCount int64 `protobuf:"varint,1,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	TotalCount int64 `protobuf:"varint,1,opt,name=totalCount,proto3" json:"totalCount,omitempty"`
 	// Result-set.
-	Result               []*UserListItem `protobuf:"bytes,2,rep,name=result,proto3" json:"result,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Result               []*User  `protobuf:"bytes,2,rep,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *ListUserResponse) Reset()         { *m = ListUserResponse{} }
 func (m *ListUserResponse) String() string { return proto.CompactTextString(m) }
 func (*ListUserResponse) ProtoMessage()    {}
 func (*ListUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{10}
+	return fileDescriptor_213a97a4df8a40e1, []int{9}
 }
 
 func (m *ListUserResponse) XXX_Unmarshal(b []byte) error {
@@ -644,7 +720,7 @@ func (m *ListUserResponse) GetTotalCount() int64 {
 	return 0
 }
 
-func (m *ListUserResponse) GetResult() []*UserListItem {
+func (m *ListUserResponse) GetResult() []*User {
 	if m != nil {
 		return m.Result
 	}
@@ -654,7 +730,7 @@ func (m *ListUserResponse) GetResult() []*UserListItem {
 type UpdateUserPasswordRequest struct {
 	// User ID.
 	UserId int64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	// New pasword.
+	// New password.
 	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -665,7 +741,7 @@ func (m *UpdateUserPasswordRequest) Reset()         { *m = UpdateUserPasswordReq
 func (m *UpdateUserPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserPasswordRequest) ProtoMessage()    {}
 func (*UpdateUserPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_213a97a4df8a40e1, []int{11}
+	return fileDescriptor_213a97a4df8a40e1, []int{10}
 }
 
 func (m *UpdateUserPasswordRequest) XXX_Unmarshal(b []byte) error {
@@ -700,9 +776,157 @@ func (m *UpdateUserPasswordRequest) GetPassword() string {
 	return ""
 }
 
+type SetUserOrganizationRequest struct {
+	UserId               int64    `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Roles                string   `protobuf:"bytes,2,opt,name=roles,proto3" json:"roles,omitempty"`
+	OrganizationId       int64    `protobuf:"varint,3,opt,name=organizationId,proto3" json:"organizationId,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetUserOrganizationRequest) Reset()         { *m = SetUserOrganizationRequest{} }
+func (m *SetUserOrganizationRequest) String() string { return proto.CompactTextString(m) }
+func (*SetUserOrganizationRequest) ProtoMessage()    {}
+func (*SetUserOrganizationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_213a97a4df8a40e1, []int{11}
+}
+
+func (m *SetUserOrganizationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetUserOrganizationRequest.Unmarshal(m, b)
+}
+func (m *SetUserOrganizationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetUserOrganizationRequest.Marshal(b, m, deterministic)
+}
+func (m *SetUserOrganizationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetUserOrganizationRequest.Merge(m, src)
+}
+func (m *SetUserOrganizationRequest) XXX_Size() int {
+	return xxx_messageInfo_SetUserOrganizationRequest.Size(m)
+}
+func (m *SetUserOrganizationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetUserOrganizationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetUserOrganizationRequest proto.InternalMessageInfo
+
+func (m *SetUserOrganizationRequest) GetUserId() int64 {
+	if m != nil {
+		return m.UserId
+	}
+	return 0
+}
+
+func (m *SetUserOrganizationRequest) GetRoles() string {
+	if m != nil {
+		return m.Roles
+	}
+	return ""
+}
+
+func (m *SetUserOrganizationRequest) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
+	}
+	return 0
+}
+
+type UserAuditingRequest struct {
+	UserId               int64    `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	IsAuditing           bool     `protobuf:"varint,2,opt,name=isAuditing,proto3" json:"isAuditing,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UserAuditingRequest) Reset()         { *m = UserAuditingRequest{} }
+func (m *UserAuditingRequest) String() string { return proto.CompactTextString(m) }
+func (*UserAuditingRequest) ProtoMessage()    {}
+func (*UserAuditingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_213a97a4df8a40e1, []int{12}
+}
+
+func (m *UserAuditingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UserAuditingRequest.Unmarshal(m, b)
+}
+func (m *UserAuditingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UserAuditingRequest.Marshal(b, m, deterministic)
+}
+func (m *UserAuditingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UserAuditingRequest.Merge(m, src)
+}
+func (m *UserAuditingRequest) XXX_Size() int {
+	return xxx_messageInfo_UserAuditingRequest.Size(m)
+}
+func (m *UserAuditingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UserAuditingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UserAuditingRequest proto.InternalMessageInfo
+
+func (m *UserAuditingRequest) GetUserId() int64 {
+	if m != nil {
+		return m.UserId
+	}
+	return 0
+}
+
+func (m *UserAuditingRequest) GetIsAuditing() bool {
+	if m != nil {
+		return m.IsAuditing
+	}
+	return false
+}
+
+type SetUserStatusRequest struct {
+	UserId               int64    `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Status               int64    `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetUserStatusRequest) Reset()         { *m = SetUserStatusRequest{} }
+func (m *SetUserStatusRequest) String() string { return proto.CompactTextString(m) }
+func (*SetUserStatusRequest) ProtoMessage()    {}
+func (*SetUserStatusRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_213a97a4df8a40e1, []int{13}
+}
+
+func (m *SetUserStatusRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetUserStatusRequest.Unmarshal(m, b)
+}
+func (m *SetUserStatusRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetUserStatusRequest.Marshal(b, m, deterministic)
+}
+func (m *SetUserStatusRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetUserStatusRequest.Merge(m, src)
+}
+func (m *SetUserStatusRequest) XXX_Size() int {
+	return xxx_messageInfo_SetUserStatusRequest.Size(m)
+}
+func (m *SetUserStatusRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetUserStatusRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetUserStatusRequest proto.InternalMessageInfo
+
+func (m *SetUserStatusRequest) GetUserId() int64 {
+	if m != nil {
+		return m.UserId
+	}
+	return 0
+}
+
+func (m *SetUserStatusRequest) GetStatus() int64 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*User)(nil), "api.User")
-	proto.RegisterType((*UserListItem)(nil), "api.UserListItem")
 	proto.RegisterType((*UserOrganization)(nil), "api.UserOrganization")
 	proto.RegisterType((*CreateUserRequest)(nil), "api.CreateUserRequest")
 	proto.RegisterType((*CreateUserResponse)(nil), "api.CreateUserResponse")
@@ -713,6 +937,9 @@ func init() {
 	proto.RegisterType((*ListUserRequest)(nil), "api.ListUserRequest")
 	proto.RegisterType((*ListUserResponse)(nil), "api.ListUserResponse")
 	proto.RegisterType((*UpdateUserPasswordRequest)(nil), "api.UpdateUserPasswordRequest")
+	proto.RegisterType((*SetUserOrganizationRequest)(nil), "api.SetUserOrganizationRequest")
+	proto.RegisterType((*UserAuditingRequest)(nil), "api.UserAuditingRequest")
+	proto.RegisterType((*SetUserStatusRequest)(nil), "api.SetUserStatusRequest")
 }
 
 func init() {
@@ -720,61 +947,82 @@ func init() {
 }
 
 var fileDescriptor_213a97a4df8a40e1 = []byte{
-	// 854 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x56, 0x41, 0x6f, 0xe3, 0x44,
-	0x14, 0x96, 0xe3, 0x34, 0x4d, 0x5e, 0x76, 0x93, 0x66, 0x48, 0x5b, 0xd7, 0xcb, 0xd2, 0x60, 0x10,
-	0x98, 0x4a, 0xd8, 0x52, 0xf6, 0x80, 0x58, 0x0e, 0xa8, 0xbb, 0x45, 0x55, 0xa5, 0x95, 0x28, 0xa6,
-	0x7b, 0x80, 0x03, 0xd6, 0xc4, 0x9e, 0x66, 0x47, 0xd8, 0x1e, 0xe3, 0x99, 0x74, 0x59, 0x50, 0x2f,
-	0x70, 0xe4, 0x88, 0x38, 0xf0, 0x07, 0x10, 0xff, 0x87, 0xbf, 0xc0, 0x0f, 0x41, 0x33, 0x1e, 0x27,
-	0xb6, 0xa3, 0x65, 0x01, 0x89, 0x5b, 0xdf, 0x9b, 0xef, 0x7d, 0xef, 0x7b, 0x6f, 0xbe, 0x89, 0x0b,
-	0x36, 0xe6, 0x3e, 0xf9, 0x56, 0x90, 0x22, 0xc3, 0x89, 0x8f, 0x73, 0xea, 0xaf, 0x38, 0x29, 0xbc,
-	0xbc, 0x60, 0x82, 0x21, 0x13, 0xe7, 0xd4, 0x7e, 0x7d, 0xc9, 0xd8, 0x32, 0x21, 0xea, 0x0c, 0x67,
-	0x19, 0x13, 0x58, 0x50, 0x96, 0xf1, 0x12, 0x62, 0x1f, 0xeb, 0x53, 0x15, 0x2d, 0x56, 0xd7, 0xbe,
-	0xa0, 0x29, 0xe1, 0x02, 0xa7, 0xb9, 0x06, 0xdc, 0x6b, 0x03, 0x48, 0x9a, 0x8b, 0x17, 0xe5, 0xa1,
-	0xf3, 0xab, 0x01, 0xdd, 0xa7, 0x9c, 0x14, 0x68, 0x04, 0x1d, 0x1a, 0x5b, 0xc6, 0xcc, 0x70, 0xcd,
-	0xa0, 0x43, 0x63, 0x74, 0x0c, 0x43, 0x4e, 0x38, 0xa7, 0x2c, 0x0b, 0x85, 0x48, 0x2c, 0x73, 0x66,
-	0xb8, 0x3b, 0x01, 0xe8, 0xd4, 0xd5, 0xd5, 0x13, 0x74, 0x04, 0x7d, 0xca, 0x43, 0x1c, 0xa7, 0x34,
-	0xb3, 0xba, 0x33, 0xc3, 0xed, 0x07, 0xbb, 0x94, 0x9f, 0xca, 0x10, 0xdd, 0x83, 0x81, 0x3c, 0x8a,
-	0x04, 0xbd, 0x21, 0xd6, 0x8e, 0x3a, 0xeb, 0x53, 0x7e, 0xaa, 0x62, 0x34, 0x85, 0x1d, 0x92, 0x62,
-	0x9a, 0x58, 0xbd, 0x99, 0xe1, 0x0e, 0x82, 0x32, 0x40, 0x08, 0xba, 0x19, 0x13, 0xc4, 0xda, 0x55,
-	0x49, 0xf5, 0xb7, 0xf3, 0x63, 0x07, 0xee, 0x48, 0x6d, 0x4f, 0x28, 0x17, 0x17, 0x82, 0xa4, 0x5b,
-	0x1a, 0xd7, 0x54, 0x9d, 0x3a, 0xd5, 0xff, 0xa6, 0xfc, 0x43, 0x80, 0xa8, 0x20, 0x58, 0x90, 0x38,
-	0xc4, 0xc2, 0xea, 0xcf, 0x0c, 0x77, 0x38, 0xb7, 0xbd, 0x72, 0xbb, 0x5e, 0xb5, 0x5d, 0xef, 0xaa,
-	0x5a, 0x7f, 0x30, 0xd0, 0xe8, 0x53, 0x21, 0x4b, 0x57, 0x79, 0x5c, 0x95, 0x0e, 0x5e, 0x5d, 0xaa,
-	0xd1, 0xa7, 0xc2, 0xf9, 0xdd, 0x80, 0x3d, 0xb9, 0x85, 0x4f, 0x8b, 0x25, 0xce, 0xe8, 0x77, 0xea,
-	0xee, 0xd1, 0xbb, 0x30, 0x66, 0xb5, 0x38, 0x5c, 0xaf, 0x65, 0x54, 0x4f, 0x5f, 0x9c, 0x35, 0x66,
-	0xed, 0x34, 0x67, 0x7d, 0x07, 0xc6, 0x94, 0x87, 0x31, 0xb9, 0xa1, 0x11, 0xd1, 0x08, 0x53, 0x21,
-	0xee, 0x52, 0x7e, 0xa6, 0xb2, 0x25, 0xce, 0x85, 0x3d, 0xca, 0xc3, 0x25, 0x16, 0xe4, 0x39, 0x7e,
-	0xd1, 0x58, 0xdb, 0x88, 0xf2, 0xf3, 0x32, 0xad, 0x90, 0xce, 0x4f, 0x06, 0x4c, 0x1e, 0xab, 0x99,
-	0xa5, 0xe0, 0x80, 0x7c, 0xb3, 0x22, 0x5c, 0xa0, 0xfb, 0xd0, 0x95, 0x8e, 0x56, 0x02, 0x87, 0xf3,
-	0x81, 0x87, 0x73, 0xea, 0xa9, 0x73, 0x95, 0x46, 0x36, 0xf4, 0x73, 0xcc, 0xf9, 0x73, 0x56, 0xc4,
-	0xfa, 0x1e, 0xd7, 0x31, 0xfa, 0x08, 0xee, 0xd6, 0xe7, 0xe1, 0x96, 0x39, 0x33, 0xdd, 0xe1, 0x7c,
-	0x7f, 0xcd, 0x51, 0x5f, 0x4a, 0xd0, 0xc4, 0x3a, 0x6f, 0x03, 0xaa, 0x8b, 0xe1, 0x39, 0xcb, 0x38,
-	0x69, 0x7b, 0xc8, 0x99, 0xc1, 0xe8, 0x9c, 0x88, 0xba, 0xde, 0x36, 0xe2, 0x37, 0x03, 0xc6, 0x6b,
-	0x88, 0x66, 0x79, 0xc5, 0x4c, 0x4d, 0xa7, 0x74, 0xfe, 0xbb, 0x53, 0xcc, 0x7f, 0xe3, 0x94, 0x39,
-	0x4c, 0x9e, 0xaa, 0xe0, 0x9f, 0x6f, 0xdf, 0x79, 0x0b, 0x26, 0x67, 0x24, 0x21, 0xcd, 0x9a, 0xf6,
-	0x06, 0x3e, 0x86, 0xb1, 0x7c, 0x83, 0x75, 0xc8, 0x14, 0x76, 0x12, 0x9a, 0x52, 0xa1, 0x51, 0x65,
-	0x80, 0x0e, 0xa0, 0xc7, 0xae, 0xaf, 0x39, 0x29, 0x67, 0x36, 0x03, 0x1d, 0x39, 0x5f, 0xc1, 0xde,
-	0x86, 0x40, 0xaf, 0xf0, 0x18, 0x86, 0x82, 0x09, 0x9c, 0x84, 0x11, 0x5b, 0x65, 0x15, 0x0f, 0xa8,
-	0xd4, 0x63, 0x99, 0x41, 0xef, 0x41, 0xaf, 0x20, 0x7c, 0x95, 0x48, 0x32, 0x79, 0xeb, 0x93, 0xb5,
-	0xf6, 0xea, 0x07, 0x21, 0xd0, 0x00, 0xe7, 0x12, 0x8e, 0x36, 0x93, 0x5f, 0x6a, 0xf7, 0x54, 0x52,
-	0x0f, 0x61, 0x57, 0x8e, 0xba, 0x79, 0x23, 0x3d, 0x19, 0x5e, 0xc4, 0x7f, 0xe7, 0xbc, 0xf9, 0x2f,
-	0x5d, 0x18, 0x4a, 0xb2, 0xcf, 0x49, 0x21, 0x5f, 0x02, 0x3a, 0x87, 0xae, 0xec, 0x8a, 0xa6, 0x4a,
-	0x44, 0x6b, 0x1b, 0xf6, 0x7e, 0x2b, 0x5b, 0x8e, 0xe8, 0xa0, 0x1f, 0xfe, 0xf8, 0xf3, 0xe7, 0xce,
-	0x1d, 0x04, 0xeb, 0x9f, 0x75, 0x8e, 0x2e, 0xc0, 0x3c, 0x27, 0x02, 0xbd, 0xa6, 0x2a, 0x9a, 0xce,
-	0xb3, 0xa7, 0xcd, 0xa4, 0x66, 0x39, 0x54, 0x2c, 0x13, 0x34, 0xde, 0xb0, 0xf8, 0xdf, 0xd3, 0xf8,
-	0x16, 0x5d, 0x42, 0xaf, 0x34, 0x38, 0x3a, 0x50, 0x85, 0x5b, 0x4f, 0xcf, 0x3e, 0xdc, 0xca, 0x6b,
-	0xce, 0x7d, 0xc5, 0x39, 0x76, 0x6a, 0xca, 0x1e, 0x1a, 0x27, 0xe8, 0x0b, 0xe8, 0x95, 0x7b, 0xd4,
-	0x8c, 0x5b, 0x76, 0xb2, 0x0f, 0xb6, 0xac, 0xf8, 0x89, 0xfc, 0x9a, 0x38, 0xc7, 0x8a, 0xf0, 0xc8,
-	0x9e, 0xd6, 0x45, 0xaa, 0x0f, 0x19, 0x8d, 0x6f, 0x25, 0xf5, 0x67, 0xd0, 0x2b, 0x8d, 0xa6, 0xa9,
-	0xb7, 0x5c, 0xf7, 0x52, 0x6a, 0x3d, 0xff, 0xc9, 0xd6, 0xfc, 0x05, 0x8c, 0x4a, 0x81, 0xd5, 0x8d,
-	0xa3, 0x37, 0x5a, 0xaa, 0x5b, 0x56, 0x78, 0x69, 0x0b, 0x57, 0xb5, 0x70, 0xec, 0xfb, 0x6d, 0xf5,
-	0x21, 0x8d, 0x6f, 0xfd, 0xca, 0x14, 0x0f, 0x8d, 0x93, 0x47, 0x14, 0xde, 0xa4, 0xcc, 0x8b, 0x9e,
-	0xd1, 0x22, 0xe7, 0x02, 0x47, 0x5f, 0xab, 0x86, 0x98, 0x7b, 0xd5, 0x07, 0x5c, 0xc6, 0x8f, 0x06,
-	0xaa, 0xb7, 0x6c, 0x71, 0x69, 0x7c, 0xf9, 0xc1, 0x92, 0x8a, 0x67, 0xab, 0x85, 0x17, 0xb1, 0xd4,
-	0x5f, 0x14, 0x2c, 0xc2, 0xb8, 0xf0, 0x37, 0xf5, 0xef, 0xcb, 0x86, 0x4b, 0xe6, 0xdf, 0x3c, 0xf0,
-	0x5b, 0xff, 0x06, 0x2c, 0x7a, 0x4a, 0xe4, 0x83, 0xbf, 0x02, 0x00, 0x00, 0xff, 0xff, 0x81, 0xba,
-	0x61, 0x05, 0x20, 0x08, 0x00, 0x00,
+	// 1190 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0xcf, 0x6e, 0xdb, 0x46,
+	0x13, 0x07, 0x25, 0x5b, 0x96, 0x46, 0x89, 0x64, 0x6f, 0x64, 0x9b, 0xa6, 0x93, 0x58, 0xe1, 0xf7,
+	0xd5, 0x15, 0x0c, 0x54, 0x02, 0x9c, 0x43, 0xd1, 0xf4, 0x50, 0x38, 0x71, 0x61, 0x18, 0x28, 0x52,
+	0x57, 0x8e, 0x0f, 0xed, 0x45, 0x58, 0x8b, 0x6b, 0x79, 0x11, 0x8a, 0xcb, 0x70, 0x97, 0x4e, 0xdd,
+	0xc2, 0x97, 0x5e, 0x7b, 0xec, 0x3b, 0x14, 0x05, 0xfa, 0x38, 0xbd, 0xf4, 0x01, 0xfa, 0x20, 0xc5,
+	0xce, 0x2e, 0x25, 0x92, 0xb2, 0xeb, 0x36, 0x37, 0xfe, 0xe6, 0xff, 0xec, 0xcc, 0x6f, 0xb9, 0xe0,
+	0x51, 0x39, 0x60, 0xdf, 0x2b, 0x96, 0x44, 0x34, 0x1c, 0xd0, 0x98, 0x0f, 0x52, 0xc9, 0x92, 0x7e,
+	0x9c, 0x08, 0x25, 0x48, 0x95, 0xc6, 0xdc, 0x7b, 0x3c, 0x11, 0x62, 0x12, 0x32, 0xd4, 0xd1, 0x28,
+	0x12, 0x8a, 0x2a, 0x2e, 0x22, 0x69, 0x4c, 0xbc, 0x1d, 0xab, 0x45, 0x74, 0x9e, 0x5e, 0x0c, 0x14,
+	0x9f, 0x32, 0xa9, 0xe8, 0x34, 0xb6, 0x06, 0xdb, 0x65, 0x03, 0x36, 0x8d, 0xd5, 0xb5, 0x51, 0xfa,
+	0xbf, 0xd7, 0x60, 0xe9, 0x4c, 0xb2, 0x84, 0xb4, 0xa0, 0xc2, 0x03, 0xd7, 0xe9, 0x3a, 0xbd, 0xea,
+	0xb0, 0xc2, 0x03, 0xb2, 0x03, 0x4d, 0xc9, 0xa4, 0xe4, 0x22, 0x1a, 0x29, 0x15, 0xba, 0xd5, 0xae,
+	0xd3, 0x5b, 0x1e, 0x82, 0x15, 0xbd, 0x51, 0x21, 0xd9, 0x82, 0x3a, 0x97, 0x23, 0x1a, 0x4c, 0x79,
+	0xe4, 0x2e, 0x75, 0x9d, 0x5e, 0x7d, 0xb8, 0xc2, 0xe5, 0x81, 0x86, 0x64, 0x1b, 0x1a, 0x5a, 0x35,
+	0x56, 0xfc, 0x8a, 0xb9, 0xcb, 0xa8, 0xab, 0x73, 0x79, 0x80, 0x98, 0x74, 0x60, 0x99, 0x4d, 0x29,
+	0x0f, 0xdd, 0x5a, 0xd7, 0xe9, 0x35, 0x86, 0x06, 0x10, 0x02, 0x4b, 0x91, 0x50, 0xcc, 0x5d, 0x41,
+	0x21, 0x7e, 0x13, 0x0f, 0xea, 0xfa, 0x28, 0x22, 0x3a, 0x65, 0x6e, 0x1d, 0xe5, 0x33, 0xac, 0xcb,
+	0xd3, 0x29, 0xd2, 0x80, 0x2b, 0x1e, 0x4d, 0xdc, 0x06, 0x26, 0x01, 0x2e, 0x0f, 0xac, 0x44, 0x3b,
+	0x27, 0x8c, 0x86, 0xe8, 0x0c, 0xc6, 0x39, 0xc3, 0xe4, 0x19, 0x3c, 0x18, 0x8b, 0x69, 0x4c, 0xa3,
+	0xeb, 0x11, 0xea, 0x9b, 0xa8, 0x6f, 0x5a, 0xd9, 0x6b, 0x6d, 0xd2, 0x81, 0xe5, 0x44, 0x84, 0x4c,
+	0xba, 0x0f, 0x4c, 0x95, 0x08, 0xc8, 0xc7, 0xd0, 0x16, 0xc9, 0x84, 0x46, 0xfc, 0x07, 0x1c, 0xc1,
+	0x88, 0x07, 0xee, 0x43, 0x3c, 0xb1, 0x56, 0x5e, 0x7c, 0x1c, 0x68, 0xf7, 0xf8, 0x52, 0x44, 0xcc,
+	0x6d, 0x19, 0x77, 0x04, 0xba, 0xe8, 0x38, 0x11, 0x57, 0x3c, 0x1a, 0x33, 0xed, 0xda, 0x36, 0x67,
+	0x9a, 0x89, 0x8e, 0x03, 0xb2, 0x09, 0x2b, 0x63, 0xae, 0xae, 0xb5, 0x72, 0x15, 0x95, 0x35, 0x0d,
+	0x8d, 0x82, 0x26, 0x8c, 0x6a, 0xc5, 0x9a, 0x51, 0x68, 0x78, 0x1c, 0x10, 0x17, 0x56, 0x68, 0x10,
+	0x24, 0x4c, 0x4a, 0x97, 0x60, 0xaa, 0x0c, 0xea, 0x03, 0x08, 0xa9, 0xe2, 0x2a, 0x0d, 0x98, 0xfb,
+	0xa8, 0xeb, 0xf4, 0x9c, 0xe1, 0x0c, 0x93, 0xc7, 0xd0, 0x08, 0x45, 0x34, 0x31, 0xca, 0x0e, 0x2a,
+	0xe7, 0x02, 0x3d, 0x0b, 0x75, 0x1d, 0x33, 0x77, 0x1d, 0x33, 0xe1, 0x37, 0xd9, 0x80, 0x9a, 0x54,
+	0x54, 0xa5, 0xd2, 0xdd, 0x30, 0xf9, 0x0d, 0xd2, 0x72, 0x9a, 0xaa, 0x4b, 0x91, 0xb8, 0x9b, 0x98,
+	0xde, 0x22, 0x2d, 0x4f, 0xd8, 0x94, 0x26, 0x6f, 0x5d, 0xd7, 0xc8, 0x0d, 0x22, 0x9f, 0x01, 0x8c,
+	0x13, 0x46, 0x15, 0x0b, 0x46, 0x54, 0xb9, 0x5b, 0x5d, 0xa7, 0xd7, 0xdc, 0xf7, 0xfa, 0x66, 0x43,
+	0xfb, 0xd9, 0x86, 0xf6, 0xdf, 0x64, 0x2b, 0x3c, 0x6c, 0x58, 0xeb, 0x03, 0xa5, 0x5d, 0xd3, 0x38,
+	0xc8, 0x5c, 0xbd, 0xfb, 0x5d, 0xad, 0xf5, 0x81, 0xc2, 0x65, 0x10, 0x21, 0xd3, 0x93, 0x75, 0xb7,
+	0xed, 0x32, 0x58, 0x4c, 0xf6, 0x60, 0x35, 0x3f, 0x3c, 0xb4, 0x79, 0x8c, 0x36, 0x0b, 0x72, 0xff,
+	0x37, 0x07, 0x56, 0x35, 0x5b, 0xbe, 0xce, 0x29, 0x6e, 0x5b, 0x0a, 0xe7, 0x96, 0xa5, 0x38, 0x2c,
+	0x30, 0xa6, 0x52, 0x64, 0xcc, 0x2e, 0xb4, 0xb9, 0x1c, 0x05, 0xec, 0x8a, 0x8f, 0x99, 0xb5, 0xa8,
+	0xa2, 0xc5, 0x43, 0x2e, 0x0f, 0x51, 0x6a, 0xec, 0x7a, 0xb0, 0xca, 0xe5, 0x68, 0x42, 0x15, 0x7b,
+	0x4f, 0xaf, 0x0b, 0xe4, 0x6b, 0x71, 0x79, 0x64, 0xc4, 0x68, 0xe9, 0xff, 0xec, 0xc0, 0xda, 0x2b,
+	0x3c, 0x3b, 0x5d, 0xf0, 0x90, 0xbd, 0x4b, 0x99, 0x54, 0xe4, 0x09, 0x2c, 0x69, 0x0a, 0x61, 0x81,
+	0xcd, 0xfd, 0x46, 0x9f, 0xc6, 0xbc, 0x8f, 0x7a, 0x14, 0xeb, 0x73, 0x8a, 0xa9, 0x94, 0xef, 0x45,
+	0x12, 0x60, 0x85, 0x8d, 0xe1, 0x0c, 0x93, 0xcf, 0xe1, 0x61, 0xbe, 0x1f, 0xe9, 0x56, 0xbb, 0xd5,
+	0x5e, 0x73, 0x7f, 0x7d, 0x16, 0x23, 0x7f, 0x28, 0xc3, 0xa2, 0xad, 0xff, 0x7f, 0x20, 0xf9, 0x62,
+	0x64, 0x2c, 0x22, 0xc9, 0xca, 0x77, 0x8e, 0xdf, 0x85, 0xd6, 0x11, 0x53, 0xf9, 0x7a, 0xcb, 0x16,
+	0xbf, 0x3a, 0xd0, 0x9e, 0x99, 0xd8, 0x28, 0xf7, 0xf4, 0x54, 0xdc, 0xb8, 0xca, 0x87, 0x6f, 0x5c,
+	0xf5, 0x3f, 0x6c, 0x9c, 0xbf, 0x0f, 0x6b, 0x67, 0x08, 0xfe, 0xfd, 0xe9, 0xfb, 0xff, 0x83, 0xb5,
+	0x43, 0x16, 0xb2, 0xa2, 0x4f, 0xf9, 0x04, 0xbe, 0x80, 0xf6, 0x57, 0x5c, 0x16, 0x0e, 0xa9, 0x03,
+	0xcb, 0x21, 0x9f, 0x72, 0x65, 0xad, 0x0c, 0xd0, 0x0c, 0x14, 0x17, 0x17, 0x92, 0x99, 0x9e, 0xab,
+	0x43, 0x8b, 0xfc, 0x33, 0x58, 0x9d, 0x07, 0xb0, 0x47, 0xf8, 0x14, 0x40, 0x09, 0x45, 0xc3, 0x57,
+	0x22, 0x8d, 0xb2, 0x30, 0x39, 0x09, 0x79, 0xa6, 0xd9, 0x2c, 0xd3, 0x50, 0xc7, 0xaa, 0x16, 0x4b,
+	0xb7, 0x0a, 0xff, 0x04, 0xb6, 0xe6, 0x0d, 0x9f, 0xd8, 0xa5, 0xc9, 0x2a, 0xdc, 0x84, 0x15, 0xdd,
+	0xe1, 0x9c, 0x1a, 0x35, 0x0d, 0x8f, 0x83, 0x7f, 0x5a, 0x38, 0x5f, 0x82, 0x77, 0x6a, 0x46, 0x5d,
+	0xd8, 0xac, 0xfb, 0x42, 0xce, 0x6e, 0xee, 0x4a, 0xfe, 0xe6, 0xde, 0x85, 0xd2, 0x15, 0x8d, 0xe3,
+	0x5c, 0xb8, 0xb8, 0xfd, 0xd7, 0xf0, 0x48, 0x67, 0xcc, 0x7e, 0x23, 0xf7, 0x66, 0x7b, 0x0a, 0xb9,
+	0x9f, 0x8e, 0x65, 0x75, 0x4e, 0xe2, 0x1f, 0x41, 0xc7, 0x36, 0x71, 0x8a, 0x17, 0xe6, 0xbd, 0x01,
+	0xe7, 0x17, 0xad, 0x1d, 0x9b, 0x41, 0xfb, 0x7f, 0xd6, 0xa0, 0x89, 0x61, 0x58, 0xa2, 0xaf, 0x03,
+	0x72, 0x04, 0x4b, 0x7a, 0x8c, 0xa4, 0x83, 0xa3, 0x28, 0xad, 0x84, 0xb7, 0x5e, 0x92, 0x9a, 0x39,
+	0xfb, 0xe4, 0xa7, 0x3f, 0xfe, 0xfa, 0xa5, 0xf2, 0x80, 0xc0, 0xec, 0x9d, 0x21, 0xc9, 0x31, 0x54,
+	0x8f, 0x98, 0x22, 0x8f, 0xd0, 0xa3, 0x48, 0x3f, 0xaf, 0x53, 0x14, 0xda, 0x28, 0x9b, 0x18, 0x65,
+	0x8d, 0xb4, 0xe7, 0x51, 0x06, 0x3f, 0xf2, 0xe0, 0x86, 0x9c, 0x40, 0xcd, 0xb0, 0x9c, 0x6c, 0xa0,
+	0xe3, 0xc2, 0xfd, 0xe3, 0x6d, 0x2e, 0xc8, 0x6d, 0xcc, 0x75, 0x8c, 0xd9, 0xf6, 0x73, 0x95, 0xbd,
+	0x70, 0xf6, 0xc8, 0xb7, 0x50, 0x33, 0x5b, 0x65, 0x23, 0x2e, 0x70, 0xca, 0xdb, 0x58, 0xe0, 0xe3,
+	0x97, 0xfa, 0x79, 0xe3, 0xef, 0x60, 0xc0, 0x2d, 0xaf, 0x93, 0x2f, 0x12, 0x5f, 0x56, 0x3c, 0xb8,
+	0xd1, 0xa1, 0xbf, 0x81, 0x9a, 0x61, 0x9b, 0x0d, 0xbd, 0x40, 0xbd, 0x3b, 0x43, 0xdb, 0xfe, 0xf7,
+	0x16, 0xfa, 0x4f, 0xa0, 0x65, 0x0a, 0xcc, 0xf6, 0x9f, 0x3c, 0x2d, 0x55, 0x5d, 0x22, 0xc6, 0x9d,
+	0x29, 0x7a, 0x98, 0xc2, 0xf7, 0x9e, 0x94, 0xab, 0x1f, 0xf1, 0xe0, 0x66, 0x90, 0x51, 0x44, 0xb7,
+	0xf1, 0x0e, 0xda, 0xa7, 0x4c, 0x15, 0x7e, 0x48, 0x3b, 0x98, 0xf4, 0x6e, 0xee, 0xdc, 0x99, 0xf5,
+	0x23, 0xcc, 0xba, 0xe3, 0x79, 0xb7, 0x66, 0x95, 0x4c, 0xa5, 0xb1, 0x4e, 0x79, 0x01, 0xf5, 0xd9,
+	0x33, 0xcb, 0x9d, 0xdd, 0x04, 0x25, 0xca, 0x7c, 0x60, 0x6b, 0xd9, 0x8b, 0xce, 0xe4, 0x69, 0x9c,
+	0x32, 0x65, 0x78, 0x43, 0xb6, 0xf2, 0x4d, 0x15, 0xb8, 0x74, 0x67, 0xa6, 0x5d, 0xcc, 0xd4, 0xf5,
+	0xb6, 0x6f, 0x6f, 0x07, 0x63, 0xbc, 0x70, 0xf6, 0x5e, 0x72, 0x78, 0xc6, 0x45, 0x7f, 0x7c, 0xc9,
+	0x93, 0x58, 0x2a, 0x3a, 0x7e, 0x8b, 0x99, 0xa8, 0xec, 0x67, 0x8f, 0x72, 0x8d, 0x5f, 0x36, 0x70,
+	0x7c, 0x3a, 0xc1, 0x89, 0xf3, 0xdd, 0xa7, 0x13, 0xae, 0x2e, 0xd3, 0xf3, 0xfe, 0x58, 0x4c, 0x07,
+	0xe7, 0x89, 0x18, 0x53, 0x9a, 0x0c, 0xe6, 0xfe, 0x9f, 0xe8, 0x74, 0x13, 0x31, 0xb8, 0x7a, 0x3e,
+	0x28, 0x3d, 0xed, 0xcf, 0x6b, 0x58, 0xe2, 0xf3, 0xbf, 0x03, 0x00, 0x00, 0xff, 0xff, 0xaa, 0x74,
+	0x27, 0x20, 0xf4, 0x0b, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -801,6 +1049,12 @@ type UserServiceClient interface {
 	Delete(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// UpdatePassword updates a password.
 	UpdatePassword(ctx context.Context, in *UpdateUserPasswordRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// SetOrganization .
+	SetOrganization(ctx context.Context, in *SetUserOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Auditing set Auditing.
+	Auditing(ctx context.Context, in *UserAuditingRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// SetStatus.
+	SetStatus(ctx context.Context, in *SetUserStatusRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type userServiceClient struct {
@@ -865,6 +1119,33 @@ func (c *userServiceClient) UpdatePassword(ctx context.Context, in *UpdateUserPa
 	return out, nil
 }
 
+func (c *userServiceClient) SetOrganization(ctx context.Context, in *SetUserOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/api.UserService/SetOrganization", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Auditing(ctx context.Context, in *UserAuditingRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/api.UserService/Auditing", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) SetStatus(ctx context.Context, in *SetUserStatusRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/api.UserService/SetStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 type UserServiceServer interface {
 	// Get user list.
@@ -879,6 +1160,12 @@ type UserServiceServer interface {
 	Delete(context.Context, *DeleteUserRequest) (*empty.Empty, error)
 	// UpdatePassword updates a password.
 	UpdatePassword(context.Context, *UpdateUserPasswordRequest) (*empty.Empty, error)
+	// SetOrganization .
+	SetOrganization(context.Context, *SetUserOrganizationRequest) (*empty.Empty, error)
+	// Auditing set Auditing.
+	Auditing(context.Context, *UserAuditingRequest) (*empty.Empty, error)
+	// SetStatus.
+	SetStatus(context.Context, *SetUserStatusRequest) (*empty.Empty, error)
 }
 
 // UnimplementedUserServiceServer can be embedded to have forward compatible implementations.
@@ -902,6 +1189,15 @@ func (*UnimplementedUserServiceServer) Delete(ctx context.Context, req *DeleteUs
 }
 func (*UnimplementedUserServiceServer) UpdatePassword(ctx context.Context, req *UpdateUserPasswordRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePassword not implemented")
+}
+func (*UnimplementedUserServiceServer) SetOrganization(ctx context.Context, req *SetUserOrganizationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetOrganization not implemented")
+}
+func (*UnimplementedUserServiceServer) Auditing(ctx context.Context, req *UserAuditingRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Auditing not implemented")
+}
+func (*UnimplementedUserServiceServer) SetStatus(ctx context.Context, req *SetUserStatusRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetStatus not implemented")
 }
 
 func RegisterUserServiceServer(s *grpc.Server, srv UserServiceServer) {
@@ -1016,6 +1312,60 @@ func _UserService_UpdatePassword_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_SetOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetUserOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).SetOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.UserService/SetOrganization",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).SetOrganization(ctx, req.(*SetUserOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Auditing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserAuditingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Auditing(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.UserService/Auditing",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Auditing(ctx, req.(*UserAuditingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_SetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetUserStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).SetStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.UserService/SetStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).SetStatus(ctx, req.(*SetUserStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UserService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "api.UserService",
 	HandlerType: (*UserServiceServer)(nil),
@@ -1043,6 +1393,18 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdatePassword",
 			Handler:    _UserService_UpdatePassword_Handler,
+		},
+		{
+			MethodName: "SetOrganization",
+			Handler:    _UserService_SetOrganization_Handler,
+		},
+		{
+			MethodName: "Auditing",
+			Handler:    _UserService_Auditing_Handler,
+		},
+		{
+			MethodName: "SetStatus",
+			Handler:    _UserService_SetStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -3,9 +3,6 @@ FROM golang:1.16.4-alpine
 ENV PROJECT_PATH=/chirpstack-api
 RUN apk add --no-cache make git bash protobuf protobuf-dev
 
-RUN go env -w GO111MODULE=on
-RUN go env -w GOPROXY=https://goproxy.io,direct
-
 RUN mkdir -p $PROJECT_PATH
 COPY . $PROJECT_PATH
 WORKDIR $PROJECT_PATH

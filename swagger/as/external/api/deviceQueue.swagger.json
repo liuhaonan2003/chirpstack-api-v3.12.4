@@ -112,6 +112,10 @@
     "apiDeviceQueueItem": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
         "devEUI": {
           "type": "string",
           "description": "Device EUI (HEX encoded)."
@@ -139,6 +143,35 @@
         "jsonObject": {
           "type": "string",
           "description": "JSON object (string).\nOnly use this when an application codec has been configured that can convert\nthis object into binary form."
+        },
+        "custom": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Custom extension"
+        },
+        "dataRate": {
+          "type": "integer",
+          "format": "int64",
+          "title": "custom DR used"
+        },
+        "frequency": {
+          "type": "integer",
+          "format": "int64",
+          "title": "custom RX2 frequency"
+        },
+        "power": {
+          "type": "integer",
+          "format": "int64",
+          "description": "custom Downlink TX Power (dBm)."
+        },
+        "gatewayID": {
+          "type": "string",
+          "description": "Gateway ID (HEX encoded)."
+        },
+        "sendToRtu": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "custom Send param for Rtu/Gateway"
         }
       }
     },

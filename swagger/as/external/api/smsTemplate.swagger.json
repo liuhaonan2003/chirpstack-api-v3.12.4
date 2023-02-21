@@ -1,0 +1,304 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/smsTemplate.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/sms-template": {
+      "get": {
+        "summary": "list data for a smsTemplate.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListSmsTemplateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "count per page.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "pageIndex.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "SmsTemplateService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new smsTemplate.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateSmsTemplateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateSmsTemplateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SmsTemplateService"
+        ]
+      }
+    },
+    "/api/sms-template/{id}": {
+      "get": {
+        "summary": "Get data for a ListSmsTemplate.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetSmsTemplateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "SmsTemplate ID.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SmsTemplateService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a user.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "SmsTemplate ID.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SmsTemplateService"
+        ]
+      }
+    },
+    "/api/sms-template/{smsTemplate.id}": {
+      "put": {
+        "summary": "Update an existing user.PUT /api/sms-template/{id}",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "smsTemplate.id",
+            "description": "SmsTemplate ID (UUID string).\nThis will be automatically set on create.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateSmsTemplateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SmsTemplateService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateSmsTemplateRequest": {
+      "type": "object",
+      "properties": {
+        "smsTemplate": {
+          "$ref": "#/definitions/apiSmsTemplate",
+          "description": "User object to create."
+        }
+      }
+    },
+    "apiCreateSmsTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGetSmsTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "smsTemplate": {
+          "$ref": "#/definitions/apiSmsTemplate",
+          "description": "SmsTemplate object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListSmsTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of SmsTemplate."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiSmsTemplate"
+          },
+          "title": "Result-set.数组"
+        }
+      }
+    },
+    "apiSmsTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "SmsTemplate ID (UUID string).\nThis will be automatically set on create."
+        },
+        "templateMark": {
+          "type": "string",
+          "title": "模板编码:字符串，模板规则标识，可表示余额模板、密码模板等"
+        },
+        "templateName": {
+          "type": "string",
+          "title": "模板名称"
+        },
+        "algorithm": {
+          "type": "integer",
+          "format": "int32",
+          "title": "编码生成算法1、随机2、其它"
+        },
+        "num": {
+          "type": "integer",
+          "format": "int32",
+          "title": "编码位数,默认6"
+        },
+        "sendCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "同一码发送次数0、不限;大于0为允许发送次数，"
+        },
+        "countdown": {
+          "type": "integer",
+          "format": "int32",
+          "title": "给短信平台发完验证码后，同一用户下次发送间隔时长.0、未间隔倒计时;大于0为发送后下次可发送的倒计秒数"
+        },
+        "expires": {
+          "type": "string",
+          "format": "int64",
+          "title": "过期时长大于0为秒数"
+        },
+        "expireCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "试错阈值expire_count（验证码错误次数达到阈值后更新状态"
+        },
+        "title": {
+          "type": "string",
+          "title": "消息内容标题"
+        },
+        "content": {
+          "type": "string",
+          "title": "内容模板：验证码{code},有效期{second}分钟。您正在找回Lora登录密码，请勿泄漏！如非您本人操作，请忽略。"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态0、未启用1、已启用2、已停用"
+        },
+        "author": {
+          "type": "string",
+          "title": "创建人"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "remark": {
+          "type": "string",
+          "title": "备注"
+        }
+      }
+    },
+    "apiUpdateSmsTemplateRequest": {
+      "type": "object",
+      "properties": {
+        "smsTemplate": {
+          "$ref": "#/definitions/apiSmsTemplate",
+          "description": "SmsTemplate object to update."
+        }
+      }
+    }
+  }
+}

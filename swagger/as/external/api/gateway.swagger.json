@@ -866,6 +866,14 @@
           "type": "integer",
           "format": "int64",
           "description": "RF preamble size ."
+        },
+        "sendToRtu": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "custom Send param for Rtu/Gateway"
+        },
+        "devAddr": {
+          "type": "string"
         }
       }
     },
@@ -1065,6 +1073,15 @@
         "crcStatus": {
           "$ref": "#/definitions/gwCRCStatus",
           "description": "CRC status."
+        },
+        "sendToRtu": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "custom Send param for Rtu/Gateway"
+        },
+        "devAddr": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },

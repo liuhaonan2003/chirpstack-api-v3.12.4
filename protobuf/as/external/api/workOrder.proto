@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "WorkOrderProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// WorkOrderService is the service managing work-order.
+service WorkOrderService {
+    // Create creates work-order.
+    rpc Create(CreateWorkOrderRequest) returns (CreateWorkOrderResponse) {
+        option(google.api.http) = {
+            post: "/api/work-order"
+            body: "*"
+        };
+    }
+
+    // Get returns the work-order matching the given id.
+    rpc Get(GetWorkOrderRequest) returns (GetWorkOrderResponse) {
+        option(google.api.http) = {
+            get: "/api/work-order/{id}"
+        };
+    }
+
+    // Update updates the given work-order.
+    rpc Update(UpdateWorkOrderRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/work-order/{work_order.id}"
+            body: "*"
+        };
+    }
+
+    // Delete deletes the work-order matching the given id.
+    rpc Delete(DeleteWorkOrderRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            delete: "/api/work-order/{id}"
+        };
+    };
+
+    // List lists the available work-order.
+    rpc List(ListWorkOrderRequest) returns (ListWorkOrderResponse) {
+        option(google.api.http) = {
+            get: "/api/work-order"
+        };
+    }
+}
+
+message WorkOrder {
+    // WorkOrder ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+    string author = 2;
+    // Optional remark to store with the work-order.
+    string remark = 3;
+    int32 work_type = 4;
+    int32 status = 5;
+    string title = 6;
+    string description = 7;
+    string service_personal = 8;
+}
+
+message WorkOrderListItem {
+    // User ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+    string author = 2;
+    // remark of the work-order.
+    string remark = 3;
+    int32 work_type = 4;
+    int32 status = 5;
+    string title = 6;
+    string description = 7;
+    string service_personal = 8;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 9;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 10;
+}
+
+message CreateWorkOrderRequest {
+    // WorkOrder object to create.
+    WorkOrder work_order = 1;
+}
+
+message CreateWorkOrderResponse {
+    // WorkOrder ID.
+    int64 id = 1;
+}
+
+message GetWorkOrderRequest {
+    // WorkOrder ID.
+    int64 id = 1;
+}
+
+message GetWorkOrderResponse {
+    // WorkOrder object.
+    WorkOrder work_order = 1;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 2;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateWorkOrderRequest {
+    // WorkOrder object to update.
+    WorkOrder work_order = 1;
+}
+
+message DeleteWorkOrderRequest {
+    // WorkOrder ID.
+    int64 id = 1;
+}
+
+message ListWorkOrderRequest {
+    // Max number of items to return.
+    int64 limit = 1;
+
+    // Offset in the result-set (for pagination).
+    int64 offset = 2;
+}
+
+message ListWorkOrderResponse {
+    // Total number of work-order.
+    int64 total_count = 1;
+
+    // WorkOrder within the result-set.
+    repeated WorkOrderListItem result = 2;
+}

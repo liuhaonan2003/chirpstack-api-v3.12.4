@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "RoleProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// RoleService is the service managing the role access.
+service RoleService {
+  // Create a new role.
+  rpc Create(CreateRoleRequest) returns (CreateRoleResponse) {
+    option(google.api.http) = {
+      post: "/api/roles"
+      body: "*"
+    };
+  }
+  // Get Role list.
+  rpc List(ListRoleRequest) returns (ListRoleResponse) {
+    option(google.api.http) = {
+      get: "/api/roles"
+    };
+  }
+
+  // Get data for a particular user.
+  rpc Get(GetRoleRequest) returns (GetRoleResponse) {
+    option(google.api.http) = {
+      get: "/api/roles/{id}"
+    };
+  }
+
+
+
+  // Update an existing user.
+  rpc Update(UpdateRoleRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/roles/{role.id}"
+      body: "*"
+    };
+  }
+
+  // Delete a user.
+  rpc Delete(DeleteRoleRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/roles/{id}"
+    };
+  }
+
+
+  // SetOrganization .
+  rpc SetAuthority(SetRoleAuthorityRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/roles/{id}/setup"
+      body: "*"
+    };
+  }
+
+  // SetStatus.
+  rpc SetStatus(SetRoleStatusRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/roles/{id}/status"
+      body: "*"
+    };
+  }
+}
+
+message Role {
+  // Role ID.
+  // Will be set automatically on create.
+  int64 id 					= 1;
+  // The session timeout, in minutes.
+  string title 	    = 2 ;//角色名称
+
+  // Set to true to make the user a global administrator.
+  string description 			= 3;//角色描述
+  string roles 			      = 4;//权限ID集合
+
+  int32 	status			= 5;//状态：0、未启用1、已启用2、已停用
+  string  author			= 6;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 7;
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 8;
+  string 	remark			= 9;
+}
+
+
+
+message CreateRoleRequest {
+  // Role object to create.
+  Role role = 1;
+}
+
+message CreateRoleResponse {
+  // role ID.
+  int64 id = 1;
+}
+
+message GetRoleRequest {
+  // User ID.
+  int64 id = 1;
+}
+
+message GetRoleResponse {
+  // Role object.
+  Role role = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateRoleRequest {
+  // Role object to update.
+  Role role = 1;
+}
+
+message DeleteRoleRequest {
+  // Role ID.
+  int64 id = 1;
+}
+
+message ListRoleRequest {
+  // 每页条数
+  int64 limit = 1;
+
+  // 页码
+  int64 offset = 2;
+}
+
+message ListRoleResponse {
+  // Total number of users.
+  int64 totalCount = 1;
+
+  // Result-set.
+  repeated Role result = 2;
+}
+
+
+message SetRoleAuthorityRequest {
+  int64 id = 1;
+  string roles = 2;//人员角色：1,2,3,4,5
+}
+
+
+message SetRoleStatusRequest {
+  int64 id = 1;
+  int64 status = 2;//是否启用：0、未启用	1、已启用2、已停用
+}

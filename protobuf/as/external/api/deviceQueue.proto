@@ -37,28 +37,47 @@ service DeviceQueueService {
 }
 
 message DeviceQueueItem {
+    int64 id = 1;
     // Device EUI (HEX encoded).
-    string dev_eui = 1 [json_name = "devEUI"];
+    string dev_eui = 2 [json_name = "devEUI"];
 
     // Set this to true when an acknowledgement from the device is required.
     // Please note that this must not be used to guarantee a delivery.
-    bool confirmed = 2;
+    bool confirmed = 3;
 
     // Downlink frame-counter.
     // This will be automatically set on enquue.
-    uint32 f_cnt = 6;
+    uint32 f_cnt = 4;
 
     // FPort used (must be > 0)
-    uint32 f_port = 3;
+    uint32 f_port = 5;
 
     // Base64 encoded data.
     // Or use the json_object field when an application codec has been configured.
-    bytes data = 4;
+    bytes data = 6;
 
     // JSON object (string).
     // Only use this when an application codec has been configured that can convert
     // this object into binary form.
-    string json_object = 5;
+    string json_object = 7;
+
+    // Custom extension
+    bool custom = 8;
+
+    // custom DR used
+    uint32 dataRate = 9;
+
+    // custom RX2 frequency
+    uint32 frequency = 10;
+
+    // custom Downlink TX Power (dBm).
+    uint32 power = 11;
+
+    // Gateway ID (HEX encoded).
+    string gateway_id = 12 [json_name = "gatewayID"];
+
+    // custom Send param for Rtu/Gateway
+    bool sendToRtu = 13;
 }
 
 message EnqueueDeviceQueueItemRequest {

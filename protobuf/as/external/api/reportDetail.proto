@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportDetailProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ReportDetailService is the service managing test.
+service ReportDetailService {
+    // Create creates report-detail.
+    rpc Create(CreateReportDetailRequest) returns (CreateReportDetailResponse) {
+        option(google.api.http) = {
+            post: "/api/report-detail"
+            body: "*"
+        };
+    }
+
+    // Get returns the report-detail matching the given id.
+    rpc Get(GetReportDetailRequest) returns (GetReportDetailResponse) {
+        option(google.api.http) = {
+            get: "/api/report-detail/{id}"
+        };
+    }
+
+    // Update updates the given report-detail.
+    rpc Update(UpdateReportDetailRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/report-detail/{reportDetail.id}"
+            body: "*"
+        };
+    }
+
+    // Delete deletes the report-detail matching the given id.
+    rpc Delete(DeleteReportDetailRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            delete: "/api/report-detail/{id}"
+        };
+    };
+
+    // List lists the available report-detail.
+    rpc List(ListReportDetailRequest) returns (ListReportDetailResponse) {
+        option(google.api.http) = {
+            get: "/api/report-detail"
+        };
+    }
+}
+
+message ReportDetail {
+    // ReportDetail ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+
+    string gw_mac = 2;
+
+    string dev_id = 3;
+
+    string dev_eui = 4;
+
+    int64 amount = 5;
+
+    int64 report_time = 6;
+
+    int32 status = 7;
+}
+
+message ReportDetailListItem {
+    // User ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+
+    string gw_mac = 2;
+
+    string dev_id = 3;
+
+    string dev_eui = 4;
+
+    int64 amount = 5;
+
+    int64 report_time = 6;
+
+    int32 status = 7;
+
+    string author = 8;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 9;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 10;
+    string remark  = 11;
+}
+
+message CreateReportDetailRequest {
+    // Test object to create.
+    ReportDetail reportDetail = 1;
+}
+
+message CreateReportDetailResponse {
+    // Test ID.
+    int64 id = 1;
+}
+
+message GetReportDetailRequest {
+    // Test ID.
+    int64 id = 1;
+}
+
+message GetReportDetailResponse {
+    // Test object.
+    ReportDetail reportDetail = 1;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 2;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateReportDetailRequest {
+    // Test object to update.
+    ReportDetail reportDetail = 1;
+}
+
+message DeleteReportDetailRequest {
+    // Test ID.
+    int64 id = 1;
+}
+
+message ListReportDetailRequest {
+    // Max number of items to return.
+    int64 limit = 1;
+
+    // Offset in the result-set (for pagination).
+    int64 offset = 2;
+}
+
+message ListReportDetailResponse {
+    // Total number of test.
+    int64 total_count = 1;
+
+    // Test within the result-set.
+    repeated ReportDetailListItem result = 2;
+}

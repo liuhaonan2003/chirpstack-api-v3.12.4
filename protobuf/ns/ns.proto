@@ -177,7 +177,17 @@ service NetworkServerService {
     
     // GetLastRxInfo returns Upstream and downstream data for a particular device.
     rpc GetLastRxInfo(GetLastRxInfoRequest) returns (GetLastRxInfoResponse) {}
-}
+	// CreateTest creates the given test.
+    rpc CreateTest(CreateTestRequest) returns (google.protobuf.Empty) {}
+
+    // GetTest returns the test matching the given Id.
+    rpc GetTest(GetTestRequest) returns (GetTestResponse) {}
+
+    // UpdateTest updates the given test.
+    rpc UpdateTest(UpdateTestRequest) returns (google.protobuf.Empty) {}
+
+    // DeleteTest deletes the test matching the given Id.
+    rpc DeleteTest(DeleteTestRequest) returns (google.protobuf.Empty) {}}
 
 enum RXWindow {
     // Receive window 1
@@ -602,6 +612,24 @@ message DeviceQueueItem {
     // application-server, there is a possibility that the application-server
     // tries to enqueue payloads encrypted with the old session-key.
     bytes dev_addr = 6;
+
+    // Custom extension
+    bool custom = 7;
+
+    // custom DR used
+    uint32 dataRate = 8;
+
+    // custom RX2 frequency
+    uint32 frequency = 9;
+
+    // custom Downlink TX Power (dBm).
+    uint32 power = 10;
+
+    // Gateway ID (HEX encoded).
+    string gateway_id = 11 [json_name = "gatewayID"];
+
+    // custom Send param for Rtu/Gateway
+    bool sendToRtu = 12;
 }
 
 message CreateDeviceQueueItemRequest {
@@ -987,3 +1015,44 @@ message GetLastRxInfoResponse {
     // rx2 frequency by MAC.
     uint32 rx2Frequency = 2;
 }
+
+message Test {
+    // Test ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+
+    // Optional remark to store with the test.
+    string remark = 2;
+}
+
+message CreateTestRequest {
+    // Test object to create.
+    Test test = 1;
+}
+
+message GetTestRequest {
+    // Test ID.
+    int64 id = 1;
+}
+
+message GetTestResponse {
+    // Test object.
+    Test test = 1;
+
+    string remark = 2;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 3;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 4;
+}
+
+message UpdateTestRequest {
+    // Test object to update.
+    Test test = 1;
+}
+
+message DeleteTestRequest {
+    // Test ID.
+    int64 id = 1;}

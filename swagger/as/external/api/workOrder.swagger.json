@@ -1,0 +1,310 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/workOrder.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/work-order": {
+      "get": {
+        "summary": "List lists the available work-order.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListWorkOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates work-order.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateWorkOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateWorkOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    },
+    "/api/work-order/{id}": {
+      "get": {
+        "summary": "Get returns the work-order matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetWorkOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "WorkOrder ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the work-order matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "WorkOrder ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    },
+    "/api/work-order/{work_order.id}": {
+      "put": {
+        "summary": "Update updates the given work-order.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "work_order.id",
+            "description": "WorkOrder ID.\nWill be set automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateWorkOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateWorkOrderRequest": {
+      "type": "object",
+      "properties": {
+        "workOrder": {
+          "$ref": "#/definitions/apiWorkOrder",
+          "description": "WorkOrder object to create."
+        }
+      }
+    },
+    "apiCreateWorkOrderResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "WorkOrder ID."
+        }
+      }
+    },
+    "apiGetWorkOrderResponse": {
+      "type": "object",
+      "properties": {
+        "workOrder": {
+          "$ref": "#/definitions/apiWorkOrder",
+          "description": "WorkOrder object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListWorkOrderResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of work-order."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiWorkOrderListItem"
+          },
+          "description": "WorkOrder within the result-set."
+        }
+      }
+    },
+    "apiUpdateWorkOrderRequest": {
+      "type": "object",
+      "properties": {
+        "workOrder": {
+          "$ref": "#/definitions/apiWorkOrder",
+          "description": "WorkOrder object to update."
+        }
+      }
+    },
+    "apiWorkOrder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "WorkOrder ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "Optional remark to store with the work-order."
+        },
+        "workType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "servicePersonal": {
+          "type": "string"
+        }
+      }
+    },
+    "apiWorkOrderListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "remark of the work-order."
+        },
+        "workType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "servicePersonal": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    }
+  }
+}

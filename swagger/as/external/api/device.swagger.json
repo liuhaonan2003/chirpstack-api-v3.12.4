@@ -220,7 +220,7 @@
     },
     "/api/devices/{dev_eui}/activation": {
       "get": {
-        "summary": "GetActivation returns the current activation details of the device (OTAA and ABP).",
+        "summary": "GetActivation 返回设备的当前激活详细信息 (OTAA and ABP).",
         "operationId": "GetActivation",
         "responses": {
           "200": {
@@ -374,7 +374,7 @@
     },
     "/api/devices/{dev_eui}/keys": {
       "get": {
-        "summary": "GetKeys returns the device-keys for the given DevEUI.",
+        "summary": "GetKeys 返回给定 DevEUI 的设备密钥",
         "operationId": "GetKeys",
         "responses": {
           "200": {
@@ -441,6 +441,108 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/devices/{dev_eui}/organization": {
+      "put": {
+        "summary": "SetDeviceOrg 设置设备归属组织",
+        "operationId": "SetDeviceOrg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "int64 id        =1;",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetDeviceOrgRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/devices/{dev_eui}/parent": {
+      "put": {
+        "summary": "SetDeviceParent 设置设备归属父节点",
+        "operationId": "SetDeviceParent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "int64 id        =1;",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetDeviceParentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/devices/{dev_eui}/scene": {
+      "put": {
+        "summary": "SetDeviceOrg 设置设备归属场景",
+        "operationId": "SetDeviceScene",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "int64 id        =1;",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetDeviceSceneRequest"
+            }
           }
         ],
         "tags": [
@@ -524,6 +626,40 @@
             "required": false,
             "type": "string",
             "format": "date-time"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/devices/{dev_eui}/user": {
+      "put": {
+        "summary": "SetDeviceOrg 设置设备归属用户",
+        "operationId": "SetDeviceUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "int64 id        =1;",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetDeviceUserRequest"
+            }
           }
         ],
         "tags": [
@@ -717,15 +853,35 @@
           "type": "string",
           "description": "DeviceProfileID attached to the device."
         },
-        "skipFCntCheck": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "Skip frame-counter checks (this is insecure, but could be helpful for debugging)."
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
         },
-        "referenceAltitude": {
-          "type": "number",
-          "format": "double",
-          "description": "Reference altitude.\nWhen using geolocation, this altitude will be used as a reference\n(when supported by the geolocation-server) to increase geolocation\naccuracy."
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
         },
         "variables": {
           "type": "object",
@@ -740,6 +896,16 @@
             "type": "string"
           },
           "description": "Tags (user defined).\nThese tags are exposed in the event payloads or to integration. Tags are\nintended for aggregation and filtering."
+        },
+        "skipFCntCheck": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Skip frame-counter checks (this is insecure, but could be helpful for debugging)."
+        },
+        "referenceAltitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Reference altitude.\nWhen using geolocation, this altitude will be used as a reference\n(when supported by the geolocation-server) to increase geolocation\naccuracy."
         },
         "isDisabled": {
           "type": "boolean",
@@ -816,6 +982,10 @@
     "apiDeviceListItem": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
         "devEUI": {
           "type": "string",
           "description": "Device EUI (HEX encoded)."
@@ -870,6 +1040,32 @@
           "type": "string",
           "format": "date-time",
           "description": "The last time the application-server received any data from the device,\nor an empty string when the device never sent any data."
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
         }
       }
     },
@@ -1110,6 +1306,58 @@
         }
       }
     },
+    "apiSetDeviceOrgRequest": {
+      "type": "object",
+      "properties": {
+        "devEUI": {
+          "type": "string",
+          "title": "int64 id        =1;"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "apiSetDeviceParentRequest": {
+      "type": "object",
+      "properties": {
+        "devEUI": {
+          "type": "string",
+          "title": "int64 id        =1;"
+        },
+        "parentDeviceId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "apiSetDeviceSceneRequest": {
+      "type": "object",
+      "properties": {
+        "devEUI": {
+          "type": "string",
+          "title": "int64 id        =1;"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "apiSetDeviceUserRequest": {
+      "type": "object",
+      "properties": {
+        "devEUI": {
+          "type": "string",
+          "title": "int64 id        =1;"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "apiStreamDeviceEventLogsResponse": {
       "type": "object",
       "properties": {
@@ -1330,6 +1578,14 @@
           "type": "integer",
           "format": "int64",
           "description": "RF preamble size ."
+        },
+        "sendToRtu": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "custom Send param for Rtu/Gateway"
+        },
+        "devAddr": {
+          "type": "string"
         }
       }
     },
@@ -1529,6 +1785,15 @@
         "crcStatus": {
           "$ref": "#/definitions/gwCRCStatus",
           "description": "CRC status."
+        },
+        "sendToRtu": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "custom Send param for Rtu/Gateway"
+        },
+        "devAddr": {
+          "type": "string",
+          "format": "byte"
         }
       }
     },

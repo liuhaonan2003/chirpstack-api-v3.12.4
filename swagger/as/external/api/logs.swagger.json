@@ -1,0 +1,241 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/logs.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/logs": {
+      "get": {
+        "summary": "List lists the available logs.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListLogsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "LogsService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates logs.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateLogsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateLogsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LogsService"
+        ]
+      }
+    },
+    "/api/logs/{id}": {
+      "get": {
+        "summary": "Get returns the logs matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetLogsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "LogsService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the logs matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "LogsService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateLogsRequest": {
+      "type": "object",
+      "properties": {
+        "log": {
+          "$ref": "#/definitions/apiLog",
+          "description": "Test object to create."
+        }
+      }
+    },
+    "apiCreateLogsResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Test ID."
+        }
+      }
+    },
+    "apiGetLogsResponse": {
+      "type": "object",
+      "properties": {
+        "log": {
+          "$ref": "#/definitions/apiLog",
+          "description": "Test object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListLogsResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiLog"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiLog": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "log ID. Will be set automatically on create."
+        },
+        "actTag": {
+          "type": "string",
+          "title": "行为名称"
+        },
+        "url": {
+          "type": "string",
+          "title": "API的请求路径"
+        },
+        "logMethod": {
+          "type": "string",
+          "title": "记录日志方法"
+        },
+        "logIp": {
+          "type": "string",
+          "title": "操作IP"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "0、未启用 1、已启用 2、已停用"
+        },
+        "author": {
+          "type": "string",
+          "title": "行为操作者"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "remark": {
+          "type": "string"
+        },
+        "logData": {
+          "type": "string",
+          "title": "API的请求路径"
+        }
+      },
+      "title": "日志：记录某用户(author)的操作行为（行为名称，汉语描述，便于理解),其中，记录日志方法表示其操作的行为(post/get/delete/put),url表示API的路径，IP表示操作用户的电脑IP(192.168.1.18).\n日志列表和日志详情：如果用户操作的行为没用数据变化（比如登录)，则不产生详情数据。如果操作前后又数据变化，则详情的数据（其实是个json）将记录前后的数据变化情况。"
+    }
+  }
+}

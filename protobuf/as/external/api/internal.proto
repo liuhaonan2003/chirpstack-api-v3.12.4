@@ -23,6 +23,46 @@ service InternalService {
 		};
 	}
 
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option(google.api.http) = {
+      post: "/api/internal/register"
+      body: "*"
+    };
+  }
+  rpc ForgetPassword(ForgetPasswordRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      post: "/api/internal/password"
+      body: "*"
+    };
+  }
+  rpc GetCode(GetCodeRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      get: "/api/internal/get-code"
+    };
+  }
+  
+  //获取，给短信平台发完验证码后，同一用户下次发送间隔时长
+  rpc GetCountdown(GetCountdownRequest) returns (GetCountdownResponse) {
+    option(google.api.http) = {
+      get: "/api/internal/get-countdown"
+    };
+  }
+  rpc CreatCode(CreatCodeRequest) returns (CreatCodeResponse) {
+    option(google.api.http) = {
+      post: "/api/internal/create-code"
+      body: "*"
+    };
+  }
+  rpc VerifyCode(VerifyCodeRequest) returns (VerifyCodeResponse) {
+    option(google.api.http) = {
+      get: "/api/internal/code-verify"
+    };
+  }
+  rpc VerifyLoginPermission(VerifyLoginPermissionRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      get: "/api/internal/verify-auth"
+    };
+  }
 	// Get the current user's profile
 	rpc Profile(google.protobuf.Empty) returns (ProfileResponse) {
 		option(google.api.http) = {
@@ -180,10 +220,11 @@ message OrganizationLink {
 
 message LoginRequest {
 	// Email of the user.
-	string email = 1;
-
+  int32  type  = 1;
+	string username = 2;
 	// Password of the user.
-	string password = 2;
+	string password = 3;
+  string verify = 4;
 }
 
 message LoginResponse {
@@ -191,6 +232,73 @@ message LoginResponse {
 	string jwt = 1;
 }
 
+message RegisterRequest{
+  //用户名，必须存在
+  string username     = 1;
+  string phone        = 2;
+  string email        = 3;
+  //真实姓名
+  string realname     = 4;
+  string company_name = 5;
+  //帐户类型1、企业帐户2、个人帐户
+  int32  type         = 6;
+  string password     = 7;
+}
+message RegisterResponse{
+  string id = 1;
+}
+message ForgetPasswordRequest{
+  int32 type          = 1;
+  string account      = 2;
+  string verify       = 3;
+  string password     = 4;
+}
+message GetCodeRequest{
+  //账号类型1、phone2、email
+  int32 type          = 1;
+  //账户
+  string account      = 2;
+  //模板编码:字符串，模板规则标识，可表示余额模板、密码模板等,存疑，是否需向前端隐藏信息模板的配置
+  string template_mark = 3;
+}
+message GetCountdownRequest{
+  //下次可发送的倒计秒数
+  string template_mark  = 1;
+}
+message GetCountdownResponse{
+  //下次可发送的倒计秒数
+  int32 countdown    = 1;
+}
+message CreatCodeRequest{
+  //账号类型1、phone2、email
+  int32  type          = 1;
+  string account       = 2;
+  //模板编码:字符串，模板规则标识，可表示余额模板、密码模板等
+  string template_mark = 3;
+}
+message CreatCodeResponse{
+  //验证码
+  string codes        = 1;
+  //过期时间
+  string expires      = 2;
+}
+message VerifyCodeRequest{
+  //手机号、邮箱号
+  int32  type         = 1;
+  string account      = 2;
+  //短信码
+  string verify       = 3;
+  string template_mark = 4;
+}
+message VerifyCodeResponse{
+  string id         = 1;
+}
+message VerifyLoginPermissionRequest{
+  //手机号、邮箱号
+  string token      = 1;
+  //短信码
+  string api        = 2;
+}
 message ProfileResponse {
     // User object.
     User user = 1;

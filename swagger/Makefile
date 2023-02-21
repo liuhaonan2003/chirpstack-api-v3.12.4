@@ -25,3 +25,15 @@ as-external-api:
 	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/profiles.proto
 	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/serviceProfile.proto
 	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/user.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/test.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/reportDetail.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/smsTemplate.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/role.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/modules.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/logs.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/warning.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/warningRule.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api --swagger_out=json_names_for_fields=true:. as/external/api/workOrder.proto
+
+
+

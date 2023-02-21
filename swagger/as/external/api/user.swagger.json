@@ -30,7 +30,7 @@
         "parameters": [
           {
             "name": "limit",
-            "description": "Max number of user to return in the result-set.",
+            "description": "每页条数.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -38,7 +38,7 @@
           },
           {
             "name": "offset",
-            "description": "Offset in the result-set (for pagination).",
+            "description": "页码.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -162,6 +162,40 @@
         ]
       }
     },
+    "/api/users/{user_id}/auditing": {
+      "put": {
+        "summary": "Auditing set Auditing.",
+        "operationId": "Auditing",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUserAuditingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
     "/api/users/{user_id}/password": {
       "put": {
         "summary": "UpdatePassword updates a password.",
@@ -196,6 +230,74 @@
           "UserService"
         ]
       }
+    },
+    "/api/users/{user_id}/setup": {
+      "put": {
+        "summary": "SetOrganization .",
+        "operationId": "SetOrganization",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetUserOrganizationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/users/{user_id}/status": {
+      "put": {
+        "summary": "SetStatus.",
+        "operationId": "SetStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetUserStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -208,7 +310,7 @@
         },
         "password": {
           "type": "string",
-          "description": "Password of the user."
+          "description": "// Password of the user."
         },
         "organizations": {
           "type": "array",
@@ -259,9 +361,38 @@
         "result": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/apiUserListItem"
+            "$ref": "#/definitions/apiUser"
           },
           "description": "Result-set."
+        }
+      }
+    },
+    "apiSetUserOrganizationRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "roles": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "apiSetUserStatusRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -275,7 +406,7 @@
         },
         "password": {
           "type": "string",
-          "description": "New pasword."
+          "description": "New password."
         }
       }
     },
@@ -296,7 +427,7 @@
           "format": "int64",
           "description": "User ID.\nWill be set automatically on create."
         },
-        "sessionTTL": {
+        "sessionTtl": {
           "type": "integer",
           "format": "int32",
           "description": "The session timeout, in minutes."
@@ -318,35 +449,67 @@
         "note": {
           "type": "string",
           "description": "Optional note to store with the user."
-        }
-      }
-    },
-    "apiUserListItem": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "int64",
-          "description": "User ID.\nWill be set automatically on create."
         },
-        "email": {
-          "type": "string",
-          "description": "Email of the user."
+        "username": {
+          "type": "string"
         },
-        "sessionTTL": {
+        "isAuditing": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "realname": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "provinceId": {
           "type": "integer",
           "format": "int32",
-          "description": "The session timeout, in minutes."
+          "title": "帐户类型1、企业帐户2、个人帐户"
         },
-        "isAdmin": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "Set to true to make the user a global administrator."
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
         },
-        "isActive": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "Set to false to disable the user."
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
         },
         "createdAt": {
           "type": "string",
@@ -357,6 +520,25 @@
           "type": "string",
           "format": "date-time",
           "description": "Last update timestamp."
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "string"
+        }
+      }
+    },
+    "apiUserAuditingRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "isAuditing": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     },

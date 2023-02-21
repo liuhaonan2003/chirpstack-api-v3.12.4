@@ -1,0 +1,362 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/warning.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/warning": {
+      "get": {
+        "summary": "List lists the available warning.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListWarningResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates warning.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateWarningResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateWarningRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      }
+    },
+    "/api/warning/{id}": {
+      "get": {
+        "summary": "Get returns the warning matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetWarningResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Warning ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the warning matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Warning ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      }
+    },
+    "/api/warning/{warning.id}": {
+      "put": {
+        "summary": "Update updates the given warning.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "warning.id",
+            "description": "Warning ID.\nWill be set automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateWarningRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateWarningRequest": {
+      "type": "object",
+      "properties": {
+        "warning": {
+          "$ref": "#/definitions/apiWarning",
+          "description": "Warning object to create."
+        }
+      }
+    },
+    "apiCreateWarningResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Warning ID."
+        }
+      }
+    },
+    "apiGetWarningResponse": {
+      "type": "object",
+      "properties": {
+        "warning": {
+          "$ref": "#/definitions/apiWarning",
+          "description": "Warning object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListWarningResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of warning."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiWarningListItem"
+          },
+          "description": "Warning within the result-set."
+        }
+      }
+    },
+    "apiUpdateWarningRequest": {
+      "type": "object",
+      "properties": {
+        "warning": {
+          "$ref": "#/definitions/apiWarning",
+          "description": "Warning object to update."
+        }
+      }
+    },
+    "apiWarning": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Warning ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "Optional remark to store with the warning."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "organizationName": {
+          "type": "string"
+        },
+        "deviceType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "string"
+        },
+        "warningTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "warningLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "warningCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "workOrderId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "apiWarningListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "remark of the warning."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "organizationName": {
+          "type": "string"
+        },
+        "deviceType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "string"
+        },
+        "warningTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "warningLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "warningCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "workOrderId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    }
+  }
+}

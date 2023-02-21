@@ -1276,6 +1276,7 @@ func (m *StreamGatewayFrameLogsRequest) GetGatewayId() string {
 
 type StreamGatewayFrameLogsResponse struct {
 	// Types that are valid to be assigned to Frame:
+	//
 	//	*StreamGatewayFrameLogsResponse_UplinkFrame
 	//	*StreamGatewayFrameLogsResponse_DownlinkFrame
 	Frame                isStreamGatewayFrameLogsResponse_Frame `protobuf_oneof:"frame"`
@@ -1538,8 +1539,8 @@ type GatewayServiceClient interface {
 	GenerateGatewayClientCertificate(ctx context.Context, in *GenerateGatewayClientCertificateRequest, opts ...grpc.CallOption) (*GenerateGatewayClientCertificateResponse, error)
 	// StreamFrameLogs streams the uplink and downlink frame-logs for the given gateway ID.
 	// Notes:
-	//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
-	//   * This endpoint does not work from a web-browser.
+	//   - These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+	//   - This endpoint does not work from a web-browser.
 	StreamFrameLogs(ctx context.Context, in *StreamGatewayFrameLogsRequest, opts ...grpc.CallOption) (GatewayService_StreamFrameLogsClient, error)
 }
 
@@ -1678,8 +1679,8 @@ type GatewayServiceServer interface {
 	GenerateGatewayClientCertificate(context.Context, *GenerateGatewayClientCertificateRequest) (*GenerateGatewayClientCertificateResponse, error)
 	// StreamFrameLogs streams the uplink and downlink frame-logs for the given gateway ID.
 	// Notes:
-	//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
-	//   * This endpoint does not work from a web-browser.
+	//   - These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+	//   - This endpoint does not work from a web-browser.
 	StreamFrameLogs(*StreamGatewayFrameLogsRequest, GatewayService_StreamFrameLogsServer) error
 }
 

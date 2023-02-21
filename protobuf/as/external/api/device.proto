@@ -55,6 +55,34 @@ service DeviceService {
         };
     }
 
+    // SetDeviceOrg 设置设备归属组织
+    rpc SetDeviceOrg(SetDeviceOrgRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            put: "/api/devices/{dev_eui}/organization"
+            body: "*"
+        };
+    }
+    // SetDeviceOrg 设置设备归属用户
+    rpc SetDeviceUser(SetDeviceUserRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            put: "/api/devices/{dev_eui}/user"
+            body: "*"
+        };
+    }
+    // SetDeviceOrg 设置设备归属场景
+    rpc SetDeviceScene(SetDeviceSceneRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            put: "/api/devices/{dev_eui}/scene"
+            body: "*"
+        };
+    }
+    // SetDeviceParent 设置设备归属父节点
+    rpc SetDeviceParent(SetDeviceParentRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            put: "/api/devices/{dev_eui}/parent"
+            body: "*"
+        };
+    }
     // CreateKeys creates the given device-keys.
     rpc CreateKeys(CreateDeviceKeysRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
@@ -63,7 +91,7 @@ service DeviceService {
         };
     }
 
-    // GetKeys returns the device-keys for the given DevEUI.
+    // GetKeys 返回给定 DevEUI 的设备密钥
     rpc GetKeys(GetDeviceKeysRequest) returns (GetDeviceKeysResponse) {
         option (google.api.http) = {
             get: "/api/devices/{dev_eui}/keys"
@@ -100,7 +128,7 @@ service DeviceService {
         };
     }
 
-    // GetActivation returns the current activation details of the device (OTAA and ABP).
+    // GetActivation 返回设备的当前激活详细信息 (OTAA and ABP).
     rpc GetActivation(GetDeviceActivationRequest) returns (GetDeviceActivationResponse) {
         option (google.api.http) = {
             get: "/api/devices/{dev_eui}/activation"
@@ -173,78 +201,84 @@ service DeviceService {
 }
 
 message Device {
-    // Device EUI (HEX encoded).
+    
+     // Device EUI (HEX encoded).
     string dev_eui = 1 [json_name = "devEUI"];
-
     // Name of the device (if left blank, it will be set to the DevEUI).
     string name = 2;
-
     // ID of the application to which the device must be added.
     // It is possible to move a device to a different application on update,
     // given that both the old and the new application share the same
     // service-profile.
     int64 application_id = 3 [json_name = "applicationID"];
-
     // Description of the device.
     string description = 4;
-
     // DeviceProfileID attached to the device.
     string device_profile_id = 5 [json_name = "deviceProfileID"];
 
-    // Skip frame-counter checks (this is insecure, but could be helpful for debugging).
-    bool skip_f_cnt_check = 6;
+    int64 organization_id    =6;
+    int64 user_id            = 7;
+    int32 scene             = 8;
+    int64 parent             = 9;
+    int32 status             = 10;
+    string author            = 11;
+    string remark             = 12;
+    int64 id             = 13;
 
-    // Reference altitude.
-    // When using geolocation, this altitude will be used as a reference
-    // (when supported by the geolocation-server) to increase geolocation
-    // accuracy.
-    double reference_altitude = 7;
 
     // Variables (user defined).
     // These variables can be used together with integrations to store tokens /
     // secrets that must be configured per device. These variables are not
     // exposed in the event payloads.
-    map<string, string> variables = 8;
+    map<string, string> variables = 14;
 
     // Tags (user defined).
     // These tags are exposed in the event payloads or to integration. Tags are
     // intended for aggregation and filtering.
-    map<string, string> tags = 9;
+    map<string, string> tags = 15;
+    // Skip frame-counter checks (this is insecure, but could be helpful for debugging).
+    bool skip_f_cnt_check = 16;
+    // Reference altitude.
+    // When using geolocation, this altitude will be used as a reference
+    // (when supported by the geolocation-server) to increase geolocation
+    // accuracy.
+    double reference_altitude = 17;
 
     // Device is disabled.
-    bool is_disabled = 10;
+    bool is_disabled = 18;
 }
 
 message DeviceListItem {
+    int64 id = 1;
     // Device EUI (HEX encoded).
-    string dev_eui = 1 [json_name = "devEUI"];
+    string dev_eui = 2 [json_name = "devEUI"];
 
     // Name of the device.
-    string name = 2;
+    string name = 3;
 
     // Application ID.
-    int64 application_id = 3 [json_name = "applicationID"];
+    int64 application_id = 4 [json_name = "applicationID"];
 
     // Description of the device.
-    string description = 4;
+    string description = 5;
 
     // Device-profile ID attached to the device.
-    string device_profile_id = 5 [json_name = "deviceProfileID"];
+    string device_profile_id = 6 [json_name = "deviceProfileID"];
 
     // Device-profile name.
-    string device_profile_name = 6;
+    string device_profile_name = 7;
 
     // The device battery status (deprecated, use device_status_battery_level).
     // 0:      The end-device is connected to an external power source
     // 1..254: The battery level, 1 being at minimum and 254 being at maximum
     // 255:    The end-device was not able to measure the battery level
     // 256:    The device-status is not available.
-    uint32 device_status_battery = 7;
+    uint32 device_status_battery = 8;
 
     // The device margin status
     // -32..32: The demodulation SNR ration in dB
     // 256:     The device-status is not available.
-    int32  device_status_margin = 8;
+    int32  device_status_margin = 9;
 
     // Device is connected to an external power source.
     bool device_status_external_power_source = 10;
@@ -257,7 +291,14 @@ message DeviceListItem {
 
     // The last time the application-server received any data from the device,
     // or an empty string when the device never sent any data.
-    google.protobuf.Timestamp last_seen_at = 9 [json_name = "lastSeenAt"];
+    google.protobuf.Timestamp last_seen_at = 13 [json_name = "lastSeenAt"];
+    int64 organization_id    =14;
+    int64 user_id            = 15;
+    int32 scene             = 16;
+    int64 parent             = 17;
+    int32 status             = 18;
+    string author            = 19;
+    string remark            = 20;
 }
 
 message DeviceKeys {
@@ -357,6 +398,26 @@ message DeleteDeviceRequest {
 message UpdateDeviceRequest {
     // Device object to update.
     Device device = 1;
+}
+message SetDeviceOrgRequest {
+//    int64 id        =1;
+    string dev_eui = 1 [json_name = "devEUI"];
+    int64 organization_id        =2;
+}
+message SetDeviceUserRequest {
+//    int64 id        =1;
+    string dev_eui = 1 [json_name = "devEUI"];
+    int64 user_id        =2;
+}
+message SetDeviceSceneRequest {
+//    int64 id        =1;
+    string dev_eui = 1 [json_name = "devEUI"];
+    int32 scene        =2;
+}
+message SetDeviceParentRequest {
+//    int64 id        =1;
+    string dev_eui = 1 [json_name = "devEUI"];
+    int64 parent        =2[json_name = "parentDeviceId"];
 }
 
 message CreateDeviceKeysRequest {

@@ -1,0 +1,129 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "TestProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// TestService is the service managing test.
+service TestService {
+    // Create creates test.
+    rpc Create(CreateTestRequest) returns (CreateTestResponse) {
+        option(google.api.http) = {
+            post: "/api/test"
+            body: "*"
+        };
+    }
+
+    // Get returns the test matching the given id.
+    rpc Get(GetTestRequest) returns (GetTestResponse) {
+        option(google.api.http) = {
+            get: "/api/test/{id}"
+        };
+    }
+
+    // Update updates the given test.
+    rpc Update(UpdateTestRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/test/{test.id}"
+            body: "*"
+        };
+    }
+
+    // Delete deletes the test matching the given id.
+    rpc Delete(DeleteTestRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            delete: "/api/test/{id}"
+        };
+    };
+
+    // List lists the available test.
+    rpc List(ListTestRequest) returns (ListTestResponse) {
+        option(google.api.http) = {
+            get: "/api/test"
+        };
+    }
+}
+
+message Test {
+    // Test ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+
+    // Optional remark to store with the test.
+    string remark = 2;
+}
+
+message TestListItem {
+    // User ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+
+    // remark of the test.
+    string remark = 2;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 3;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 4;
+}
+
+message CreateTestRequest {
+    // Test object to create.
+    Test test = 1;
+}
+
+message CreateTestResponse {
+    // Test ID.
+    int64 id = 1;
+}
+
+message GetTestRequest {
+    // Test ID.
+    int64 id = 1;
+}
+
+message GetTestResponse {
+    // Test object.
+    Test test = 1;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 2;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateTestRequest {
+    // Test object to update.
+    Test test = 1;
+}
+
+message DeleteTestRequest {
+    // Test ID.
+    int64 id = 1;
+}
+
+message ListTestRequest {
+    // Max number of items to return.
+    int64 limit = 1;
+
+    // Offset in the result-set (for pagination).
+    int64 offset = 2;
+}
+
+message ListTestResponse {
+    // Total number of test.
+    int64 total_count = 1;
+
+    // Test within the result-set.
+    repeated TestListItem result = 2;
+}

@@ -1,0 +1,310 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/reportDetail.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/report-detail": {
+      "get": {
+        "summary": "List lists the available report-detail.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListReportDetailResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDetailService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates report-detail.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateReportDetailResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateReportDetailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReportDetailService"
+        ]
+      }
+    },
+    "/api/report-detail/{id}": {
+      "get": {
+        "summary": "Get returns the report-detail matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetReportDetailResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDetailService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the report-detail matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDetailService"
+        ]
+      }
+    },
+    "/api/report-detail/{reportDetail.id}": {
+      "put": {
+        "summary": "Update updates the given report-detail.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "reportDetail.id",
+            "description": "ReportDetail ID.\nWill be set automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateReportDetailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReportDetailService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateReportDetailRequest": {
+      "type": "object",
+      "properties": {
+        "reportDetail": {
+          "$ref": "#/definitions/apiReportDetail",
+          "description": "Test object to create."
+        }
+      }
+    },
+    "apiCreateReportDetailResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Test ID."
+        }
+      }
+    },
+    "apiGetReportDetailResponse": {
+      "type": "object",
+      "properties": {
+        "reportDetail": {
+          "$ref": "#/definitions/apiReportDetail",
+          "description": "Test object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListReportDetailResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportDetailListItem"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiReportDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "ReportDetail ID.\nWill be set automatically on create."
+        },
+        "gwMac": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "devEui": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "apiReportDetailListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "gwMac": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "devEui": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "remark": {
+          "type": "string"
+        }
+      }
+    },
+    "apiUpdateReportDetailRequest": {
+      "type": "object",
+      "properties": {
+        "reportDetail": {
+          "$ref": "#/definitions/apiReportDetail",
+          "description": "Test object to update."
+        }
+      }
+    }
+  }
+}

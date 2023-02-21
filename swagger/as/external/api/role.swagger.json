@@ -1,0 +1,366 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/role.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/roles": {
+      "get": {
+        "summary": "Get Role list.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListRoleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "每页条数.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "页码.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new role.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateRoleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateRoleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/api/roles/{id}": {
+      "get": {
+        "summary": "Get data for a particular user.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetRoleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "User ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a user.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Role ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/api/roles/{id}/setup": {
+      "put": {
+        "summary": "SetOrganization .",
+        "operationId": "SetAuthority",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetRoleAuthorityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/api/roles/{id}/status": {
+      "put": {
+        "summary": "SetStatus.",
+        "operationId": "SetStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetRoleStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/api/roles/{role.id}": {
+      "put": {
+        "summary": "Update an existing user.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "role.id",
+            "description": "Role ID.\nWill be set automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateRoleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateRoleRequest": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/apiRole",
+          "description": "Role object to create."
+        }
+      }
+    },
+    "apiCreateRoleResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "role ID."
+        }
+      }
+    },
+    "apiGetRoleResponse": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/apiRole",
+          "description": "Role object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListRoleResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of users."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRole"
+          },
+          "description": "Result-set."
+        }
+      }
+    },
+    "apiRole": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Role ID.\nWill be set automatically on create."
+        },
+        "title": {
+          "type": "string",
+          "description": "The session timeout, in minutes."
+        },
+        "description": {
+          "type": "string",
+          "description": "Set to true to make the user a global administrator."
+        },
+        "roles": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "remark": {
+          "type": "string"
+        }
+      }
+    },
+    "apiSetRoleAuthorityRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "roles": {
+          "type": "string"
+        }
+      }
+    },
+    "apiSetRoleStatusRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "apiUpdateRoleRequest": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/apiRole",
+          "description": "Role object to update."
+        }
+      }
+    }
+  }
+}

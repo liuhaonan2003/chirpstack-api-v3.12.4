@@ -125,6 +125,77 @@
         ]
       }
     },
+    "/api/internal/code-verify": {
+      "get": {
+        "operationId": "VerifyCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiVerifyCodeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "description": "手机号、邮箱号.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "verify",
+            "description": "短信码.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "templateMark",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/create-code": {
+      "post": {
+        "operationId": "CreatCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreatCodeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreatCodeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
     "/api/internal/devices/summary": {
       "get": {
         "summary": "GetDevicesSummary returns an aggregated summary of the devices.",
@@ -172,6 +243,72 @@
             "required": false,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/get-code": {
+      "get": {
+        "operationId": "GetCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "description": "账号类型1、phone2、email.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "account",
+            "description": "账户.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "templateMark",
+            "description": "模板编码:字符串，模板规则标识，可表示余额模板、密码模板等,存疑，是否需向前端隐藏信息模板的配置.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/get-countdown": {
+      "get": {
+        "summary": "获取，给短信平台发完验证码后，同一用户下次发送间隔时长",
+        "operationId": "GetCountdown",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetCountdownResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "templateMark",
+            "description": "下次可发送的倒计秒数.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -239,6 +376,32 @@
         ]
       }
     },
+    "/api/internal/password": {
+      "post": {
+        "operationId": "ForgetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiForgetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
     "/api/internal/profile": {
       "get": {
         "summary": "Get the current user's profile",
@@ -251,6 +414,32 @@
             }
           }
         },
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
+    "/api/internal/register": {
+      "post": {
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiRegisterResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiRegisterRequest"
+            }
+          }
+        ],
         "tags": [
           "InternalService"
         ]
@@ -314,6 +503,38 @@
           "InternalService"
         ]
       }
+    },
+    "/api/internal/verify-auth": {
+      "get": {
+        "operationId": "VerifyLoginPermission",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "description": "手机号、邮箱号.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "api",
+            "description": "短信码.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -358,6 +579,36 @@
         }
       }
     },
+    "apiCreatCodeRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "title": "账号类型1、phone2、email"
+        },
+        "account": {
+          "type": "string"
+        },
+        "templateMark": {
+          "type": "string",
+          "title": "模板编码:字符串，模板规则标识，可表示余额模板、密码模板等"
+        }
+      }
+    },
+    "apiCreatCodeResponse": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "string",
+          "title": "验证码"
+        },
+        "expires": {
+          "type": "string",
+          "title": "过期时间"
+        }
+      }
+    },
     "apiCreateAPIKeyRequest": {
       "type": "object",
       "properties": {
@@ -377,6 +628,34 @@
         "jwtToken": {
           "type": "string",
           "description": "JWT token for this API Key."
+        }
+      }
+    },
+    "apiForgetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "account": {
+          "type": "string"
+        },
+        "verify": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGetCountdownResponse": {
+      "type": "object",
+      "properties": {
+        "countdown": {
+          "type": "integer",
+          "format": "int32",
+          "title": "下次可发送的倒计秒数"
         }
       }
     },
@@ -506,13 +785,20 @@
     "apiLoginRequest": {
       "type": "object",
       "properties": {
-        "email": {
-          "type": "string",
+        "type": {
+          "type": "integer",
+          "format": "int32",
           "description": "Email of the user."
+        },
+        "username": {
+          "type": "string"
         },
         "password": {
           "type": "string",
           "description": "Password of the user."
+        },
+        "verify": {
+          "type": "string"
         }
       }
     },
@@ -612,6 +898,44 @@
         }
       }
     },
+    "apiRegisterRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "title": "用户名，必须存在"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "realname": {
+          "type": "string",
+          "title": "真实姓名"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "title": "帐户类型1、企业帐户2、个人帐户"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "apiRegisterResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
     "apiSettingsResponse": {
       "type": "object",
       "properties": {
@@ -633,7 +957,7 @@
           "format": "int64",
           "description": "User ID.\nWill be set automatically on create."
         },
-        "sessionTTL": {
+        "sessionTtl": {
           "type": "integer",
           "format": "int32",
           "description": "The session timeout, in minutes."
@@ -655,6 +979,91 @@
         "note": {
           "type": "string",
           "description": "Optional note to store with the user."
+        },
+        "username": {
+          "type": "string"
+        },
+        "isAuditing": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "realname": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "provinceId": {
+          "type": "integer",
+          "format": "int32",
+          "title": "帐户类型1、企业帐户2、个人帐户"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "string"
+        }
+      }
+    },
+    "apiVerifyCodeResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
         }
       }
     }

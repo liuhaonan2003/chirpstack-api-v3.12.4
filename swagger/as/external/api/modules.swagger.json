@@ -1,0 +1,372 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/modules.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/modules": {
+      "get": {
+        "summary": "List lists the available module.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListModulesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates module.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateModulesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateModulesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      }
+    },
+    "/api/modules/get-menu/{parent}": {
+      "get": {
+        "summary": "获取，获取菜单层级测试信息",
+        "operationId": "GetMenuTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiMyTestResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "parent",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      }
+    },
+    "/api/modules/{id}": {
+      "get": {
+        "summary": "Get returns the modules matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetModulesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the module matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      }
+    },
+    "/api/modules/{module.id}": {
+      "put": {
+        "summary": "Update updates the given module.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "module.id",
+            "description": "Module ID.\nWill be set automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateModulesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      }
+    },
+    "/api/modules/{parent}/get-menu": {
+      "get": {
+        "summary": "GetMenu 获取菜单层级信息",
+        "operationId": "GetMenu",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetMenuModulesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "parent",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "isShowValid",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateModulesRequest": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "$ref": "#/definitions/apiModule",
+          "description": "Test object to create."
+        }
+      }
+    },
+    "apiCreateModulesResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Test ID."
+        }
+      }
+    },
+    "apiGetMenuModulesResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGetModulesResponse": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "$ref": "#/definitions/apiModule",
+          "description": "Test object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListModulesResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiModule"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiModule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Module ID.\nWill be set automatically on create."
+        },
+        "parent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "isShow": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "isTarget": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "是否可以点击触发URL"
+        },
+        "isSelect": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "是否是下拉菜单"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "logMethod": {
+          "type": "string",
+          "title": "记录日志方法"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "remark": {
+          "type": "string"
+        }
+      }
+    },
+    "apiMyTestResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "apiUpdateModulesRequest": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "$ref": "#/definitions/apiModule",
+          "description": "Test object to update."
+        }
+      }
+    }
+  }
+}

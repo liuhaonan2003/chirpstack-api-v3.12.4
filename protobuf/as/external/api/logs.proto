@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "LogsProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// LogsService is the service managing logs.
+service LogsService {
+  // Create creates logs.
+  rpc Create(CreateLogsRequest) returns (CreateLogsResponse) {
+    option(google.api.http) = {
+      post: "/api/logs"
+      body: "*"
+    };
+  }
+
+  // Get returns the logs matching the given id.
+  rpc Get(GetLogsRequest) returns (GetLogsResponse) {
+    option(google.api.http) = {
+      get: "/api/logs/{id}"
+    };
+  }
+
+
+  // Delete deletes the logs matching the given id.
+  rpc Delete(DeleteLogsRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/logs/{id}"
+    };
+  };
+
+  // List lists the available logs.
+  rpc List(ListLogsRequest) returns (ListLogsResponse) {
+    option(google.api.http) = {
+      get: "/api/logs"
+    };
+  }
+}
+
+//日志：记录某用户(author)的操作行为（行为名称，汉语描述，便于理解),其中，记录日志方法表示其操作的行为(post/get/delete/put),url表示API的路径，IP表示操作用户的电脑IP(192.168.1.18).
+//日志列表和日志详情：如果用户操作的行为没用数据变化（比如登录)，则不产生详情数据。如果操作前后又数据变化，则详情的数据（其实是个json）将记录前后的数据变化情况。
+message Log {
+  // log ID. Will be set automatically on create.
+  int64 id = 1;
+  //行为名称
+  string act_tag = 2;
+  //API的请求路径
+  string url = 3;
+  //记录日志方法
+  string log_method = 4;
+  //操作IP
+  string log_ip = 5;
+  // 0、未启用 1、已启用 2、已停用
+  int32 status = 6;
+  //行为操作者
+  string author =7;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 8;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 9;
+  string remark  = 10;
+  //API的请求路径
+  string log_data = 11;
+}
+//详细用户信息，包括详情信息
+//message LogDetail{
+//  // log ID. Will be set automatically on create.
+//  int64 id = 1;
+//  //API的请求路径
+//  string log_data = 3;
+//  //日志ID
+//  int64 log_id = 2;
+//
+//  // 0、未启用 1、已启用 2、已停用
+//  int32 status = 4;
+//  //行为操作者
+//  string author =5;
+//  // Created at timestamp.
+//  google.protobuf.Timestamp created_at = 6;
+//
+//  // Last update timestamp.
+//  google.protobuf.Timestamp updated_at = 7;
+//  string remark  = 8;
+//}
+
+message CreateLogsRequest {
+  // Test object to create.
+  Log log = 1;
+}
+
+message CreateLogsResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetLogsRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetLogsResponse {
+  // Test object.
+  Log log = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message DeleteLogsRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListLogsRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+}
+
+message ListLogsResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated Log result = 2;
+}
+

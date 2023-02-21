@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "WarningRuleProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// WarningRuleService is the service managing warning-rule.
+service WarningRuleService {
+    // Create creates warning-rule.
+    rpc Create(CreateWarningRuleRequest) returns (CreateWarningRuleResponse) {
+        option(google.api.http) = {
+            post: "/api/warning-rule"
+            body: "*"
+        };
+    }
+
+    // Get returns the warning-rule matching the given id.
+    rpc Get(GetWarningRuleRequest) returns (GetWarningRuleResponse) {
+        option(google.api.http) = {
+            get: "/api/warning-rule/{id}"
+        };
+    }
+
+    // Update updates the given warning-rule.
+    rpc Update(UpdateWarningRuleRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/warning-rule/{warning_rule.id}"
+            body: "*"
+        };
+    }
+
+    // Delete deletes the warning-rule matching the given id.
+    rpc Delete(DeleteWarningRuleRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            delete: "/api/warning-rule/{id}"
+        };
+    };
+
+    // List lists the available warning-rule.
+    rpc List(ListWarningRuleRequest) returns (ListWarningRuleResponse) {
+        option(google.api.http) = {
+            get: "/api/warning-rule"
+        };
+    }
+}
+
+message WarningRule {
+    // WarningRule ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+    string author = 2;
+    // Optional remark to store with the warning-rule.
+    string remark = 3;
+    int32 status = 4;
+    string rule_name = 5;
+    string description = 6;
+    string rule_param = 7;
+    string monitor_control = 8;
+}
+
+message WarningRuleListItem {
+    // User ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+    string author = 2;
+    // remark of the warning-rule.
+    string remark = 3;
+    int32 status = 4;
+    string rule_name = 5;
+    string description = 6;
+    string rule_param = 7;
+    string monitor_control = 8;
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 9;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 10;
+}
+
+message CreateWarningRuleRequest {
+    // WarningRule object to create.
+    WarningRule warning_rule = 1;
+}
+
+message CreateWarningRuleResponse {
+    // WarningRule ID.
+    int64 id = 1;
+}
+
+message GetWarningRuleRequest {
+    // WarningRule ID.
+    int64 id = 1;
+}
+
+message GetWarningRuleResponse {
+    // WarningRule object.
+    WarningRule warning_rule = 1;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 2;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateWarningRuleRequest {
+    // WarningRule object to update.
+    WarningRule warning_rule = 1;
+}
+
+message DeleteWarningRuleRequest {
+    // WarningRule ID.
+    int64 id = 1;
+}
+
+message ListWarningRuleRequest {
+    // Max number of items to return.
+    int64 limit = 1;
+
+    // Offset in the result-set (for pagination).
+    int64 offset = 2;
+}
+
+message ListWarningRuleResponse {
+    // Total number of warning-rule.
+    int64 total_count = 1;
+
+    // WarningRule within the result-set.
+    repeated WarningRuleListItem result = 2;
+}

@@ -274,6 +274,11 @@ message UplinkRXInfo {
 
     // CRC status.
     CRCStatus crc_status = 17 [json_name = "crcStatus"];
+
+    // custom Send param for Rtu/Gateway
+    bool sendToRtu = 18;
+
+    bytes devAddr = 19 [json_name = "devAddr"];
 }
 
 message DownlinkTXInfo {
@@ -329,6 +334,11 @@ message DownlinkTXInfo {
 
     // RF preamble size .
     uint32 preamble_size = 18;
+
+    // custom Send param for Rtu/Gateway
+    bool sendToRtu = 19;
+
+    string devAddr = 20;
 }
 
 message ImmediatelyTimingInfo {

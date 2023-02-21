@@ -1,0 +1,155 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "WarningProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// WarningService is the service managing warning.
+service WarningService {
+    // Create creates warning.
+    rpc Create(CreateWarningRequest) returns (CreateWarningResponse) {
+        option(google.api.http) = {
+            post: "/api/warning"
+            body: "*"
+        };
+    }
+
+    // Get returns the warning matching the given id.
+    rpc Get(GetWarningRequest) returns (GetWarningResponse) {
+        option(google.api.http) = {
+            get: "/api/warning/{id}"
+        };
+    }
+
+    // Update updates the given warning.
+    rpc Update(UpdateWarningRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/warning/{warning.id}"
+            body: "*"
+        };
+    }
+
+    // Delete deletes the warning matching the given id.
+    rpc Delete(DeleteWarningRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            delete: "/api/warning/{id}"
+        };
+    };
+
+    // List lists the available warning.
+    rpc List(ListWarningRequest) returns (ListWarningResponse) {
+        option(google.api.http) = {
+            get: "/api/warning"
+        };
+    }
+}
+
+message Warning {
+    // Warning ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+    string author = 2;
+    // Optional remark to store with the warning.
+    string remark = 3;
+    int32 status = 4;
+    int64 organization_id = 5;
+    string organization_name = 6;
+    int32 device_type = 7;
+    string serial_number = 8;
+    string codes = 9;
+    int64 warning_time = 10;
+    string title = 11;
+    string description = 12;
+    int32 warning_level = 13;
+    int32 warning_count = 14;
+    int64 work_order_id = 15;
+}
+
+message WarningListItem {
+    // User ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+
+    string author = 2;
+    // remark of the warning.
+    string remark = 3;
+    int32 status = 4;
+
+    int64 organization_id = 5;
+    string organization_name = 6;
+    int32 device_type = 7;
+    string serial_number = 8;
+    string codes = 9;
+    int64 warning_time = 10;
+    string title = 11;
+    string description = 12;
+    int32 warning_level = 13;
+    int32 warning_count = 14;
+    int64 work_order_id = 15;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 16;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 17;
+}
+
+message CreateWarningRequest {
+    // Warning object to create.
+    Warning warning = 1;
+}
+
+message CreateWarningResponse {
+    // Warning ID.
+    int64 id = 1;
+}
+
+message GetWarningRequest {
+    // Warning ID.
+    int64 id = 1;
+}
+
+message GetWarningResponse {
+    // Warning object.
+    Warning warning = 1;
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 2;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateWarningRequest {
+    // Warning object to update.
+    Warning warning = 1;
+}
+
+message DeleteWarningRequest {
+    // Warning ID.
+    int64 id = 1;
+}
+
+message ListWarningRequest {
+    // Max number of items to return.
+    int64 limit = 1;
+
+    // Offset in the result-set (for pagination).
+    int64 offset = 2;
+}
+
+message ListWarningResponse {
+    // Total number of warning.
+    int64 total_count = 1;
+
+    // Warning within the result-set.
+    repeated WarningListItem result = 2;
+}

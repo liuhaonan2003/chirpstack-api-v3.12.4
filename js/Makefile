@@ -57,6 +57,7 @@ as-external-api:
 	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api $(PROTOC_ARGS) ../protobuf/as/external/api/profiles.proto
 	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api $(PROTOC_ARGS) ../protobuf/as/external/api/serviceProfile.proto
 	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api $(PROTOC_ARGS) ../protobuf/as/external/api/user.proto
+	protoc -I=$(GOOGLEAPIS_PATH) -I=../protobuf -I=../protobuf/as/external/api $(PROTOC_ARGS) ../protobuf/as/external/api/test.proto
 
 google-api:
 	protoc -I=$(GOOGLEAPIS_PATH) $(PROTOC_ARGS) $(GOOGLEAPIS_PATH)/google/api/*.proto

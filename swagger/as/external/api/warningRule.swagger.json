@@ -1,0 +1,308 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/warningRule.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/warning-rule": {
+      "get": {
+        "summary": "List lists the available warning-rule.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListWarningRuleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarningRuleService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates warning-rule.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateWarningRuleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateWarningRuleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WarningRuleService"
+        ]
+      }
+    },
+    "/api/warning-rule/{id}": {
+      "get": {
+        "summary": "Get returns the warning-rule matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetWarningRuleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "WarningRule ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarningRuleService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the warning-rule matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "WarningRule ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarningRuleService"
+        ]
+      }
+    },
+    "/api/warning-rule/{warning_rule.id}": {
+      "put": {
+        "summary": "Update updates the given warning-rule.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "warning_rule.id",
+            "description": "WarningRule ID.\nWill be set automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateWarningRuleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WarningRuleService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateWarningRuleRequest": {
+      "type": "object",
+      "properties": {
+        "warningRule": {
+          "$ref": "#/definitions/apiWarningRule",
+          "description": "WarningRule object to create."
+        }
+      }
+    },
+    "apiCreateWarningRuleResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "WarningRule ID."
+        }
+      }
+    },
+    "apiGetWarningRuleResponse": {
+      "type": "object",
+      "properties": {
+        "warningRule": {
+          "$ref": "#/definitions/apiWarningRule",
+          "description": "WarningRule object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListWarningRuleResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of warning-rule."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiWarningRuleListItem"
+          },
+          "description": "WarningRule within the result-set."
+        }
+      }
+    },
+    "apiUpdateWarningRuleRequest": {
+      "type": "object",
+      "properties": {
+        "warningRule": {
+          "$ref": "#/definitions/apiWarningRule",
+          "description": "WarningRule object to update."
+        }
+      }
+    },
+    "apiWarningRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "WarningRule ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "Optional remark to store with the warning-rule."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ruleName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "ruleParam": {
+          "type": "string"
+        },
+        "monitorControl": {
+          "type": "string"
+        }
+      }
+    },
+    "apiWarningRuleListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "remark of the warning-rule."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ruleName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "ruleParam": {
+          "type": "string"
+        },
+        "monitorControl": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    }
+  }
+}

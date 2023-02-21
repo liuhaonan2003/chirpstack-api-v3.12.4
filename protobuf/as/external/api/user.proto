@@ -59,6 +59,27 @@ service UserService {
 		};
 	}
 
+	// SetOrganization .
+	rpc SetOrganization(SetUserOrganizationRequest) returns (google.protobuf.Empty) {
+		option(google.api.http) = {
+			put: "/api/users/{user_id}/setup"
+			body: "*"
+		};
+	}
+	// Auditing set Auditing.
+	rpc Auditing(UserAuditingRequest) returns (google.protobuf.Empty) {
+		option(google.api.http) = {
+			put: "/api/users/{user_id}/auditing"
+			body: "*"
+		};
+	}
+	// SetStatus.
+	rpc SetStatus(SetUserStatusRequest) returns (google.protobuf.Empty) {
+		option(google.api.http) = {
+			put: "/api/users/{user_id}/status"
+			body: "*"
+		};
+	}
 }
 
 message User {
@@ -67,7 +88,7 @@ message User {
 	int64 id = 1;
 
 	// The session timeout, in minutes.
-	int32 session_ttl = 3 [json_name = "sessionTTL"];
+	int32 session_ttl 	= 3 ;
 
 	// Set to true to make the user a global administrator.
 	bool is_admin = 4;
@@ -80,30 +101,32 @@ message User {
 
 	// Optional note to store with the user.
 	string note = 7;
-}
 
-message UserListItem {
-	// User ID.
-	// Will be set automatically on create.
-	int64 id = 1;
-
-	// Email of the user.
-	string email = 2;
-
-	// The session timeout, in minutes.
-	int32 session_ttl = 3 [json_name = "sessionTTL"];
-
-	// Set to true to make the user a global administrator.
-	bool is_admin = 4;
-
-	// Set to false to disable the user.
-	bool is_active = 5;
-
+	string username   	= 8;
+	bool is_auditing 		= 9;// 是否审核
+	string realname   	= 10;//真实姓名
+	string company_name = 11;
+	string roles     		= 12;
+	int64 organization_id = 13;
+	string phone     		= 14;
+	//帐户类型1、企业帐户2、个人帐户
+	int32  province_id  = 15;
+	int32 	city_id     = 16;
+	int32 	area_id     = 17;
+	string 	address     = 18;
+	double 	latitude    = 19;//纬度
+	double 	longitude   = 20;//经度
+	int32    type				= 21;//合作类型：1、居民2、商铺3、厂区
+  int32 	status			= 22;//状态：0、未启用1、已启用2、已停用
+	string  author			= 23;
+	string 	remark			= 24;
 	// Created at timestamp.
-	google.protobuf.Timestamp created_at = 8;
+	google.protobuf.Timestamp created_at = 25;
 
 	// Last update timestamp.
-	google.protobuf.Timestamp updated_at = 9;
+	google.protobuf.Timestamp updated_at = 26;
+	string  roleName			= 27;
+	string 	organizationName			= 28;
 }
 
 message UserOrganization {
@@ -126,7 +149,7 @@ message CreateUserRequest {
 	// User object to create.
 	User user = 1;
 
-	// Password of the user.
+//	// Password of the user.
 	string password = 2;
 
 	// Add the user to the following organizations.
@@ -165,25 +188,38 @@ message DeleteUserRequest {
 }
 
 message ListUserRequest {
-	// Max number of user to return in the result-set.
+	// 每页条数
 	int64 limit = 1;
 
-	// Offset in the result-set (for pagination).
+	// 页码
 	int64 offset = 2;
 }
 
 message ListUserResponse {
 	// Total number of users.
-	int64 total_count = 1;
+	int64 totalCount = 1;
 
 	// Result-set.
-	repeated UserListItem result = 2;
+	repeated User result = 2;
 }
 
 message UpdateUserPasswordRequest {
 	// User ID.
 	int64 user_id = 1;
 
-	// New pasword.
+	// New password.
 	string password = 2;
+}
+message SetUserOrganizationRequest {
+	int64 user_id = 1;
+	string roles = 2;//人员角色：1,2,3,4,5
+	int64 organizationId = 3;//	归属组织
+}
+message UserAuditingRequest {
+	int64 user_id = 1;
+	bool isAuditing = 2;//是否审核0否
+}
+message SetUserStatusRequest {
+	int64 user_id = 1;
+	int64 status = 2;//是否启用：0、未启用	1、已启用2、已停用
 }
