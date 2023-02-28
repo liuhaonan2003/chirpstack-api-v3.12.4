@@ -224,6 +224,15 @@ func (m *WarningListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 }
 func (m *WarningListItem) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_WarningListItem.Merge(m, src)
+<<<<<<< HEAD
+=======
+}
+func (m *WarningListItem) XXX_Size() int {
+	return xxx_messageInfo_WarningListItem.Size(m)
+}
+func (m *WarningListItem) XXX_DiscardUnknown() {
+	xxx_messageInfo_WarningListItem.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *WarningListItem) XXX_Size() int {
 	return xxx_messageInfo_WarningListItem.Size(m)
@@ -234,6 +243,11 @@ func (m *WarningListItem) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_WarningListItem proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_WarningListItem proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *WarningListItem) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -370,6 +384,7 @@ func (*CreateWarningRequest) Descriptor() ([]byte, []int) {
 
 func (m *CreateWarningRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateWarningRequest.Unmarshal(m, b)
+<<<<<<< HEAD
 }
 func (m *CreateWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateWarningRequest.Marshal(b, m, deterministic)
@@ -434,6 +449,32 @@ func (m *CreateWarningResponse) GetId() int64 {
 }
 
 type GetWarningRequest struct {
+=======
+}
+func (m *CreateWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateWarningRequest.Marshal(b, m, deterministic)
+}
+func (m *CreateWarningRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateWarningRequest.Merge(m, src)
+}
+func (m *CreateWarningRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateWarningRequest.Size(m)
+}
+func (m *CreateWarningRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateWarningRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateWarningRequest proto.InternalMessageInfo
+
+func (m *CreateWarningRequest) GetWarning() *Warning {
+	if m != nil {
+		return m.Warning
+	}
+	return nil
+}
+
+type CreateWarningResponse struct {
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	// Warning ID.
 	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -441,6 +482,7 @@ type GetWarningRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
+<<<<<<< HEAD
 func (m *GetWarningRequest) Reset()         { *m = GetWarningRequest{} }
 func (m *GetWarningRequest) String() string { return proto.CompactTextString(m) }
 func (*GetWarningRequest) ProtoMessage()    {}
@@ -522,15 +564,47 @@ func (m *GetWarningResponse) GetCreatedAt() *timestamp.Timestamp {
 		return m.CreatedAt
 	}
 	return nil
+=======
+func (m *CreateWarningResponse) Reset()         { *m = CreateWarningResponse{} }
+func (m *CreateWarningResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateWarningResponse) ProtoMessage()    {}
+func (*CreateWarningResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{3}
 }
 
+func (m *CreateWarningResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateWarningResponse.Unmarshal(m, b)
+}
+func (m *CreateWarningResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateWarningResponse.Marshal(b, m, deterministic)
+}
+func (m *CreateWarningResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateWarningResponse.Merge(m, src)
+}
+func (m *CreateWarningResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateWarningResponse.Size(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+}
+func (m *CreateWarningResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateWarningResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateWarningResponse proto.InternalMessageInfo
+
+<<<<<<< HEAD
 func (m *GetWarningResponse) GetUpdatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
+=======
+func (m *CreateWarningResponse) GetId() int64 {
+	if m != nil {
+		return m.Id
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return nil
 }
 
+<<<<<<< HEAD
 type UpdateWarningRequest struct {
 	// Warning object to update.
 	Warning              *Warning `protobuf:"bytes,1,opt,name=warning,proto3" json:"warning,omitempty"`
@@ -571,6 +645,502 @@ func (m *UpdateWarningRequest) GetWarning() *Warning {
 	return nil
 }
 
+type SetStatusWarningRequest struct {
+	// Warning object to update.
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status               int64    `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetStatusWarningRequest) Reset()         { *m = SetStatusWarningRequest{} }
+func (m *SetStatusWarningRequest) String() string { return proto.CompactTextString(m) }
+func (*SetStatusWarningRequest) ProtoMessage()    {}
+func (*SetStatusWarningRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{7}
+}
+
+func (m *SetStatusWarningRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetStatusWarningRequest.Unmarshal(m, b)
+}
+func (m *SetStatusWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetStatusWarningRequest.Marshal(b, m, deterministic)
+}
+func (m *SetStatusWarningRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetStatusWarningRequest.Merge(m, src)
+}
+func (m *SetStatusWarningRequest) XXX_Size() int {
+	return xxx_messageInfo_SetStatusWarningRequest.Size(m)
+}
+func (m *SetStatusWarningRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetStatusWarningRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetStatusWarningRequest proto.InternalMessageInfo
+
+func (m *SetStatusWarningRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *SetStatusWarningRequest) GetStatus() int64 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
+type DeleteWarningRequest struct {
+	// Warning ID.
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteWarningRequest) Reset()         { *m = DeleteWarningRequest{} }
+func (m *DeleteWarningRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteWarningRequest) ProtoMessage()    {}
+func (*DeleteWarningRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{8}
+}
+
+func (m *DeleteWarningRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteWarningRequest.Unmarshal(m, b)
+}
+func (m *DeleteWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteWarningRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteWarningRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteWarningRequest.Merge(m, src)
+}
+func (m *DeleteWarningRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteWarningRequest.Size(m)
+}
+func (m *DeleteWarningRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteWarningRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteWarningRequest proto.InternalMessageInfo
+
+func (m *DeleteWarningRequest) GetId() int64 {
+=======
+type GetWarningRequest struct {
+	// Warning ID.
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetWarningRequest) Reset()         { *m = GetWarningRequest{} }
+func (m *GetWarningRequest) String() string { return proto.CompactTextString(m) }
+func (*GetWarningRequest) ProtoMessage()    {}
+func (*GetWarningRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{4}
+}
+
+func (m *GetWarningRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetWarningRequest.Unmarshal(m, b)
+}
+func (m *GetWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetWarningRequest.Marshal(b, m, deterministic)
+}
+func (m *GetWarningRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetWarningRequest.Merge(m, src)
+}
+func (m *GetWarningRequest) XXX_Size() int {
+	return xxx_messageInfo_GetWarningRequest.Size(m)
+}
+func (m *GetWarningRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetWarningRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetWarningRequest proto.InternalMessageInfo
+
+func (m *GetWarningRequest) GetId() int64 {
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+type ListWarningRequest struct {
+	// Max number of items to return.
+	Limit int64 `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	// Offset in the result-set (for pagination).
+	Offset               int64                `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	OrganizationId       int64                `protobuf:"varint,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	WarningLevel         int32                `protobuf:"varint,4,opt,name=warning_level,json=warningLevel,proto3" json:"warning_level,omitempty"`
+	Search               string               `protobuf:"bytes,5,opt,name=search,proto3" json:"search,omitempty"`
+	StartTime            *timestamp.Timestamp `protobuf:"bytes,6,opt,name=startTime,proto3" json:"startTime,omitempty"`
+	EndTime              *timestamp.Timestamp `protobuf:"bytes,7,opt,name=endTime,proto3" json:"endTime,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *ListWarningRequest) Reset()         { *m = ListWarningRequest{} }
+func (m *ListWarningRequest) String() string { return proto.CompactTextString(m) }
+func (*ListWarningRequest) ProtoMessage()    {}
+func (*ListWarningRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{9}
+}
+
+func (m *ListWarningRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListWarningRequest.Unmarshal(m, b)
+}
+func (m *ListWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListWarningRequest.Marshal(b, m, deterministic)
+}
+func (m *ListWarningRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListWarningRequest.Merge(m, src)
+}
+func (m *ListWarningRequest) XXX_Size() int {
+	return xxx_messageInfo_ListWarningRequest.Size(m)
+}
+func (m *ListWarningRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListWarningRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListWarningRequest proto.InternalMessageInfo
+
+func (m *ListWarningRequest) GetLimit() int64 {
+	if m != nil {
+		return m.Limit
+	}
+	return 0
+}
+
+func (m *ListWarningRequest) GetOffset() int64 {
+	if m != nil {
+		return m.Offset
+	}
+	return 0
+}
+
+func (m *ListWarningRequest) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
+	}
+	return 0
+}
+
+func (m *ListWarningRequest) GetWarningLevel() int32 {
+	if m != nil {
+		return m.WarningLevel
+	}
+	return 0
+}
+
+func (m *ListWarningRequest) GetSearch() string {
+	if m != nil {
+		return m.Search
+	}
+	return ""
+}
+
+func (m *ListWarningRequest) GetStartTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.StartTime
+=======
+type GetWarningResponse struct {
+	// Warning object.
+	Warning *Warning `protobuf:"bytes,1,opt,name=warning,proto3" json:"warning,omitempty"`
+	// Created at timestamp.
+	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Last update timestamp.
+	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *GetWarningResponse) Reset()         { *m = GetWarningResponse{} }
+func (m *GetWarningResponse) String() string { return proto.CompactTextString(m) }
+func (*GetWarningResponse) ProtoMessage()    {}
+func (*GetWarningResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{5}
+}
+
+func (m *GetWarningResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetWarningResponse.Unmarshal(m, b)
+}
+func (m *GetWarningResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetWarningResponse.Marshal(b, m, deterministic)
+}
+func (m *GetWarningResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetWarningResponse.Merge(m, src)
+}
+func (m *GetWarningResponse) XXX_Size() int {
+	return xxx_messageInfo_GetWarningResponse.Size(m)
+}
+func (m *GetWarningResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetWarningResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetWarningResponse proto.InternalMessageInfo
+
+func (m *GetWarningResponse) GetWarning() *Warning {
+	if m != nil {
+		return m.Warning
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return nil
+}
+
+<<<<<<< HEAD
+func (m *ListWarningRequest) GetEndTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.EndTime
+=======
+func (m *GetWarningResponse) GetCreatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreatedAt
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return nil
+}
+
+<<<<<<< HEAD
+type ListWarningResponse struct {
+	// Total number of warning.
+	TotalCount int64 `protobuf:"varint,1,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	// Warning within the result-set.
+	Result               []*WarningListItem `protobuf:"bytes,2,rep,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *ListWarningResponse) Reset()         { *m = ListWarningResponse{} }
+func (m *ListWarningResponse) String() string { return proto.CompactTextString(m) }
+func (*ListWarningResponse) ProtoMessage()    {}
+func (*ListWarningResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{10}
+}
+
+func (m *ListWarningResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListWarningResponse.Unmarshal(m, b)
+}
+func (m *ListWarningResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListWarningResponse.Marshal(b, m, deterministic)
+}
+func (m *ListWarningResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListWarningResponse.Merge(m, src)
+}
+func (m *ListWarningResponse) XXX_Size() int {
+	return xxx_messageInfo_ListWarningResponse.Size(m)
+}
+func (m *ListWarningResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListWarningResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListWarningResponse proto.InternalMessageInfo
+
+func (m *ListWarningResponse) GetTotalCount() int64 {
+	if m != nil {
+		return m.TotalCount
+	}
+	return 0
+}
+
+func (m *ListWarningResponse) GetResult() []*WarningListItem {
+	if m != nil {
+		return m.Result
+=======
+func (m *GetWarningResponse) GetUpdatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdatedAt
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return nil
+}
+
+<<<<<<< HEAD
+type ReportWarningDayItem struct {
+	// User ID.
+	// Will be set automatically on create.
+	Id     int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Author string `protobuf:"bytes,2,opt,name=author,proto3" json:"author,omitempty"`
+	// remark of the warning.
+	Remark          string `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`
+	Status          int32  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
+	OrganizationId  int64  `protobuf:"varint,5,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Progress        int32  `protobuf:"varint,6,opt,name=progress,proto3" json:"progress,omitempty"`
+	Pending         int32  `protobuf:"varint,7,opt,name=pending,proto3" json:"pending,omitempty"`
+	TodayFinish     int32  `protobuf:"varint,8,opt,name=today_finish,json=todayFinish,proto3" json:"today_finish,omitempty"`
+	TodayWarning    int64  `protobuf:"varint,9,opt,name=today_warning,json=todayWarning,proto3" json:"today_warning,omitempty"`
+	StatisticalTime int64  `protobuf:"varint,10,opt,name=statistical_time,json=statisticalTime,proto3" json:"statistical_time,omitempty"`
+	Year            int32  `protobuf:"varint,11,opt,name=year,proto3" json:"year,omitempty"`
+	Month           int32  `protobuf:"varint,12,opt,name=month,proto3" json:"month,omitempty"`
+	Day             int32  `protobuf:"varint,13,opt,name=day,proto3" json:"day,omitempty"`
+	// Created at timestamp.
+	CreatedAt *timestamp.Timestamp `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Last update timestamp.
+	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *ReportWarningDayItem) Reset()         { *m = ReportWarningDayItem{} }
+func (m *ReportWarningDayItem) String() string { return proto.CompactTextString(m) }
+func (*ReportWarningDayItem) ProtoMessage()    {}
+func (*ReportWarningDayItem) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{11}
+}
+
+func (m *ReportWarningDayItem) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReportWarningDayItem.Unmarshal(m, b)
+}
+func (m *ReportWarningDayItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportWarningDayItem.Marshal(b, m, deterministic)
+}
+func (m *ReportWarningDayItem) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportWarningDayItem.Merge(m, src)
+}
+func (m *ReportWarningDayItem) XXX_Size() int {
+	return xxx_messageInfo_ReportWarningDayItem.Size(m)
+}
+func (m *ReportWarningDayItem) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportWarningDayItem.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportWarningDayItem proto.InternalMessageInfo
+
+func (m *ReportWarningDayItem) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetAuthor() string {
+	if m != nil {
+		return m.Author
+	}
+	return ""
+}
+
+func (m *ReportWarningDayItem) GetRemark() string {
+	if m != nil {
+		return m.Remark
+	}
+	return ""
+}
+
+func (m *ReportWarningDayItem) GetStatus() int32 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
+=======
+type UpdateWarningRequest struct {
+	// Warning object to update.
+	Warning              *Warning `protobuf:"bytes,1,opt,name=warning,proto3" json:"warning,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UpdateWarningRequest) Reset()         { *m = UpdateWarningRequest{} }
+func (m *UpdateWarningRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateWarningRequest) ProtoMessage()    {}
+func (*UpdateWarningRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{6}
+}
+
+func (m *UpdateWarningRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateWarningRequest.Unmarshal(m, b)
+}
+func (m *UpdateWarningRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateWarningRequest.Marshal(b, m, deterministic)
+}
+func (m *UpdateWarningRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateWarningRequest.Merge(m, src)
+}
+func (m *UpdateWarningRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateWarningRequest.Size(m)
+}
+func (m *UpdateWarningRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateWarningRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateWarningRequest proto.InternalMessageInfo
+
+func (m *UpdateWarningRequest) GetWarning() *Warning {
+	if m != nil {
+		return m.Warning
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportWarningDayItem) GetProgress() int32 {
+	if m != nil {
+		return m.Progress
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetPending() int32 {
+	if m != nil {
+		return m.Pending
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetTodayFinish() int32 {
+	if m != nil {
+		return m.TodayFinish
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetTodayWarning() int64 {
+	if m != nil {
+		return m.TodayWarning
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetStatisticalTime() int64 {
+	if m != nil {
+		return m.StatisticalTime
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetYear() int32 {
+	if m != nil {
+		return m.Year
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetMonth() int32 {
+	if m != nil {
+		return m.Month
+	}
+	return 0
+}
+
+func (m *ReportWarningDayItem) GetDay() int32 {
+	if m != nil {
+		return m.Day
+=======
 type DeleteWarningRequest struct {
 	// Warning ID.
 	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -607,20 +1177,85 @@ var xxx_messageInfo_DeleteWarningRequest proto.InternalMessageInfo
 func (m *DeleteWarningRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
+<<<<<<< HEAD
+func (m *ReportWarningDayItem) GetCreatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return nil
+}
+
+func (m *ReportWarningDayItem) GetUpdatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return nil
+}
+
+type ReportWarningDayReportDayRequest struct {
+=======
 type ListWarningRequest struct {
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	// Max number of items to return.
 	Limit int64 `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
 	// Offset in the result-set (for pagination).
 	Offset               int64    `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+<<<<<<< HEAD
+	OrganizationId       int64    `protobuf:"varint,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Year                 int32    `protobuf:"varint,4,opt,name=year,proto3" json:"year,omitempty"`
+	Month                int32    `protobuf:"varint,5,opt,name=month,proto3" json:"month,omitempty"`
+	Day                  int32    `protobuf:"varint,6,opt,name=day,proto3" json:"day,omitempty"`
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
+<<<<<<< HEAD
+func (m *ReportWarningDayReportDayRequest) Reset()         { *m = ReportWarningDayReportDayRequest{} }
+func (m *ReportWarningDayReportDayRequest) String() string { return proto.CompactTextString(m) }
+func (*ReportWarningDayReportDayRequest) ProtoMessage()    {}
+func (*ReportWarningDayReportDayRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{12}
+}
+
+func (m *ReportWarningDayReportDayRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReportWarningDayReportDayRequest.Unmarshal(m, b)
+}
+func (m *ReportWarningDayReportDayRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportWarningDayReportDayRequest.Marshal(b, m, deterministic)
+}
+func (m *ReportWarningDayReportDayRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportWarningDayReportDayRequest.Merge(m, src)
+}
+func (m *ReportWarningDayReportDayRequest) XXX_Size() int {
+	return xxx_messageInfo_ReportWarningDayReportDayRequest.Size(m)
+}
+func (m *ReportWarningDayReportDayRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportWarningDayReportDayRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportWarningDayReportDayRequest proto.InternalMessageInfo
+
+func (m *ReportWarningDayReportDayRequest) GetLimit() int64 {
+	if m != nil {
+		return m.Limit
+	}
+	return 0
+}
+
+func (m *ReportWarningDayReportDayRequest) GetOffset() int64 {
+	if m != nil {
+		return m.Offset
+	}
+	return 0
+=======
 func (m *ListWarningRequest) Reset()         { *m = ListWarningRequest{} }
 func (m *ListWarningRequest) String() string { return proto.CompactTextString(m) }
 func (*ListWarningRequest) ProtoMessage()    {}
@@ -639,6 +1274,7 @@ func (m *ListWarningRequest) XXX_Merge(src proto.Message) {
 }
 func (m *ListWarningRequest) XXX_Size() int {
 	return xxx_messageInfo_ListWarningRequest.Size(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListWarningRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListWarningRequest.DiscardUnknown(m)
@@ -646,20 +1282,149 @@ func (m *ListWarningRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListWarningRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+func (m *ReportWarningDayReportDayRequest) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
+=======
 func (m *ListWarningRequest) GetLimit() int64 {
 	if m != nil {
 		return m.Limit
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
+<<<<<<< HEAD
+func (m *ReportWarningDayReportDayRequest) GetYear() int32 {
+	if m != nil {
+		return m.Year
+=======
 func (m *ListWarningRequest) GetOffset() int64 {
 	if m != nil {
 		return m.Offset
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
+<<<<<<< HEAD
+func (m *ReportWarningDayReportDayRequest) GetMonth() int32 {
+	if m != nil {
+		return m.Month
+	}
+	return 0
+}
+
+func (m *ReportWarningDayReportDayRequest) GetDay() int32 {
+	if m != nil {
+		return m.Day
+	}
+	return 0
+}
+
+type ReportWarningDayReportDayResponse struct {
+	// Total number of warning.
+	TotalCount int64 `protobuf:"varint,1,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	// Warning within the result-set.
+	Result               []*ReportWarningDayItem `protobuf:"bytes,2,rep,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
+}
+
+func (m *ReportWarningDayReportDayResponse) Reset()         { *m = ReportWarningDayReportDayResponse{} }
+func (m *ReportWarningDayReportDayResponse) String() string { return proto.CompactTextString(m) }
+func (*ReportWarningDayReportDayResponse) ProtoMessage()    {}
+func (*ReportWarningDayReportDayResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{13}
+}
+
+func (m *ReportWarningDayReportDayResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReportWarningDayReportDayResponse.Unmarshal(m, b)
+}
+func (m *ReportWarningDayReportDayResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportWarningDayReportDayResponse.Marshal(b, m, deterministic)
+}
+func (m *ReportWarningDayReportDayResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportWarningDayReportDayResponse.Merge(m, src)
+}
+func (m *ReportWarningDayReportDayResponse) XXX_Size() int {
+	return xxx_messageInfo_ReportWarningDayReportDayResponse.Size(m)
+}
+func (m *ReportWarningDayReportDayResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportWarningDayReportDayResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportWarningDayReportDayResponse proto.InternalMessageInfo
+
+func (m *ReportWarningDayReportDayResponse) GetTotalCount() int64 {
+	if m != nil {
+		return m.TotalCount
+	}
+	return 0
+}
+
+func (m *ReportWarningDayReportDayResponse) GetResult() []*ReportWarningDayItem {
+	if m != nil {
+		return m.Result
+	}
+	return nil
+}
+
+type DealCountReportDayRequest struct {
+	OrganizationId       int64    `protobuf:"varint,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Year                 int32    `protobuf:"varint,2,opt,name=year,proto3" json:"year,omitempty"`
+	Month                int32    `protobuf:"varint,3,opt,name=month,proto3" json:"month,omitempty"`
+	Day                  int32    `protobuf:"varint,4,opt,name=day,proto3" json:"day,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DealCountReportDayRequest) Reset()         { *m = DealCountReportDayRequest{} }
+func (m *DealCountReportDayRequest) String() string { return proto.CompactTextString(m) }
+func (*DealCountReportDayRequest) ProtoMessage()    {}
+func (*DealCountReportDayRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{14}
+}
+
+func (m *DealCountReportDayRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DealCountReportDayRequest.Unmarshal(m, b)
+}
+func (m *DealCountReportDayRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DealCountReportDayRequest.Marshal(b, m, deterministic)
+}
+func (m *DealCountReportDayRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DealCountReportDayRequest.Merge(m, src)
+}
+func (m *DealCountReportDayRequest) XXX_Size() int {
+	return xxx_messageInfo_DealCountReportDayRequest.Size(m)
+}
+func (m *DealCountReportDayRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DealCountReportDayRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DealCountReportDayRequest proto.InternalMessageInfo
+
+func (m *DealCountReportDayRequest) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
+	}
+	return 0
+}
+
+func (m *DealCountReportDayRequest) GetYear() int32 {
+	if m != nil {
+		return m.Year
+	}
+	return 0
+}
+
+func (m *DealCountReportDayRequest) GetMonth() int32 {
+	if m != nil {
+		return m.Month
+=======
 type ListWarningResponse struct {
 	// Total number of warning.
 	TotalCount int64 `protobuf:"varint,1,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
@@ -698,17 +1463,90 @@ var xxx_messageInfo_ListWarningResponse proto.InternalMessageInfo
 func (m *ListWarningResponse) GetTotalCount() int64 {
 	if m != nil {
 		return m.TotalCount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
+<<<<<<< HEAD
+func (m *DealCountReportDayRequest) GetDay() int32 {
+	if m != nil {
+		return m.Day
+=======
 func (m *ListWarningResponse) GetResult() []*WarningListItem {
 	if m != nil {
 		return m.Result
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
-	return nil
+	return 0
 }
 
+<<<<<<< HEAD
+type DealCountReportDayResponse struct {
+	Progress             int32    `protobuf:"varint,1,opt,name=progress,proto3" json:"progress,omitempty"`
+	Pending              int32    `protobuf:"varint,2,opt,name=pending,proto3" json:"pending,omitempty"`
+	TodayFinish          int32    `protobuf:"varint,3,opt,name=today_finish,json=todayFinish,proto3" json:"today_finish,omitempty"`
+	TodayWarning         int64    `protobuf:"varint,4,opt,name=today_warning,json=todayWarning,proto3" json:"today_warning,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DealCountReportDayResponse) Reset()         { *m = DealCountReportDayResponse{} }
+func (m *DealCountReportDayResponse) String() string { return proto.CompactTextString(m) }
+func (*DealCountReportDayResponse) ProtoMessage()    {}
+func (*DealCountReportDayResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ba362b698662e925, []int{15}
+}
+
+func (m *DealCountReportDayResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DealCountReportDayResponse.Unmarshal(m, b)
+}
+func (m *DealCountReportDayResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DealCountReportDayResponse.Marshal(b, m, deterministic)
+}
+func (m *DealCountReportDayResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DealCountReportDayResponse.Merge(m, src)
+}
+func (m *DealCountReportDayResponse) XXX_Size() int {
+	return xxx_messageInfo_DealCountReportDayResponse.Size(m)
+}
+func (m *DealCountReportDayResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DealCountReportDayResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DealCountReportDayResponse proto.InternalMessageInfo
+
+func (m *DealCountReportDayResponse) GetProgress() int32 {
+	if m != nil {
+		return m.Progress
+	}
+	return 0
+}
+
+func (m *DealCountReportDayResponse) GetPending() int32 {
+	if m != nil {
+		return m.Pending
+	}
+	return 0
+}
+
+func (m *DealCountReportDayResponse) GetTodayFinish() int32 {
+	if m != nil {
+		return m.TodayFinish
+	}
+	return 0
+}
+
+func (m *DealCountReportDayResponse) GetTodayWarning() int64 {
+	if m != nil {
+		return m.TodayWarning
+	}
+	return 0
+}
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func init() {
 	proto.RegisterType((*Warning)(nil), "api.Warning")
 	proto.RegisterType((*WarningListItem)(nil), "api.WarningListItem")
@@ -717,9 +1555,21 @@ func init() {
 	proto.RegisterType((*GetWarningRequest)(nil), "api.GetWarningRequest")
 	proto.RegisterType((*GetWarningResponse)(nil), "api.GetWarningResponse")
 	proto.RegisterType((*UpdateWarningRequest)(nil), "api.UpdateWarningRequest")
+<<<<<<< HEAD
+	proto.RegisterType((*SetStatusWarningRequest)(nil), "api.SetStatusWarningRequest")
 	proto.RegisterType((*DeleteWarningRequest)(nil), "api.DeleteWarningRequest")
 	proto.RegisterType((*ListWarningRequest)(nil), "api.ListWarningRequest")
 	proto.RegisterType((*ListWarningResponse)(nil), "api.ListWarningResponse")
+	proto.RegisterType((*ReportWarningDayItem)(nil), "api.ReportWarningDayItem")
+	proto.RegisterType((*ReportWarningDayReportDayRequest)(nil), "api.ReportWarningDayReportDayRequest")
+	proto.RegisterType((*ReportWarningDayReportDayResponse)(nil), "api.ReportWarningDayReportDayResponse")
+	proto.RegisterType((*DealCountReportDayRequest)(nil), "api.DealCountReportDayRequest")
+	proto.RegisterType((*DealCountReportDayResponse)(nil), "api.DealCountReportDayResponse")
+=======
+	proto.RegisterType((*DeleteWarningRequest)(nil), "api.DeleteWarningRequest")
+	proto.RegisterType((*ListWarningRequest)(nil), "api.ListWarningRequest")
+	proto.RegisterType((*ListWarningResponse)(nil), "api.ListWarningResponse")
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 func init() {
@@ -727,6 +1577,86 @@ func init() {
 }
 
 var fileDescriptor_ba362b698662e925 = []byte{
+<<<<<<< HEAD
+	// 1231 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x58, 0xdb, 0x8e, 0xdb, 0x44,
+	0x18, 0x96, 0xe3, 0x1c, 0x9a, 0x3f, 0x69, 0x76, 0x77, 0x1a, 0x5a, 0xaf, 0x69, 0xbb, 0xa9, 0x0b,
+	0xed, 0x52, 0xd8, 0x44, 0xdd, 0x22, 0x41, 0xb9, 0x40, 0xea, 0x01, 0xaa, 0x4a, 0x55, 0x5b, 0xdc,
+	0x72, 0x10, 0x37, 0xd1, 0x6c, 0x3c, 0x9b, 0x8c, 0xd6, 0xf6, 0x98, 0xf1, 0xa4, 0x25, 0xa0, 0x4a,
+	0x88, 0x1b, 0x1e, 0x80, 0x1b, 0x84, 0x78, 0x0a, 0x24, 0x9e, 0x84, 0xbb, 0x8a, 0x4b, 0x9e, 0x80,
+	0x27, 0x40, 0x73, 0x70, 0xea, 0x38, 0xce, 0x6e, 0xbb, 0x12, 0x12, 0x42, 0xdc, 0xf9, 0xff, 0xe7,
+	0x3f, 0xcd, 0x37, 0xfe, 0xbe, 0x89, 0x03, 0xe7, 0x70, 0x3a, 0x20, 0x5f, 0x0b, 0xc2, 0x63, 0x1c,
+	0x0e, 0x70, 0x42, 0x07, 0x4f, 0x31, 0x8f, 0x69, 0x3c, 0xee, 0x27, 0x9c, 0x09, 0x86, 0x6c, 0x9c,
+	0x50, 0xf7, 0xec, 0x98, 0xb1, 0x71, 0x48, 0xd4, 0x32, 0x8e, 0x63, 0x26, 0xb0, 0xa0, 0x2c, 0x4e,
+	0x75, 0x88, 0xbb, 0x65, 0x56, 0x95, 0xb5, 0x37, 0xdd, 0x1f, 0x08, 0x1a, 0x91, 0x54, 0xe0, 0x28,
+	0x31, 0x01, 0xaf, 0x17, 0x03, 0x48, 0x94, 0x88, 0x99, 0x5e, 0xf4, 0xfe, 0xb0, 0xa1, 0xf1, 0xb9,
+	0x6e, 0x89, 0x3a, 0x50, 0xa1, 0x81, 0x63, 0xf5, 0xac, 0x6d, 0xdb, 0xaf, 0xd0, 0x00, 0x9d, 0x86,
+	0x3a, 0x9e, 0x8a, 0x09, 0xe3, 0x4e, 0xa5, 0x67, 0x6d, 0x37, 0x7d, 0x63, 0x49, 0x3f, 0x27, 0x11,
+	0xe6, 0x07, 0x8e, 0xad, 0xfd, 0xda, 0x92, 0xfe, 0x54, 0x60, 0x31, 0x4d, 0x9d, 0x6a, 0xcf, 0xda,
+	0xae, 0xf9, 0xc6, 0x42, 0x97, 0x61, 0x8d, 0xf1, 0x31, 0x8e, 0xe9, 0x37, 0x6a, 0xf0, 0x21, 0x0d,
+	0x9c, 0x9a, 0x6a, 0xd2, 0xc9, 0xbb, 0xef, 0x06, 0xe8, 0x6d, 0xd8, 0x58, 0x08, 0x8c, 0x71, 0x44,
+	0x9c, 0xba, 0xea, 0xb1, 0x9e, 0x5f, 0xb8, 0x8f, 0x23, 0x82, 0xb6, 0xa0, 0x15, 0x90, 0x27, 0x74,
+	0x44, 0x86, 0x62, 0x96, 0x10, 0xa7, 0xa1, 0x5a, 0x82, 0x76, 0x3d, 0x9e, 0x25, 0x04, 0x5d, 0x84,
+	0x93, 0x29, 0xe1, 0x14, 0x87, 0xc3, 0x78, 0x1a, 0xed, 0x11, 0xee, 0x9c, 0x50, 0x95, 0xda, 0xda,
+	0x79, 0x5f, 0xf9, 0x50, 0x17, 0x6a, 0x23, 0x16, 0x90, 0xd4, 0x69, 0xaa, 0x45, 0x6d, 0xa0, 0x0b,
+	0xd0, 0x36, 0xe7, 0x30, 0x94, 0x68, 0x3a, 0xa0, 0xc6, 0x6d, 0x19, 0xdf, 0x63, 0x1a, 0x11, 0x99,
+	0x28, 0xa8, 0x08, 0x89, 0xd3, 0xd2, 0x89, 0xca, 0x40, 0x3d, 0x39, 0x54, 0x3a, 0xe2, 0x34, 0x91,
+	0x73, 0x3a, 0x6d, 0xb5, 0x96, 0x77, 0xc9, 0xa9, 0xb2, 0xd2, 0x21, 0x79, 0x42, 0x42, 0xe7, 0xa4,
+	0x1a, 0x3c, 0xeb, 0x77, 0x4f, 0xfa, 0xf2, 0x41, 0x23, 0x36, 0x8d, 0x85, 0xd3, 0x59, 0x08, 0xba,
+	0x25, 0x7d, 0xc8, 0x83, 0x93, 0x4f, 0x19, 0x3f, 0x18, 0x32, 0x1e, 0x10, 0x2e, 0x41, 0x5d, 0x33,
+	0x53, 0x32, 0x7e, 0xf0, 0x40, 0xfa, 0xee, 0x06, 0xde, 0xf3, 0x2a, 0xac, 0x99, 0xe3, 0xbd, 0x47,
+	0x53, 0x71, 0x57, 0x90, 0xe8, 0xff, 0x63, 0xfe, 0xcf, 0x1d, 0x33, 0xba, 0x0e, 0x30, 0xe2, 0x04,
+	0x0b, 0x12, 0x0c, 0xb1, 0x70, 0xd6, 0x7b, 0xd6, 0x76, 0x6b, 0xd7, 0xed, 0x6b, 0xde, 0xf7, 0x33,
+	0xde, 0xf7, 0x1f, 0x67, 0xc2, 0xe0, 0x37, 0x4d, 0xf4, 0x0d, 0x21, 0x53, 0xa7, 0x49, 0x90, 0xa5,
+	0x6e, 0x1c, 0x9d, 0x6a, 0xa2, 0x6f, 0x08, 0xef, 0x43, 0xe8, 0xde, 0x52, 0x75, 0xcc, 0x1b, 0xe6,
+	0x93, 0xaf, 0xa6, 0x24, 0x15, 0xe8, 0x12, 0x34, 0xcc, 0x0e, 0xd4, 0x5b, 0xd6, 0xda, 0x6d, 0xf7,
+	0x71, 0x42, 0xfb, 0x59, 0x54, 0xb6, 0xe8, 0x5d, 0x86, 0xd7, 0x0a, 0xf9, 0x69, 0xc2, 0xe2, 0x94,
+	0x14, 0xdf, 0x50, 0xef, 0x22, 0x6c, 0xdc, 0x21, 0xa2, 0xd0, 0xa5, 0x18, 0xf4, 0xab, 0x05, 0x28,
+	0x1f, 0x65, 0x6a, 0xbd, 0xe4, 0x30, 0x05, 0x08, 0x2b, 0xc7, 0x87, 0xd0, 0x7e, 0x45, 0x08, 0x3f,
+	0x55, 0xc6, 0x31, 0x21, 0xbc, 0x01, 0x67, 0x1e, 0x11, 0xf1, 0x48, 0x11, 0xf0, 0x70, 0x7c, 0x72,
+	0xb4, 0xad, 0x28, 0x9f, 0xb1, 0xbc, 0x4b, 0xd0, 0xbd, 0x4d, 0x42, 0xb2, 0x34, 0x42, 0x11, 0xdf,
+	0x9f, 0x2a, 0x80, 0xa4, 0x86, 0x14, 0xc2, 0xba, 0x50, 0x0b, 0x69, 0x44, 0x85, 0x89, 0xd4, 0x86,
+	0x6c, 0xc6, 0xf6, 0xf7, 0x53, 0x22, 0xb2, 0x66, 0xda, 0x2a, 0xd3, 0x08, 0xbb, 0x54, 0x23, 0x96,
+	0xf8, 0x53, 0x2d, 0xe1, 0x8f, 0xdc, 0x12, 0xc1, 0x7c, 0x34, 0x51, 0x42, 0xd3, 0xf4, 0x8d, 0x85,
+	0xde, 0x87, 0x66, 0x2a, 0x30, 0x17, 0x12, 0x72, 0x25, 0x2c, 0x47, 0x9c, 0xc7, 0x3c, 0x18, 0xbd,
+	0x0b, 0x0d, 0x12, 0x07, 0x2a, 0xaf, 0x71, 0x64, 0x5e, 0x16, 0xea, 0x05, 0x70, 0x6a, 0x01, 0x19,
+	0xf3, 0xea, 0x6d, 0x41, 0x4b, 0x30, 0x81, 0x43, 0x43, 0x6e, 0x0d, 0x10, 0x28, 0x97, 0xa6, 0xf6,
+	0x3b, 0x52, 0x61, 0xd3, 0x69, 0x28, 0x51, 0xb2, 0xb7, 0x5b, 0xbb, 0xdd, 0xfc, 0x21, 0x67, 0x7a,
+	0xed, 0x9b, 0x18, 0xef, 0x2f, 0x1b, 0xba, 0x3e, 0x49, 0x18, 0xcf, 0x1a, 0xdd, 0xc6, 0xb3, 0x7f,
+	0x87, 0xa0, 0xbb, 0x70, 0x22, 0xe1, 0x6c, 0xcc, 0x49, 0x9a, 0x2a, 0xb8, 0x6b, 0xfe, 0xdc, 0x46,
+	0x0e, 0x34, 0x12, 0x12, 0x07, 0xf2, 0x4d, 0xd6, 0xda, 0x9d, 0x99, 0x52, 0x7d, 0x05, 0x0b, 0xf0,
+	0x6c, 0xb8, 0x4f, 0x63, 0x9a, 0x4e, 0x94, 0x6e, 0xd7, 0xfc, 0x96, 0xf2, 0x7d, 0xac, 0x5c, 0xf2,
+	0x2d, 0xd0, 0x21, 0x19, 0x19, 0x9a, 0xaa, 0xbf, 0xce, 0xcb, 0x7e, 0xb6, 0xbc, 0x05, 0xeb, 0x72,
+	0x60, 0x9a, 0x0a, 0x3a, 0xc2, 0x61, 0x5e, 0xc9, 0xd7, 0x72, 0x7e, 0x75, 0xbc, 0x08, 0xaa, 0x33,
+	0x82, 0xb9, 0x12, 0xf3, 0x9a, 0xaf, 0x9e, 0xe5, 0x0b, 0x1c, 0xb1, 0x58, 0x4c, 0x94, 0x8a, 0xd7,
+	0x7c, 0x6d, 0xa0, 0x75, 0xb0, 0x03, 0x3c, 0x33, 0xaa, 0x2d, 0x1f, 0x0b, 0x02, 0xd1, 0x39, 0xbe,
+	0x40, 0xac, 0xbd, 0x8a, 0x40, 0xfc, 0x66, 0x41, 0xaf, 0x78, 0xe8, 0xda, 0x56, 0x0f, 0xff, 0x28,
+	0x07, 0x33, 0xb4, 0xaa, 0x65, 0x68, 0xd5, 0x4a, 0xd0, 0xaa, 0xcf, 0xd1, 0xf2, 0x9e, 0xc2, 0x85,
+	0x43, 0xc6, 0x7e, 0x59, 0x82, 0x5c, 0x2d, 0x10, 0x64, 0x53, 0x11, 0xa4, 0x8c, 0x04, 0x73, 0x96,
+	0x7c, 0x67, 0xc1, 0xe6, 0x6d, 0x62, 0x0a, 0x2c, 0x21, 0x55, 0xb2, 0x77, 0xeb, 0xd0, 0xbd, 0x57,
+	0xca, 0xf6, 0x6e, 0x97, 0xec, 0xbd, 0xfa, 0x62, 0xef, 0x3f, 0x5b, 0xe0, 0x96, 0x8d, 0x60, 0x76,
+	0x9d, 0x67, 0x8b, 0xb5, 0x9a, 0x2d, 0x95, 0xc3, 0xd9, 0x62, 0xbf, 0x04, 0x5b, 0xaa, 0xcb, 0x6c,
+	0xd9, 0x7d, 0x5e, 0x87, 0x8e, 0x79, 0x7e, 0x44, 0xb8, 0xfc, 0x15, 0x85, 0xbe, 0x80, 0xba, 0xbe,
+	0x87, 0x91, 0xc6, 0xb7, 0xec, 0x52, 0x77, 0xdd, 0xb2, 0x25, 0xbd, 0x23, 0xef, 0xcc, 0xf7, 0xbf,
+	0xff, 0xf9, 0x63, 0x65, 0xc3, 0x6b, 0xe7, 0xbf, 0x60, 0x3e, 0xb0, 0xae, 0xa0, 0x4f, 0xc0, 0xbe,
+	0x43, 0x04, 0x3a, 0xad, 0x72, 0x97, 0xae, 0x70, 0xf7, 0xcc, 0x92, 0xdf, 0x14, 0xdc, 0x54, 0x05,
+	0x4f, 0xa1, 0x8d, 0x7c, 0xc1, 0xc1, 0xb7, 0x34, 0x78, 0x86, 0x30, 0xd4, 0xf5, 0x8d, 0x69, 0x86,
+	0x2d, 0xbb, 0x3e, 0xdd, 0xd3, 0x4b, 0xe4, 0xfa, 0x48, 0x7e, 0xf3, 0x78, 0x6f, 0xa8, 0xba, 0xe7,
+	0xdd, 0xcd, 0xc5, 0xba, 0xd9, 0x37, 0x17, 0x0d, 0x9e, 0xc9, 0xa9, 0x3f, 0x83, 0xba, 0xbe, 0x11,
+	0x4d, 0x8b, 0xb2, 0xeb, 0x71, 0x65, 0x0b, 0x33, 0xfa, 0x95, 0x92, 0xd1, 0x1f, 0x40, 0x55, 0x8a,
+	0x3a, 0xd2, 0xdb, 0x5e, 0xbe, 0x4b, 0x5d, 0x67, 0x79, 0xc1, 0x00, 0xd2, 0x55, 0x55, 0x3b, 0x68,
+	0x01, 0x61, 0xb4, 0x0f, 0xcd, 0xf9, 0xed, 0x8f, 0xce, 0xaa, 0xe4, 0x15, 0xbf, 0x06, 0x56, 0x8e,
+	0x7b, 0x51, 0x15, 0x3e, 0xe7, 0x3a, 0x4b, 0xe3, 0x0e, 0xf4, 0x2d, 0x20, 0x01, 0xf9, 0xc5, 0x82,
+	0xf5, 0x22, 0xe9, 0xd0, 0x9b, 0xa5, 0x5c, 0x2c, 0x32, 0xce, 0xbd, 0x74, 0x54, 0x98, 0xd9, 0xe1,
+	0x75, 0x35, 0xc8, 0x35, 0x74, 0x75, 0x71, 0x90, 0x02, 0x5b, 0x9f, 0x0d, 0xb8, 0xca, 0xdc, 0x31,
+	0x01, 0x3b, 0x52, 0x99, 0x7f, 0xb0, 0xa0, 0x39, 0xe7, 0x1b, 0x3a, 0x6f, 0xce, 0x6c, 0x85, 0x04,
+	0xb8, 0x5b, 0x2b, 0xd7, 0x5f, 0x71, 0x92, 0xf9, 0x08, 0x04, 0x87, 0x3b, 0x4a, 0xc1, 0x6e, 0x86,
+	0x70, 0x81, 0xb2, 0xfe, 0x68, 0x42, 0x79, 0x92, 0x0a, 0x3c, 0x3a, 0x50, 0xad, 0x70, 0xda, 0xcf,
+	0xbe, 0xf0, 0xa5, 0x7d, 0xb3, 0x6d, 0x60, 0x78, 0x28, 0x4f, 0xe2, 0xa1, 0xf5, 0xe5, 0x7b, 0x63,
+	0x2a, 0x26, 0xd3, 0xbd, 0xfe, 0x88, 0x45, 0x83, 0x3d, 0xce, 0x46, 0x18, 0xf3, 0xc1, 0x8b, 0x12,
+	0x3b, 0x72, 0x88, 0x31, 0x1b, 0x3c, 0xb9, 0x36, 0x28, 0xfc, 0x55, 0xb0, 0x57, 0x57, 0x67, 0x79,
+	0xed, 0xef, 0x00, 0x00, 0x00, 0xff, 0xff, 0xba, 0xc7, 0xd5, 0x17, 0x44, 0x10, 0x00, 0x00,
+=======
 	// 828 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x56, 0xcd, 0x8e, 0x1b, 0x45,
 	0x10, 0x96, 0x3d, 0xbb, 0x5e, 0xb6, 0xec, 0xf5, 0xc6, 0x1d, 0xb3, 0x99, 0x1d, 0x7e, 0xd6, 0x99,
@@ -780,6 +1710,7 @@ var fileDescriptor_ba362b698662e925 = []byte{
 	0x8b, 0x6a, 0x16, 0x25, 0x3c, 0x8f, 0x67, 0x82, 0x27, 0x94, 0x8a, 0xf8, 0x2f, 0x8a, 0xf7, 0x35,
 	0xff, 0x9c, 0xc7, 0x97, 0x0f, 0xe2, 0xc6, 0xcb, 0x69, 0xd6, 0x31, 0x27, 0x7d, 0xf0, 0x67, 0x00,
 	0x00, 0x00, 0xff, 0xff, 0x3d, 0x96, 0xe9, 0x53, 0x53, 0x09, 0x00, 0x00,
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -804,6 +1735,12 @@ type WarningServiceClient interface {
 	Delete(ctx context.Context, in *DeleteWarningRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// List lists the available warning.
 	List(ctx context.Context, in *ListWarningRequest, opts ...grpc.CallOption) (*ListWarningResponse, error)
+	// Update SetStatus by the given warning.
+	SetStatus(ctx context.Context, in *SetStatusWarningRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// ReportWarningDay 总结每天告警列表
+	ReportWarningDay(ctx context.Context, in *ReportWarningDayReportDayRequest, opts ...grpc.CallOption) (*ReportWarningDayReportDayResponse, error)
+	// DealCount 总结每天告警数目
+	DealCount(ctx context.Context, in *DealCountReportDayRequest, opts ...grpc.CallOption) (*DealCountReportDayResponse, error)
 }
 
 type warningServiceClient struct {
@@ -859,6 +1796,33 @@ func (c *warningServiceClient) List(ctx context.Context, in *ListWarningRequest,
 	return out, nil
 }
 
+func (c *warningServiceClient) SetStatus(ctx context.Context, in *SetStatusWarningRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/api.WarningService/SetStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *warningServiceClient) ReportWarningDay(ctx context.Context, in *ReportWarningDayReportDayRequest, opts ...grpc.CallOption) (*ReportWarningDayReportDayResponse, error) {
+	out := new(ReportWarningDayReportDayResponse)
+	err := c.cc.Invoke(ctx, "/api.WarningService/ReportWarningDay", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *warningServiceClient) DealCount(ctx context.Context, in *DealCountReportDayRequest, opts ...grpc.CallOption) (*DealCountReportDayResponse, error) {
+	out := new(DealCountReportDayResponse)
+	err := c.cc.Invoke(ctx, "/api.WarningService/DealCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WarningServiceServer is the server API for WarningService service.
 type WarningServiceServer interface {
 	// Create creates warning.
@@ -871,6 +1835,12 @@ type WarningServiceServer interface {
 	Delete(context.Context, *DeleteWarningRequest) (*empty.Empty, error)
 	// List lists the available warning.
 	List(context.Context, *ListWarningRequest) (*ListWarningResponse, error)
+	// Update SetStatus by the given warning.
+	SetStatus(context.Context, *SetStatusWarningRequest) (*empty.Empty, error)
+	// ReportWarningDay 总结每天告警列表
+	ReportWarningDay(context.Context, *ReportWarningDayReportDayRequest) (*ReportWarningDayReportDayResponse, error)
+	// DealCount 总结每天告警数目
+	DealCount(context.Context, *DealCountReportDayRequest) (*DealCountReportDayResponse, error)
 }
 
 // UnimplementedWarningServiceServer can be embedded to have forward compatible implementations.
@@ -891,6 +1861,15 @@ func (*UnimplementedWarningServiceServer) Delete(ctx context.Context, req *Delet
 }
 func (*UnimplementedWarningServiceServer) List(ctx context.Context, req *ListWarningRequest) (*ListWarningResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (*UnimplementedWarningServiceServer) SetStatus(ctx context.Context, req *SetStatusWarningRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetStatus not implemented")
+}
+func (*UnimplementedWarningServiceServer) ReportWarningDay(ctx context.Context, req *ReportWarningDayReportDayRequest) (*ReportWarningDayReportDayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReportWarningDay not implemented")
+}
+func (*UnimplementedWarningServiceServer) DealCount(ctx context.Context, req *DealCountReportDayRequest) (*DealCountReportDayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DealCount not implemented")
 }
 
 func RegisterWarningServiceServer(s *grpc.Server, srv WarningServiceServer) {
@@ -987,6 +1966,60 @@ func _WarningService_List_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WarningService_SetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetStatusWarningRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WarningServiceServer).SetStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.WarningService/SetStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WarningServiceServer).SetStatus(ctx, req.(*SetStatusWarningRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WarningService_ReportWarningDay_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReportWarningDayReportDayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WarningServiceServer).ReportWarningDay(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.WarningService/ReportWarningDay",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WarningServiceServer).ReportWarningDay(ctx, req.(*ReportWarningDayReportDayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WarningService_DealCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DealCountReportDayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WarningServiceServer).DealCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.WarningService/DealCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WarningServiceServer).DealCount(ctx, req.(*DealCountReportDayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _WarningService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "api.WarningService",
 	HandlerType: (*WarningServiceServer)(nil),
@@ -1010,6 +2043,18 @@ var _WarningService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _WarningService_List_Handler,
+		},
+		{
+			MethodName: "SetStatus",
+			Handler:    _WarningService_SetStatus_Handler,
+		},
+		{
+			MethodName: "ReportWarningDay",
+			Handler:    _WarningService_ReportWarningDay_Handler,
+		},
+		{
+			MethodName: "DealCount",
+			Handler:    _WarningService_DealCount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

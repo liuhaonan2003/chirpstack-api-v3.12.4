@@ -50,6 +50,28 @@ service WarningService {
             get: "/api/warning"
         };
     }
+    // Update SetStatus by the given warning.
+    rpc SetStatus(SetStatusWarningRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/warning/{id}/status"
+            body: "*"
+        };
+    }
+    // ReportWarningDay 总结每天告警列表
+    rpc ReportWarningDay(ReportWarningDayReportDayRequest) returns (ReportWarningDayReportDayResponse) {
+        option(google.api.http) = {
+            get: "/api/warning/{organization_id}/report-warning-day"
+        };
+    }
+
+    // DealCount 总结每天告警数目
+    rpc DealCount(DealCountReportDayRequest) returns (DealCountReportDayResponse) {
+        option(google.api.http) = {
+            get: "/api/warning/{organization_id}/warning-deal-count"
+        };
+    }
+
+
 }
 
 message Warning {
@@ -133,6 +155,13 @@ message UpdateWarningRequest {
     Warning warning = 1;
 }
 
+message SetStatusWarningRequest {
+    // Warning object to update.
+    int64 id = 1;
+    int64 status = 2;
+}
+
+
 message DeleteWarningRequest {
     // Warning ID.
     int64 id = 1;
@@ -144,6 +173,11 @@ message ListWarningRequest {
 
     // Offset in the result-set (for pagination).
     int64 offset = 2;
+    int64 organization_id = 3;
+    int32 warning_level =4;
+    string search = 5;//title或description的模糊匹配
+    google.protobuf.Timestamp startTime = 6;
+    google.protobuf.Timestamp endTime = 7;
 }
 
 message ListWarningResponse {
@@ -152,4 +186,67 @@ message ListWarningResponse {
 
     // Warning within the result-set.
     repeated WarningListItem result = 2;
+}
+
+
+
+
+
+message ReportWarningDayItem {
+    // User ID.
+    // Will be set automatically on create.
+    int64 id = 1;
+    string author = 2;
+    // remark of the warning.
+    string remark = 3;
+    int32 status = 4;
+    int64 organization_id = 5;
+    int32 progress = 6;//当前处理中
+    int32  pending = 7;//当前待处理
+    int32  today_finish = 8;//完成处理
+    int64 today_warning	 = 9;//当天告警量
+    int64 statistical_time = 10;//	统计时间
+
+    int32 year	= 11;//	年
+    int32 month	= 12;//月
+    int32 day	= 13;//日
+
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 14;
+
+    // Last update timestamp.
+    google.protobuf.Timestamp updated_at = 15;
+}
+
+message ReportWarningDayReportDayRequest {
+    // Max number of items to return.
+    int64 limit = 1;
+    // Offset in the result-set (for pagination).
+    int64 offset = 2;
+    int64 organization_id = 3;
+    int32 year = 4;
+    int32 month = 5;
+    int32 day = 6;
+}
+
+message ReportWarningDayReportDayResponse {
+    // Total number of warning.
+    int64 total_count = 1;
+
+    // Warning within the result-set.
+    repeated ReportWarningDayItem result = 2;
+}
+
+message DealCountReportDayRequest {
+    int64 organization_id = 1;
+    int32 year = 2;
+    int32 month = 3;
+    int32 day = 4;
+}
+
+message DealCountReportDayResponse {
+    int32 progress =1;//当前处理中数目
+    int32 pending = 2;//当前待处理数目
+    int32 today_finish = 3;//完成处理数目
+    int64 today_warning = 4;//当天告警量数目
 }

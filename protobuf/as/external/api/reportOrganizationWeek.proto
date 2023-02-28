@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportOrganizationWeekProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ReportDetailService is the service managing test.
+service ReportOrganizationWeekService {
+  // Create creates report-day.
+  rpc Create(CreateReportOrganizationWeekRequest) returns (CreateReportOrganizationWeekResponse) {
+    option(google.api.http) = {
+      post: "/api/report-organization-week"
+      body: "*"
+    };
+  }
+
+  // Get returns the report-day matching the given id.
+  rpc Get(GetReportOrganizationWeekRequest) returns (GetReportOrganizationWeekResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-week/{id}"
+    };
+  }
+
+  // Update updates the given report-day.
+  rpc Update(UpdateReportOrganizationWeekRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/report-organization-week/{reportOrganizationWeek.id}"
+      body: "*"
+    };
+  }
+
+  // Delete deletes the report-day matching the given id.
+  rpc Delete(DeleteReportOrganizationWeekRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/report-organization-week/{id}"
+    };
+  };
+
+  // List lists the available report-Day.
+  rpc List(ListReportOrganizationWeekRequest) returns (ListReportOrganizationWeekResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-week"
+    };
+  }
+}
+
+
+message ReportOrganizationWeek {
+  int64 id = 1;	//主键ID
+  string report_org_day_ids = 2;//天统计ID集合
+  int64  organization_id =3;  //	组织编号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int32 number = 6;       //统计条数
+  int64 statistical_time = 7;//统计时间
+  int32 year = 8;
+  int32 month = 9;
+  int32 day = 10;
+  int32 week = 11;//周
+  int32 status = 12;//是否审核0、否1、是>=2、无效
+  string author=13;
+  string remark  = 16;
+}
+
+message ReportOrganizationWeekListItem {
+  int64 id = 1;	//主键ID
+  string report_org_day_ids = 2;//天统计ID集合
+  int64  organization_id =3;  //	组织编号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int32 number = 6;       //统计条数
+  int64 statistical_time = 7;//统计时间
+  int32 year = 8;
+  int32 month = 9;
+  int32 day = 10;
+  int32 week = 11;//周
+  int32 status = 12;//是否审核0、否1、是>=2、无效
+
+  string author=13;
+  string remark  = 16;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 14;
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 15;
+
+
+}
+
+message CreateReportOrganizationWeekRequest {
+  // Test object to create.
+  ReportOrganizationWeek reportOrganizationWeek = 1;
+}
+
+message CreateReportOrganizationWeekResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportOrganizationWeekRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportOrganizationWeekResponse {
+  // Test object.
+  ReportOrganizationWeek reportOrganizationWeek = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateReportOrganizationWeekRequest {
+  // Test object to update.
+  ReportOrganizationWeek reportOrganizationWeek = 1;
+}
+
+message DeleteReportOrganizationWeekRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListReportOrganizationWeekRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+}
+
+message ListReportOrganizationWeekResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportOrganizationWeekListItem result = 2;
+}

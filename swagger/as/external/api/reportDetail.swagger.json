@@ -142,7 +142,7 @@
         "parameters": [
           {
             "name": "reportDetail.id",
-            "description": "ReportDetail ID.\nWill be set automatically on create.",
+            "description": "User ID.\nWill be set automatically on create.",
             "in": "path",
             "required": true,
             "type": "string",
@@ -225,28 +225,77 @@
         "id": {
           "type": "string",
           "format": "int64",
-          "description": "ReportDetail ID.\nWill be set automatically on create."
+          "description": "User ID.\nWill be set automatically on create."
         },
         "gwMac": {
-          "type": "string"
+          "type": "string",
+          "title": "网关序列号"
         },
         "devId": {
-          "type": "string"
+          "type": "string",
+          "title": "设备编号"
         },
         "devEui": {
+          "type": "string",
+          "title": "设备序列号"
+        },
+        "reportData": {
+          "type": "string",
+          "title": "上报原数据"
+        },
+        "frameLength": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sn": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ftp": {
           "type": "string"
         },
+        "vol": {
+          "type": "number",
+          "format": "double"
+        },
+        "tpn": {
+          "type": "string"
+        },
+        "waterVolume": {
+          "type": "number",
+          "format": "double"
+        },
         "amount": {
-          "type": "string",
-          "format": "int64"
+          "type": "number",
+          "format": "double"
+        },
+        "sta": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
         },
         "reportTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "上报时间"
+        },
+        "reportDayId": {
           "type": "string",
           "format": "int64"
         },
         "status": {
           "type": "integer",
           "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
         }
       }
     },
@@ -259,19 +308,62 @@
           "description": "User ID.\nWill be set automatically on create."
         },
         "gwMac": {
-          "type": "string"
+          "type": "string",
+          "title": "网关序列号"
         },
         "devId": {
-          "type": "string"
+          "type": "string",
+          "title": "设备编号"
         },
         "devEui": {
+          "type": "string",
+          "title": "设备序列号"
+        },
+        "reportData": {
+          "type": "string",
+          "title": "上报原数据"
+        },
+        "frameLength": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sn": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ftp": {
           "type": "string"
         },
+        "vol": {
+          "type": "number",
+          "format": "double"
+        },
+        "tpn": {
+          "type": "string"
+        },
+        "waterVolume": {
+          "type": "number",
+          "format": "double"
+        },
         "amount": {
-          "type": "string",
-          "format": "int64"
+          "type": "number",
+          "format": "double"
+        },
+        "sta": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
         },
         "reportTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "上报时间"
+        },
+        "reportDayId": {
           "type": "string",
           "format": "int64"
         },
@@ -280,6 +372,9 @@
           "format": "int32"
         },
         "author": {
+          "type": "string"
+        },
+        "remark": {
           "type": "string"
         },
         "createdAt": {
@@ -291,9 +386,6 @@
           "type": "string",
           "format": "date-time",
           "description": "Last update timestamp."
-        },
-        "remark": {
-          "type": "string"
         }
       }
     },

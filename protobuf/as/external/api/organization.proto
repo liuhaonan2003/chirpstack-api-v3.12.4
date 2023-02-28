@@ -51,6 +51,13 @@ service OrganizationService {
 		};
 	}
 
+	// GetCount data for a particular organization user.
+	rpc GetOrganizationCount(ListOrganizationRequest) returns (GetOrganizationCountResponse) {
+		option(google.api.http) = {
+			get: "/api/organizations-count"
+		};
+	}
+
 	// Get organization's user list.
 	rpc ListUsers(ListOrganizationUsersRequest) returns (ListOrganizationUsersResponse) {
 		option(google.api.http) = {
@@ -87,6 +94,15 @@ service OrganizationService {
 			delete: "/api/organizations/{organization_id}/users/{user_id}"
 		};
 	}
+
+	// DeviceView 展示组织下设备视图结构，可无线增加子节点
+	rpc DeviceView(DeviceViewOrganizationRequest) returns (DeviceViewOrganizationResponse) {
+		option(google.api.http) = {
+			get: "/api/organizations/{organization_id}/device-view"
+		};
+	}
+
+
 }
 
 message Organization {
@@ -199,7 +215,7 @@ message ListOrganizationRequest {
 
 message ListOrganizationResponse {
 	// Total number of organizations.
-	int64 total_count = 1;
+	int64 totalCount = 1;
 
 	repeated Organization result = 2;
 }
@@ -344,3 +360,21 @@ message GetOrganizationUserResponse {
 	// Last update timestamp.
 	google.protobuf.Timestamp updated_at = 3;
 }
+
+
+message GetOrganizationCountResponse {
+	// Total number of organizations.
+	int64 totalCount = 1;
+}
+
+message DeviceViewOrganizationRequest {
+	// Total number of organizations.
+	int64 organization_id = 1 ;
+}
+
+message DeviceViewOrganizationResponse {
+	// Total number of organizations.
+	int64 totalCount = 1 ;
+	string result = 2;
+}
+

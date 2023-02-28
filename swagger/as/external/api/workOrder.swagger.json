@@ -127,6 +127,76 @@
         ]
       }
     },
+    "/api/work-order/{id}/personal": {
+      "put": {
+        "summary": "SetPersonWorkOrderRequest updates the Person",
+        "operationId": "SetPerson",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Total number of work-order.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetPersonWorkOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    },
+    "/api/work-order/{id}/status": {
+      "put": {
+        "summary": "SetStatus updates the status",
+        "operationId": "SetStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Total number of work-order.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetStatusWorkOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    },
     "/api/work-order/{work_order.id}": {
       "put": {
         "summary": "Update updates the given work-order.",
@@ -216,6 +286,33 @@
             "$ref": "#/definitions/apiWorkOrderListItem"
           },
           "description": "WorkOrder within the result-set."
+        }
+      }
+    },
+    "apiSetPersonWorkOrderRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of work-order."
+        },
+        "servicePersonal": {
+          "type": "string"
+        }
+      }
+    },
+    "apiSetStatusWorkOrderRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of work-order."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },

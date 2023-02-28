@@ -419,6 +419,46 @@
         ]
       }
     },
+    "/api/internal/region/devices-info": {
+      "get": {
+        "summary": "GetReginSummary returns an aggregated summary of the regin.",
+        "operationId": "GetReginSummary",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetReginSummaryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "InternalService"
+        ]
+      }
+    },
     "/api/internal/register": {
       "post": {
         "operationId": "Register",
@@ -704,6 +744,23 @@
           "type": "integer",
           "format": "int64",
           "description": "Never seen count."
+        }
+      }
+    },
+    "apiGetReginSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "organizationCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "gateWayCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "deviceCount": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },

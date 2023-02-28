@@ -52,10 +52,17 @@ service ModulesService {
     };
   }
 
-  // GetMenu 获取菜单层级信息
+  // GetMenu 获取菜单层级信息，受权限控制
   rpc GetMenu(GetMenuModulesRequest) returns (GetMenuModulesResponse) {
     option(google.api.http) = {
       get: "/api/modules/{parent}/get-menu"
+    };
+  }
+
+  // GetMenu 获取所有节点，不受权限控制
+  rpc GetAllTree(GetMenuModulesRequest) returns (GetMenuModulesResponse) {
+    option(google.api.http) = {
+      get: "/api/modules/{parent}/get-all-tree"
     };
   }
 

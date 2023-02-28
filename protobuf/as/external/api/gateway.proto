@@ -86,6 +86,13 @@ service GatewayService {
             get: "/api/gateways/{gateway_id}/frames"
         };
 	}
+
+	// List lists the gateways.
+	rpc GatewayCount(GatewayCountGatewayRequest) returns (GatewayCountGatewayResponse) {
+		option (google.api.http) = {
+			get: "/api/gateways/{organization_id}/gateway-count"
+		};
+	}
 }
 
 message Gateway {
@@ -128,6 +135,9 @@ message Gateway {
 
     // Service-profile ID (UUID string, optional).
     string service_profile_id = 12 [json_name = "serviceProfileID"];
+		int32 province_id = 13;
+		int32 city_id = 14;
+		int32 area_id = 15;
 }
 
 message GatewayBoard {
@@ -202,7 +212,7 @@ message ListGatewayRequest {
 	int64 organization_id = 3 [json_name = "organizationID"];
 
 	// Search on name or gateway MAC (optional).
-	string search = 4;
+	string search = 5;
 }
 
 message GatewayListItem {
@@ -238,6 +248,9 @@ message GatewayListItem {
 
     // Network-server name.
     string network_server_name = 11;
+		int32 province_id = 13;
+		int32 city_id = 14;
+		int32 area_id = 15;
 }
 
 message ListGatewayResponse {
@@ -357,4 +370,17 @@ message StreamGatewayFrameLogsResponse {
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 2;
     }
+}
+
+message GatewayCountGatewayRequest {
+	// ID of the organization for which to filter on, when left blank the
+	// response will return all gateways to which the user has access to.
+	int64 organization_id = 1 [json_name = "organizationID"];
+	int32 status = 2;//
+}
+
+message GatewayCountGatewayResponse {
+	// Total number of nodes available within the result-set.
+	int64 total_count = 1;
+
 }

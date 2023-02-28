@@ -314,7 +314,15 @@ func request_ModulesService_GetMenu_0(ctx context.Context, marshaler runtime.Mar
 
 }
 
+<<<<<<< HEAD
+var (
+	filter_ModulesService_GetAllTree_0 = &utilities.DoubleArray{Encoding: map[string]int{"parent": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
+func request_ModulesService_GetAllTree_0(ctx context.Context, marshaler runtime.Marshaler, client ModulesServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+=======
 func local_request_ModulesService_GetMenu_0(ctx context.Context, marshaler runtime.Marshaler, server ModulesServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	var protoReq GetMenuModulesRequest
 	var metadata runtime.ServerMetadata
 
@@ -336,11 +344,22 @@ func local_request_ModulesService_GetMenu_0(ctx context.Context, marshaler runti
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "parent", err)
 	}
 
+<<<<<<< HEAD
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ModulesService_GetAllTree_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.GetAllTree(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+=======
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ModulesService_GetMenu_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.GetMenu(ctx, &protoReq)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	return msg, metadata, err
 
 }
@@ -705,6 +724,26 @@ func RegisterModulesServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 
 	})
 
+	mux.Handle("GET", pattern_ModulesService_GetAllTree_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ModulesService_GetAllTree_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ModulesService_GetAllTree_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("GET", pattern_ModulesService_GetMenuTest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -741,6 +780,8 @@ var (
 
 	pattern_ModulesService_GetMenu_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "modules", "parent", "get-menu"}, "", runtime.AssumeColonVerbOpt(true)))
 
+	pattern_ModulesService_GetAllTree_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "modules", "parent", "get-all-tree"}, "", runtime.AssumeColonVerbOpt(true)))
+
 	pattern_ModulesService_GetMenuTest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "modules", "get-menu", "parent"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
@@ -756,6 +797,8 @@ var (
 	forward_ModulesService_List_0 = runtime.ForwardResponseMessage
 
 	forward_ModulesService_GetMenu_0 = runtime.ForwardResponseMessage
+
+	forward_ModulesService_GetAllTree_0 = runtime.ForwardResponseMessage
 
 	forward_ModulesService_GetMenuTest_0 = runtime.ForwardResponseMessage
 )

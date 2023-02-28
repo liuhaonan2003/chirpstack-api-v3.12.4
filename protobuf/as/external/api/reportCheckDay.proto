@@ -1,0 +1,165 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportCheckDayProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ReportDetailService is the service managing test.
+service ReportCheckDayService {
+  // Create creates report-day.
+  rpc Create(CreateReportCheckDayRequest) returns (CreateReportCheckDayResponse) {
+    option(google.api.http) = {
+      post: "/api/report-check-day"
+      body: "*"
+    };
+  }
+
+  // Get returns the report-day matching the given id.
+  rpc Get(GetReportCheckDayRequest) returns (GetReportCheckDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-check-day/{id}"
+    };
+  }
+
+  // Update updates the given report-day.
+  rpc Update(UpdateReportCheckDayRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/report-check-day/{reportCheckDay.id}"
+      body: "*"
+    };
+  }
+
+  // Delete deletes the report-day matching the given id.
+  rpc Delete(DeleteReportCheckDayRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/report-check-day/{id}"
+    };
+  };
+
+  // List lists the available report-Day.
+  rpc List(ListReportCheckDayRequest) returns (ListReportCheckDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-check-day"
+    };
+  }
+}
+
+
+
+
+message ReportCheckDay {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string dev_id = 4;//设备编号
+
+  double master_amount = 5;//父级设备当前生产量
+  double slave_amount = 6; //子级设备合计生产量
+  double loss_amount = 7; //父子间管道损耗计量
+  double loss_rate = 8; //损耗率
+  int32 slave_number = 9;//子统计设备数量
+
+  int64 statistical_time = 10;//统计校验时间
+  int32 year = 11;
+  int32 month = 12;
+  int32 day = 13;
+
+  int64 report_month_id = 14; //设备月统计关联
+  int64 warning_no = 15;//告警单号
+
+  int32 status = 21;//是否合格：0、未确认1、确认合格2、异常并发起告警
+  string author=22;
+  string remark  = 23;
+}
+
+message ReportCheckDayListItem {
+  // User ID.
+  // Will be set automatically on create.
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string dev_id = 4;//设备编号
+
+  double master_amount = 5;//父级设备当前生产量
+  double slave_amount = 6; //子级设备合计生产量
+  double loss_amount = 7; //父子间管道损耗计量
+  double loss_rate = 8; //损耗率
+  int32 slave_number = 9;//子统计设备数量
+
+  int64 statistical_time = 10;//统计校验时间
+  int32 year = 11;
+  int32 month = 12;
+  int32 day = 13;
+
+  int64 report_month_id = 14; //设备月统计关联
+  int64 warning_no = 15;//告警单号
+
+  int32 status = 21;//是否合格：0、未确认1、确认合格2、异常并发起告警
+
+  string author=22;
+  string remark  = 23;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 24;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 25;
+
+}
+
+message CreateReportCheckDayRequest {
+  // Test object to create.
+  ReportCheckDay reportCheckDay = 1;
+}
+
+message CreateReportCheckDayResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportCheckDayRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportCheckDayResponse {
+  // Test object.
+  ReportCheckDay reportCheckDay = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateReportCheckDayRequest {
+  // Test object to update.
+  ReportCheckDay reportCheckDay = 1;
+}
+
+message DeleteReportCheckDayRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListReportCheckDayRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+}
+
+message ListReportCheckDayResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportCheckDayListItem result = 2;
+}

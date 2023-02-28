@@ -50,6 +50,8 @@ service WarningRuleService {
             get: "/api/warning-rule"
         };
     }
+    
+
 }
 
 message WarningRule {
@@ -115,6 +117,8 @@ message UpdateWarningRuleRequest {
     // WarningRule object to update.
     WarningRule warning_rule = 1;
 }
+
+
 
 message DeleteWarningRuleRequest {
     // WarningRule ID.

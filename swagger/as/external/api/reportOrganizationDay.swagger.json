@@ -1,0 +1,547 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/reportOrganizationDay.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/report-organization-day": {
+      "get": {
+        "summary": "List lists the available report-Day.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListReportOrganizationDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates report-day.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateReportOrganizationDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateReportOrganizationDayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    },
+    "/api/report-organization-day/{id}": {
+      "get": {
+        "summary": "Get returns the report-day matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetReportOrganizationDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the report-day matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    },
+    "/api/report-organization-day/{organization_id}/cumulative_amount": {
+      "get": {
+        "summary": "cumulativeAmount 获取给定组织的累计用水量",
+        "operationId": "CumulativeAmount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCumulativeAmountReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "description": "Total number of test.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    },
+    "/api/report-organization-day/{organization_id}/day-consumption": {
+      "get": {
+        "summary": "cumulativeAmount 获取给定组织的指定日的日用水量",
+        "operationId": "DayConsumption",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiConsumptionReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "year",
+            "description": "Total number of test.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    },
+    "/api/report-organization-day/{organization_id}/month-consumption": {
+      "get": {
+        "summary": "MonthConsumption 获取给定组织指定月的用水量.考虑到未到月尾，月统计表还未生成，故需在天统计表累加",
+        "operationId": "MonthConsumption",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiMonthConsumptionReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "year",
+            "description": "Total number of test.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    },
+    "/api/report-organization-day/{organization_id}/year-consumption": {
+      "get": {
+        "summary": "cumulativeAmount 获取给定组织指定年份的用水量.理由同上。不过需要先获取当前月份之前的月份的累加，然后在加上剩下的不满月的",
+        "operationId": "YearConsumption",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiYearConsumptionReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "year",
+            "description": "Total number of test.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    },
+    "/api/report-organization-day/{reportOrganizationDay.id}": {
+      "put": {
+        "summary": "Update updates the given report-day.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "reportOrganizationDay.id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateReportOrganizationDayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReportOrganizationDayService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiConsumptionReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
+        }
+      }
+    },
+    "apiCreateReportOrganizationDayRequest": {
+      "type": "object",
+      "properties": {
+        "reportOrganizationDay": {
+          "$ref": "#/definitions/apiReportOrganizationDay",
+          "description": "Test object to create."
+        }
+      }
+    },
+    "apiCreateReportOrganizationDayResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Test ID."
+        }
+      }
+    },
+    "apiCumulativeAmountReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
+        }
+      }
+    },
+    "apiGetReportOrganizationDayResponse": {
+      "type": "object",
+      "properties": {
+        "reportOrganizationDay": {
+          "$ref": "#/definitions/apiReportOrganizationDay",
+          "description": "Test object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListReportOrganizationDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportOrganizationDayListItem"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiMonthConsumptionReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
+        }
+      }
+    },
+    "apiReportOrganizationDay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportDayIds": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "deviceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statisticalTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        }
+      }
+    },
+    "apiReportOrganizationDayListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportDayIds": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "deviceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statisticalTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiUpdateReportOrganizationDayRequest": {
+      "type": "object",
+      "properties": {
+        "reportOrganizationDay": {
+          "$ref": "#/definitions/apiReportOrganizationDay",
+          "description": "Test object to update."
+        }
+      }
+    },
+    "apiYearConsumptionReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
+        }
+      }
+    }
+  }
+}

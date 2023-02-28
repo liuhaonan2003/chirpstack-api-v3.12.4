@@ -126,6 +126,15 @@ service InternalService {
             get: "/api/internal/gateways/summary"
         };
     }
+
+  // GetReginSummary returns an aggregated summary of the regin.
+  rpc GetReginSummary(GetReginSummaryRequest) returns (GetReginSummaryResponse) {
+    option(google.api.http) = {
+      get: "/api/internal/region/devices-info"
+    };
+  }
+
+  
 }
 
 message APIKey {
@@ -431,4 +440,16 @@ message GetGatewaysSummaryResponse {
 
     // Never seen count.
     uint32 never_seen_count = 3;
+}
+
+message GetReginSummaryRequest {
+  int32 province_id = 1 ;
+  int32 city_id = 2 ;
+  int32 area_id = 3 ;
+}
+
+message GetReginSummaryResponse {
+  int64 organizationCount = 1 ;
+  int64 gateWayCount = 2;
+  int64 deviceCount = 3;
 }

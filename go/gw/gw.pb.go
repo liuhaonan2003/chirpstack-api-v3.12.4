@@ -206,7 +206,10 @@ func (ConnState_State) EnumDescriptor() ([]byte, []int) {
 
 type Modulation struct {
 	// Types that are valid to be assigned to Parameters:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*Modulation_Lora
 	//	*Modulation_Fsk
 	//	*Modulation_LrFhss
@@ -221,6 +224,7 @@ func (m *Modulation) String() string { return proto.CompactTextString(m) }
 func (*Modulation) ProtoMessage()    {}
 func (*Modulation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b93a753e2b32e8e7, []int{0}
+<<<<<<< HEAD
 }
 
 func (m *Modulation) XXX_Unmarshal(b []byte) error {
@@ -257,6 +261,44 @@ type Modulation_LrFhss struct {
 	LrFhss *LRFHSSModulationInfo `protobuf:"bytes,5,opt,name=lr_fhss,json=lrFHSS,proto3,oneof"`
 }
 
+=======
+}
+
+func (m *Modulation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Modulation.Unmarshal(m, b)
+}
+func (m *Modulation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Modulation.Marshal(b, m, deterministic)
+}
+func (m *Modulation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Modulation.Merge(m, src)
+}
+func (m *Modulation) XXX_Size() int {
+	return xxx_messageInfo_Modulation.Size(m)
+}
+func (m *Modulation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Modulation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Modulation proto.InternalMessageInfo
+
+type isModulation_Parameters interface {
+	isModulation_Parameters()
+}
+
+type Modulation_Lora struct {
+	Lora *LoRaModulationInfo `protobuf:"bytes,3,opt,name=lora,json=loRa,proto3,oneof"`
+}
+
+type Modulation_Fsk struct {
+	Fsk *FSKModulationInfo `protobuf:"bytes,4,opt,name=fsk,proto3,oneof"`
+}
+
+type Modulation_LrFhss struct {
+	LrFhss *LRFHSSModulationInfo `protobuf:"bytes,5,opt,name=lr_fhss,json=lrFHSS,proto3,oneof"`
+}
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (*Modulation_Lora) isModulation_Parameters() {}
 
 func (*Modulation_Fsk) isModulation_Parameters() {}
@@ -306,7 +348,10 @@ type UplinkTXInfo struct {
 	// Modulation.
 	Modulation common.Modulation `protobuf:"varint,2,opt,name=modulation,proto3,enum=common.Modulation" json:"modulation,omitempty"`
 	// Types that are valid to be assigned to ModulationInfo:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*UplinkTXInfo_LoraModulationInfo
 	//	*UplinkTXInfo_FskModulationInfo
 	//	*UplinkTXInfo_LrFhssModulationInfo
@@ -443,10 +488,17 @@ func (m *LoRaModulationInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 }
 func (m *LoRaModulationInfo) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_LoRaModulationInfo.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *LoRaModulationInfo) XXX_Size() int {
 	return xxx_messageInfo_LoRaModulationInfo.Size(m)
 }
+=======
+}
+func (m *LoRaModulationInfo) XXX_Size() int {
+	return xxx_messageInfo_LoRaModulationInfo.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *LoRaModulationInfo) XXX_DiscardUnknown() {
 	xxx_messageInfo_LoRaModulationInfo.DiscardUnknown(m)
 }
@@ -744,6 +796,12 @@ func (m *GatewayStats) XXX_Merge(src proto.Message) {
 }
 func (m *GatewayStats) XXX_Size() int {
 	return xxx_messageInfo_GatewayStats.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *GatewayStats) XXX_DiscardUnknown() {
+	xxx_messageInfo_GatewayStats.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GatewayStats) XXX_DiscardUnknown() {
 	xxx_messageInfo_GatewayStats.DiscardUnknown(m)
@@ -751,6 +809,11 @@ func (m *GatewayStats) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GatewayStats proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_GatewayStats proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GatewayStats) GetGatewayId() []byte {
 	if m != nil {
 		return m.GatewayId
@@ -891,6 +954,12 @@ func (m *PerModulationCount) XXX_Merge(src proto.Message) {
 }
 func (m *PerModulationCount) XXX_Size() int {
 	return xxx_messageInfo_PerModulationCount.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *PerModulationCount) XXX_DiscardUnknown() {
+	xxx_messageInfo_PerModulationCount.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *PerModulationCount) XXX_DiscardUnknown() {
 	xxx_messageInfo_PerModulationCount.DiscardUnknown(m)
@@ -898,6 +967,11 @@ func (m *PerModulationCount) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PerModulationCount proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_PerModulationCount proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *PerModulationCount) GetModulation() *Modulation {
 	if m != nil {
 		return m.Modulation
@@ -938,7 +1012,10 @@ type UplinkRXInfo struct {
 	// Fine-timestamp data.
 	//
 	// Types that are valid to be assigned to FineTimestamp:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*UplinkRXInfo_EncryptedFineTimestamp
 	//	*UplinkRXInfo_PlainFineTimestamp
 	FineTimestamp isUplinkRXInfo_FineTimestamp `protobuf_oneof:"fine_timestamp"`
@@ -1150,7 +1227,10 @@ type DownlinkTXInfo struct {
 	// Modulation.
 	Modulation common.Modulation `protobuf:"varint,7,opt,name=modulation,proto3,enum=common.Modulation" json:"modulation,omitempty"`
 	// Types that are valid to be assigned to ModulationInfo:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*DownlinkTXInfo_LoraModulationInfo
 	//	*DownlinkTXInfo_FskModulationInfo
 	ModulationInfo isDownlinkTXInfo_ModulationInfo `protobuf_oneof:"modulation_info"`
@@ -1161,7 +1241,10 @@ type DownlinkTXInfo struct {
 	// Timing defines the downlink timing to use.
 	Timing DownlinkTiming `protobuf:"varint,12,opt,name=timing,proto3,enum=gw.DownlinkTiming" json:"timing,omitempty"`
 	// Types that are valid to be assigned to TimingInfo:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*DownlinkTXInfo_ImmediatelyTimingInfo
 	//	*DownlinkTXInfo_DelayTimingInfo
 	//	*DownlinkTXInfo_GpsEpochTimingInfo
@@ -1242,12 +1325,21 @@ type isDownlinkTXInfo_ModulationInfo interface {
 
 type DownlinkTXInfo_LoraModulationInfo struct {
 	LoraModulationInfo *LoRaModulationInfo `protobuf:"bytes,8,opt,name=lora_modulation_info,json=loRaModulationInfo,proto3,oneof"`
+<<<<<<< HEAD
 }
 
 type DownlinkTXInfo_FskModulationInfo struct {
 	FskModulationInfo *FSKModulationInfo `protobuf:"bytes,9,opt,name=fsk_modulation_info,json=fskModulationInfo,proto3,oneof"`
 }
 
+=======
+}
+
+type DownlinkTXInfo_FskModulationInfo struct {
+	FskModulationInfo *FSKModulationInfo `protobuf:"bytes,9,opt,name=fsk_modulation_info,json=fskModulationInfo,proto3,oneof"`
+}
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (*DownlinkTXInfo_LoraModulationInfo) isDownlinkTXInfo_ModulationInfo() {}
 
 func (*DownlinkTXInfo_FskModulationInfo) isDownlinkTXInfo_ModulationInfo() {}
@@ -1532,6 +1624,12 @@ func (m *UplinkFrame) XXX_Merge(src proto.Message) {
 }
 func (m *UplinkFrame) XXX_Size() int {
 	return xxx_messageInfo_UplinkFrame.Size(m)
+<<<<<<< HEAD
+}
+func (m *UplinkFrame) XXX_DiscardUnknown() {
+	xxx_messageInfo_UplinkFrame.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *UplinkFrame) XXX_DiscardUnknown() {
 	xxx_messageInfo_UplinkFrame.DiscardUnknown(m)
@@ -1539,6 +1637,11 @@ func (m *UplinkFrame) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UplinkFrame proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_UplinkFrame proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *UplinkFrame) GetPhyPayload() []byte {
 	if m != nil {
 		return m.PhyPayload
@@ -1590,6 +1693,12 @@ func (m *UplinkFrameSet) XXX_Merge(src proto.Message) {
 }
 func (m *UplinkFrameSet) XXX_Size() int {
 	return xxx_messageInfo_UplinkFrameSet.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *UplinkFrameSet) XXX_DiscardUnknown() {
+	xxx_messageInfo_UplinkFrameSet.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *UplinkFrameSet) XXX_DiscardUnknown() {
 	xxx_messageInfo_UplinkFrameSet.DiscardUnknown(m)
@@ -1597,6 +1706,11 @@ func (m *UplinkFrameSet) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UplinkFrameSet proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_UplinkFrameSet proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *UplinkFrameSet) GetPhyPayload() []byte {
 	if m != nil {
 		return m.PhyPayload
@@ -1661,6 +1775,12 @@ func (m *DownlinkFrame) XXX_Merge(src proto.Message) {
 }
 func (m *DownlinkFrame) XXX_Size() int {
 	return xxx_messageInfo_DownlinkFrame.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *DownlinkFrame) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownlinkFrame.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DownlinkFrame) XXX_DiscardUnknown() {
 	xxx_messageInfo_DownlinkFrame.DiscardUnknown(m)
@@ -1668,6 +1788,11 @@ func (m *DownlinkFrame) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DownlinkFrame proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_DownlinkFrame proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DownlinkFrame) GetPhyPayload() []byte {
 	if m != nil {
 		return m.PhyPayload
@@ -1738,6 +1863,12 @@ func (m *DownlinkFrameItem) XXX_Merge(src proto.Message) {
 }
 func (m *DownlinkFrameItem) XXX_Size() int {
 	return xxx_messageInfo_DownlinkFrameItem.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *DownlinkFrameItem) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownlinkFrameItem.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DownlinkFrameItem) XXX_DiscardUnknown() {
 	xxx_messageInfo_DownlinkFrameItem.DiscardUnknown(m)
@@ -1745,6 +1876,11 @@ func (m *DownlinkFrameItem) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DownlinkFrameItem proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_DownlinkFrameItem proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DownlinkFrameItem) GetPhyPayload() []byte {
 	if m != nil {
 		return m.PhyPayload
@@ -1798,6 +1934,12 @@ func (m *DownlinkTXAck) XXX_Merge(src proto.Message) {
 }
 func (m *DownlinkTXAck) XXX_Size() int {
 	return xxx_messageInfo_DownlinkTXAck.Size(m)
+<<<<<<< HEAD
+}
+func (m *DownlinkTXAck) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownlinkTXAck.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DownlinkTXAck) XXX_DiscardUnknown() {
 	xxx_messageInfo_DownlinkTXAck.DiscardUnknown(m)
@@ -1805,6 +1947,11 @@ func (m *DownlinkTXAck) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DownlinkTXAck proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_DownlinkTXAck proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DownlinkTXAck) GetGatewayId() []byte {
 	if m != nil {
 		return m.GatewayId
@@ -1866,6 +2013,12 @@ func (m *DownlinkTXAckItem) XXX_Merge(src proto.Message) {
 }
 func (m *DownlinkTXAckItem) XXX_Size() int {
 	return xxx_messageInfo_DownlinkTXAckItem.Size(m)
+<<<<<<< HEAD
+}
+func (m *DownlinkTXAckItem) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownlinkTXAckItem.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DownlinkTXAckItem) XXX_DiscardUnknown() {
 	xxx_messageInfo_DownlinkTXAckItem.DiscardUnknown(m)
@@ -1873,6 +2026,11 @@ func (m *DownlinkTXAckItem) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DownlinkTXAckItem proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_DownlinkTXAckItem proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DownlinkTXAckItem) GetStatus() TxAckStatus {
 	if m != nil {
 		return m.Status
@@ -1912,6 +2070,12 @@ func (m *GatewayConfiguration) XXX_Merge(src proto.Message) {
 }
 func (m *GatewayConfiguration) XXX_Size() int {
 	return xxx_messageInfo_GatewayConfiguration.Size(m)
+<<<<<<< HEAD
+}
+func (m *GatewayConfiguration) XXX_DiscardUnknown() {
+	xxx_messageInfo_GatewayConfiguration.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GatewayConfiguration) XXX_DiscardUnknown() {
 	xxx_messageInfo_GatewayConfiguration.DiscardUnknown(m)
@@ -1919,6 +2083,11 @@ func (m *GatewayConfiguration) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GatewayConfiguration proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_GatewayConfiguration proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GatewayConfiguration) GetGatewayId() []byte {
 	if m != nil {
 		return m.GatewayId
@@ -1953,7 +2122,10 @@ type ChannelConfiguration struct {
 	// Channel modulation.
 	Modulation common.Modulation `protobuf:"varint,2,opt,name=modulation,proto3,enum=common.Modulation" json:"modulation,omitempty"`
 	// Types that are valid to be assigned to ModulationConfig:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*ChannelConfiguration_LoraModulationConfig
 	//	*ChannelConfiguration_FskModulationConfig
 	ModulationConfig isChannelConfiguration_ModulationConfig `protobuf_oneof:"modulation_config"`

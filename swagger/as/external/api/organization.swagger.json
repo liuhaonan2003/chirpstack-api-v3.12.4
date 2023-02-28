@@ -103,6 +103,69 @@
         ]
       }
     },
+    "/api/organizations-count": {
+      "get": {
+        "summary": "GetCount data for a particular organization user.",
+        "operationId": "GetOrganizationCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetOrganizationCountResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of organizations to return in the result-set.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "search",
+            "description": "When provided, the given string will be used to search on\ndisplayName.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "OrganizationService"
+        ]
+      }
+    },
     "/api/organizations/{id}": {
       "get": {
         "summary": "Get data for a particular organization.",
@@ -183,6 +246,33 @@
             "schema": {
               "$ref": "#/definitions/apiUpdateOrganizationRequest"
             }
+          }
+        ],
+        "tags": [
+          "OrganizationService"
+        ]
+      }
+    },
+    "/api/organizations/{organization_id}/device-view": {
+      "get": {
+        "summary": "DeviceView 展示组织下设备视图结构，可无线增加子节点",
+        "operationId": "DeviceView",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiDeviceViewOrganizationResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "description": "Total number of organizations.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
           }
         ],
         "tags": [
@@ -404,6 +494,29 @@
           "type": "string",
           "format": "int64",
           "description": "Organization ID."
+        }
+      }
+    },
+    "apiDeviceViewOrganizationResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of organizations."
+        },
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGetOrganizationCountResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of organizations."
         }
       }
     },

@@ -2997,7 +2997,10 @@ func (m *StreamFrameLogsForGatewayRequest) GetGatewayId() []byte {
 
 type StreamFrameLogsForGatewayResponse struct {
 	// Types that are valid to be assigned to Frame:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*StreamFrameLogsForGatewayResponse_UplinkFrameSet
 	//	*StreamFrameLogsForGatewayResponse_DownlinkFrame
 	Frame                isStreamFrameLogsForGatewayResponse_Frame `protobuf_oneof:"frame"`
@@ -3119,7 +3122,10 @@ func (m *StreamFrameLogsForDeviceRequest) GetDevEui() []byte {
 
 type StreamFrameLogsForDeviceResponse struct {
 	// Types that are valid to be assigned to Frame:
+<<<<<<< HEAD
+=======
 	//
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	//	*StreamFrameLogsForDeviceResponse_UplinkFrameSet
 	//	*StreamFrameLogsForDeviceResponse_DownlinkFrame
 	Frame                isStreamFrameLogsForDeviceResponse_Frame `protobuf_oneof:"frame"`
@@ -4635,7 +4641,11 @@ func (m *DeviceGatewayRXInfo) GetContext() []byte {
 }
 
 type GetLastRxInfoResponse struct {
+<<<<<<< HEAD
+	//receiving One of the best the last uplink message.
+=======
 	// receiving One of the best the last uplink message.
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	LastRx *DeviceGatewayRXInfo `protobuf:"bytes,1,opt,name=LastRx,proto3" json:"LastRx,omitempty"`
 	// rx2 frequency by MAC.
 	Rx2Frequency         uint32   `protobuf:"varint,2,opt,name=rx2Frequency,proto3" json:"rx2Frequency,omitempty"`

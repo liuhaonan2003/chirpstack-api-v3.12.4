@@ -109,6 +109,34 @@
             "format": "int64"
           },
           {
+            "name": "organizationId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "scene",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "parent",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
             "name": "applicationID",
             "description": "Application ID to filter on.",
             "in": "query",
@@ -552,7 +580,7 @@
     },
     "/api/devices/{dev_eui}/sesionkey": {
       "post": {
-        "summary": "Sesion key creat the device (for LoRaWAN MAC version  1.0).",
+        "summary": "CreateSKeys Sesion key creat the device (for LoRaWAN MAC version  1.0).",
         "operationId": "CreateSKeys",
         "responses": {
           "200": {

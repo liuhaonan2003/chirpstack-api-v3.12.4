@@ -53,48 +53,68 @@ service ReportDetailService {
 }
 
 message ReportDetail {
-    // ReportDetail ID.
+    // User ID.
     // Will be set automatically on create.
     int64 id = 1;
-
+    //网关序列号
     string gw_mac = 2;
-
+    //设备编号
     string dev_id = 3;
-
+    //设备序列号
     string dev_eui = 4;
+    //上报原数据
+    string report_data = 5;
+    int32 frame_length = 6;
+    int32 sn = 7;//序列号
+    string ftp = 8;//数据包类型
+    double vol = 9;//电池电压
+    string tpn = 10;//表属性
+    double water_volume	= 11;//	总量
+    double amount	=12;//	设备当前生产量
+    string sta	=13;//	表状态
+    string ver	=14;//	版本日期
+    string cs	= 15;//	校验码
+    //上报时间
+    int64 report_time = 16;
+    int64 report_day_id = 17;//天统计关联编号
+    int32 status = 18;
+    string author = 19;
+    string remark  = 20;
 
-    int64 amount = 5;
-
-    int64 report_time = 6;
-
-    int32 status = 7;
 }
 
 message ReportDetailListItem {
     // User ID.
     // Will be set automatically on create.
     int64 id = 1;
-
+    //网关序列号
     string gw_mac = 2;
-
+    //设备编号
     string dev_id = 3;
-
+    //设备序列号
     string dev_eui = 4;
-
-    int64 amount = 5;
-
-    int64 report_time = 6;
-
-    int32 status = 7;
-
-    string author = 8;
-
+    //上报原数据
+    string report_data = 5;
+    int32 frame_length = 6;
+    int32 sn = 7;//序列号
+    string ftp = 8;//数据包类型
+    double vol = 9;//电池电压
+    string tpn = 10;//表属性
+    double water_volume	= 11;//	总量
+    double amount	=12;//	设备当前生产量
+    string sta	=13;//	表状态
+    string ver	=14;//	版本日期
+    string cs	= 15;//	校验码
+    //上报时间
+    int64 report_time = 16;
+    int64 report_day_id = 17;//天统计关联编号
+    int32 status = 18;
+    string author = 19;
+    string remark  = 20;
     // Created at timestamp.
-    google.protobuf.Timestamp created_at = 9;
-
+    google.protobuf.Timestamp created_at = 21;
     // Last update timestamp.
-    google.protobuf.Timestamp updated_at = 10;
-    string remark  = 11;
+    google.protobuf.Timestamp updated_at = 22;
 }
 
 message CreateReportDetailRequest {

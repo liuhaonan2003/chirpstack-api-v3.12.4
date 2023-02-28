@@ -28,6 +28,35 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type ReportDetail struct {
+<<<<<<< HEAD
+	// User ID.
+	// Will be set automatically on create.
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	//网关序列号
+	GwMac string `protobuf:"bytes,2,opt,name=gw_mac,json=gwMac,proto3" json:"gw_mac,omitempty"`
+	//设备编号
+	DevId string `protobuf:"bytes,3,opt,name=dev_id,json=devId,proto3" json:"dev_id,omitempty"`
+	//设备序列号
+	DevEui string `protobuf:"bytes,4,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
+	//上报原数据
+	ReportData  string  `protobuf:"bytes,5,opt,name=report_data,json=reportData,proto3" json:"report_data,omitempty"`
+	FrameLength int32   `protobuf:"varint,6,opt,name=frame_length,json=frameLength,proto3" json:"frame_length,omitempty"`
+	Sn          int32   `protobuf:"varint,7,opt,name=sn,proto3" json:"sn,omitempty"`
+	Ftp         string  `protobuf:"bytes,8,opt,name=ftp,proto3" json:"ftp,omitempty"`
+	Vol         float64 `protobuf:"fixed64,9,opt,name=vol,proto3" json:"vol,omitempty"`
+	Tpn         string  `protobuf:"bytes,10,opt,name=tpn,proto3" json:"tpn,omitempty"`
+	WaterVolume float64 `protobuf:"fixed64,11,opt,name=water_volume,json=waterVolume,proto3" json:"water_volume,omitempty"`
+	Amount      float64 `protobuf:"fixed64,12,opt,name=amount,proto3" json:"amount,omitempty"`
+	Sta         string  `protobuf:"bytes,13,opt,name=sta,proto3" json:"sta,omitempty"`
+	Ver         string  `protobuf:"bytes,14,opt,name=ver,proto3" json:"ver,omitempty"`
+	Cs          string  `protobuf:"bytes,15,opt,name=cs,proto3" json:"cs,omitempty"`
+	//上报时间
+	ReportTime           int64    `protobuf:"varint,16,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
+	ReportDayId          int64    `protobuf:"varint,17,opt,name=report_day_id,json=reportDayId,proto3" json:"report_day_id,omitempty"`
+	Status               int32    `protobuf:"varint,18,opt,name=status,proto3" json:"status,omitempty"`
+	Author               string   `protobuf:"bytes,19,opt,name=author,proto3" json:"author,omitempty"`
+	Remark               string   `protobuf:"bytes,20,opt,name=remark,proto3" json:"remark,omitempty"`
+=======
 	// ReportDetail ID.
 	// Will be set automatically on create.
 	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -37,6 +66,7 @@ type ReportDetail struct {
 	Amount               int64    `protobuf:"varint,5,opt,name=amount,proto3" json:"amount,omitempty"`
 	ReportTime           int64    `protobuf:"varint,6,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
 	Status               int32    `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -51,6 +81,7 @@ func (*ReportDetail) Descriptor() ([]byte, []int) {
 
 func (m *ReportDetail) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportDetail.Unmarshal(m, b)
+<<<<<<< HEAD
 }
 func (m *ReportDetail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ReportDetail.Marshal(b, m, deterministic)
@@ -95,16 +126,145 @@ func (m *ReportDetail) GetDevEui() string {
 	return ""
 }
 
-func (m *ReportDetail) GetAmount() int64 {
+func (m *ReportDetail) GetReportData() string {
 	if m != nil {
-		return m.Amount
+		return m.ReportData
+	}
+	return ""
+}
+
+func (m *ReportDetail) GetFrameLength() int32 {
+	if m != nil {
+		return m.FrameLength
 	}
 	return 0
 }
 
+func (m *ReportDetail) GetSn() int32 {
+	if m != nil {
+		return m.Sn
+	}
+	return 0
+}
+
+func (m *ReportDetail) GetFtp() string {
+	if m != nil {
+		return m.Ftp
+	}
+	return ""
+}
+
+func (m *ReportDetail) GetVol() float64 {
+	if m != nil {
+		return m.Vol
+	}
+	return 0
+}
+
+func (m *ReportDetail) GetTpn() string {
+	if m != nil {
+		return m.Tpn
+	}
+	return ""
+}
+
+func (m *ReportDetail) GetWaterVolume() float64 {
+	if m != nil {
+		return m.WaterVolume
+	}
+	return 0
+=======
+}
+func (m *ReportDetail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportDetail.Marshal(b, m, deterministic)
+}
+func (m *ReportDetail) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportDetail.Merge(m, src)
+}
+func (m *ReportDetail) XXX_Size() int {
+	return xxx_messageInfo_ReportDetail.Size(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+}
+func (m *ReportDetail) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportDetail.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportDetail proto.InternalMessageInfo
+
+<<<<<<< HEAD
+func (m *ReportDetail) GetAmount() float64 {
+	if m != nil {
+		return m.Amount
+=======
+func (m *ReportDetail) GetId() int64 {
+	if m != nil {
+		return m.Id
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetail) GetSta() string {
+	if m != nil {
+		return m.Sta
+=======
+func (m *ReportDetail) GetGwMac() string {
+	if m != nil {
+		return m.GwMac
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
+func (m *ReportDetail) GetVer() string {
+	if m != nil {
+		return m.Ver
+=======
+func (m *ReportDetail) GetDevId() string {
+	if m != nil {
+		return m.DevId
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
+func (m *ReportDetail) GetCs() string {
+	if m != nil {
+		return m.Cs
+=======
+func (m *ReportDetail) GetDevEui() string {
+	if m != nil {
+		return m.DevEui
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
 func (m *ReportDetail) GetReportTime() int64 {
 	if m != nil {
 		return m.ReportTime
+=======
+func (m *ReportDetail) GetAmount() int64 {
+	if m != nil {
+		return m.Amount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetail) GetReportDayId() int64 {
+	if m != nil {
+		return m.ReportDayId
+=======
+func (m *ReportDetail) GetReportTime() int64 {
+	if m != nil {
+		return m.ReportTime
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
@@ -116,22 +276,60 @@ func (m *ReportDetail) GetStatus() int32 {
 	return 0
 }
 
+<<<<<<< HEAD
+func (m *ReportDetail) GetAuthor() string {
+	if m != nil {
+		return m.Author
+	}
+	return ""
+}
+
+func (m *ReportDetail) GetRemark() string {
+	if m != nil {
+		return m.Remark
+	}
+	return ""
+}
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 type ReportDetailListItem struct {
 	// User ID.
 	// Will be set automatically on create.
-	Id         int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	GwMac      string `protobuf:"bytes,2,opt,name=gw_mac,json=gwMac,proto3" json:"gw_mac,omitempty"`
-	DevId      string `protobuf:"bytes,3,opt,name=dev_id,json=devId,proto3" json:"dev_id,omitempty"`
-	DevEui     string `protobuf:"bytes,4,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
-	Amount     int64  `protobuf:"varint,5,opt,name=amount,proto3" json:"amount,omitempty"`
-	ReportTime int64  `protobuf:"varint,6,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
-	Status     int32  `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
-	Author     string `protobuf:"bytes,8,opt,name=author,proto3" json:"author,omitempty"`
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	//网关序列号
+	GwMac string `protobuf:"bytes,2,opt,name=gw_mac,json=gwMac,proto3" json:"gw_mac,omitempty"`
+	//设备编号
+	DevId string `protobuf:"bytes,3,opt,name=dev_id,json=devId,proto3" json:"dev_id,omitempty"`
+	//设备序列号
+	DevEui string `protobuf:"bytes,4,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
+	//上报原数据
+	ReportData  string  `protobuf:"bytes,5,opt,name=report_data,json=reportData,proto3" json:"report_data,omitempty"`
+	FrameLength int32   `protobuf:"varint,6,opt,name=frame_length,json=frameLength,proto3" json:"frame_length,omitempty"`
+	Sn          int32   `protobuf:"varint,7,opt,name=sn,proto3" json:"sn,omitempty"`
+	Ftp         string  `protobuf:"bytes,8,opt,name=ftp,proto3" json:"ftp,omitempty"`
+	Vol         float64 `protobuf:"fixed64,9,opt,name=vol,proto3" json:"vol,omitempty"`
+	Tpn         string  `protobuf:"bytes,10,opt,name=tpn,proto3" json:"tpn,omitempty"`
+	WaterVolume float64 `protobuf:"fixed64,11,opt,name=water_volume,json=waterVolume,proto3" json:"water_volume,omitempty"`
+	Amount      float64 `protobuf:"fixed64,12,opt,name=amount,proto3" json:"amount,omitempty"`
+	Sta         string  `protobuf:"bytes,13,opt,name=sta,proto3" json:"sta,omitempty"`
+	Ver         string  `protobuf:"bytes,14,opt,name=ver,proto3" json:"ver,omitempty"`
+	Cs          string  `protobuf:"bytes,15,opt,name=cs,proto3" json:"cs,omitempty"`
+	//上报时间
+	ReportTime  int64  `protobuf:"varint,16,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
+	ReportDayId int64  `protobuf:"varint,17,opt,name=report_day_id,json=reportDayId,proto3" json:"report_day_id,omitempty"`
+	Status      int32  `protobuf:"varint,18,opt,name=status,proto3" json:"status,omitempty"`
+	Author      string `protobuf:"bytes,19,opt,name=author,proto3" json:"author,omitempty"`
+	Remark      string `protobuf:"bytes,20,opt,name=remark,proto3" json:"remark,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamp.Timestamp `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
+<<<<<<< HEAD
+	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+=======
 	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	Remark               string               `protobuf:"bytes,11,opt,name=remark,proto3" json:"remark,omitempty"`
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -146,6 +344,7 @@ func (*ReportDetailListItem) Descriptor() ([]byte, []int) {
 
 func (m *ReportDetailListItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportDetailListItem.Unmarshal(m, b)
+<<<<<<< HEAD
 }
 func (m *ReportDetailListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ReportDetailListItem.Marshal(b, m, deterministic)
@@ -172,34 +371,193 @@ func (m *ReportDetailListItem) GetId() int64 {
 func (m *ReportDetailListItem) GetGwMac() string {
 	if m != nil {
 		return m.GwMac
+=======
+}
+func (m *ReportDetailListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportDetailListItem.Marshal(b, m, deterministic)
+}
+func (m *ReportDetailListItem) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportDetailListItem.Merge(m, src)
+}
+func (m *ReportDetailListItem) XXX_Size() int {
+	return xxx_messageInfo_ReportDetailListItem.Size(m)
+}
+func (m *ReportDetailListItem) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportDetailListItem.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportDetailListItem proto.InternalMessageInfo
+
+func (m *ReportDetailListItem) GetId() int64 {
+	if m != nil {
+		return m.Id
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
+<<<<<<< HEAD
 func (m *ReportDetailListItem) GetDevId() string {
 	if m != nil {
 		return m.DevId
+=======
+func (m *ReportDetailListItem) GetGwMac() string {
+	if m != nil {
+		return m.GwMac
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
+<<<<<<< HEAD
 func (m *ReportDetailListItem) GetDevEui() string {
 	if m != nil {
 		return m.DevEui
+=======
+func (m *ReportDetailListItem) GetDevId() string {
+	if m != nil {
+		return m.DevId
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetReportData() string {
+	if m != nil {
+		return m.ReportData
+=======
+func (m *ReportDetailListItem) GetDevEui() string {
+	if m != nil {
+		return m.DevEui
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetFrameLength() int32 {
+	if m != nil {
+		return m.FrameLength
+=======
 func (m *ReportDetailListItem) GetAmount() int64 {
 	if m != nil {
 		return m.Amount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetSn() int32 {
+	if m != nil {
+		return m.Sn
+=======
+func (m *ReportDetailListItem) GetReportTime() int64 {
+	if m != nil {
+		return m.ReportTime
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetFtp() string {
+	if m != nil {
+		return m.Ftp
+	}
+	return ""
+}
+
+func (m *ReportDetailListItem) GetVol() float64 {
+	if m != nil {
+		return m.Vol
+=======
+func (m *ReportDetailListItem) GetStatus() int32 {
+	if m != nil {
+		return m.Status
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetTpn() string {
+	if m != nil {
+		return m.Tpn
+=======
+func (m *ReportDetailListItem) GetAuthor() string {
+	if m != nil {
+		return m.Author
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetWaterVolume() float64 {
+	if m != nil {
+		return m.WaterVolume
+=======
+func (m *ReportDetailListItem) GetCreatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreatedAt
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetAmount() float64 {
+	if m != nil {
+		return m.Amount
+=======
+func (m *ReportDetailListItem) GetUpdatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdatedAt
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetSta() string {
+	if m != nil {
+		return m.Sta
+=======
+func (m *ReportDetailListItem) GetRemark() string {
+	if m != nil {
+		return m.Remark
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetVer() string {
+	if m != nil {
+		return m.Ver
+	}
+	return ""
+}
+
+func (m *ReportDetailListItem) GetCs() string {
+	if m != nil {
+		return m.Cs
+	}
+	return ""
 }
 
 func (m *ReportDetailListItem) GetReportTime() int64 {
 	if m != nil {
 		return m.ReportTime
+	}
+	return 0
+}
+
+func (m *ReportDetailListItem) GetReportDayId() int64 {
+	if m != nil {
+		return m.ReportDayId
 	}
 	return 0
 }
@@ -218,25 +576,64 @@ func (m *ReportDetailListItem) GetAuthor() string {
 	return ""
 }
 
-func (m *ReportDetailListItem) GetCreatedAt() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreatedAt
-	}
-	return nil
-}
-
-func (m *ReportDetailListItem) GetUpdatedAt() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdatedAt
-	}
-	return nil
-}
-
 func (m *ReportDetailListItem) GetRemark() string {
 	if m != nil {
 		return m.Remark
 	}
 	return ""
+}
+
+func (m *ReportDetailListItem) GetCreatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreatedAt
+=======
+type CreateReportDetailRequest struct {
+	// Test object to create.
+	ReportDetail         *ReportDetail `protobuf:"bytes,1,opt,name=reportDetail,proto3" json:"reportDetail,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *CreateReportDetailRequest) Reset()         { *m = CreateReportDetailRequest{} }
+func (m *CreateReportDetailRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateReportDetailRequest) ProtoMessage()    {}
+func (*CreateReportDetailRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_65b16394cb4ffda9, []int{2}
+}
+
+func (m *CreateReportDetailRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateReportDetailRequest.Unmarshal(m, b)
+}
+func (m *CreateReportDetailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateReportDetailRequest.Marshal(b, m, deterministic)
+}
+func (m *CreateReportDetailRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateReportDetailRequest.Merge(m, src)
+}
+func (m *CreateReportDetailRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateReportDetailRequest.Size(m)
+}
+func (m *CreateReportDetailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateReportDetailRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateReportDetailRequest proto.InternalMessageInfo
+
+func (m *CreateReportDetailRequest) GetReportDetail() *ReportDetail {
+	if m != nil {
+		return m.ReportDetail
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return nil
+}
+
+<<<<<<< HEAD
+func (m *ReportDetailListItem) GetUpdatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return nil
 }
 
 type CreateReportDetailRequest struct {
@@ -306,6 +703,35 @@ func (m *CreateReportDetailResponse) XXX_Merge(src proto.Message) {
 func (m *CreateReportDetailResponse) XXX_Size() int {
 	return xxx_messageInfo_CreateReportDetailResponse.Size(m)
 }
+=======
+type CreateReportDetailResponse struct {
+	// Test ID.
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateReportDetailResponse) Reset()         { *m = CreateReportDetailResponse{} }
+func (m *CreateReportDetailResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateReportDetailResponse) ProtoMessage()    {}
+func (*CreateReportDetailResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_65b16394cb4ffda9, []int{3}
+}
+
+func (m *CreateReportDetailResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateReportDetailResponse.Unmarshal(m, b)
+}
+func (m *CreateReportDetailResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateReportDetailResponse.Marshal(b, m, deterministic)
+}
+func (m *CreateReportDetailResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateReportDetailResponse.Merge(m, src)
+}
+func (m *CreateReportDetailResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateReportDetailResponse.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateReportDetailResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateReportDetailResponse.DiscardUnknown(m)
 }
@@ -342,6 +768,15 @@ func (m *GetReportDetailRequest) XXX_Marshal(b []byte, deterministic bool) ([]by
 }
 func (m *GetReportDetailRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GetReportDetailRequest.Merge(m, src)
+<<<<<<< HEAD
+=======
+}
+func (m *GetReportDetailRequest) XXX_Size() int {
+	return xxx_messageInfo_GetReportDetailRequest.Size(m)
+}
+func (m *GetReportDetailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetReportDetailRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GetReportDetailRequest) XXX_Size() int {
 	return xxx_messageInfo_GetReportDetailRequest.Size(m)
@@ -352,6 +787,11 @@ func (m *GetReportDetailRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetReportDetailRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_GetReportDetailRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetReportDetailRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -483,6 +923,12 @@ func (m *DeleteReportDetailRequest) XXX_Merge(src proto.Message) {
 }
 func (m *DeleteReportDetailRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteReportDetailRequest.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *DeleteReportDetailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteReportDetailRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DeleteReportDetailRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_DeleteReportDetailRequest.DiscardUnknown(m)
@@ -490,6 +936,11 @@ func (m *DeleteReportDetailRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteReportDetailRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_DeleteReportDetailRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DeleteReportDetailRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -525,6 +976,12 @@ func (m *ListReportDetailRequest) XXX_Merge(src proto.Message) {
 }
 func (m *ListReportDetailRequest) XXX_Size() int {
 	return xxx_messageInfo_ListReportDetailRequest.Size(m)
+<<<<<<< HEAD
+}
+func (m *ListReportDetailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListReportDetailRequest.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListReportDetailRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListReportDetailRequest.DiscardUnknown(m)
@@ -532,6 +989,11 @@ func (m *ListReportDetailRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListReportDetailRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_ListReportDetailRequest proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListReportDetailRequest) GetLimit() int64 {
 	if m != nil {
 		return m.Limit
@@ -571,6 +1033,15 @@ func (m *ListReportDetailResponse) XXX_Marshal(b []byte, deterministic bool) ([]
 }
 func (m *ListReportDetailResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ListReportDetailResponse.Merge(m, src)
+<<<<<<< HEAD
+=======
+}
+func (m *ListReportDetailResponse) XXX_Size() int {
+	return xxx_messageInfo_ListReportDetailResponse.Size(m)
+}
+func (m *ListReportDetailResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListReportDetailResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListReportDetailResponse) XXX_Size() int {
 	return xxx_messageInfo_ListReportDetailResponse.Size(m)
@@ -581,6 +1052,11 @@ func (m *ListReportDetailResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListReportDetailResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_ListReportDetailResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListReportDetailResponse) GetTotalCount() int64 {
 	if m != nil {
 		return m.TotalCount
@@ -613,6 +1089,63 @@ func init() {
 }
 
 var fileDescriptor_65b16394cb4ffda9 = []byte{
+<<<<<<< HEAD
+	// 865 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x56, 0xdd, 0x8e, 0xdb, 0x44,
+	0x14, 0x96, 0xe3, 0xdd, 0x94, 0x1d, 0x6f, 0x4b, 0x77, 0xba, 0xdd, 0xcc, 0xba, 0x2d, 0x49, 0x2d,
+	0x2e, 0x42, 0xa1, 0xb6, 0xd8, 0x0a, 0x21, 0xb8, 0xeb, 0x9f, 0x56, 0x2b, 0x15, 0xa9, 0x32, 0x85,
+	0x0b, 0x6e, 0xa2, 0x89, 0x3d, 0x49, 0x46, 0xb5, 0x3d, 0x5e, 0xcf, 0x71, 0x96, 0x15, 0xea, 0x0d,
+	0xaf, 0xc0, 0x15, 0x2f, 0xc4, 0x0b, 0xf0, 0x0a, 0xdc, 0x20, 0x5e, 0x02, 0xcd, 0x99, 0x09, 0x64,
+	0xf3, 0x23, 0x44, 0xc5, 0x15, 0xea, 0x5d, 0xce, 0x77, 0x3e, 0x7f, 0x67, 0xce, 0x77, 0x8e, 0x27,
+	0x26, 0x11, 0xd7, 0x89, 0xf8, 0x1e, 0x44, 0x53, 0xf1, 0x22, 0xe1, 0xb5, 0x4c, 0x1a, 0x51, 0xab,
+	0x06, 0x9e, 0x09, 0xe0, 0xb2, 0x88, 0xeb, 0x46, 0x81, 0xa2, 0x3e, 0xaf, 0x65, 0x78, 0x77, 0xaa,
+	0xd4, 0xb4, 0x10, 0xc8, 0xe1, 0x55, 0xa5, 0x80, 0x83, 0x54, 0x95, 0xb6, 0x94, 0xb0, 0xef, 0xb2,
+	0x18, 0x8d, 0xdb, 0x49, 0x02, 0xb2, 0x14, 0x1a, 0x78, 0x59, 0x3b, 0xc2, 0x9d, 0x55, 0x82, 0x28,
+	0x6b, 0xb8, 0xb4, 0xc9, 0xe8, 0x0f, 0x9f, 0xec, 0xa7, 0x4b, 0x75, 0xe9, 0x0d, 0xd2, 0x91, 0x39,
+	0xf3, 0x06, 0xde, 0xd0, 0x4f, 0x3b, 0x32, 0xa7, 0xb7, 0x49, 0x77, 0x7a, 0x31, 0x2a, 0x79, 0xc6,
+	0x3a, 0x03, 0x6f, 0xb8, 0x97, 0xee, 0x4e, 0x2f, 0xbe, 0xe2, 0x99, 0x81, 0x73, 0x31, 0x1f, 0xc9,
+	0x9c, 0xf9, 0x16, 0xce, 0xc5, 0xfc, 0x2c, 0xa7, 0x3d, 0x72, 0xcd, 0xc0, 0xa2, 0x95, 0x6c, 0x07,
+	0x71, 0xc3, 0x7a, 0xde, 0x4a, 0xda, 0x27, 0x81, 0x6d, 0x6f, 0x94, 0x73, 0xe0, 0x6c, 0x17, 0x93,
+	0xc4, 0x75, 0xcc, 0x81, 0xd3, 0xfb, 0x64, 0x7f, 0xd2, 0xf0, 0x52, 0x8c, 0x0a, 0x51, 0x4d, 0x61,
+	0xc6, 0xba, 0x03, 0x6f, 0xb8, 0x9b, 0x06, 0x88, 0xbd, 0x40, 0xc8, 0x1c, 0x4d, 0x57, 0xec, 0x1a,
+	0x26, 0x3a, 0xba, 0xa2, 0x37, 0x89, 0x3f, 0x81, 0x9a, 0xbd, 0x87, 0x5a, 0xe6, 0xa7, 0x41, 0xe6,
+	0xaa, 0x60, 0x7b, 0x03, 0x6f, 0xe8, 0xa5, 0xe6, 0xa7, 0x41, 0xa0, 0xae, 0x18, 0xb1, 0x1c, 0xa8,
+	0x2b, 0x53, 0xe8, 0x82, 0x83, 0x68, 0x46, 0x73, 0x55, 0xb4, 0xa5, 0x60, 0x01, 0x92, 0x03, 0xc4,
+	0xbe, 0x45, 0x88, 0x1e, 0x91, 0x2e, 0x2f, 0x55, 0x5b, 0x01, 0xdb, 0xc7, 0xa4, 0x8b, 0x8c, 0x98,
+	0x06, 0xce, 0xae, 0x5b, 0x31, 0x0d, 0x1c, 0x0b, 0x8a, 0x86, 0xdd, 0xb0, 0xc8, 0x5c, 0x34, 0xe6,
+	0x90, 0x99, 0x66, 0xef, 0x23, 0xd0, 0xc9, 0xf4, 0x52, 0xe3, 0x66, 0x2e, 0xec, 0x26, 0x1a, 0xeb,
+	0x1a, 0x7f, 0x25, 0x4b, 0x41, 0x23, 0x72, 0xfd, 0x2f, 0x67, 0x2e, 0x8d, 0xa1, 0x07, 0x48, 0x09,
+	0x16, 0xde, 0x5c, 0x9e, 0xe5, 0xe6, 0x40, 0x1a, 0x38, 0xb4, 0x9a, 0x51, 0xec, 0xde, 0x45, 0x78,
+	0xd0, 0x16, 0x66, 0xaa, 0x61, 0xb7, 0xac, 0xdb, 0x36, 0x32, 0x78, 0x23, 0x4a, 0xde, 0xbc, 0x66,
+	0x87, 0x16, 0xb7, 0x51, 0xf4, 0xfb, 0x0e, 0x39, 0x5c, 0x9e, 0xf6, 0x0b, 0xa9, 0xe1, 0x0c, 0x44,
+	0xf9, 0x6e, 0xea, 0xff, 0xe3, 0xa9, 0xd3, 0x2f, 0x08, 0xc9, 0x1a, 0xc1, 0x41, 0xe4, 0x23, 0x0e,
+	0xec, 0xf6, 0xc0, 0x1b, 0x06, 0x27, 0x61, 0x6c, 0x6f, 0x85, 0x78, 0x71, 0x2b, 0xc4, 0xaf, 0x16,
+	0xd7, 0x46, 0xba, 0xe7, 0xd8, 0x8f, 0xc1, 0x3c, 0xda, 0xd6, 0xf9, 0xe2, 0xd1, 0xa3, 0x7f, 0x7e,
+	0xd4, 0xb1, 0x1f, 0x43, 0x94, 0x92, 0xe3, 0xa7, 0xa8, 0xb3, 0xbc, 0x70, 0xa9, 0x38, 0x6f, 0x85,
+	0x06, 0xfa, 0x19, 0xd9, 0x5f, 0xbe, 0xed, 0x70, 0xf3, 0x82, 0x93, 0x83, 0x98, 0xd7, 0x32, 0xbe,
+	0xc2, 0xbf, 0x42, 0x8b, 0x3e, 0x21, 0xe1, 0x26, 0x4d, 0x5d, 0xab, 0x4a, 0x8b, 0xd5, 0x25, 0x8e,
+	0x86, 0xe4, 0xe8, 0x54, 0xc0, 0xa6, 0xf2, 0xab, 0xcc, 0x5f, 0x3c, 0xd2, 0x5b, 0xa3, 0x3a, 0xd5,
+	0xb7, 0x3b, 0xea, 0x8a, 0xe9, 0x9d, 0xb7, 0x37, 0xdd, 0xff, 0x97, 0xa6, 0x7f, 0x83, 0xc1, 0x7f,
+	0x68, 0xfa, 0xc7, 0xe4, 0xf8, 0x99, 0x28, 0xc4, 0x66, 0xcd, 0x55, 0x27, 0x4f, 0x49, 0xcf, 0x5c,
+	0x2a, 0x9b, 0xa8, 0x87, 0x64, 0xb7, 0x90, 0xa5, 0x04, 0xc7, 0xb6, 0x81, 0x59, 0x5a, 0x35, 0x99,
+	0x68, 0x61, 0x3d, 0xf2, 0x53, 0x17, 0x45, 0x15, 0x61, 0xeb, 0x42, 0x6e, 0x24, 0x7d, 0x12, 0x80,
+	0x02, 0x5e, 0x8c, 0x32, 0x7c, 0x5d, 0xad, 0x1e, 0x41, 0xe8, 0x29, 0xbe, 0xb2, 0x9f, 0x9a, 0x37,
+	0x41, 0xb7, 0x85, 0x11, 0xf5, 0x87, 0xc1, 0xc9, 0xf1, 0x5a, 0x8f, 0x8b, 0x9b, 0x2f, 0x75, 0xc4,
+	0x93, 0x9f, 0x77, 0xc8, 0xad, 0x65, 0xc2, 0xd7, 0xa2, 0x99, 0xcb, 0x4c, 0xd0, 0x19, 0xe9, 0xda,
+	0x95, 0xa3, 0x1f, 0xa0, 0xc8, 0xd6, 0x9d, 0x0e, 0xfb, 0x5b, 0xf3, 0xf6, 0xd8, 0xd1, 0xbd, 0x1f,
+	0x7f, 0xfd, 0xed, 0xa7, 0x4e, 0x2f, 0xa2, 0x4b, 0xff, 0xf6, 0x0f, 0x73, 0xe4, 0x7c, 0xe9, 0x3d,
+	0xa0, 0x9c, 0xf8, 0xa7, 0x02, 0xe8, 0x1d, 0x94, 0xd9, 0xbc, 0xb8, 0xe1, 0xdd, 0xcd, 0x49, 0x57,
+	0xa0, 0x8f, 0x05, 0x8e, 0x69, 0x6f, 0xbd, 0x40, 0xf2, 0x83, 0xcc, 0xdf, 0xd0, 0x73, 0xd2, 0xb5,
+	0xeb, 0xe1, 0x9a, 0xd9, 0xba, 0x2b, 0xe1, 0xd1, 0xda, 0xbe, 0x3d, 0x37, 0x5f, 0x0d, 0x51, 0x82,
+	0x25, 0x3e, 0x0a, 0x3f, 0xdc, 0x54, 0xe2, 0xca, 0x07, 0x8c, 0xcc, 0xdf, 0xd8, 0xae, 0xba, 0x76,
+	0x7b, 0x5c, 0xc9, 0xad, 0xab, 0xb4, 0xb5, 0xa4, 0xeb, 0xea, 0xc1, 0xd6, 0xae, 0x46, 0x64, 0xc7,
+	0x8c, 0x93, 0x5a, 0x73, 0xb6, 0xac, 0x5f, 0x78, 0x6f, 0x4b, 0xd6, 0x79, 0x17, 0x62, 0x95, 0x43,
+	0xba, 0x61, 0x38, 0x4f, 0xce, 0xc9, 0x7d, 0xa9, 0xe2, 0x6c, 0x26, 0x9b, 0x5a, 0x03, 0xcf, 0x5e,
+	0xa3, 0x12, 0xd7, 0xf1, 0xe2, 0xeb, 0xcd, 0xc4, 0x4f, 0x0e, 0x96, 0x65, 0x5f, 0x9a, 0x16, 0x5e,
+	0x7a, 0xdf, 0x7d, 0x3e, 0x95, 0x30, 0x6b, 0xc7, 0x71, 0xa6, 0xca, 0x64, 0xdc, 0xa8, 0x8c, 0xf3,
+	0x26, 0xf9, 0x5b, 0xe7, 0xa1, 0x29, 0x35, 0x55, 0xc9, 0xfc, 0x51, 0xb2, 0xf2, 0x2d, 0x38, 0xee,
+	0xa2, 0x09, 0x8f, 0xfe, 0x0c, 0x00, 0x00, 0xff, 0xff, 0x4e, 0xcb, 0xe9, 0x11, 0x25, 0x0a, 0x00,
+=======
 	// 721 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x55, 0xcd, 0x6e, 0xd3, 0x4a,
 	0x14, 0x96, 0x93, 0x26, 0xbd, 0x3d, 0xa9, 0xae, 0xd4, 0xb9, 0xbd, 0x8d, 0xe3, 0xb6, 0x37, 0xb9,
@@ -659,6 +1192,7 @@ var fileDescriptor_65b16394cb4ffda9 = []byte{
 	0xcc, 0x78, 0xfb, 0x6c, 0x4c, 0xf9, 0x24, 0x1f, 0x39, 0x3e, 0x8b, 0xdc, 0x51, 0xca, 0x7c, 0x8c,
 	0x53, 0xf7, 0x07, 0xcf, 0xae, 0x90, 0x1a, 0x33, 0x77, 0xba, 0xe7, 0xce, 0xfd, 0xd1, 0x47, 0x4d,
 	0x39, 0x84, 0xbd, 0xef, 0x01, 0x00, 0x00, 0xff, 0xff, 0x5a, 0x58, 0x05, 0x0c, 0xeb, 0x07, 0x00,
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	0x00,
 }
 

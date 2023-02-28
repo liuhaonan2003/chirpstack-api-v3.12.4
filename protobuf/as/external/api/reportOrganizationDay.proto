@@ -1,0 +1,219 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportOrganizationDayProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ReportDetailService is the service managing test.
+service ReportOrganizationDayService {
+  // Create creates report-day.
+  rpc Create(CreateReportOrganizationDayRequest) returns (CreateReportOrganizationDayResponse) {
+    option(google.api.http) = {
+      post: "/api/report-organization-day"
+      body: "*"
+    };
+  }
+
+  // Get returns the report-day matching the given id.
+  rpc Get(GetReportOrganizationDayRequest) returns (GetReportOrganizationDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-day/{id}"
+    };
+  }
+
+  // Update updates the given report-day.
+  rpc Update(UpdateReportOrganizationDayRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/report-organization-day/{reportOrganizationDay.id}"
+      body: "*"
+    };
+  }
+
+  // Delete deletes the report-day matching the given id.
+  rpc Delete(DeleteReportOrganizationDayRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/report-organization-day/{id}"
+    };
+  };
+
+  // List lists the available report-Day.
+  rpc List(ListReportOrganizationDayRequest) returns (ListReportOrganizationDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-day"
+    };
+  }
+
+  // cumulativeAmount 获取给定组织的累计用水量
+  rpc CumulativeAmount(CumulativeAmountReportDayRequest) returns (CumulativeAmountReportDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-day/{organization_id}/cumulative_amount"
+    };
+  }
+
+  // cumulativeAmount 获取给定组织的指定日的日用水量
+  rpc DayConsumption(ConsumptionReportDayRequest) returns (ConsumptionReportDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-day/{organization_id}/day-consumption"
+    };
+  }
+
+  // MonthConsumption 获取给定组织指定月的用水量.考虑到未到月尾，月统计表还未生成，故需在天统计表累加
+  rpc MonthConsumption(MonthConsumptionReportDayRequest) returns (MonthConsumptionReportDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-day/{organization_id}/month-consumption"
+    };
+  }
+
+  // cumulativeAmount 获取给定组织指定年份的用水量.理由同上。不过需要先获取当前月份之前的月份的累加，然后在加上剩下的不满月的
+  rpc YearConsumption(YearConsumptionReportDayRequest) returns (YearConsumptionReportDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-day/{organization_id}/year-consumption"
+    };
+  }
+}
+
+
+
+
+message ReportOrganizationDay {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  int64  organization_id =3;  //	组织编号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+  int64 report_week_id = 10;//组织设备周统计关联
+  int64 report_month_id = 11;//组织设计月统计关联
+  int32 status = 12;//是否审核0、否1、是>=2、无效
+  string author=13;
+  string remark  = 16;
+}
+
+message ReportOrganizationDayListItem {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  int64  organization_id =3;  //	组织编号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+  int64 report_week_id = 10;//组织设备周统计关联
+  int64 report_month_id = 11;//组织设计月统计关联
+  int32 status = 12;//是否审核0、否1、是>=2、无效
+
+  string author=13;
+  string remark  = 16;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 14;
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 15;
+
+}
+
+message CreateReportOrganizationDayRequest {
+  // Test object to create.
+  ReportOrganizationDay reportOrganizationDay = 1;
+}
+
+message CreateReportOrganizationDayResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportOrganizationDayRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportOrganizationDayResponse {
+  // Test object.
+  ReportOrganizationDay reportOrganizationDay = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateReportOrganizationDayRequest {
+  // Test object to update.
+  ReportOrganizationDay reportOrganizationDay = 1;
+}
+
+message DeleteReportOrganizationDayRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListReportOrganizationDayRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+}
+
+message ListReportOrganizationDayResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportOrganizationDayListItem result = 2;
+}
+
+message ConsumptionReportDayRequest {
+  // Total number of test.
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+  int64 organization_id = 4;
+}
+message ConsumptionReportDayResponse {
+  // Total number of test.
+  double total_amount = 1;
+}
+
+message MonthConsumptionReportDayRequest {
+  // Total number of test.
+  int32 year = 1;
+  int32 month = 2;
+  int64 organization_id = 4;
+}
+message MonthConsumptionReportDayResponse {
+  // Total number of test.
+  double total_amount = 1;
+}
+
+message YearConsumptionReportDayRequest {
+  // Total number of test.
+  int32 year = 1;
+  int64 organization_id = 4;
+}
+message YearConsumptionReportDayResponse {
+  // Total number of test.
+  double total_amount = 1;
+}
+
+
+message CumulativeAmountReportDayRequest {
+  // Total number of test.
+  int64 organization_id = 1;
+}
+message CumulativeAmountReportDayResponse {
+  // Total number of test.
+  double totalAmount = 1;
+}

@@ -188,9 +188,42 @@
         ]
       }
     },
+    "/api/modules/{parent}/get-all-tree": {
+      "get": {
+        "summary": "GetMenu 获取所有节点，不受权限控制",
+        "operationId": "GetAllTree",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetMenuModulesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "parent",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "isShowValid",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "ModulesService"
+        ]
+      }
+    },
     "/api/modules/{parent}/get-menu": {
       "get": {
-        "summary": "GetMenu 获取菜单层级信息",
+        "summary": "GetMenu 获取菜单层级信息，受权限控制",
         "operationId": "GetMenu",
         "responses": {
           "200": {

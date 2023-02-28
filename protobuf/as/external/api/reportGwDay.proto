@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportGwDayProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ReportDetailService is the service managing test.
+service ReportGwDayService {
+  // Create creates report-day.
+  rpc Create(CreateReportGwDayRequest) returns (CreateReportGwDayResponse) {
+    option(google.api.http) = {
+      post: "/api/report-gw-day"
+      body: "*"
+    };
+  }
+
+  // Get returns the report-day matching the given id.
+  rpc Get(GetReportGwDayRequest) returns (GetReportGwDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-gw-day/{id}"
+    };
+  }
+
+  // Update updates the given report-day.
+  rpc Update(UpdateReportGwDayRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/report-gw-day/{reportGwDay.id}"
+      body: "*"
+    };
+  }
+
+  // Delete deletes the report-day matching the given id.
+  rpc Delete(DeleteReportGwDayRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/report-gw-day/{id}"
+    };
+  };
+
+  // List lists the available report-Day.
+  rpc List(ListReportGwDayRequest) returns (ListReportGwDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-gw-day"
+    };
+  }
+}
+
+
+
+
+message ReportGwDay {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string  gw_mac =3;  //	网关序列号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+
+  int32 status = 10;//是否审核0、否1、是>=2、无效
+  string author=11;
+  string remark  = 14;
+}
+
+message ReportGwDayListItem {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string  gw_mac =3;  //	网关序列号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+
+  int32 status = 10;//是否审核0、否1、是>=2、无效
+  string author=11;
+  string remark  = 14;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 12;
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 13;
+
+}
+
+message CreateReportGwDayRequest {
+  // Test object to create.
+  ReportGwDay reportGwDay = 1;
+}
+
+message CreateReportGwDayResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportGwDayRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportGwDayResponse {
+  // Test object.
+  ReportGwDay reportGwDay = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateReportGwDayRequest {
+  // Test object to update.
+  ReportGwDay reportGwDay = 1;
+}
+
+message DeleteReportGwDayRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListReportGwDayRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+}
+
+message ListReportGwDayResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportGwDayListItem result = 2;
+}

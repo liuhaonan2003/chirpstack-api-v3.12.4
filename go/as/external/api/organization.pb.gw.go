@@ -277,6 +277,26 @@ func local_request_OrganizationService_Delete_0(ctx context.Context, marshaler r
 }
 
 var (
+	filter_OrganizationService_GetOrganizationCount_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_OrganizationService_GetOrganizationCount_0(ctx context.Context, marshaler runtime.Marshaler, client OrganizationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListOrganizationRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_OrganizationService_GetOrganizationCount_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.GetOrganizationCount(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+var (
 	filter_OrganizationService_ListUsers_0 = &utilities.DoubleArray{Encoding: map[string]int{"organization_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
@@ -621,8 +641,13 @@ func request_OrganizationService_DeleteUser_0(ctx context.Context, marshaler run
 
 }
 
+<<<<<<< HEAD
+func request_OrganizationService_DeviceView_0(ctx context.Context, marshaler runtime.Marshaler, client OrganizationServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeviceViewOrganizationRequest
+=======
 func local_request_OrganizationService_DeleteUser_0(ctx context.Context, marshaler runtime.Marshaler, server OrganizationServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteOrganizationUserRequest
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -643,6 +668,9 @@ func local_request_OrganizationService_DeleteUser_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "organization_id", err)
 	}
 
+<<<<<<< HEAD
+	msg, err := client.DeviceView(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+=======
 	val, ok = pathParams["user_id"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
@@ -655,10 +683,13 @@ func local_request_OrganizationService_DeleteUser_0(ctx context.Context, marshal
 	}
 
 	msg, err := server.DeleteUser(ctx, &protoReq)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	return msg, metadata, err
 
 }
 
+<<<<<<< HEAD
+=======
 // RegisterOrganizationServiceHandlerServer registers the http handlers for service OrganizationService to "mux".
 // UnaryRPC     :call OrganizationServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
@@ -867,6 +898,7 @@ func RegisterOrganizationServiceHandlerServer(ctx context.Context, mux *runtime.
 	return nil
 }
 
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 // RegisterOrganizationServiceHandlerFromEndpoint is same as RegisterOrganizationServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterOrganizationServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
@@ -1005,6 +1037,26 @@ func RegisterOrganizationServiceHandlerClient(ctx context.Context, mux *runtime.
 
 	})
 
+	mux.Handle("GET", pattern_OrganizationService_GetOrganizationCount_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_OrganizationService_GetOrganizationCount_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_OrganizationService_GetOrganizationCount_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("GET", pattern_OrganizationService_ListUsers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -1105,6 +1157,26 @@ func RegisterOrganizationServiceHandlerClient(ctx context.Context, mux *runtime.
 
 	})
 
+	mux.Handle("GET", pattern_OrganizationService_DeviceView_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_OrganizationService_DeviceView_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_OrganizationService_DeviceView_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
@@ -1119,6 +1191,8 @@ var (
 
 	pattern_OrganizationService_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "organizations", "id"}, "", runtime.AssumeColonVerbOpt(true)))
 
+	pattern_OrganizationService_GetOrganizationCount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "organizations-count"}, "", runtime.AssumeColonVerbOpt(true)))
+
 	pattern_OrganizationService_ListUsers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "organizations", "organization_id", "users"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_OrganizationService_GetUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "organizations", "organization_id", "users", "user_id"}, "", runtime.AssumeColonVerbOpt(true)))
@@ -1128,6 +1202,8 @@ var (
 	pattern_OrganizationService_UpdateUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "organizations", "organization_user.organization_id", "users", "organization_user.user_id"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_OrganizationService_DeleteUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "organizations", "organization_id", "users", "user_id"}, "", runtime.AssumeColonVerbOpt(true)))
+
+	pattern_OrganizationService_DeviceView_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "organizations", "organization_id", "device-view"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
@@ -1141,6 +1217,8 @@ var (
 
 	forward_OrganizationService_Delete_0 = runtime.ForwardResponseMessage
 
+	forward_OrganizationService_GetOrganizationCount_0 = runtime.ForwardResponseMessage
+
 	forward_OrganizationService_ListUsers_0 = runtime.ForwardResponseMessage
 
 	forward_OrganizationService_GetUser_0 = runtime.ForwardResponseMessage
@@ -1150,4 +1228,6 @@ var (
 	forward_OrganizationService_UpdateUser_0 = runtime.ForwardResponseMessage
 
 	forward_OrganizationService_DeleteUser_0 = runtime.ForwardResponseMessage
+
+	forward_OrganizationService_DeviceView_0 = runtime.ForwardResponseMessage
 )

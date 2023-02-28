@@ -58,7 +58,11 @@ type SmsTemplate struct {
 	CreatedAt *timestamp.Timestamp `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
 	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+<<<<<<< HEAD
+	//备注
+=======
 	// 备注
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Remark               string   `protobuf:"bytes,16,opt,name=remark,proto3" json:"remark,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

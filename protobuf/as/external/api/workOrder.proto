@@ -50,6 +50,21 @@ service WorkOrderService {
             get: "/api/work-order"
         };
     }
+    // SetPersonWorkOrderRequest updates the Person
+    rpc SetPerson(SetPersonWorkOrderRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/work-order/{id}/personal"
+            body: "*"
+        };
+    }
+
+    // SetStatus updates the status
+    rpc SetStatus(SetStatusWorkOrderRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/work-order/{id}/status"
+            body: "*"
+        };
+    }
 }
 
 message WorkOrder {
@@ -136,4 +151,15 @@ message ListWorkOrderResponse {
 
     // WorkOrder within the result-set.
     repeated WorkOrderListItem result = 2;
+}
+message SetPersonWorkOrderRequest {
+    // Total number of work-order.
+    int64 id = 1;
+    string service_personal = 2;
+}
+
+message SetStatusWorkOrderRequest {
+    // Total number of work-order.
+    int64 id = 1;
+    int32 status = 2;
 }

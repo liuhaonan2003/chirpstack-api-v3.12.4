@@ -66,6 +66,12 @@ func (m *APIKey) XXX_Merge(src proto.Message) {
 }
 func (m *APIKey) XXX_Size() int {
 	return xxx_messageInfo_APIKey.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *APIKey) XXX_DiscardUnknown() {
+	xxx_messageInfo_APIKey.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *APIKey) XXX_DiscardUnknown() {
 	xxx_messageInfo_APIKey.DiscardUnknown(m)
@@ -73,6 +79,11 @@ func (m *APIKey) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_APIKey proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_APIKey proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *APIKey) GetId() string {
 	if m != nil {
 		return m.Id
@@ -131,10 +142,17 @@ func (m *CreateAPIKeyRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 }
 func (m *CreateAPIKeyRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_CreateAPIKeyRequest.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *CreateAPIKeyRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateAPIKeyRequest.Size(m)
 }
+=======
+}
+func (m *CreateAPIKeyRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateAPIKeyRequest.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateAPIKeyRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateAPIKeyRequest.DiscardUnknown(m)
 }
@@ -176,6 +194,12 @@ func (m *CreateAPIKeyResponse) XXX_Merge(src proto.Message) {
 }
 func (m *CreateAPIKeyResponse) XXX_Size() int {
 	return xxx_messageInfo_CreateAPIKeyResponse.Size(m)
+<<<<<<< HEAD
+}
+func (m *CreateAPIKeyResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAPIKeyResponse.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *CreateAPIKeyResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateAPIKeyResponse.DiscardUnknown(m)
@@ -183,6 +207,11 @@ func (m *CreateAPIKeyResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateAPIKeyResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_CreateAPIKeyResponse proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateAPIKeyResponse) GetId() string {
 	if m != nil {
 		return m.Id
@@ -223,6 +252,12 @@ func (m *DeleteAPIKeyRequest) XXX_Merge(src proto.Message) {
 }
 func (m *DeleteAPIKeyRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteAPIKeyRequest.Size(m)
+<<<<<<< HEAD
+}
+func (m *DeleteAPIKeyRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAPIKeyRequest.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DeleteAPIKeyRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_DeleteAPIKeyRequest.DiscardUnknown(m)
@@ -230,6 +265,11 @@ func (m *DeleteAPIKeyRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteAPIKeyRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_DeleteAPIKeyRequest proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DeleteAPIKeyRequest) GetId() string {
 	if m != nil {
 		return m.Id
@@ -268,10 +308,17 @@ func (m *ListAPIKeysRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 }
 func (m *ListAPIKeysRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ListAPIKeysRequest.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *ListAPIKeysRequest) XXX_Size() int {
 	return xxx_messageInfo_ListAPIKeysRequest.Size(m)
 }
+=======
+}
+func (m *ListAPIKeysRequest) XXX_Size() int {
+	return xxx_messageInfo_ListAPIKeysRequest.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListAPIKeysRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListAPIKeysRequest.DiscardUnknown(m)
 }
@@ -340,6 +387,12 @@ func (m *ListAPIKeysResponse) XXX_Merge(src proto.Message) {
 }
 func (m *ListAPIKeysResponse) XXX_Size() int {
 	return xxx_messageInfo_ListAPIKeysResponse.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *ListAPIKeysResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListAPIKeysResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListAPIKeysResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListAPIKeysResponse.DiscardUnknown(m)
@@ -347,6 +400,11 @@ func (m *ListAPIKeysResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListAPIKeysResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_ListAPIKeysResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListAPIKeysResponse) GetTotalCount() int64 {
 	if m != nil {
 		return m.TotalCount
@@ -399,10 +457,17 @@ func (m *OrganizationLink) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 }
 func (m *OrganizationLink) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_OrganizationLink.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *OrganizationLink) XXX_Size() int {
 	return xxx_messageInfo_OrganizationLink.Size(m)
 }
+=======
+}
+func (m *OrganizationLink) XXX_Size() int {
+	return xxx_messageInfo_OrganizationLink.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *OrganizationLink) XXX_DiscardUnknown() {
 	xxx_messageInfo_OrganizationLink.DiscardUnknown(m)
 }
@@ -546,10 +611,17 @@ func (m *LoginResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 }
 func (m *LoginResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_LoginResponse.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *LoginResponse) XXX_Size() int {
 	return xxx_messageInfo_LoginResponse.Size(m)
 }
+=======
+}
+func (m *LoginResponse) XXX_Size() int {
+	return xxx_messageInfo_LoginResponse.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *LoginResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_LoginResponse.DiscardUnknown(m)
 }
@@ -564,14 +636,22 @@ func (m *LoginResponse) GetJwt() string {
 }
 
 type RegisterRequest struct {
+<<<<<<< HEAD
+	//用户名，必须存在
+=======
 	// 用户名，必须存在
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	Phone    string `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
 	Email    string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	// 真实姓名
 	Realname    string `protobuf:"bytes,4,opt,name=realname,proto3" json:"realname,omitempty"`
 	CompanyName string `protobuf:"bytes,5,opt,name=company_name,json=companyName,proto3" json:"company_name,omitempty"`
+<<<<<<< HEAD
+	//帐户类型1、企业帐户2、个人帐户
+=======
 	// 帐户类型1、企业帐户2、个人帐户
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Type                 int32    `protobuf:"varint,6,opt,name=type,proto3" json:"type,omitempty"`
 	Password             string   `protobuf:"bytes,7,opt,name=password,proto3" json:"password,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -678,6 +758,12 @@ func (m *RegisterResponse) XXX_Merge(src proto.Message) {
 }
 func (m *RegisterResponse) XXX_Size() int {
 	return xxx_messageInfo_RegisterResponse.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *RegisterResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RegisterResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *RegisterResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_RegisterResponse.DiscardUnknown(m)
@@ -685,6 +771,11 @@ func (m *RegisterResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RegisterResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_RegisterResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *RegisterResponse) GetId() string {
 	if m != nil {
 		return m.Id
@@ -756,11 +847,19 @@ func (m *ForgetPasswordRequest) GetPassword() string {
 }
 
 type GetCodeRequest struct {
+<<<<<<< HEAD
+	//账号类型1、phone2、email
+=======
 	// 账号类型1、phone2、email
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Type int32 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
 	// 账户
 	Account string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
+<<<<<<< HEAD
+	//模板编码:字符串，模板规则标识，可表示余额模板、密码模板等,存疑，是否需向前端隐藏信息模板的配置
+=======
 	// 模板编码:字符串，模板规则标识，可表示余额模板、密码模板等,存疑，是否需向前端隐藏信息模板的配置
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	TemplateMark         string   `protobuf:"bytes,3,opt,name=template_mark,json=templateMark,proto3" json:"template_mark,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -785,6 +884,12 @@ func (m *GetCodeRequest) XXX_Merge(src proto.Message) {
 }
 func (m *GetCodeRequest) XXX_Size() int {
 	return xxx_messageInfo_GetCodeRequest.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *GetCodeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetCodeRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GetCodeRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_GetCodeRequest.DiscardUnknown(m)
@@ -792,6 +897,11 @@ func (m *GetCodeRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetCodeRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_GetCodeRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetCodeRequest) GetType() int32 {
 	if m != nil {
 		return m.Type
@@ -814,7 +924,11 @@ func (m *GetCodeRequest) GetTemplateMark() string {
 }
 
 type GetCountdownRequest struct {
+<<<<<<< HEAD
+	//下次可发送的倒计秒数
+=======
 	// 下次可发送的倒计秒数
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	TemplateMark         string   `protobuf:"bytes,1,opt,name=template_mark,json=templateMark,proto3" json:"template_mark,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -854,7 +968,11 @@ func (m *GetCountdownRequest) GetTemplateMark() string {
 }
 
 type GetCountdownResponse struct {
+<<<<<<< HEAD
+	//下次可发送的倒计秒数
+=======
 	// 下次可发送的倒计秒数
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Countdown            int32    `protobuf:"varint,1,opt,name=countdown,proto3" json:"countdown,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -894,10 +1012,17 @@ func (m *GetCountdownResponse) GetCountdown() int32 {
 }
 
 type CreatCodeRequest struct {
+<<<<<<< HEAD
+	//账号类型1、phone2、email
+	Type    int32  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	Account string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
+	//模板编码:字符串，模板规则标识，可表示余额模板、密码模板等
+=======
 	// 账号类型1、phone2、email
 	Type    int32  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
 	Account string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
 	// 模板编码:字符串，模板规则标识，可表示余额模板、密码模板等
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	TemplateMark         string   `protobuf:"bytes,3,opt,name=template_mark,json=templateMark,proto3" json:"template_mark,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -951,9 +1076,15 @@ func (m *CreatCodeRequest) GetTemplateMark() string {
 }
 
 type CreatCodeResponse struct {
+<<<<<<< HEAD
+	//验证码
+	Codes string `protobuf:"bytes,1,opt,name=codes,proto3" json:"codes,omitempty"`
+	//过期时间
+=======
 	// 验证码
 	Codes string `protobuf:"bytes,1,opt,name=codes,proto3" json:"codes,omitempty"`
 	// 过期时间
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Expires              string   `protobuf:"bytes,2,opt,name=expires,proto3" json:"expires,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -978,6 +1109,12 @@ func (m *CreatCodeResponse) XXX_Merge(src proto.Message) {
 }
 func (m *CreatCodeResponse) XXX_Size() int {
 	return xxx_messageInfo_CreatCodeResponse.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *CreatCodeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreatCodeResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *CreatCodeResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreatCodeResponse.DiscardUnknown(m)
@@ -985,6 +1122,11 @@ func (m *CreatCodeResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreatCodeResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_CreatCodeResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreatCodeResponse) GetCodes() string {
 	if m != nil {
 		return m.Codes
@@ -1000,10 +1142,17 @@ func (m *CreatCodeResponse) GetExpires() string {
 }
 
 type VerifyCodeRequest struct {
+<<<<<<< HEAD
+	//手机号、邮箱号
+	Type    int32  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	Account string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
+	//短信码
+=======
 	// 手机号、邮箱号
 	Type    int32  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
 	Account string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
 	// 短信码
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Verify               string   `protobuf:"bytes,3,opt,name=verify,proto3" json:"verify,omitempty"`
 	TemplateMark         string   `protobuf:"bytes,4,opt,name=template_mark,json=templateMark,proto3" json:"template_mark,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1026,6 +1175,15 @@ func (m *VerifyCodeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 }
 func (m *VerifyCodeRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_VerifyCodeRequest.Merge(m, src)
+<<<<<<< HEAD
+}
+func (m *VerifyCodeRequest) XXX_Size() int {
+	return xxx_messageInfo_VerifyCodeRequest.Size(m)
+}
+func (m *VerifyCodeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_VerifyCodeRequest.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *VerifyCodeRequest) XXX_Size() int {
 	return xxx_messageInfo_VerifyCodeRequest.Size(m)
@@ -1036,6 +1194,11 @@ func (m *VerifyCodeRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_VerifyCodeRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_VerifyCodeRequest proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *VerifyCodeRequest) GetType() int32 {
 	if m != nil {
 		return m.Type
@@ -1086,10 +1249,17 @@ func (m *VerifyCodeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 }
 func (m *VerifyCodeResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_VerifyCodeResponse.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *VerifyCodeResponse) XXX_Size() int {
 	return xxx_messageInfo_VerifyCodeResponse.Size(m)
 }
+=======
+}
+func (m *VerifyCodeResponse) XXX_Size() int {
+	return xxx_messageInfo_VerifyCodeResponse.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *VerifyCodeResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_VerifyCodeResponse.DiscardUnknown(m)
 }
@@ -1104,9 +1274,15 @@ func (m *VerifyCodeResponse) GetId() string {
 }
 
 type VerifyLoginPermissionRequest struct {
+<<<<<<< HEAD
+	//手机号、邮箱号
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	//短信码
+=======
 	// 手机号、邮箱号
 	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	// 短信码
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Api                  string   `protobuf:"bytes,2,opt,name=api,proto3" json:"api,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1342,6 +1518,12 @@ func (m *GlobalSearchResult) XXX_Merge(src proto.Message) {
 }
 func (m *GlobalSearchResult) XXX_Size() int {
 	return xxx_messageInfo_GlobalSearchResult.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *GlobalSearchResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_GlobalSearchResult.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GlobalSearchResult) XXX_DiscardUnknown() {
 	xxx_messageInfo_GlobalSearchResult.DiscardUnknown(m)
@@ -1349,6 +1531,11 @@ func (m *GlobalSearchResult) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GlobalSearchResult proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_GlobalSearchResult proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GlobalSearchResult) GetKind() string {
 	if m != nil {
 		return m.Kind
@@ -1447,6 +1634,12 @@ func (m *SettingsResponse) XXX_Merge(src proto.Message) {
 }
 func (m *SettingsResponse) XXX_Size() int {
 	return xxx_messageInfo_SettingsResponse.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *SettingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SettingsResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *SettingsResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_SettingsResponse.DiscardUnknown(m)
@@ -1454,6 +1647,11 @@ func (m *SettingsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SettingsResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_SettingsResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *SettingsResponse) GetBranding() *Branding {
 	if m != nil {
 		return m.Branding
@@ -1549,6 +1747,12 @@ func (m *OpenIDConnect) XXX_Merge(src proto.Message) {
 }
 func (m *OpenIDConnect) XXX_Size() int {
 	return xxx_messageInfo_OpenIDConnect.Size(m)
+<<<<<<< HEAD
+}
+func (m *OpenIDConnect) XXX_DiscardUnknown() {
+	xxx_messageInfo_OpenIDConnect.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *OpenIDConnect) XXX_DiscardUnknown() {
 	xxx_messageInfo_OpenIDConnect.DiscardUnknown(m)
@@ -1556,6 +1760,11 @@ func (m *OpenIDConnect) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_OpenIDConnect proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_OpenIDConnect proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *OpenIDConnect) GetEnabled() bool {
 	if m != nil {
 		return m.Enabled
@@ -1656,6 +1865,15 @@ func (m *OpenIDConnectLoginResponse) XXX_Marshal(b []byte, deterministic bool) (
 }
 func (m *OpenIDConnectLoginResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_OpenIDConnectLoginResponse.Merge(m, src)
+<<<<<<< HEAD
+}
+func (m *OpenIDConnectLoginResponse) XXX_Size() int {
+	return xxx_messageInfo_OpenIDConnectLoginResponse.Size(m)
+}
+func (m *OpenIDConnectLoginResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_OpenIDConnectLoginResponse.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *OpenIDConnectLoginResponse) XXX_Size() int {
 	return xxx_messageInfo_OpenIDConnectLoginResponse.Size(m)
@@ -1666,6 +1884,11 @@ func (m *OpenIDConnectLoginResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_OpenIDConnectLoginResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_OpenIDConnectLoginResponse proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *OpenIDConnectLoginResponse) GetJwtToken() string {
 	if m != nil {
 		return m.JwtToken
@@ -1743,10 +1966,17 @@ func (m *GetDevicesSummaryResponse) XXX_Marshal(b []byte, deterministic bool) ([
 }
 func (m *GetDevicesSummaryResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GetDevicesSummaryResponse.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *GetDevicesSummaryResponse) XXX_Size() int {
 	return xxx_messageInfo_GetDevicesSummaryResponse.Size(m)
 }
+=======
+}
+func (m *GetDevicesSummaryResponse) XXX_Size() int {
+	return xxx_messageInfo_GetDevicesSummaryResponse.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetDevicesSummaryResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_GetDevicesSummaryResponse.DiscardUnknown(m)
 }
@@ -1804,10 +2034,17 @@ func (m *GetGatewaysSummaryRequest) XXX_Marshal(b []byte, deterministic bool) ([
 }
 func (m *GetGatewaysSummaryRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GetGatewaysSummaryRequest.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *GetGatewaysSummaryRequest) XXX_Size() int {
 	return xxx_messageInfo_GetGatewaysSummaryRequest.Size(m)
 }
+=======
+}
+func (m *GetGatewaysSummaryRequest) XXX_Size() int {
+	return xxx_messageInfo_GetGatewaysSummaryRequest.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetGatewaysSummaryRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_GetGatewaysSummaryRequest.DiscardUnknown(m)
 }
@@ -1831,6 +2068,7 @@ type GetGatewaysSummaryResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
+<<<<<<< HEAD
 }
 
 func (m *GetGatewaysSummaryResponse) Reset()         { *m = GetGatewaysSummaryResponse{} }
@@ -1879,6 +2117,164 @@ func (m *GetGatewaysSummaryResponse) GetNeverSeenCount() uint32 {
 	return 0
 }
 
+type GetReginSummaryRequest struct {
+	ProvinceId           int32    `protobuf:"varint,1,opt,name=province_id,json=provinceId,proto3" json:"province_id,omitempty"`
+	CityId               int32    `protobuf:"varint,2,opt,name=city_id,json=cityId,proto3" json:"city_id,omitempty"`
+	AreaId               int32    `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetReginSummaryRequest) Reset()         { *m = GetReginSummaryRequest{} }
+func (m *GetReginSummaryRequest) String() string { return proto.CompactTextString(m) }
+func (*GetReginSummaryRequest) ProtoMessage()    {}
+func (*GetReginSummaryRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2d2de8ef40b5c6ca, []int{33}
+}
+
+func (m *GetReginSummaryRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetReginSummaryRequest.Unmarshal(m, b)
+}
+func (m *GetReginSummaryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetReginSummaryRequest.Marshal(b, m, deterministic)
+}
+func (m *GetReginSummaryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetReginSummaryRequest.Merge(m, src)
+}
+func (m *GetReginSummaryRequest) XXX_Size() int {
+	return xxx_messageInfo_GetReginSummaryRequest.Size(m)
+}
+func (m *GetReginSummaryRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetReginSummaryRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetReginSummaryRequest proto.InternalMessageInfo
+
+func (m *GetReginSummaryRequest) GetProvinceId() int32 {
+	if m != nil {
+		return m.ProvinceId
+	}
+	return 0
+}
+
+func (m *GetReginSummaryRequest) GetCityId() int32 {
+	if m != nil {
+		return m.CityId
+	}
+	return 0
+=======
+}
+
+func (m *GetGatewaysSummaryResponse) Reset()         { *m = GetGatewaysSummaryResponse{} }
+func (m *GetGatewaysSummaryResponse) String() string { return proto.CompactTextString(m) }
+func (*GetGatewaysSummaryResponse) ProtoMessage()    {}
+func (*GetGatewaysSummaryResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2d2de8ef40b5c6ca, []int{32}
+}
+
+func (m *GetGatewaysSummaryResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetGatewaysSummaryResponse.Unmarshal(m, b)
+}
+func (m *GetGatewaysSummaryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetGatewaysSummaryResponse.Marshal(b, m, deterministic)
+}
+func (m *GetGatewaysSummaryResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetGatewaysSummaryResponse.Merge(m, src)
+}
+func (m *GetGatewaysSummaryResponse) XXX_Size() int {
+	return xxx_messageInfo_GetGatewaysSummaryResponse.Size(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+}
+func (m *GetGatewaysSummaryResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetGatewaysSummaryResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetGatewaysSummaryResponse proto.InternalMessageInfo
+
+<<<<<<< HEAD
+func (m *GetReginSummaryRequest) GetAreaId() int32 {
+	if m != nil {
+		return m.AreaId
+=======
+func (m *GetGatewaysSummaryResponse) GetActiveCount() uint32 {
+	if m != nil {
+		return m.ActiveCount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+type GetReginSummaryResponse struct {
+	OrganizationCount    int64    `protobuf:"varint,1,opt,name=organizationCount,proto3" json:"organizationCount,omitempty"`
+	GateWayCount         int64    `protobuf:"varint,2,opt,name=gateWayCount,proto3" json:"gateWayCount,omitempty"`
+	DeviceCount          int64    `protobuf:"varint,3,opt,name=deviceCount,proto3" json:"deviceCount,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetReginSummaryResponse) Reset()         { *m = GetReginSummaryResponse{} }
+func (m *GetReginSummaryResponse) String() string { return proto.CompactTextString(m) }
+func (*GetReginSummaryResponse) ProtoMessage()    {}
+func (*GetReginSummaryResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2d2de8ef40b5c6ca, []int{34}
+}
+
+func (m *GetReginSummaryResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetReginSummaryResponse.Unmarshal(m, b)
+}
+func (m *GetReginSummaryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetReginSummaryResponse.Marshal(b, m, deterministic)
+}
+func (m *GetReginSummaryResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetReginSummaryResponse.Merge(m, src)
+}
+func (m *GetReginSummaryResponse) XXX_Size() int {
+	return xxx_messageInfo_GetReginSummaryResponse.Size(m)
+}
+func (m *GetReginSummaryResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetReginSummaryResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetReginSummaryResponse proto.InternalMessageInfo
+
+func (m *GetReginSummaryResponse) GetOrganizationCount() int64 {
+	if m != nil {
+		return m.OrganizationCount
+=======
+func (m *GetGatewaysSummaryResponse) GetInactiveCount() uint32 {
+	if m != nil {
+		return m.InactiveCount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *GetReginSummaryResponse) GetGateWayCount() int64 {
+	if m != nil {
+		return m.GateWayCount
+=======
+func (m *GetGatewaysSummaryResponse) GetNeverSeenCount() uint32 {
+	if m != nil {
+		return m.NeverSeenCount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *GetReginSummaryResponse) GetDeviceCount() int64 {
+	if m != nil {
+		return m.DeviceCount
+	}
+	return 0
+}
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func init() {
 	proto.RegisterType((*APIKey)(nil), "api.APIKey")
 	proto.RegisterType((*CreateAPIKeyRequest)(nil), "api.CreateAPIKeyRequest")
@@ -1914,6 +2310,11 @@ func init() {
 	proto.RegisterMapType((map[uint32]uint32)(nil), "api.GetDevicesSummaryResponse.DrCountEntry")
 	proto.RegisterType((*GetGatewaysSummaryRequest)(nil), "api.GetGatewaysSummaryRequest")
 	proto.RegisterType((*GetGatewaysSummaryResponse)(nil), "api.GetGatewaysSummaryResponse")
+<<<<<<< HEAD
+	proto.RegisterType((*GetReginSummaryRequest)(nil), "api.GetReginSummaryRequest")
+	proto.RegisterType((*GetReginSummaryResponse)(nil), "api.GetReginSummaryResponse")
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 func init() {
@@ -1921,6 +2322,139 @@ func init() {
 }
 
 var fileDescriptor_2d2de8ef40b5c6ca = []byte{
+<<<<<<< HEAD
+	// 2069 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x58, 0xcd, 0x6e, 0x1b, 0xc9,
+	0x11, 0x06, 0x49, 0x91, 0x22, 0x8b, 0x3f, 0x92, 0x5a, 0x7f, 0x14, 0xf5, 0x3f, 0xb6, 0x37, 0xf6,
+	0x6e, 0x44, 0x02, 0xda, 0x00, 0x89, 0xbd, 0x27, 0x99, 0xb2, 0x05, 0x61, 0xb5, 0x1b, 0x61, 0xb4,
+	0xde, 0x20, 0x9b, 0x03, 0xdd, 0x9a, 0x69, 0x51, 0x6d, 0x91, 0x33, 0x93, 0x99, 0xa6, 0x64, 0x26,
+	0xd8, 0x1c, 0x72, 0xc8, 0x2d, 0x40, 0x80, 0x3d, 0xe4, 0x29, 0xf2, 0x1e, 0x01, 0x72, 0x0c, 0x90,
+	0x27, 0xc8, 0x0b, 0xe4, 0x0d, 0x82, 0xae, 0xee, 0xa6, 0x66, 0x86, 0x43, 0xdb, 0x30, 0x92, 0xbd,
+	0xb1, 0xaa, 0x6b, 0xea, 0xab, 0xae, 0xae, 0xae, 0xfa, 0xd8, 0xb0, 0x43, 0xa3, 0x0e, 0x7b, 0x2b,
+	0x58, 0xe8, 0xd1, 0x41, 0x87, 0x06, 0xbc, 0xc3, 0x3d, 0x25, 0xb4, 0x83, 0xd0, 0x17, 0x3e, 0x29,
+	0xd0, 0x80, 0xb7, 0xb6, 0xfa, 0xbe, 0xdf, 0x1f, 0x30, 0x5c, 0xa7, 0x9e, 0xe7, 0x0b, 0x2a, 0xb8,
+	0xef, 0x45, 0xca, 0xa4, 0xb5, 0xab, 0x57, 0x51, 0xba, 0x1c, 0x5d, 0x75, 0x04, 0x1f, 0xb2, 0x48,
+	0xd0, 0x61, 0xa0, 0x0d, 0x36, 0xd3, 0x06, 0x6c, 0x18, 0x88, 0xb1, 0x5e, 0x6c, 0xa5, 0x03, 0x18,
+	0x45, 0x2c, 0x54, 0x6b, 0xd6, 0x5f, 0x73, 0x50, 0x3a, 0x3a, 0x3f, 0xfd, 0x92, 0x8d, 0x49, 0x03,
+	0xf2, 0xdc, 0x6d, 0xe6, 0xf6, 0x72, 0x8f, 0x2b, 0x76, 0x9e, 0xbb, 0x84, 0xc0, 0x9c, 0x47, 0x87,
+	0xac, 0x99, 0x47, 0x0d, 0xfe, 0x26, 0x1b, 0x50, 0xe6, 0x51, 0x8f, 0xba, 0x43, 0xee, 0x35, 0x0b,
+	0x7b, 0xb9, 0xc7, 0x65, 0x7b, 0x9e, 0x47, 0x47, 0x52, 0x24, 0x3f, 0x81, 0x05, 0x3f, 0xec, 0x53,
+	0x8f, 0xff, 0x0e, 0x43, 0xef, 0x71, 0xb7, 0x39, 0xb7, 0x97, 0x7b, 0x5c, 0xb0, 0x1b, 0x71, 0xf5,
+	0xe9, 0x31, 0x79, 0x04, 0x0d, 0x1a, 0x04, 0x03, 0xee, 0x4c, 0xec, 0x8a, 0x68, 0x57, 0x8f, 0x69,
+	0x4f, 0x8f, 0xad, 0x2f, 0x60, 0xb9, 0x1b, 0x32, 0x2a, 0x98, 0x0a, 0xcf, 0x66, 0xbf, 0x1d, 0xb1,
+	0x48, 0x90, 0x87, 0x30, 0x4f, 0x03, 0xde, 0xbb, 0x61, 0x63, 0x0c, 0xb5, 0x7a, 0x58, 0x6d, 0xd3,
+	0x80, 0xb7, 0xb5, 0x51, 0x89, 0x06, 0xfc, 0x4b, 0x36, 0xb6, 0xba, 0xb0, 0x92, 0xfc, 0x38, 0x0a,
+	0x7c, 0x2f, 0x62, 0x53, 0x7b, 0xdc, 0x84, 0xca, 0x9b, 0x3b, 0xd1, 0x13, 0xfe, 0x0d, 0xf3, 0xf4,
+	0x46, 0xcb, 0x6f, 0xee, 0xc4, 0x37, 0x52, 0xb6, 0x1e, 0xc1, 0xf2, 0x31, 0x1b, 0xb0, 0x74, 0x04,
+	0x29, 0x1f, 0xd6, 0xdf, 0x72, 0x40, 0xce, 0x78, 0x24, 0x94, 0x55, 0x64, 0xcc, 0x56, 0xa0, 0x38,
+	0xe0, 0x43, 0x2e, 0xd0, 0xb2, 0x60, 0x2b, 0x81, 0xac, 0x41, 0xc9, 0xbf, 0xba, 0x8a, 0x98, 0x40,
+	0xb4, 0x82, 0xad, 0xa5, 0x1f, 0x33, 0xb1, 0xbf, 0x81, 0xe5, 0x44, 0xb8, 0x3a, 0x35, 0xbb, 0x50,
+	0x15, 0xbe, 0xa0, 0x83, 0x9e, 0xe3, 0x8f, 0x3c, 0x13, 0x35, 0xa0, 0xaa, 0x2b, 0x35, 0xe4, 0x01,
+	0x94, 0x42, 0x16, 0x8d, 0x06, 0x32, 0xf4, 0xc2, 0x54, 0xe2, 0xd5, 0x92, 0xf5, 0x8f, 0x3c, 0x2c,
+	0xfe, 0x32, 0x16, 0xd6, 0x19, 0xf7, 0x6e, 0xb2, 0x76, 0x90, 0xcb, 0xdc, 0xc1, 0x67, 0xb0, 0x94,
+	0x30, 0x8c, 0xd5, 0xdf, 0x62, 0x7c, 0xe1, 0xeb, 0xf7, 0xd4, 0xe2, 0x27, 0xb0, 0xc0, 0xa3, 0x9e,
+	0xcb, 0x6e, 0xb9, 0xc3, 0xb4, 0x45, 0x09, 0x2d, 0xea, 0x3c, 0x3a, 0x46, 0xad, 0xb2, 0x7b, 0x0c,
+	0x8b, 0x3c, 0xea, 0xf5, 0xa9, 0x60, 0x77, 0x74, 0xac, 0x0d, 0xe7, 0xd1, 0xb0, 0xc1, 0xa3, 0x13,
+	0xa5, 0x56, 0x96, 0x4f, 0x01, 0x1c, 0x2c, 0x28, 0xb7, 0x47, 0x05, 0xe6, 0xbf, 0x7a, 0xd8, 0x6a,
+	0xab, 0x5b, 0xd7, 0x36, 0xb7, 0xae, 0xfd, 0x8d, 0xb9, 0x96, 0x76, 0x45, 0x5b, 0x1f, 0x09, 0xf9,
+	0xe9, 0x28, 0x70, 0xcd, 0xa7, 0xc5, 0xf7, 0x7f, 0xaa, 0xad, 0x8f, 0x84, 0x15, 0x42, 0xed, 0xcc,
+	0xef, 0x73, 0xcf, 0xd4, 0x14, 0x81, 0x39, 0x31, 0x0e, 0x18, 0x66, 0xaf, 0x68, 0xe3, 0x6f, 0xd2,
+	0x82, 0xb2, 0xbc, 0xcf, 0xb1, 0x54, 0x4d, 0x64, 0xb9, 0x16, 0xd0, 0x28, 0xba, 0xf3, 0x43, 0x17,
+	0x53, 0x54, 0xb1, 0x27, 0xb2, 0xac, 0xc4, 0x5b, 0x16, 0xf2, 0xab, 0x31, 0xee, 0xa6, 0x62, 0x6b,
+	0xc9, 0xda, 0x87, 0xba, 0xc6, 0xd4, 0x85, 0xb1, 0x08, 0x85, 0x37, 0x77, 0x42, 0x17, 0xbc, 0xfc,
+	0x69, 0xfd, 0x3d, 0x07, 0x0b, 0x36, 0xeb, 0xf3, 0x48, 0xb0, 0xd0, 0x84, 0x16, 0x0f, 0x23, 0x97,
+	0x0a, 0x63, 0x05, 0x8a, 0xc1, 0xb5, 0xef, 0x99, 0xf8, 0x94, 0x20, 0xb5, 0x6c, 0x48, 0xf9, 0x40,
+	0x47, 0xa6, 0x04, 0xe9, 0x27, 0x64, 0x74, 0x80, 0x7e, 0x54, 0x60, 0x13, 0x99, 0xec, 0x43, 0xcd,
+	0xf1, 0x87, 0x01, 0xf5, 0xc6, 0xaa, 0x32, 0x8a, 0xb8, 0x5e, 0xd5, 0x3a, 0x2c, 0x0a, 0x93, 0xa1,
+	0x52, 0x32, 0x43, 0x93, 0x2c, 0xcc, 0x27, 0xb3, 0x60, 0x59, 0xb0, 0x78, 0xbf, 0x93, 0xec, 0x26,
+	0x61, 0x8d, 0x61, 0xf5, 0xa5, 0x1f, 0xf6, 0x99, 0x38, 0xd7, 0x5f, 0xbd, 0xeb, 0x38, 0x9a, 0x30,
+	0x4f, 0x1d, 0x75, 0x85, 0xd4, 0x6e, 0x8d, 0x18, 0x4b, 0x78, 0x21, 0x9e, 0xf0, 0x44, 0x78, 0x73,
+	0xa9, 0xf0, 0x1c, 0x68, 0x9c, 0x30, 0xd1, 0xf5, 0x5d, 0xf6, 0x71, 0x98, 0x0f, 0xa0, 0x2e, 0xd8,
+	0x30, 0x18, 0x50, 0xc1, 0x7a, 0x43, 0x1a, 0xde, 0x68, 0xe8, 0x9a, 0x51, 0x7e, 0x45, 0xc3, 0x1b,
+	0xeb, 0x19, 0x2c, 0x23, 0xc8, 0xc8, 0x13, 0xae, 0x7f, 0x37, 0x29, 0xb6, 0xa9, 0x6f, 0x73, 0x19,
+	0xdf, 0xfe, 0x0c, 0x56, 0x92, 0xdf, 0xea, 0x1c, 0x6e, 0x41, 0xc5, 0x31, 0x4a, 0x1d, 0xeb, 0xbd,
+	0xc2, 0x62, 0xb0, 0x88, 0xed, 0xf9, 0xff, 0xbc, 0xb1, 0x2e, 0x2c, 0xc5, 0x60, 0x74, 0x64, 0x2b,
+	0x50, 0x74, 0x7c, 0x97, 0x45, 0x7a, 0x3b, 0x4a, 0x90, 0x48, 0xec, 0x6d, 0xc0, 0x43, 0x16, 0x19,
+	0x24, 0x2d, 0x5a, 0x7f, 0x80, 0xa5, 0x6f, 0xf1, 0xa0, 0x3e, 0x3e, 0xd8, 0x59, 0x27, 0x3f, 0xb5,
+	0x89, 0xb9, 0x8c, 0x4d, 0x3c, 0x04, 0x12, 0xc7, 0x9f, 0x51, 0xa3, 0x2f, 0x61, 0x4b, 0x59, 0xe1,
+	0xdd, 0x3d, 0x67, 0xe1, 0x90, 0x47, 0x11, 0xf7, 0xbd, 0xd8, 0x34, 0x52, 0x43, 0x4e, 0xef, 0x1a,
+	0x05, 0x79, 0xb5, 0x69, 0xc0, 0x75, 0xb8, 0xf2, 0xa7, 0x35, 0x84, 0x85, 0xf3, 0xd0, 0xbf, 0xe2,
+	0x83, 0x7b, 0xa8, 0x6d, 0x98, 0x93, 0x37, 0x59, 0x8f, 0xdb, 0x0a, 0x76, 0xfd, 0x57, 0x11, 0x0b,
+	0x6d, 0x54, 0x93, 0x2f, 0xa0, 0x1e, 0x6f, 0xcd, 0x51, 0xb3, 0x80, 0xd3, 0x61, 0x15, 0xed, 0xd2,
+	0xa3, 0xc0, 0x4e, 0xda, 0xca, 0x59, 0x74, 0x32, 0xf0, 0x2f, 0xe9, 0xe0, 0x82, 0xd1, 0xd0, 0xb9,
+	0x36, 0xd1, 0xae, 0x41, 0x29, 0x42, 0x85, 0x0e, 0x57, 0x4b, 0xf7, 0x33, 0x35, 0x9f, 0x3d, 0x53,
+	0x0b, 0xf1, 0x99, 0x6a, 0x9d, 0xc0, 0x4a, 0xd2, 0xb9, 0xde, 0x50, 0x67, 0x32, 0xc8, 0x72, 0x18,
+	0xea, 0x3a, 0x86, 0x9a, 0x32, 0x1d, 0x0d, 0xc4, 0x64, 0xa8, 0xfd, 0x27, 0x0f, 0x64, 0x7a, 0x59,
+	0x16, 0xc1, 0x0d, 0xf7, 0xcc, 0x29, 0xe0, 0x6f, 0x19, 0x61, 0xe4, 0xf8, 0xa1, 0x6a, 0x75, 0x79,
+	0x5b, 0x09, 0x59, 0x03, 0xb0, 0xf0, 0xe1, 0x03, 0x70, 0x6e, 0xc6, 0x00, 0xfc, 0xb0, 0x79, 0x4f,
+	0x9e, 0xc0, 0x62, 0xdc, 0x0c, 0x5d, 0x96, 0xd0, 0xe5, 0x42, 0x4c, 0x8f, 0x1e, 0x1f, 0x42, 0x43,
+	0x0f, 0x4d, 0x97, 0xdd, 0xf6, 0xd8, 0x88, 0xeb, 0x7e, 0x59, 0x53, 0xda, 0x63, 0x76, 0xfb, 0xe2,
+	0xd5, 0xa9, 0x64, 0x0a, 0xda, 0x0a, 0x7d, 0x95, 0xd1, 0x04, 0x94, 0x0a, 0xdd, 0xec, 0x42, 0xd5,
+	0xcc, 0xd4, 0x21, 0x75, 0x9a, 0x15, 0x65, 0xa0, 0x55, 0x5f, 0x1d, 0x75, 0x65, 0x23, 0x37, 0x06,
+	0xe8, 0x02, 0x54, 0x23, 0xd7, 0x3a, 0xe9, 0xc3, 0x7a, 0x0b, 0x8b, 0x17, 0x4c, 0x08, 0xee, 0xf5,
+	0xef, 0x29, 0xca, 0x13, 0x28, 0x5f, 0x86, 0xd4, 0x73, 0xb9, 0xd7, 0xc7, 0xfc, 0x56, 0x0f, 0xeb,
+	0x78, 0x74, 0xcf, 0xb5, 0xd2, 0x9e, 0x2c, 0x93, 0xa7, 0xd0, 0xf0, 0x03, 0xe6, 0x71, 0xb7, 0xe7,
+	0xf8, 0x9e, 0xc7, 0x1c, 0x55, 0x1b, 0xd5, 0x43, 0xa2, 0xca, 0x32, 0x60, 0xde, 0xe9, 0x71, 0x57,
+	0xad, 0xd8, 0x75, 0x65, 0xa9, 0x45, 0xeb, 0x25, 0x94, 0x8d, 0x43, 0x62, 0x41, 0x2d, 0xc4, 0xf1,
+	0x10, 0x62, 0x92, 0x4c, 0x0b, 0x8c, 0xeb, 0x64, 0xf9, 0x5d, 0xf9, 0xbe, 0x60, 0xa1, 0xbe, 0x47,
+	0x5a, 0xb2, 0xfe, 0x94, 0x83, 0x7a, 0x02, 0x08, 0x9b, 0x8c, 0x47, 0x2f, 0x07, 0x4c, 0xd5, 0x4c,
+	0xd9, 0x36, 0xa2, 0xe4, 0xa1, 0x03, 0x79, 0x71, 0x7b, 0xa3, 0x70, 0x60, 0xa6, 0x38, 0x2a, 0x5e,
+	0xd9, 0x67, 0x32, 0x9d, 0x6a, 0x71, 0x40, 0x2f, 0x99, 0x19, 0x97, 0x80, 0xaa, 0x33, 0xa9, 0x21,
+	0xdb, 0x20, 0x25, 0x7f, 0x24, 0xf0, 0x73, 0x55, 0x2e, 0x15, 0xa5, 0x79, 0x65, 0x9f, 0x59, 0x2f,
+	0x60, 0x23, 0x11, 0x47, 0x9a, 0x52, 0xc8, 0x0e, 0x68, 0x8a, 0x58, 0xfe, 0xc6, 0x22, 0x16, 0x54,
+	0x4c, 0xe6, 0x35, 0x0a, 0xd6, 0x53, 0x68, 0x65, 0xb9, 0xd1, 0x67, 0x93, 0x60, 0xd2, 0xb9, 0x14,
+	0x93, 0xee, 0x42, 0xf3, 0x84, 0x09, 0xc5, 0xbc, 0xa2, 0x8b, 0xd1, 0x70, 0x48, 0xc3, 0x09, 0x9d,
+	0xfe, 0x50, 0x72, 0x68, 0xfd, 0x90, 0x87, 0x8d, 0x0c, 0x2f, 0x1a, 0x7f, 0x1f, 0x6a, 0xd4, 0x11,
+	0xfc, 0x96, 0xc5, 0xf8, 0x6b, 0xdd, 0xae, 0x2a, 0x9d, 0x22, 0xb0, 0x8f, 0xa0, 0xc1, 0xbd, 0x84,
+	0x51, 0x1e, 0x8d, 0xea, 0x46, 0xab, 0xcc, 0x5e, 0x42, 0xd9, 0x0d, 0xb5, 0x81, 0xea, 0x65, 0x9f,
+	0xa9, 0x06, 0x31, 0x0b, 0xbb, 0x7d, 0x1c, 0xe2, 0x97, 0x2f, 0x3c, 0x11, 0x8e, 0xed, 0x79, 0x57,
+	0x49, 0x92, 0x5c, 0x7a, 0xec, 0x96, 0x85, 0xbd, 0x88, 0x31, 0x4f, 0xfb, 0x9b, 0x43, 0xc0, 0x06,
+	0xea, 0x2f, 0x18, 0xf3, 0xd0, 0xb2, 0xf5, 0x0c, 0x6a, 0x71, 0x17, 0xb2, 0x2d, 0x9b, 0xff, 0x37,
+	0x75, 0x5b, 0xfe, 0x94, 0x27, 0x72, 0x4b, 0x07, 0x23, 0xa6, 0x23, 0x56, 0xc2, 0xb3, 0xfc, 0x2f,
+	0x72, 0xd6, 0x31, 0x26, 0x45, 0x73, 0xd5, 0x8f, 0xce, 0xed, 0x5f, 0x72, 0xd0, 0xca, 0x72, 0xf3,
+	0x3f, 0x4f, 0x6e, 0x56, 0x52, 0x0a, 0x59, 0x49, 0xb1, 0x6e, 0x60, 0xed, 0x84, 0x09, 0x49, 0xce,
+	0xbc, 0xd4, 0xae, 0x76, 0xa1, 0x1a, 0x84, 0xfe, 0x2d, 0xf7, 0x1c, 0x66, 0x76, 0x54, 0xb4, 0xc1,
+	0xa8, 0x4e, 0x5d, 0xb2, 0x0e, 0xf3, 0x0e, 0x17, 0x63, 0xb9, 0x98, 0xc7, 0xc5, 0x92, 0x14, 0xd5,
+	0x02, 0x0d, 0x19, 0x35, 0xfd, 0xb7, 0x68, 0x97, 0xa4, 0x78, 0xea, 0x5a, 0x7f, 0xce, 0xc1, 0xfa,
+	0x14, 0x9a, 0xde, 0xfc, 0x4f, 0x93, 0x3d, 0xb9, 0x1b, 0xfb, 0x7b, 0x34, 0xbd, 0x20, 0x3b, 0x86,
+	0x6c, 0x63, 0xbf, 0xa2, 0xe3, 0xee, 0x24, 0x0b, 0x05, 0x3b, 0xa1, 0x23, 0x7b, 0xa6, 0x81, 0x76,
+	0x27, 0xfb, 0x2f, 0xd8, 0x71, 0xd5, 0xe1, 0xbf, 0x1a, 0xb0, 0x70, 0xaa, 0x9f, 0x09, 0x2e, 0x58,
+	0x28, 0x17, 0xc8, 0xd7, 0x50, 0xc4, 0x2b, 0x47, 0x96, 0xb0, 0x1c, 0xe3, 0xb7, 0xb8, 0x45, 0xe2,
+	0x2a, 0x15, 0xb7, 0xb5, 0xf3, 0xc7, 0x7f, 0xfe, 0xfb, 0x87, 0x7c, 0xd3, 0x5a, 0x4e, 0x3c, 0x3a,
+	0x74, 0xb0, 0x6f, 0x3c, 0xcb, 0x7d, 0x4a, 0xbe, 0x83, 0xb2, 0xa1, 0xbe, 0x64, 0x05, 0xbf, 0x4f,
+	0x71, 0xfa, 0xd6, 0x6a, 0x4a, 0xab, 0x1d, 0xef, 0xa3, 0xe3, 0x4d, 0x6b, 0x2d, 0xe9, 0x38, 0xd4,
+	0x76, 0xd2, 0x77, 0x1f, 0x1a, 0x49, 0xca, 0x4c, 0x5a, 0xe8, 0x2b, 0x93, 0x47, 0xb7, 0xd6, 0xa6,
+	0xfe, 0x0d, 0xbd, 0x18, 0x06, 0x62, 0x3c, 0x0b, 0xc8, 0xb0, 0x63, 0x09, 0xf4, 0x2d, 0xcc, 0x6b,
+	0x82, 0x4c, 0x96, 0xcd, 0x2d, 0x8d, 0x11, 0xb5, 0x99, 0xae, 0x75, 0x72, 0x48, 0xca, 0x75, 0x9f,
+	0x89, 0x03, 0x6c, 0x81, 0xd7, 0x50, 0x8b, 0xf3, 0x5a, 0xd2, 0xbc, 0x77, 0x9e, 0xa4, 0xc9, 0xad,
+	0x8d, 0x8c, 0x15, 0x9d, 0xa8, 0x07, 0x08, 0xb2, 0x4d, 0x36, 0xb3, 0x40, 0x8c, 0xe7, 0xd7, 0x50,
+	0x99, 0x90, 0x54, 0xa2, 0x32, 0x9e, 0xe6, 0xc6, 0xad, 0xb5, 0xb4, 0x5a, 0x03, 0x3c, 0x44, 0x80,
+	0x1d, 0x6b, 0x23, 0x09, 0xa0, 0xfe, 0x7b, 0xe2, 0x46, 0x64, 0x8e, 0x5e, 0x03, 0xdc, 0x33, 0x48,
+	0xa2, 0x7c, 0x4d, 0x51, 0xda, 0xd6, 0xfa, 0x94, 0x3e, 0x79, 0xdc, 0x24, 0x0d, 0xe2, 0xbb, 0xec,
+	0x40, 0x13, 0xd9, 0x11, 0xac, 0x66, 0xb2, 0x4f, 0xb2, 0x1f, 0x73, 0x9a, 0xcd, 0x4c, 0xdf, 0x77,
+	0xf8, 0x69, 0x58, 0x85, 0x78, 0x40, 0x47, 0xe2, 0x5a, 0x1e, 0xbe, 0x26, 0xab, 0x64, 0x86, 0x97,
+	0x96, 0x2a, 0xec, 0x14, 0xa5, 0xb5, 0xb6, 0xd1, 0xf7, 0x3a, 0x59, 0x4d, 0x15, 0x96, 0x76, 0x46,
+	0xa1, 0x16, 0xa7, 0x7b, 0xe6, 0xf0, 0xa7, 0x89, 0xaa, 0x39, 0xfc, 0x0c, 0x96, 0x69, 0x6d, 0x21,
+	0xc6, 0x1a, 0x59, 0x49, 0x62, 0x68, 0x26, 0x7b, 0x05, 0xb5, 0xf8, 0x03, 0x95, 0x86, 0xc8, 0x78,
+	0xf0, 0xd2, 0x10, 0x59, 0xaf, 0x59, 0xb3, 0xee, 0x07, 0x0d, 0xf8, 0xc1, 0x0d, 0x1b, 0x47, 0xf2,
+	0xec, 0x19, 0xd4, 0xe2, 0x6f, 0x58, 0x1a, 0x27, 0xe3, 0x59, 0x6b, 0xe6, 0x39, 0xe8, 0x22, 0xfe,
+	0x74, 0x33, 0x1b, 0xa4, 0xf3, 0x7b, 0xee, 0x7e, 0x4f, 0x5e, 0x43, 0x35, 0xf6, 0xa6, 0x44, 0x54,
+	0x2d, 0x4d, 0x3f, 0x8a, 0xb5, 0x9a, 0xd3, 0x0b, 0xc9, 0x6e, 0x45, 0x66, 0xec, 0x85, 0xfc, 0x1a,
+	0xca, 0x86, 0x0f, 0xce, 0x3c, 0x6c, 0x75, 0x7b, 0xd2, 0xb4, 0x71, 0x96, 0xeb, 0xc8, 0xb8, 0xbb,
+	0x03, 0x32, 0x4d, 0x6c, 0xc8, 0xce, 0x34, 0x53, 0x4c, 0xb4, 0xdc, 0xdd, 0x99, 0xeb, 0x1a, 0x76,
+	0x0f, 0x61, 0x5b, 0xa4, 0x99, 0x84, 0xf5, 0xb9, 0xeb, 0xa8, 0x26, 0x4c, 0xc6, 0xb0, 0x34, 0x45,
+	0x2a, 0xc8, 0xf6, 0x2c, 0xb2, 0xa1, 0x60, 0x77, 0xde, 0xcd, 0x45, 0xac, 0x47, 0x88, 0xba, 0x4b,
+	0xb6, 0x93, 0xa8, 0x6a, 0xb8, 0x44, 0x9d, 0x48, 0xa3, 0x7c, 0x0f, 0x64, 0x7a, 0xde, 0x93, 0x89,
+	0xf3, 0x6c, 0x3e, 0xa1, 0xf7, 0x3c, 0x9b, 0x28, 0x58, 0x9f, 0x20, 0xfa, 0x1e, 0xd9, 0x49, 0x75,
+	0x3c, 0x6d, 0x3e, 0x81, 0xbf, 0x83, 0x85, 0xd4, 0xb8, 0x25, 0x9b, 0xc6, 0x77, 0xc6, 0xc8, 0x6f,
+	0x6d, 0x65, 0x2f, 0x6a, 0xd4, 0x27, 0x88, 0xfa, 0x80, 0xec, 0x4f, 0x0f, 0x24, 0xdf, 0x33, 0x5b,
+	0x3f, 0xe0, 0xde, 0x95, 0xff, 0x7c, 0x08, 0xfb, 0xdc, 0x6f, 0x3b, 0xd7, 0x3c, 0x0c, 0x22, 0x41,
+	0x9d, 0x1b, 0xf4, 0x4b, 0xa3, 0xb6, 0x79, 0x1f, 0x97, 0xf2, 0xf3, 0xba, 0x19, 0xbd, 0xe7, 0xb2,
+	0xbe, 0xce, 0x73, 0xdf, 0xfd, 0xbc, 0xcf, 0xc5, 0xf5, 0xe8, 0xb2, 0xed, 0xf8, 0xc3, 0xce, 0x65,
+	0xe8, 0x3b, 0x94, 0x86, 0x9d, 0x7b, 0x1f, 0x07, 0x12, 0xb5, 0xef, 0x77, 0x6e, 0x3f, 0xef, 0xa4,
+	0x5e, 0xda, 0x2f, 0x4b, 0x58, 0xa1, 0x9f, 0xff, 0x37, 0x00, 0x00, 0xff, 0xff, 0x73, 0x23, 0x4e,
+	0x9b, 0x04, 0x18, 0x00, 0x00,
+=======
 	// 1942 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x58, 0xcd, 0x6e, 0x1b, 0xc9,
 	0x11, 0x06, 0x49, 0x89, 0x22, 0x8b, 0x3f, 0x92, 0x5a, 0x3f, 0xa6, 0x46, 0xd6, 0xdf, 0xd8, 0xde,
@@ -2044,6 +2578,7 @@ var fileDescriptor_2d2de8ef40b5c6ca = []byte{
 	0xc6, 0xa1, 0x4b, 0x69, 0xdc, 0xbb, 0xf7, 0xb1, 0x2f, 0x21, 0x07, 0x61, 0xef, 0xf6, 0x8b, 0x5e,
 	0xee, 0xcd, 0xf7, 0xb2, 0x8a, 0x85, 0xf2, 0xc5, 0x7f, 0x02, 0x00, 0x00, 0xff, 0xff, 0x90, 0x7c,
 	0x13, 0xa7, 0x8e, 0x16, 0x00, 0x00,
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2086,6 +2621,8 @@ type InternalServiceClient interface {
 	GetDevicesSummary(ctx context.Context, in *GetDevicesSummaryRequest, opts ...grpc.CallOption) (*GetDevicesSummaryResponse, error)
 	// GetGatewaysSummary returns an aggregated summary of the gateways.
 	GetGatewaysSummary(ctx context.Context, in *GetGatewaysSummaryRequest, opts ...grpc.CallOption) (*GetGatewaysSummaryResponse, error)
+	// GetReginSummary returns an aggregated summary of the regin.
+	GetReginSummary(ctx context.Context, in *GetReginSummaryRequest, opts ...grpc.CallOption) (*GetReginSummaryResponse, error)
 }
 
 type internalServiceClient struct {
@@ -2249,6 +2786,15 @@ func (c *internalServiceClient) GetGatewaysSummary(ctx context.Context, in *GetG
 	return out, nil
 }
 
+func (c *internalServiceClient) GetReginSummary(ctx context.Context, in *GetReginSummaryRequest, opts ...grpc.CallOption) (*GetReginSummaryResponse, error) {
+	out := new(GetReginSummaryResponse)
+	err := c.cc.Invoke(ctx, "/api.InternalService/GetReginSummary", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InternalServiceServer is the server API for InternalService service.
 type InternalServiceServer interface {
 	// Log in a user
@@ -2279,6 +2825,8 @@ type InternalServiceServer interface {
 	GetDevicesSummary(context.Context, *GetDevicesSummaryRequest) (*GetDevicesSummaryResponse, error)
 	// GetGatewaysSummary returns an aggregated summary of the gateways.
 	GetGatewaysSummary(context.Context, *GetGatewaysSummaryRequest) (*GetGatewaysSummaryResponse, error)
+	// GetReginSummary returns an aggregated summary of the regin.
+	GetReginSummary(context.Context, *GetReginSummaryRequest) (*GetReginSummaryResponse, error)
 }
 
 // UnimplementedInternalServiceServer can be embedded to have forward compatible implementations.
@@ -2335,6 +2883,9 @@ func (*UnimplementedInternalServiceServer) GetDevicesSummary(ctx context.Context
 }
 func (*UnimplementedInternalServiceServer) GetGatewaysSummary(ctx context.Context, req *GetGatewaysSummaryRequest) (*GetGatewaysSummaryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGatewaysSummary not implemented")
+}
+func (*UnimplementedInternalServiceServer) GetReginSummary(ctx context.Context, req *GetReginSummaryRequest) (*GetReginSummaryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReginSummary not implemented")
 }
 
 func RegisterInternalServiceServer(s *grpc.Server, srv InternalServiceServer) {
@@ -2647,6 +3198,24 @@ func _InternalService_GetGatewaysSummary_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InternalService_GetReginSummary_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetReginSummaryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InternalServiceServer).GetReginSummary(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.InternalService/GetReginSummary",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InternalServiceServer).GetReginSummary(ctx, req.(*GetReginSummaryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _InternalService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "api.InternalService",
 	HandlerType: (*InternalServiceServer)(nil),
@@ -2718,6 +3287,10 @@ var _InternalService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetGatewaysSummary",
 			Handler:    _InternalService_GetGatewaysSummary_Handler,
+		},
+		{
+			MethodName: "GetReginSummary",
+			Handler:    _InternalService_GetReginSummary_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

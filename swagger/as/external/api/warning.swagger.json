@@ -43,6 +43,40 @@
             "required": false,
             "type": "string",
             "format": "int64"
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "warningLevel",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
           }
         ],
         "tags": [
@@ -127,6 +161,151 @@
         ]
       }
     },
+    "/api/warning/{id}/status": {
+      "put": {
+        "summary": "Update SetStatus by the given warning.",
+        "operationId": "SetStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Warning object to update.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetStatusWarningRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      }
+    },
+    "/api/warning/{organization_id}/report-warning-day": {
+      "get": {
+        "summary": "ReportWarningDay 总结每天告警列表",
+        "operationId": "ReportWarningDay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiReportWarningDayReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      }
+    },
+    "/api/warning/{organization_id}/warning-deal-count": {
+      "get": {
+        "summary": "DealCount 总结每天告警数目",
+        "operationId": "DealCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiDealCountReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "WarningService"
+        ]
+      }
+    },
     "/api/warning/{warning.id}": {
       "put": {
         "summary": "Update updates the given warning.",
@@ -183,6 +362,27 @@
         }
       }
     },
+    "apiDealCountReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "progress": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pending": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "todayFinish": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "todayWarning": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "apiGetWarningResponse": {
       "type": "object",
       "properties": {
@@ -216,6 +416,104 @@
             "$ref": "#/definitions/apiWarningListItem"
           },
           "description": "Warning within the result-set."
+        }
+      }
+    },
+    "apiReportWarningDayItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string",
+          "description": "remark of the warning."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "progress": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pending": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "todayFinish": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "todayWarning": {
+          "type": "string",
+          "format": "int64"
+        },
+        "statisticalTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiReportWarningDayReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of warning."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportWarningDayItem"
+          },
+          "description": "Warning within the result-set."
+        }
+      }
+    },
+    "apiSetStatusWarningRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Warning object to update."
+        },
+        "status": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },

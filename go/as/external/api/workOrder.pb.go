@@ -307,6 +307,12 @@ func (m *CreateWorkOrderResponse) XXX_Merge(src proto.Message) {
 }
 func (m *CreateWorkOrderResponse) XXX_Size() int {
 	return xxx_messageInfo_CreateWorkOrderResponse.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *CreateWorkOrderResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateWorkOrderResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *CreateWorkOrderResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateWorkOrderResponse.DiscardUnknown(m)
@@ -314,6 +320,11 @@ func (m *CreateWorkOrderResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateWorkOrderResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_CreateWorkOrderResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateWorkOrderResponse) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -388,6 +399,15 @@ func (m *GetWorkOrderResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte
 }
 func (m *GetWorkOrderResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GetWorkOrderResponse.Merge(m, src)
+<<<<<<< HEAD
+=======
+}
+func (m *GetWorkOrderResponse) XXX_Size() int {
+	return xxx_messageInfo_GetWorkOrderResponse.Size(m)
+}
+func (m *GetWorkOrderResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetWorkOrderResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GetWorkOrderResponse) XXX_Size() int {
 	return xxx_messageInfo_GetWorkOrderResponse.Size(m)
@@ -398,6 +418,11 @@ func (m *GetWorkOrderResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetWorkOrderResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_GetWorkOrderResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetWorkOrderResponse) GetWorkOrder() *WorkOrder {
 	if m != nil {
 		return m.WorkOrder
@@ -445,6 +470,12 @@ func (m *UpdateWorkOrderRequest) XXX_Merge(src proto.Message) {
 }
 func (m *UpdateWorkOrderRequest) XXX_Size() int {
 	return xxx_messageInfo_UpdateWorkOrderRequest.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *UpdateWorkOrderRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateWorkOrderRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *UpdateWorkOrderRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_UpdateWorkOrderRequest.DiscardUnknown(m)
@@ -452,6 +483,11 @@ func (m *UpdateWorkOrderRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UpdateWorkOrderRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_UpdateWorkOrderRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *UpdateWorkOrderRequest) GetWorkOrder() *WorkOrder {
 	if m != nil {
 		return m.WorkOrder
@@ -485,6 +521,12 @@ func (m *DeleteWorkOrderRequest) XXX_Merge(src proto.Message) {
 }
 func (m *DeleteWorkOrderRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteWorkOrderRequest.Size(m)
+<<<<<<< HEAD
+}
+func (m *DeleteWorkOrderRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteWorkOrderRequest.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DeleteWorkOrderRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_DeleteWorkOrderRequest.DiscardUnknown(m)
@@ -492,6 +534,11 @@ func (m *DeleteWorkOrderRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteWorkOrderRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_DeleteWorkOrderRequest proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DeleteWorkOrderRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -527,6 +574,12 @@ func (m *ListWorkOrderRequest) XXX_Merge(src proto.Message) {
 }
 func (m *ListWorkOrderRequest) XXX_Size() int {
 	return xxx_messageInfo_ListWorkOrderRequest.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *ListWorkOrderRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListWorkOrderRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListWorkOrderRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListWorkOrderRequest.DiscardUnknown(m)
@@ -534,6 +587,11 @@ func (m *ListWorkOrderRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListWorkOrderRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_ListWorkOrderRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListWorkOrderRequest) GetLimit() int64 {
 	if m != nil {
 		return m.Limit
@@ -567,6 +625,7 @@ func (*ListWorkOrderResponse) Descriptor() ([]byte, []int) {
 
 func (m *ListWorkOrderResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWorkOrderResponse.Unmarshal(m, b)
+<<<<<<< HEAD
 }
 func (m *ListWorkOrderResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListWorkOrderResponse.Marshal(b, m, deterministic)
@@ -595,8 +654,135 @@ func (m *ListWorkOrderResponse) GetResult() []*WorkOrderListItem {
 		return m.Result
 	}
 	return nil
+=======
+}
+func (m *ListWorkOrderResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListWorkOrderResponse.Marshal(b, m, deterministic)
+}
+func (m *ListWorkOrderResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListWorkOrderResponse.Merge(m, src)
+}
+func (m *ListWorkOrderResponse) XXX_Size() int {
+	return xxx_messageInfo_ListWorkOrderResponse.Size(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+}
+func (m *ListWorkOrderResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListWorkOrderResponse.DiscardUnknown(m)
 }
 
+var xxx_messageInfo_ListWorkOrderResponse proto.InternalMessageInfo
+
+<<<<<<< HEAD
+type SetPersonWorkOrderRequest struct {
+	// Total number of work-order.
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ServicePersonal      string   `protobuf:"bytes,2,opt,name=service_personal,json=servicePersonal,proto3" json:"service_personal,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetPersonWorkOrderRequest) Reset()         { *m = SetPersonWorkOrderRequest{} }
+func (m *SetPersonWorkOrderRequest) String() string { return proto.CompactTextString(m) }
+func (*SetPersonWorkOrderRequest) ProtoMessage()    {}
+func (*SetPersonWorkOrderRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_edc5afbdb7d1e963, []int{10}
+}
+
+func (m *SetPersonWorkOrderRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetPersonWorkOrderRequest.Unmarshal(m, b)
+}
+func (m *SetPersonWorkOrderRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetPersonWorkOrderRequest.Marshal(b, m, deterministic)
+}
+func (m *SetPersonWorkOrderRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetPersonWorkOrderRequest.Merge(m, src)
+}
+func (m *SetPersonWorkOrderRequest) XXX_Size() int {
+	return xxx_messageInfo_SetPersonWorkOrderRequest.Size(m)
+}
+func (m *SetPersonWorkOrderRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetPersonWorkOrderRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetPersonWorkOrderRequest proto.InternalMessageInfo
+
+func (m *SetPersonWorkOrderRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+=======
+func (m *ListWorkOrderResponse) GetTotalCount() int64 {
+	if m != nil {
+		return m.TotalCount
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+func (m *SetPersonWorkOrderRequest) GetServicePersonal() string {
+	if m != nil {
+		return m.ServicePersonal
+=======
+func (m *ListWorkOrderResponse) GetResult() []*WorkOrderListItem {
+	if m != nil {
+		return m.Result
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return ""
+}
+
+<<<<<<< HEAD
+type SetStatusWorkOrderRequest struct {
+	// Total number of work-order.
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status               int32    `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetStatusWorkOrderRequest) Reset()         { *m = SetStatusWorkOrderRequest{} }
+func (m *SetStatusWorkOrderRequest) String() string { return proto.CompactTextString(m) }
+func (*SetStatusWorkOrderRequest) ProtoMessage()    {}
+func (*SetStatusWorkOrderRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_edc5afbdb7d1e963, []int{11}
+}
+
+func (m *SetStatusWorkOrderRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetStatusWorkOrderRequest.Unmarshal(m, b)
+}
+func (m *SetStatusWorkOrderRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetStatusWorkOrderRequest.Marshal(b, m, deterministic)
+}
+func (m *SetStatusWorkOrderRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetStatusWorkOrderRequest.Merge(m, src)
+}
+func (m *SetStatusWorkOrderRequest) XXX_Size() int {
+	return xxx_messageInfo_SetStatusWorkOrderRequest.Size(m)
+}
+func (m *SetStatusWorkOrderRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetStatusWorkOrderRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetStatusWorkOrderRequest proto.InternalMessageInfo
+
+func (m *SetStatusWorkOrderRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *SetStatusWorkOrderRequest) GetStatus() int32 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func init() {
 	proto.RegisterType((*WorkOrder)(nil), "api.WorkOrder")
 	proto.RegisterType((*WorkOrderListItem)(nil), "api.WorkOrderListItem")
@@ -608,6 +794,11 @@ func init() {
 	proto.RegisterType((*DeleteWorkOrderRequest)(nil), "api.DeleteWorkOrderRequest")
 	proto.RegisterType((*ListWorkOrderRequest)(nil), "api.ListWorkOrderRequest")
 	proto.RegisterType((*ListWorkOrderResponse)(nil), "api.ListWorkOrderResponse")
+<<<<<<< HEAD
+	proto.RegisterType((*SetPersonWorkOrderRequest)(nil), "api.SetPersonWorkOrderRequest")
+	proto.RegisterType((*SetStatusWorkOrderRequest)(nil), "api.SetStatusWorkOrderRequest")
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 func init() {
@@ -615,6 +806,59 @@ func init() {
 }
 
 var fileDescriptor_edc5afbdb7d1e963 = []byte{
+<<<<<<< HEAD
+	// 797 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x56, 0xdd, 0x6e, 0xe3, 0x44,
+	0x14, 0x96, 0x9d, 0x4d, 0xd8, 0x9c, 0x48, 0xdd, 0xdd, 0x21, 0x64, 0xbd, 0x4e, 0x21, 0xc1, 0x02,
+	0x94, 0x8d, 0x54, 0x5b, 0xca, 0x5e, 0x20, 0xf6, 0xae, 0x3f, 0xa8, 0x42, 0x42, 0xa2, 0x4a, 0x4b,
+	0x41, 0x70, 0x11, 0x4d, 0xec, 0x69, 0x32, 0x8a, 0xed, 0x31, 0x9e, 0x71, 0xa1, 0x42, 0xbd, 0xe1,
+	0x15, 0x78, 0x1c, 0x9e, 0x80, 0x6b, 0x9e, 0x00, 0xc1, 0x83, 0xa0, 0xf9, 0x71, 0xd2, 0x3a, 0x8e,
+	0xaa, 0xc2, 0x1d, 0x97, 0xe7, 0xcc, 0x37, 0xdf, 0x37, 0xe7, 0xeb, 0x77, 0x1a, 0xc3, 0x00, 0xf3,
+	0x80, 0xfc, 0x24, 0x48, 0x9e, 0xe2, 0x38, 0xc0, 0x19, 0x0d, 0x7e, 0x64, 0xf9, 0xea, 0xab, 0x3c,
+	0x22, 0xb9, 0x9f, 0xe5, 0x4c, 0x30, 0xd4, 0xc0, 0x19, 0x75, 0xf7, 0x17, 0x8c, 0x2d, 0x62, 0xa2,
+	0x00, 0x38, 0x4d, 0x99, 0xc0, 0x82, 0xb2, 0x94, 0x6b, 0x88, 0x3b, 0x30, 0xa7, 0xaa, 0x9a, 0x17,
+	0x57, 0x81, 0xa0, 0x09, 0xe1, 0x02, 0x27, 0x99, 0x01, 0xf4, 0xab, 0x00, 0x92, 0x64, 0xe2, 0x46,
+	0x1f, 0x7a, 0x7f, 0x59, 0xd0, 0xfe, 0xa6, 0x14, 0x45, 0x7b, 0x60, 0xd3, 0xc8, 0xb1, 0x86, 0xd6,
+	0xa8, 0x31, 0xb5, 0x69, 0x84, 0x7a, 0xd0, 0xc2, 0x85, 0x58, 0xb2, 0xdc, 0xb1, 0x87, 0xd6, 0xa8,
+	0x3d, 0x35, 0x95, 0xec, 0xe7, 0x24, 0xc1, 0xf9, 0xca, 0x69, 0xe8, 0xbe, 0xae, 0x50, 0x1f, 0xda,
+	0x72, 0x82, 0x99, 0xb8, 0xc9, 0x88, 0xf3, 0x64, 0x68, 0x8d, 0x9a, 0xd3, 0xa7, 0xb2, 0x71, 0x71,
+	0x93, 0x11, 0x79, 0x89, 0x0b, 0x2c, 0x0a, 0xee, 0x34, 0xd5, 0x89, 0xa9, 0x50, 0x17, 0x9a, 0x82,
+	0x8a, 0x98, 0x38, 0x2d, 0xc5, 0xa5, 0x0b, 0x34, 0x84, 0x4e, 0x44, 0x78, 0x98, 0xd3, 0x4c, 0x0e,
+	0xeb, 0xbc, 0xa3, 0xce, 0xee, 0xb6, 0xd0, 0x6b, 0x78, 0xce, 0x49, 0x7e, 0x4d, 0x43, 0x32, 0xcb,
+	0x48, 0xce, 0x59, 0x8a, 0x63, 0xe7, 0xa9, 0x82, 0x3d, 0x33, 0xfd, 0x33, 0xd3, 0xf6, 0xfe, 0xb4,
+	0xe1, 0xc5, 0x7a, 0xca, 0x2f, 0x29, 0x17, 0x5f, 0x08, 0x92, 0xfc, 0x5f, 0xa7, 0x45, 0x9f, 0x01,
+	0x84, 0x39, 0xc1, 0x82, 0x44, 0x33, 0x2c, 0x9c, 0xf6, 0xd0, 0x1a, 0x75, 0x26, 0xae, 0xaf, 0x53,
+	0xe0, 0x97, 0x29, 0xf0, 0x2f, 0xca, 0x98, 0x4c, 0xdb, 0x06, 0x7d, 0x28, 0xe4, 0xd5, 0x22, 0x8b,
+	0xca, 0xab, 0xf0, 0xf0, 0x55, 0x83, 0x3e, 0x14, 0xde, 0x29, 0xf4, 0x8e, 0x15, 0xcf, 0xda, 0xe8,
+	0x29, 0xf9, 0xa1, 0x20, 0x5c, 0xa0, 0x03, 0x00, 0xe5, 0x13, 0x93, 0x4d, 0xe5, 0x77, 0x67, 0xb2,
+	0xe7, 0xe3, 0x8c, 0xfa, 0x1b, 0x68, 0x7b, 0x9d, 0x7c, 0xef, 0x35, 0xbc, 0xdc, 0x22, 0xe2, 0x19,
+	0x4b, 0x39, 0xa9, 0xfe, 0xc5, 0xbc, 0x8f, 0xe1, 0xdd, 0x53, 0x22, 0xb6, 0x04, 0xab, 0xb0, 0xdf,
+	0x2c, 0xe8, 0xde, 0xc7, 0x19, 0xbe, 0xc7, 0xbd, 0xac, 0x62, 0xac, 0xfd, 0xef, 0x8d, 0x6d, 0x3c,
+	0xd2, 0xd8, 0xaf, 0x55, 0xf1, 0x5f, 0x8d, 0x1d, 0x41, 0xef, 0x84, 0xc4, 0xa4, 0x86, 0xa8, 0x6a,
+	0xd8, 0x09, 0x74, 0xe5, 0x96, 0x6c, 0xe1, 0xba, 0xd0, 0x8c, 0x69, 0x42, 0x85, 0x81, 0xea, 0x42,
+	0x46, 0x9d, 0x5d, 0x5d, 0x71, 0xa2, 0x2d, 0x69, 0x4c, 0x4d, 0xe5, 0x2d, 0xe1, 0xbd, 0x0a, 0x8b,
+	0xb1, 0x7d, 0x00, 0x1d, 0xc1, 0x04, 0x8e, 0x67, 0x21, 0x2b, 0xd2, 0x92, 0x0c, 0x54, 0xeb, 0x58,
+	0x76, 0x90, 0x2f, 0x37, 0x8e, 0x17, 0xb1, 0x64, 0x6c, 0x8c, 0x3a, 0x93, 0xde, 0xfd, 0xa1, 0xca,
+	0x0d, 0x9e, 0x1a, 0x94, 0x77, 0x09, 0xaf, 0xce, 0x89, 0xd0, 0x0b, 0xf0, 0xd0, 0x70, 0xb5, 0x9b,
+	0x64, 0xd7, 0xff, 0xdf, 0x38, 0x56, 0xbc, 0xe7, 0x6a, 0x73, 0x1f, 0xe4, 0xdd, 0x6c, 0xbc, 0x7d,
+	0x77, 0xe3, 0x27, 0xbf, 0x37, 0xe1, 0xf9, 0xfa, 0xf2, 0xb9, 0x56, 0x40, 0x33, 0x68, 0xe9, 0x90,
+	0xa3, 0xbe, 0x9a, 0xad, 0x7e, 0x75, 0xdc, 0xfd, 0xfa, 0x43, 0xed, 0xa3, 0xe7, 0xfe, 0xf2, 0xc7,
+	0xdf, 0xbf, 0xda, 0x5d, 0xef, 0xd9, 0xfa, 0xb7, 0xe3, 0x40, 0x45, 0xe1, 0xad, 0x35, 0x46, 0xdf,
+	0x42, 0xe3, 0x94, 0x08, 0xe4, 0x28, 0x82, 0x9a, 0x25, 0x71, 0x5f, 0xd5, 0x9c, 0x18, 0xde, 0x7d,
+	0xc5, 0xdb, 0x43, 0xdd, 0x0a, 0x6f, 0xf0, 0x33, 0x8d, 0x6e, 0x11, 0x85, 0x96, 0xce, 0xa3, 0x79,
+	0x7a, 0x7d, 0x38, 0xdd, 0xde, 0x56, 0xba, 0x3f, 0x97, 0xbf, 0x3b, 0xde, 0x58, 0x91, 0x7f, 0xe4,
+	0x0e, 0xb6, 0xc8, 0x37, 0x59, 0xf6, 0x69, 0x74, 0x2b, 0x87, 0xf8, 0x1e, 0x5a, 0x3a, 0xb1, 0x46,
+	0xaa, 0x3e, 0xbe, 0x3b, 0xa5, 0xcc, 0x1c, 0xe3, 0xfa, 0x39, 0x2e, 0xe1, 0x89, 0x0c, 0x12, 0xd2,
+	0x46, 0xd4, 0xe5, 0xdd, 0x75, 0xeb, 0x8e, 0x8c, 0x49, 0x2f, 0x15, 0xf9, 0x0b, 0x54, 0x35, 0x1f,
+	0x25, 0xd0, 0x5e, 0x87, 0x11, 0x7d, 0xa0, 0x18, 0x76, 0x86, 0x73, 0xe7, 0xd3, 0x47, 0x8a, 0xdd,
+	0x73, 0xdf, 0xaf, 0x7b, 0x7a, 0x50, 0xe6, 0x56, 0x7a, 0xb4, 0x52, 0x72, 0x3a, 0xa3, 0x1b, 0xb9,
+	0xfa, 0xcc, 0xee, 0x94, 0xfb, 0x44, 0xc9, 0x0d, 0xdd, 0x7e, 0xad, 0x9c, 0x0e, 0xf2, 0x5b, 0x6b,
+	0x7c, 0x94, 0xc2, 0x87, 0x94, 0xf9, 0xe1, 0x92, 0xe6, 0x19, 0x17, 0x38, 0x5c, 0x29, 0x39, 0xcc,
+	0xfd, 0xf2, 0x23, 0x46, 0xd6, 0x47, 0x7b, 0x6b, 0xd9, 0x33, 0xa9, 0x72, 0x66, 0x7d, 0xf7, 0xe9,
+	0x82, 0x8a, 0x65, 0x31, 0xf7, 0x43, 0x96, 0x04, 0xf3, 0x9c, 0x85, 0x18, 0xe7, 0xc1, 0x86, 0xe4,
+	0x40, 0x6a, 0x2e, 0x58, 0x70, 0xfd, 0x26, 0xa8, 0x7c, 0x0f, 0xcd, 0x5b, 0xea, 0x9d, 0x6f, 0xfe,
+	0x09, 0x00, 0x00, 0xff, 0xff, 0xba, 0xa7, 0x46, 0xb3, 0x29, 0x09, 0x00, 0x00,
+=======
 	// 712 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x55, 0xdd, 0x6e, 0xd3, 0x30,
 	0x14, 0x56, 0x9a, 0xb5, 0xac, 0xa7, 0xd2, 0x7e, 0x4c, 0xe9, 0x42, 0x36, 0xa9, 0x25, 0x02, 0xa9,
@@ -661,6 +905,7 @@ var fileDescriptor_edc5afbdb7d1e963 = []byte{
 	0x21, 0x9b, 0x04, 0x43, 0xce, 0x42, 0x8c, 0x79, 0x70, 0x49, 0xb2, 0xad, 0x86, 0x8c, 0x58, 0x70,
 	0xb6, 0x13, 0x14, 0x7e, 0xcb, 0xc3, 0x9a, 0xde, 0x7a, 0xe7, 0x67, 0x00, 0x00, 0x00, 0xff, 0xff,
 	0xcd, 0xbb, 0xc7, 0x62, 0xb0, 0x07, 0x00, 0x00,
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -685,6 +930,10 @@ type WorkOrderServiceClient interface {
 	Delete(ctx context.Context, in *DeleteWorkOrderRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// List lists the available work-order.
 	List(ctx context.Context, in *ListWorkOrderRequest, opts ...grpc.CallOption) (*ListWorkOrderResponse, error)
+	// SetPersonWorkOrderRequest updates the Person
+	SetPerson(ctx context.Context, in *SetPersonWorkOrderRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// SetStatus updates the status
+	SetStatus(ctx context.Context, in *SetStatusWorkOrderRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type workOrderServiceClient struct {
@@ -740,6 +989,24 @@ func (c *workOrderServiceClient) List(ctx context.Context, in *ListWorkOrderRequ
 	return out, nil
 }
 
+func (c *workOrderServiceClient) SetPerson(ctx context.Context, in *SetPersonWorkOrderRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/api.WorkOrderService/SetPerson", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *workOrderServiceClient) SetStatus(ctx context.Context, in *SetStatusWorkOrderRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/api.WorkOrderService/SetStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WorkOrderServiceServer is the server API for WorkOrderService service.
 type WorkOrderServiceServer interface {
 	// Create creates work-order.
@@ -752,6 +1019,10 @@ type WorkOrderServiceServer interface {
 	Delete(context.Context, *DeleteWorkOrderRequest) (*empty.Empty, error)
 	// List lists the available work-order.
 	List(context.Context, *ListWorkOrderRequest) (*ListWorkOrderResponse, error)
+	// SetPersonWorkOrderRequest updates the Person
+	SetPerson(context.Context, *SetPersonWorkOrderRequest) (*empty.Empty, error)
+	// SetStatus updates the status
+	SetStatus(context.Context, *SetStatusWorkOrderRequest) (*empty.Empty, error)
 }
 
 // UnimplementedWorkOrderServiceServer can be embedded to have forward compatible implementations.
@@ -772,6 +1043,12 @@ func (*UnimplementedWorkOrderServiceServer) Delete(ctx context.Context, req *Del
 }
 func (*UnimplementedWorkOrderServiceServer) List(ctx context.Context, req *ListWorkOrderRequest) (*ListWorkOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (*UnimplementedWorkOrderServiceServer) SetPerson(ctx context.Context, req *SetPersonWorkOrderRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPerson not implemented")
+}
+func (*UnimplementedWorkOrderServiceServer) SetStatus(ctx context.Context, req *SetStatusWorkOrderRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetStatus not implemented")
 }
 
 func RegisterWorkOrderServiceServer(s *grpc.Server, srv WorkOrderServiceServer) {
@@ -868,6 +1145,42 @@ func _WorkOrderService_List_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WorkOrderService_SetPerson_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetPersonWorkOrderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkOrderServiceServer).SetPerson(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.WorkOrderService/SetPerson",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkOrderServiceServer).SetPerson(ctx, req.(*SetPersonWorkOrderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WorkOrderService_SetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetStatusWorkOrderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkOrderServiceServer).SetStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.WorkOrderService/SetStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkOrderServiceServer).SetStatus(ctx, req.(*SetStatusWorkOrderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _WorkOrderService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "api.WorkOrderService",
 	HandlerType: (*WorkOrderServiceServer)(nil),
@@ -891,6 +1204,14 @@ var _WorkOrderService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _WorkOrderService_List_Handler,
+		},
+		{
+			MethodName: "SetPerson",
+			Handler:    _WorkOrderService_SetPerson_Handler,
+		},
+		{
+			MethodName: "SetStatus",
+			Handler:    _WorkOrderService_SetStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

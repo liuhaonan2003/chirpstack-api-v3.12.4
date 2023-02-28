@@ -1,0 +1,183 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportMonthProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+// ReportWeekService is the service managing test.
+service ReportMonthService {
+  // Create creates report-day.
+  rpc Create(CreateReportMonthRequest) returns (CreateReportMonthResponse) {
+    option(google.api.http) = {
+      post: "/api/report-month"
+      body: "*"
+    };
+  }
+
+  // Get returns the report-day matching the given id.
+  rpc Get(GetReportMonthRequest) returns (GetReportMonthResponse) {
+    option(google.api.http) = {
+      get: "/api/report-month/{id}"
+    };
+  }
+
+  // Update updates the given report-day.
+  rpc Update(UpdateReportMonthRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      put: "/api/report-month/{reportMonth.id}"
+      body: "*"
+    };
+  }
+
+  // Delete deletes the report-day matching the given id.
+  rpc Delete(DeleteReportMonthRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      delete: "/api/report-month/{id}"
+    };
+  };
+
+  // List lists the available report-Day.
+  rpc List(ListReportMonthRequest) returns (ListReportMonthResponse) {
+    option(google.api.http) = {
+      get: "/api/report-month"
+    };
+  }
+
+  // List lists the available report-Day.
+  rpc MonthAmount(ReportMonthAmountRequest) returns (ReportMonthAmountResponse) {
+    option(google.api.http) = {
+      get: "/api/report-month/{organization_id}/month-consumption"
+    };
+  }
+
+  // YearAmount the available report-Day.
+  rpc YearAmount(ReportYearAmountRequest) returns (ReportYearAmountResponse) {
+    option(google.api.http) = {
+      get: "/api/report-year-consumption"
+    };
+  }
+}
+
+
+
+
+message ReportMonth {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string dev_id = 3;//设备编号
+  double amount = 4;//设备生产量
+  int32 number =5 ;//统计条数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+  int32 status = 11;//是否审核0、否1、是>=2、无效
+  string author=12;
+  string remark  = 15;
+}
+
+message ReportMonthListItem {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string dev_id = 3;//设备编号
+  double amount = 4;//设备生产量
+  int32 number =5 ;//统计条数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+  int32 status = 11;//是否审核0、否1、是>=2、无效
+
+  string author=12;
+  string remark  = 15;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 13;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 14;
+
+}
+
+message CreateReportMonthRequest {
+  // Test object to create.
+  ReportMonth reportMonth = 1;
+}
+
+message CreateReportMonthResponse {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportMonthRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message GetReportMonthResponse {
+  // Test object.
+  ReportMonth reportMonth = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateReportMonthRequest {
+  // Test object to update.
+  ReportMonth reportMonth = 1;
+}
+
+message DeleteReportMonthRequest {
+  // Test ID.
+  int64 id = 1;
+}
+
+message ListReportMonthRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+  
+}
+
+message ListReportMonthResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportMonthListItem result = 2;
+}
+
+message ReportMonthAmountRequest {
+  // Total number of test.
+  int32 year = 1;
+  int32 month = 2;
+  int64 organization_id = 4;
+  int64 user_id = 5;
+}
+message ReportMonthAmountResponse {
+  // Total number of test.
+  double total_amount = 1;
+}
+
+message ReportYearAmountRequest {
+  // Total number of test.
+  int32 year = 1;
+  int64 organization_id = 4;
+  int64 user_id = 5;
+}
+message ReportYearAmountResponse {
+  // Total number of test.
+  double total_amount = 1;
+}

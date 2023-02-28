@@ -297,6 +297,12 @@ func (m *GetOrganizationResponse) XXX_Merge(src proto.Message) {
 }
 func (m *GetOrganizationResponse) XXX_Size() int {
 	return xxx_messageInfo_GetOrganizationResponse.Size(m)
+<<<<<<< HEAD
+}
+func (m *GetOrganizationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetOrganizationResponse.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GetOrganizationResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_GetOrganizationResponse.DiscardUnknown(m)
@@ -304,6 +310,11 @@ func (m *GetOrganizationResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetOrganizationResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_GetOrganizationResponse proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetOrganizationResponse) GetOrganization() *Organization {
 	if m != nil {
 		return m.Organization
@@ -351,6 +362,12 @@ func (m *CreateOrganizationRequest) XXX_Merge(src proto.Message) {
 }
 func (m *CreateOrganizationRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateOrganizationRequest.Size(m)
+<<<<<<< HEAD
+}
+func (m *CreateOrganizationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateOrganizationRequest.DiscardUnknown(m)
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *CreateOrganizationRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateOrganizationRequest.DiscardUnknown(m)
@@ -358,6 +375,11 @@ func (m *CreateOrganizationRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateOrganizationRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+var xxx_messageInfo_CreateOrganizationRequest proto.InternalMessageInfo
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateOrganizationRequest) GetOrganization() *Organization {
 	if m != nil {
 		return m.Organization
@@ -391,6 +413,12 @@ func (m *CreateOrganizationResponse) XXX_Merge(src proto.Message) {
 }
 func (m *CreateOrganizationResponse) XXX_Size() int {
 	return xxx_messageInfo_CreateOrganizationResponse.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *CreateOrganizationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateOrganizationResponse.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *CreateOrganizationResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateOrganizationResponse.DiscardUnknown(m)
@@ -398,6 +426,11 @@ func (m *CreateOrganizationResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateOrganizationResponse proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_CreateOrganizationResponse proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateOrganizationResponse) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -570,7 +603,11 @@ func (m *ListOrganizationRequest) GetAreaId() int32 {
 
 type ListOrganizationResponse struct {
 	// Total number of organizations.
+<<<<<<< HEAD
+	TotalCount           int64           `protobuf:"varint,1,opt,name=totalCount,proto3" json:"totalCount,omitempty"`
+=======
 	TotalCount           int64           `protobuf:"varint,1,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	Result               []*Organization `protobuf:"bytes,2,rep,name=result,proto3" json:"result,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
@@ -592,10 +629,17 @@ func (m *ListOrganizationResponse) XXX_Marshal(b []byte, deterministic bool) ([]
 }
 func (m *ListOrganizationResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ListOrganizationResponse.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *ListOrganizationResponse) XXX_Size() int {
 	return xxx_messageInfo_ListOrganizationResponse.Size(m)
 }
+=======
+}
+func (m *ListOrganizationResponse) XXX_Size() int {
+	return xxx_messageInfo_ListOrganizationResponse.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListOrganizationResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListOrganizationResponse.DiscardUnknown(m)
 }
@@ -642,7 +686,11 @@ type OrganizationUserListItem struct {
 	Roles          string               `protobuf:"bytes,12,opt,name=roles,proto3" json:"roles,omitempty"`
 	OrganizationId int64                `protobuf:"varint,13,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
 	Phone          string               `protobuf:"bytes,14,opt,name=phone,proto3" json:"phone,omitempty"`
+<<<<<<< HEAD
+	//帐户类型1、企业帐户2、个人帐户
+=======
 	// 帐户类型1、企业帐户2、个人帐户
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	ProvinceId           int32    `protobuf:"varint,15,opt,name=province_id,json=provinceId,proto3" json:"province_id,omitempty"`
 	CityId               int32    `protobuf:"varint,16,opt,name=city_id,json=cityId,proto3" json:"city_id,omitempty"`
 	AreaId               int32    `protobuf:"varint,17,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
@@ -874,6 +922,15 @@ func (m *AddOrganizationUserRequest) XXX_Marshal(b []byte, deterministic bool) (
 }
 func (m *AddOrganizationUserRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_AddOrganizationUserRequest.Merge(m, src)
+<<<<<<< HEAD
+=======
+}
+func (m *AddOrganizationUserRequest) XXX_Size() int {
+	return xxx_messageInfo_AddOrganizationUserRequest.Size(m)
+}
+func (m *AddOrganizationUserRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddOrganizationUserRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *AddOrganizationUserRequest) XXX_Size() int {
 	return xxx_messageInfo_AddOrganizationUserRequest.Size(m)
@@ -884,6 +941,11 @@ func (m *AddOrganizationUserRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AddOrganizationUserRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_AddOrganizationUserRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *AddOrganizationUserRequest) GetOrganizationUser() *OrganizationUserListItem {
 	if m != nil {
 		return m.OrganizationUser
@@ -956,6 +1018,15 @@ func (m *DeleteOrganizationUserRequest) XXX_Marshal(b []byte, deterministic bool
 }
 func (m *DeleteOrganizationUserRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_DeleteOrganizationUserRequest.Merge(m, src)
+<<<<<<< HEAD
+=======
+}
+func (m *DeleteOrganizationUserRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteOrganizationUserRequest.Size(m)
+}
+func (m *DeleteOrganizationUserRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteOrganizationUserRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DeleteOrganizationUserRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteOrganizationUserRequest.Size(m)
@@ -966,6 +1037,11 @@ func (m *DeleteOrganizationUserRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteOrganizationUserRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_DeleteOrganizationUserRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DeleteOrganizationUserRequest) GetOrganizationId() int64 {
 	if m != nil {
 		return m.OrganizationId
@@ -1010,6 +1086,12 @@ func (m *ListOrganizationUsersRequest) XXX_Merge(src proto.Message) {
 }
 func (m *ListOrganizationUsersRequest) XXX_Size() int {
 	return xxx_messageInfo_ListOrganizationUsersRequest.Size(m)
+<<<<<<< HEAD
+=======
+}
+func (m *ListOrganizationUsersRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListOrganizationUsersRequest.DiscardUnknown(m)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListOrganizationUsersRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListOrganizationUsersRequest.DiscardUnknown(m)
@@ -1017,6 +1099,11 @@ func (m *ListOrganizationUsersRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListOrganizationUsersRequest proto.InternalMessageInfo
 
+<<<<<<< HEAD
+=======
+var xxx_messageInfo_ListOrganizationUsersRequest proto.InternalMessageInfo
+
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListOrganizationUsersRequest) GetOrganizationId() int64 {
 	if m != nil {
 		return m.OrganizationId
@@ -1062,10 +1149,17 @@ func (m *ListOrganizationUsersResponse) XXX_Marshal(b []byte, deterministic bool
 }
 func (m *ListOrganizationUsersResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ListOrganizationUsersResponse.Merge(m, src)
+<<<<<<< HEAD
 }
 func (m *ListOrganizationUsersResponse) XXX_Size() int {
 	return xxx_messageInfo_ListOrganizationUsersResponse.Size(m)
 }
+=======
+}
+func (m *ListOrganizationUsersResponse) XXX_Size() int {
+	return xxx_messageInfo_ListOrganizationUsersResponse.Size(m)
+}
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListOrganizationUsersResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListOrganizationUsersResponse.DiscardUnknown(m)
 }
@@ -1157,6 +1251,7 @@ func (*GetOrganizationUserResponse) Descriptor() ([]byte, []int) {
 
 func (m *GetOrganizationUserResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOrganizationUserResponse.Unmarshal(m, b)
+<<<<<<< HEAD
 }
 func (m *GetOrganizationUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetOrganizationUserResponse.Marshal(b, m, deterministic)
@@ -1185,15 +1280,180 @@ func (m *GetOrganizationUserResponse) GetCreatedAt() *timestamp.Timestamp {
 		return m.CreatedAt
 	}
 	return nil
+=======
+}
+func (m *GetOrganizationUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetOrganizationUserResponse.Marshal(b, m, deterministic)
+}
+func (m *GetOrganizationUserResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetOrganizationUserResponse.Merge(m, src)
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+}
+func (m *GetOrganizationUserResponse) XXX_Size() int {
+	return xxx_messageInfo_GetOrganizationUserResponse.Size(m)
+}
+func (m *GetOrganizationUserResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetOrganizationUserResponse.DiscardUnknown(m)
 }
 
+var xxx_messageInfo_GetOrganizationUserResponse proto.InternalMessageInfo
+
+<<<<<<< HEAD
 func (m *GetOrganizationUserResponse) GetUpdatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
+=======
+func (m *GetOrganizationUserResponse) GetOrganizationUser() *OrganizationUserListItem {
+	if m != nil {
+		return m.OrganizationUser
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return nil
 }
 
+<<<<<<< HEAD
+type GetOrganizationCountResponse struct {
+	// Total number of organizations.
+	TotalCount           int64    `protobuf:"varint,1,opt,name=totalCount,proto3" json:"totalCount,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetOrganizationCountResponse) Reset()         { *m = GetOrganizationCountResponse{} }
+func (m *GetOrganizationCountResponse) String() string { return proto.CompactTextString(m) }
+func (*GetOrganizationCountResponse) ProtoMessage()    {}
+func (*GetOrganizationCountResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7185a1e614145d4b, []int{17}
+}
+
+func (m *GetOrganizationCountResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetOrganizationCountResponse.Unmarshal(m, b)
+}
+func (m *GetOrganizationCountResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetOrganizationCountResponse.Marshal(b, m, deterministic)
+}
+func (m *GetOrganizationCountResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetOrganizationCountResponse.Merge(m, src)
+}
+func (m *GetOrganizationCountResponse) XXX_Size() int {
+	return xxx_messageInfo_GetOrganizationCountResponse.Size(m)
+}
+func (m *GetOrganizationCountResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetOrganizationCountResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetOrganizationCountResponse proto.InternalMessageInfo
+
+func (m *GetOrganizationCountResponse) GetTotalCount() int64 {
+	if m != nil {
+		return m.TotalCount
+=======
+func (m *GetOrganizationUserResponse) GetCreatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreatedAt
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+type DeviceViewOrganizationRequest struct {
+	// Total number of organizations.
+	OrganizationId       int64    `protobuf:"varint,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeviceViewOrganizationRequest) Reset()         { *m = DeviceViewOrganizationRequest{} }
+func (m *DeviceViewOrganizationRequest) String() string { return proto.CompactTextString(m) }
+func (*DeviceViewOrganizationRequest) ProtoMessage()    {}
+func (*DeviceViewOrganizationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7185a1e614145d4b, []int{18}
+}
+
+func (m *DeviceViewOrganizationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeviceViewOrganizationRequest.Unmarshal(m, b)
+}
+func (m *DeviceViewOrganizationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeviceViewOrganizationRequest.Marshal(b, m, deterministic)
+}
+func (m *DeviceViewOrganizationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceViewOrganizationRequest.Merge(m, src)
+}
+func (m *DeviceViewOrganizationRequest) XXX_Size() int {
+	return xxx_messageInfo_DeviceViewOrganizationRequest.Size(m)
+}
+func (m *DeviceViewOrganizationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeviceViewOrganizationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeviceViewOrganizationRequest proto.InternalMessageInfo
+
+<<<<<<< HEAD
+func (m *DeviceViewOrganizationRequest) GetOrganizationId() int64 {
+	if m != nil {
+		return m.OrganizationId
+=======
+func (m *GetOrganizationUserResponse) GetUpdatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdatedAt
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
+	}
+	return 0
+}
+
+<<<<<<< HEAD
+type DeviceViewOrganizationResponse struct {
+	// Total number of organizations.
+	TotalCount           int64    `protobuf:"varint,1,opt,name=totalCount,proto3" json:"totalCount,omitempty"`
+	Result               string   `protobuf:"bytes,2,opt,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeviceViewOrganizationResponse) Reset()         { *m = DeviceViewOrganizationResponse{} }
+func (m *DeviceViewOrganizationResponse) String() string { return proto.CompactTextString(m) }
+func (*DeviceViewOrganizationResponse) ProtoMessage()    {}
+func (*DeviceViewOrganizationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7185a1e614145d4b, []int{19}
+}
+
+func (m *DeviceViewOrganizationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeviceViewOrganizationResponse.Unmarshal(m, b)
+}
+func (m *DeviceViewOrganizationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeviceViewOrganizationResponse.Marshal(b, m, deterministic)
+}
+func (m *DeviceViewOrganizationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceViewOrganizationResponse.Merge(m, src)
+}
+func (m *DeviceViewOrganizationResponse) XXX_Size() int {
+	return xxx_messageInfo_DeviceViewOrganizationResponse.Size(m)
+}
+func (m *DeviceViewOrganizationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeviceViewOrganizationResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeviceViewOrganizationResponse proto.InternalMessageInfo
+
+func (m *DeviceViewOrganizationResponse) GetTotalCount() int64 {
+	if m != nil {
+		return m.TotalCount
+	}
+	return 0
+}
+
+func (m *DeviceViewOrganizationResponse) GetResult() string {
+	if m != nil {
+		return m.Result
+	}
+	return ""
+}
+
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func init() {
 	proto.RegisterType((*Organization)(nil), "api.Organization")
 	proto.RegisterType((*GetOrganizationRequest)(nil), "api.GetOrganizationRequest")
@@ -1212,6 +1472,12 @@ func init() {
 	proto.RegisterType((*ListOrganizationUsersResponse)(nil), "api.ListOrganizationUsersResponse")
 	proto.RegisterType((*GetOrganizationUserRequest)(nil), "api.GetOrganizationUserRequest")
 	proto.RegisterType((*GetOrganizationUserResponse)(nil), "api.GetOrganizationUserResponse")
+<<<<<<< HEAD
+	proto.RegisterType((*GetOrganizationCountResponse)(nil), "api.GetOrganizationCountResponse")
+	proto.RegisterType((*DeviceViewOrganizationRequest)(nil), "api.DeviceViewOrganizationRequest")
+	proto.RegisterType((*DeviceViewOrganizationResponse)(nil), "api.DeviceViewOrganizationResponse")
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 func init() {
@@ -1219,6 +1485,102 @@ func init() {
 }
 
 var fileDescriptor_7185a1e614145d4b = []byte{
+<<<<<<< HEAD
+	// 1483 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x58, 0xdd, 0x6e, 0x1b, 0x45,
+	0x14, 0xd6, 0xc6, 0xb1, 0xe3, 0x1c, 0xa7, 0xf9, 0x99, 0x9a, 0x64, 0xb3, 0x4d, 0x1a, 0x67, 0x41,
+	0xe0, 0x86, 0xd6, 0x46, 0x29, 0xe5, 0x4f, 0x15, 0x92, 0xdb, 0xa2, 0x34, 0x08, 0x41, 0xb5, 0x50,
+	0x54, 0x21, 0x81, 0x35, 0xd9, 0x9d, 0xda, 0xa3, 0x7a, 0x7f, 0xba, 0x33, 0xce, 0x0f, 0x55, 0x24,
+	0x54, 0xa4, 0x5e, 0xc0, 0x05, 0x17, 0x3c, 0x07, 0x37, 0x3c, 0x04, 0x2f, 0xc0, 0x03, 0x70, 0xc3,
+	0x83, 0xa0, 0xf9, 0xd9, 0x64, 0xbd, 0xde, 0x75, 0xd2, 0x50, 0xc4, 0x9d, 0xcf, 0x9c, 0x33, 0xf3,
+	0x7d, 0x73, 0xe6, 0xcc, 0x77, 0x66, 0x0d, 0x36, 0x66, 0x6d, 0x72, 0xc8, 0x49, 0x1c, 0xe0, 0x41,
+	0x1b, 0x47, 0xb4, 0x1d, 0xc6, 0x3d, 0x1c, 0xd0, 0xef, 0x31, 0xa7, 0x61, 0xd0, 0x8a, 0xe2, 0x90,
+	0x87, 0xa8, 0x84, 0x23, 0x6a, 0xad, 0xf5, 0xc2, 0xb0, 0x37, 0x20, 0x32, 0x06, 0x07, 0x41, 0xc8,
+	0x65, 0x04, 0x53, 0x21, 0xd6, 0x86, 0xf6, 0x4a, 0x6b, 0x6f, 0xf8, 0xb8, 0xcd, 0xa9, 0x4f, 0x18,
+	0xc7, 0x7e, 0xa4, 0x03, 0xae, 0x64, 0x03, 0x88, 0x1f, 0xf1, 0x23, 0xe5, 0xb4, 0x9f, 0x97, 0x61,
+	0xee, 0x8b, 0x14, 0x2e, 0x9a, 0x87, 0x29, 0xea, 0x99, 0x46, 0xc3, 0x68, 0x96, 0x9c, 0x29, 0xea,
+	0x21, 0x04, 0xd3, 0x01, 0xf6, 0x89, 0x39, 0xd5, 0x30, 0x9a, 0xb3, 0x8e, 0xfc, 0x8d, 0x36, 0x61,
+	0xce, 0xa3, 0x2c, 0x1a, 0xe0, 0xa3, 0xae, 0xf4, 0x95, 0xa4, 0xaf, 0xa6, 0xc7, 0x3e, 0x17, 0x21,
+	0x5b, 0xb0, 0xe4, 0xe2, 0xa0, 0xdb, 0xc7, 0xfb, 0xa4, 0xdb, 0xc3, 0x9c, 0x1c, 0xe0, 0x23, 0x66,
+	0x4e, 0x37, 0x8c, 0x66, 0xd5, 0x59, 0x70, 0x71, 0x70, 0x1f, 0xef, 0x93, 0x1d, 0x3d, 0x2c, 0x62,
+	0x7d, 0x7c, 0x98, 0x84, 0x75, 0xdd, 0x70, 0x18, 0x70, 0xb3, 0xdc, 0x30, 0x9a, 0x97, 0x9c, 0x05,
+	0x1f, 0x1f, 0xea, 0xb8, 0xbb, 0x62, 0x18, 0x35, 0x61, 0x51, 0xc4, 0x7a, 0x64, 0x9f, 0xba, 0x44,
+	0x87, 0x56, 0x64, 0xe8, 0xbc, 0x8f, 0x0f, 0xef, 0xc9, 0x61, 0x15, 0xf9, 0x21, 0x80, 0x1b, 0x13,
+	0xcc, 0x89, 0xd7, 0xc5, 0xdc, 0x9c, 0x69, 0x18, 0xcd, 0xda, 0xb6, 0xd5, 0x52, 0xb9, 0x68, 0x25,
+	0xb9, 0x68, 0x7d, 0x95, 0x24, 0xcb, 0x99, 0xd5, 0xd1, 0x1d, 0x39, 0x75, 0x18, 0x79, 0xc9, 0xd4,
+	0xea, 0xd9, 0x53, 0x75, 0x74, 0x87, 0x8b, 0x74, 0xf1, 0xa3, 0x88, 0x98, 0xb3, 0x0d, 0xa3, 0x59,
+	0x76, 0xe4, 0x6f, 0x64, 0x41, 0xd5, 0x0d, 0x03, 0x8e, 0x5d, 0xce, 0x4c, 0x90, 0xa9, 0x3a, 0xb1,
+	0x51, 0x1d, 0xca, 0x51, 0x3f, 0x0c, 0x88, 0x59, 0x93, 0x0e, 0x65, 0xa0, 0x0d, 0xa8, 0x45, 0x71,
+	0xb8, 0x4f, 0x03, 0x97, 0x74, 0xa9, 0x67, 0xce, 0xc9, 0xc5, 0x20, 0x19, 0xda, 0xf5, 0xd0, 0x0a,
+	0xcc, 0xb8, 0x94, 0x1f, 0x09, 0xe7, 0x25, 0xe9, 0xac, 0x08, 0x53, 0x39, 0x70, 0x4c, 0xb0, 0x70,
+	0xcc, 0x2b, 0x87, 0x30, 0x77, 0x3d, 0x64, 0xc2, 0x0c, 0xf6, 0xbc, 0x98, 0x30, 0x66, 0x2e, 0x48,
+	0xa8, 0xc4, 0x14, 0xf4, 0x06, 0x98, 0x53, 0x3e, 0xf4, 0x88, 0xb9, 0xd8, 0x30, 0x9a, 0x86, 0x73,
+	0x62, 0xa3, 0x35, 0x98, 0x1d, 0x84, 0x41, 0x4f, 0x39, 0x97, 0xa4, 0xf3, 0x74, 0x00, 0x2d, 0x43,
+	0x85, 0x71, 0xcc, 0x87, 0xcc, 0x44, 0x0a, 0x4b, 0x59, 0x62, 0x1c, 0x0f, 0x79, 0x3f, 0x8c, 0xcd,
+	0xcb, 0x12, 0x4a, 0x5b, 0x62, 0x3c, 0x26, 0x3e, 0x8e, 0x9f, 0x98, 0x75, 0x35, 0xae, 0x2c, 0xbb,
+	0x09, 0xcb, 0x3b, 0x84, 0xa7, 0xcb, 0xd0, 0x21, 0x4f, 0x87, 0x84, 0xf1, 0x6c, 0x35, 0xda, 0x7f,
+	0x18, 0xb0, 0x32, 0x16, 0xca, 0xa2, 0x30, 0x60, 0x04, 0xdd, 0x82, 0xb9, 0xf4, 0x0d, 0x92, 0xb3,
+	0x6a, 0xdb, 0x4b, 0x2d, 0x1c, 0xd1, 0xd6, 0xc8, 0x84, 0x91, 0xb0, 0x4c, 0x9d, 0x4c, 0x5d, 0xbc,
+	0x4e, 0x4a, 0x2f, 0x51, 0x27, 0xb6, 0x03, 0xab, 0x77, 0xe5, 0x3a, 0x79, 0xbb, 0xbe, 0xd8, 0x4e,
+	0xec, 0xeb, 0x60, 0xe5, 0xad, 0xa9, 0xd3, 0x93, 0x4d, 0xa5, 0x03, 0xab, 0x0f, 0x25, 0x9d, 0x57,
+	0xc8, 0xe0, 0x6d, 0x58, 0xbd, 0x47, 0x06, 0x24, 0x7f, 0xcd, 0x2c, 0x81, 0xdf, 0x0d, 0x58, 0xf9,
+	0x8c, 0xb2, 0xdc, 0x73, 0xaf, 0x43, 0x79, 0x40, 0x7d, 0xca, 0x75, 0xb8, 0x32, 0x44, 0xfd, 0x84,
+	0x8f, 0x1f, 0x33, 0xa2, 0x8e, 0xa9, 0xe4, 0x68, 0x4b, 0xd6, 0x21, 0xc1, 0xb1, 0xdb, 0xd7, 0x4a,
+	0xa4, 0xad, 0xec, 0x35, 0x9a, 0x9e, 0x74, 0x8d, 0xca, 0x45, 0xd7, 0xa8, 0x92, 0xbe, 0x46, 0x36,
+	0x01, 0x73, 0x9c, 0xb3, 0xce, 0xf0, 0x55, 0x00, 0x1e, 0x72, 0x3c, 0x90, 0xfa, 0xa3, 0x99, 0xa7,
+	0x46, 0xd0, 0x35, 0x51, 0xfe, 0x6c, 0x38, 0x10, 0xf4, 0x4b, 0xf9, 0xe9, 0xd4, 0x01, 0xf6, 0x0f,
+	0x15, 0x30, 0xd3, 0x8e, 0x87, 0x8c, 0xc4, 0x02, 0x77, 0x97, 0x13, 0x5f, 0x90, 0x1b, 0x32, 0x12,
+	0x77, 0x4f, 0xb2, 0x59, 0x11, 0xe6, 0xee, 0x3d, 0x91, 0x35, 0xe2, 0x63, 0x3a, 0xd0, 0x62, 0xad,
+	0x0c, 0xb4, 0x0a, 0x55, 0xca, 0xba, 0xd8, 0xf3, 0x69, 0x20, 0xf3, 0x53, 0x75, 0x66, 0x28, 0xeb,
+	0x08, 0x13, 0xbd, 0x09, 0x0b, 0x94, 0x25, 0x62, 0xaa, 0x22, 0x2a, 0x32, 0xe2, 0x12, 0x65, 0x4a,
+	0x4b, 0x55, 0x5c, 0x13, 0x16, 0x29, 0x3b, 0x11, 0x68, 0x15, 0x38, 0x23, 0x03, 0xe7, 0x29, 0xd3,
+	0xfa, 0xac, 0x22, 0x47, 0x6f, 0xd3, 0xf4, 0xc5, 0x6f, 0x53, 0xf9, 0x65, 0x54, 0xd7, 0x82, 0xaa,
+	0x48, 0x81, 0x6c, 0x46, 0x55, 0xa5, 0xb0, 0x89, 0x2d, 0x8a, 0x40, 0x6c, 0x7f, 0xe8, 0x51, 0x4e,
+	0x83, 0x9e, 0x14, 0xe6, 0xaa, 0x03, 0x94, 0x75, 0xf4, 0x88, 0x98, 0x1c, 0x13, 0x3c, 0x90, 0x93,
+	0xb5, 0x3c, 0x27, 0xb6, 0xe8, 0x74, 0x6e, 0xe8, 0x47, 0x38, 0xd0, 0x9d, 0x4e, 0xa9, 0x74, 0x4d,
+	0x8f, 0xc9, 0x4e, 0x57, 0x87, 0x72, 0x1c, 0x0e, 0x08, 0x93, 0x2a, 0x3d, 0xeb, 0x28, 0x03, 0xbd,
+	0x05, 0x0b, 0xe9, 0x9b, 0x91, 0x08, 0x75, 0xc9, 0x99, 0x4f, 0x0f, 0xef, 0x7a, 0xa7, 0x0d, 0x60,
+	0x7e, 0x42, 0x03, 0x58, 0x98, 0x54, 0xb9, 0x8b, 0x45, 0x95, 0xbb, 0x54, 0xd4, 0x00, 0x50, 0x71,
+	0x03, 0xb8, 0x3c, 0xa9, 0x01, 0xd4, 0xb3, 0x0d, 0x20, 0xe9, 0x76, 0xaf, 0xa5, 0xba, 0xdd, 0x69,
+	0x53, 0x58, 0x2e, 0x68, 0x0a, 0x2b, 0x05, 0x4d, 0xc1, 0x1c, 0x69, 0x0a, 0x7d, 0xb0, 0x3a, 0x9e,
+	0x97, 0xbd, 0x04, 0x89, 0x40, 0x7c, 0x0a, 0x4b, 0x23, 0xf9, 0x15, 0xc7, 0xad, 0x55, 0x6a, 0x7d,
+	0xec, 0x5a, 0xa5, 0x6f, 0x8f, 0xb3, 0x18, 0x66, 0x3c, 0xf6, 0x13, 0x58, 0x1f, 0x57, 0xc2, 0xff,
+	0x0a, 0x0c, 0xc3, 0xfa, 0xb8, 0x44, 0xa6, 0xc1, 0x72, 0x2a, 0xc7, 0xc8, 0xad, 0x9c, 0x94, 0x0c,
+	0x4c, 0xa5, 0x65, 0xc0, 0x1e, 0xc2, 0x5a, 0x56, 0xa3, 0x04, 0x00, 0x7b, 0x69, 0x84, 0x13, 0x15,
+	0x9e, 0x92, 0x27, 0x39, 0xa6, 0xc2, 0x25, 0x75, 0xc0, 0xca, 0xb2, 0x0f, 0x60, 0xbd, 0x00, 0x56,
+	0xeb, 0xe3, 0x06, 0xd4, 0xa4, 0x1a, 0xea, 0x67, 0xdb, 0xb8, 0x40, 0xde, 0xca, 0x08, 0xe4, 0x19,
+	0xc9, 0x4d, 0xc4, 0xf2, 0x3b, 0xb0, 0x32, 0x6f, 0x82, 0x57, 0x9b, 0xcf, 0xbf, 0x0c, 0xb8, 0x92,
+	0x0b, 0xa0, 0xf7, 0xf5, 0x0a, 0xcb, 0xe3, 0x7f, 0x7a, 0x8d, 0x7c, 0x0c, 0x6b, 0x99, 0x0d, 0xca,
+	0x03, 0x39, 0x6f, 0x67, 0xb3, 0xef, 0x8b, 0xa2, 0x16, 0xed, 0xe2, 0x6b, 0x4a, 0x0e, 0xf2, 0xfa,
+	0xf9, 0x79, 0x0f, 0xc1, 0x7e, 0x04, 0x57, 0x8b, 0x56, 0x3a, 0x67, 0x97, 0x5d, 0x4e, 0x15, 0x91,
+	0xd6, 0x13, 0x61, 0x6d, 0xff, 0x38, 0x07, 0x97, 0xd3, 0x0b, 0x7e, 0x49, 0x62, 0x81, 0x83, 0xba,
+	0x30, 0x2d, 0xce, 0x03, 0xad, 0xc9, 0xa3, 0x2a, 0x78, 0x90, 0x58, 0xeb, 0x05, 0x5e, 0x45, 0xca,
+	0xb6, 0x9e, 0xff, 0xf9, 0xf7, 0xaf, 0x53, 0x75, 0x84, 0xc6, 0x3e, 0xe4, 0x18, 0xc2, 0x50, 0xda,
+	0x21, 0x1c, 0x5d, 0x91, 0x2b, 0xe4, 0xbf, 0x73, 0xad, 0xb5, 0x7c, 0xa7, 0x5e, 0x7d, 0x43, 0xae,
+	0xbe, 0x8a, 0x56, 0xc6, 0x57, 0x6f, 0x3f, 0xa3, 0xde, 0x31, 0xea, 0x43, 0x45, 0xbd, 0xfc, 0xd0,
+	0x55, 0xb9, 0x50, 0xe1, 0xd3, 0xd2, 0xda, 0x28, 0xf4, 0x6b, 0xac, 0x75, 0x89, 0xb5, 0x62, 0xe7,
+	0xec, 0xe4, 0x23, 0x63, 0x0b, 0x3d, 0x85, 0x8a, 0xd2, 0x4a, 0x8d, 0x54, 0xf8, 0x84, 0xb4, 0x96,
+	0xc7, 0x4a, 0xef, 0x13, 0xf1, 0xdd, 0x69, 0xb7, 0x25, 0xc0, 0x35, 0xeb, 0x8d, 0xbc, 0xcd, 0x8c,
+	0x7c, 0x02, 0x53, 0xef, 0x58, 0x40, 0x62, 0xa8, 0x28, 0xc5, 0xd4, 0x90, 0x85, 0x2f, 0xcc, 0x42,
+	0x48, 0x9d, 0xbf, 0xad, 0xc2, 0xfc, 0x1d, 0x41, 0x3d, 0xaf, 0xfe, 0xcf, 0xa8, 0x89, 0xcd, 0xbc,
+	0x43, 0x1b, 0xb9, 0x38, 0x76, 0x43, 0x22, 0x5b, 0xc8, 0x1c, 0x47, 0xbe, 0x21, 0x55, 0x10, 0xbd,
+	0x30, 0x60, 0x56, 0x00, 0x48, 0xa9, 0x44, 0x9b, 0xb9, 0x80, 0x69, 0xf5, 0xb6, 0xec, 0x49, 0x21,
+	0x1a, 0x76, 0x5b, 0xc2, 0x5e, 0x47, 0x5b, 0x67, 0xe5, 0xb8, 0x4b, 0xbd, 0xe3, 0xf6, 0x50, 0x42,
+	0xff, 0x64, 0xc0, 0xcc, 0x0e, 0x91, 0x3c, 0xd0, 0x46, 0xde, 0xce, 0x52, 0xa2, 0x6a, 0x35, 0x8a,
+	0x03, 0x34, 0x85, 0xdb, 0x92, 0xc2, 0x7b, 0xe8, 0xdd, 0xf3, 0x53, 0x68, 0x3f, 0xd3, 0xfa, 0x7b,
+	0x8c, 0x7e, 0x36, 0x60, 0xa6, 0xe3, 0x79, 0x29, 0x32, 0xc5, 0x6f, 0x81, 0xc2, 0x63, 0xdf, 0x91,
+	0x14, 0x3a, 0xf6, 0xed, 0x33, 0x29, 0x08, 0xdc, 0x56, 0x3e, 0x29, 0x51, 0x81, 0xbf, 0x19, 0x00,
+	0xaa, 0xd0, 0x25, 0x21, 0xbb, 0xa0, 0xf2, 0xcf, 0xc3, 0xc9, 0x95, 0x9c, 0xbe, 0xb5, 0x1e, 0xfd,
+	0x1b, 0x4e, 0x79, 0x91, 0x49, 0xea, 0x04, 0xdf, 0x17, 0x06, 0x80, 0xba, 0x25, 0x29, 0xbe, 0x13,
+	0x5f, 0x1d, 0x85, 0x7c, 0xf5, 0x31, 0x6e, 0x5d, 0xec, 0x18, 0x7f, 0x91, 0x44, 0x12, 0x39, 0x3f,
+	0x21, 0x32, 0xa1, 0x53, 0x58, 0xaf, 0x4f, 0x8c, 0xd1, 0xc5, 0xf5, 0x81, 0x64, 0xb5, 0x8d, 0xde,
+	0x39, 0x17, 0x2b, 0xf5, 0x7d, 0x73, 0x63, 0x9f, 0x92, 0x83, 0x3b, 0x4f, 0x61, 0x93, 0x86, 0x2d,
+	0xb7, 0x4f, 0xe3, 0x88, 0x71, 0xec, 0x3e, 0x91, 0x68, 0x98, 0xb5, 0x92, 0x3f, 0xe2, 0x84, 0x7d,
+	0x67, 0x29, 0x0d, 0xfa, 0x40, 0x24, 0xe4, 0x81, 0xf1, 0xcd, 0xfb, 0x3d, 0xca, 0xfb, 0xc3, 0xbd,
+	0x96, 0x1b, 0xfa, 0xed, 0xbd, 0x38, 0x74, 0x31, 0x8e, 0xdb, 0xa7, 0xeb, 0xdc, 0x10, 0x44, 0x7a,
+	0x61, 0x7b, 0xff, 0x66, 0x3b, 0xf3, 0xb7, 0xde, 0x5e, 0x45, 0xa6, 0xf4, 0xe6, 0x3f, 0x01, 0x00,
+	0x00, 0xff, 0xff, 0xa4, 0x3e, 0x2a, 0x40, 0xf0, 0x13, 0x00, 0x00,
+=======
 	// 1376 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x58, 0xdd, 0x6e, 0x1b, 0x45,
 	0x14, 0xd6, 0xda, 0xf1, 0xdf, 0x71, 0x9a, 0x9f, 0x69, 0x48, 0x36, 0xdb, 0x84, 0xb8, 0x2b, 0x04,
@@ -1306,6 +1668,7 @@ var fileDescriptor_7185a1e614145d4b = []byte{
 	0x8e, 0x28, 0x1f, 0x27, 0xfb, 0x3d, 0x37, 0xf4, 0xfb, 0xfb, 0x71, 0xe8, 0x62, 0x1c, 0xf7, 0xcf,
 	0xd6, 0x79, 0x4f, 0x90, 0x19, 0x85, 0xfd, 0xc3, 0x3b, 0xfd, 0xdc, 0xdf, 0x3c, 0xfb, 0x75, 0xb9,
 	0x81, 0x3b, 0xff, 0x04, 0x00, 0x00, 0xff, 0xff, 0xcc, 0x14, 0x1c, 0xf3, 0x00, 0x12, 0x00, 0x00,
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1330,6 +1693,8 @@ type OrganizationServiceClient interface {
 	Update(ctx context.Context, in *UpdateOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Delete an organization.
 	Delete(ctx context.Context, in *DeleteOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// GetCount data for a particular organization user.
+	GetOrganizationCount(ctx context.Context, in *ListOrganizationRequest, opts ...grpc.CallOption) (*GetOrganizationCountResponse, error)
 	// Get organization's user list.
 	ListUsers(ctx context.Context, in *ListOrganizationUsersRequest, opts ...grpc.CallOption) (*ListOrganizationUsersResponse, error)
 	// Get data for a particular organization user.
@@ -1340,6 +1705,8 @@ type OrganizationServiceClient interface {
 	UpdateUser(ctx context.Context, in *UpdateOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Delete a user from an organization.
 	DeleteUser(ctx context.Context, in *DeleteOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// DeviceView 展示组织下设备视图结构，可无线增加子节点
+	DeviceView(ctx context.Context, in *DeviceViewOrganizationRequest, opts ...grpc.CallOption) (*DeviceViewOrganizationResponse, error)
 }
 
 type organizationServiceClient struct {
@@ -1395,6 +1762,15 @@ func (c *organizationServiceClient) Delete(ctx context.Context, in *DeleteOrgani
 	return out, nil
 }
 
+func (c *organizationServiceClient) GetOrganizationCount(ctx context.Context, in *ListOrganizationRequest, opts ...grpc.CallOption) (*GetOrganizationCountResponse, error) {
+	out := new(GetOrganizationCountResponse)
+	err := c.cc.Invoke(ctx, "/api.OrganizationService/GetOrganizationCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *organizationServiceClient) ListUsers(ctx context.Context, in *ListOrganizationUsersRequest, opts ...grpc.CallOption) (*ListOrganizationUsersResponse, error) {
 	out := new(ListOrganizationUsersResponse)
 	err := c.cc.Invoke(ctx, "/api.OrganizationService/ListUsers", in, out, opts...)
@@ -1440,6 +1816,15 @@ func (c *organizationServiceClient) DeleteUser(ctx context.Context, in *DeleteOr
 	return out, nil
 }
 
+func (c *organizationServiceClient) DeviceView(ctx context.Context, in *DeviceViewOrganizationRequest, opts ...grpc.CallOption) (*DeviceViewOrganizationResponse, error) {
+	out := new(DeviceViewOrganizationResponse)
+	err := c.cc.Invoke(ctx, "/api.OrganizationService/DeviceView", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrganizationServiceServer is the server API for OrganizationService service.
 type OrganizationServiceServer interface {
 	// Get organization list.
@@ -1452,6 +1837,8 @@ type OrganizationServiceServer interface {
 	Update(context.Context, *UpdateOrganizationRequest) (*empty.Empty, error)
 	// Delete an organization.
 	Delete(context.Context, *DeleteOrganizationRequest) (*empty.Empty, error)
+	// GetCount data for a particular organization user.
+	GetOrganizationCount(context.Context, *ListOrganizationRequest) (*GetOrganizationCountResponse, error)
 	// Get organization's user list.
 	ListUsers(context.Context, *ListOrganizationUsersRequest) (*ListOrganizationUsersResponse, error)
 	// Get data for a particular organization user.
@@ -1462,6 +1849,8 @@ type OrganizationServiceServer interface {
 	UpdateUser(context.Context, *UpdateOrganizationUserRequest) (*empty.Empty, error)
 	// Delete a user from an organization.
 	DeleteUser(context.Context, *DeleteOrganizationUserRequest) (*empty.Empty, error)
+	// DeviceView 展示组织下设备视图结构，可无线增加子节点
+	DeviceView(context.Context, *DeviceViewOrganizationRequest) (*DeviceViewOrganizationResponse, error)
 }
 
 // UnimplementedOrganizationServiceServer can be embedded to have forward compatible implementations.
@@ -1483,6 +1872,12 @@ func (*UnimplementedOrganizationServiceServer) Update(ctx context.Context, req *
 func (*UnimplementedOrganizationServiceServer) Delete(ctx context.Context, req *DeleteOrganizationRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
+<<<<<<< HEAD
+func (*UnimplementedOrganizationServiceServer) GetOrganizationCount(ctx context.Context, req *ListOrganizationRequest) (*GetOrganizationCountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOrganizationCount not implemented")
+}
+=======
+>>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (*UnimplementedOrganizationServiceServer) ListUsers(ctx context.Context, req *ListOrganizationUsersRequest) (*ListOrganizationUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
 }
@@ -1497,6 +1892,9 @@ func (*UnimplementedOrganizationServiceServer) UpdateUser(ctx context.Context, r
 }
 func (*UnimplementedOrganizationServiceServer) DeleteUser(ctx context.Context, req *DeleteOrganizationUserRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}
+func (*UnimplementedOrganizationServiceServer) DeviceView(ctx context.Context, req *DeviceViewOrganizationRequest) (*DeviceViewOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeviceView not implemented")
 }
 
 func RegisterOrganizationServiceServer(s *grpc.Server, srv OrganizationServiceServer) {
@@ -1593,6 +1991,24 @@ func _OrganizationService_Delete_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrganizationService_GetOrganizationCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrganizationServiceServer).GetOrganizationCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.OrganizationService/GetOrganizationCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrganizationServiceServer).GetOrganizationCount(ctx, req.(*ListOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OrganizationService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListOrganizationUsersRequest)
 	if err := dec(in); err != nil {
@@ -1683,6 +2099,24 @@ func _OrganizationService_DeleteUser_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrganizationService_DeviceView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeviceViewOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrganizationServiceServer).DeviceView(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.OrganizationService/DeviceView",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrganizationServiceServer).DeviceView(ctx, req.(*DeviceViewOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _OrganizationService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "api.OrganizationService",
 	HandlerType: (*OrganizationServiceServer)(nil),
@@ -1708,6 +2142,10 @@ var _OrganizationService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _OrganizationService_Delete_Handler,
 		},
 		{
+			MethodName: "GetOrganizationCount",
+			Handler:    _OrganizationService_GetOrganizationCount_Handler,
+		},
+		{
 			MethodName: "ListUsers",
 			Handler:    _OrganizationService_ListUsers_Handler,
 		},
@@ -1726,6 +2164,10 @@ var _OrganizationService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteUser",
 			Handler:    _OrganizationService_DeleteUser_Handler,
+		},
+		{
+			MethodName: "DeviceView",
+			Handler:    _OrganizationService_DeviceView_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

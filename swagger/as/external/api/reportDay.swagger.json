@@ -1,0 +1,424 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/reportDay.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/report-day": {
+      "get": {
+        "summary": "List lists the available report-Day.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDayService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates report-day.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateReportDayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReportDayService"
+        ]
+      }
+    },
+    "/api/report-day/{id}": {
+      "get": {
+        "summary": "Get returns the report-day matching the given id.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDayService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes the report-day matching the given id.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDayService"
+        ]
+      }
+    },
+    "/api/report-day/{reportDay.id}": {
+      "put": {
+        "summary": "Update updates the given report-day.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "reportDay.id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateReportDayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReportDayService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiCreateReportDayRequest": {
+      "type": "object",
+      "properties": {
+        "reportDay": {
+          "$ref": "#/definitions/apiReportDay",
+          "description": "Test object to create."
+        }
+      }
+    },
+    "apiCreateReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Test ID."
+        }
+      }
+    },
+    "apiGetReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "reportDay": {
+          "$ref": "#/definitions/apiReportDay",
+          "description": "Test object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportDayListItem"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiReportDay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportDetailIds": {
+          "type": "string"
+        },
+        "gwMac": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "devEui": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportGwDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportOrganizationDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportCheckDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        }
+      }
+    },
+    "apiReportDayListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "reportDetailIds": {
+          "type": "string"
+        },
+        "gwMac": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "devEui": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportGwDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportOrganizationDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportCheckDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiUpdateReportDayRequest": {
+      "type": "object",
+      "properties": {
+        "reportDay": {
+          "$ref": "#/definitions/apiReportDay",
+          "description": "Test object to update."
+        }
+      }
+    }
+  }
+}
