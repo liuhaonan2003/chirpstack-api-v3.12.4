@@ -576,7 +576,19 @@ func request_InternalService_GetGatewaysSummary_0(ctx context.Context, marshaler
 
 }
 
-<<<<<<< HEAD
+func local_request_InternalService_GetGatewaysSummary_0(ctx context.Context, marshaler runtime.Marshaler, server InternalServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetGatewaysSummaryRequest
+	var metadata runtime.ServerMetadata
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_InternalService_GetGatewaysSummary_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.GetGatewaysSummary(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
 var (
 	filter_InternalService_GetReginSummary_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
@@ -593,23 +605,23 @@ func request_InternalService_GetReginSummary_0(ctx context.Context, marshaler ru
 	}
 
 	msg, err := client.GetReginSummary(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-=======
-func local_request_InternalService_GetGatewaysSummary_0(ctx context.Context, marshaler runtime.Marshaler, server InternalServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetGatewaysSummaryRequest
-	var metadata runtime.ServerMetadata
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_InternalService_GetGatewaysSummary_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.GetGatewaysSummary(ctx, &protoReq)
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	return msg, metadata, err
 
 }
 
-<<<<<<< HEAD
-=======
+func local_request_InternalService_GetReginSummary_0(ctx context.Context, marshaler runtime.Marshaler, server InternalServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetReginSummaryRequest
+	var metadata runtime.ServerMetadata
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_InternalService_GetReginSummary_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.GetReginSummary(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
 // RegisterInternalServiceHandlerServer registers the http handlers for service InternalService to "mux".
 // UnaryRPC     :call InternalServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
@@ -955,10 +967,29 @@ func RegisterInternalServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 
 	})
 
+	mux.Handle("GET", pattern_InternalService_GetReginSummary_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_InternalService_GetReginSummary_0(rctx, inboundMarshaler, server, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_InternalService_GetReginSummary_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 // RegisterInternalServiceHandlerFromEndpoint is same as RegisterInternalServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterInternalServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {

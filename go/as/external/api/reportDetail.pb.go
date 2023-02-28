@@ -28,17 +28,16 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type ReportDetail struct {
-<<<<<<< HEAD
 	// User ID.
 	// Will be set automatically on create.
 	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	//网关序列号
+	// 网关序列号
 	GwMac string `protobuf:"bytes,2,opt,name=gw_mac,json=gwMac,proto3" json:"gw_mac,omitempty"`
-	//设备编号
+	// 设备编号
 	DevId string `protobuf:"bytes,3,opt,name=dev_id,json=devId,proto3" json:"dev_id,omitempty"`
-	//设备序列号
+	// 设备序列号
 	DevEui string `protobuf:"bytes,4,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
-	//上报原数据
+	// 上报原数据
 	ReportData  string  `protobuf:"bytes,5,opt,name=report_data,json=reportData,proto3" json:"report_data,omitempty"`
 	FrameLength int32   `protobuf:"varint,6,opt,name=frame_length,json=frameLength,proto3" json:"frame_length,omitempty"`
 	Sn          int32   `protobuf:"varint,7,opt,name=sn,proto3" json:"sn,omitempty"`
@@ -50,23 +49,12 @@ type ReportDetail struct {
 	Sta         string  `protobuf:"bytes,13,opt,name=sta,proto3" json:"sta,omitempty"`
 	Ver         string  `protobuf:"bytes,14,opt,name=ver,proto3" json:"ver,omitempty"`
 	Cs          string  `protobuf:"bytes,15,opt,name=cs,proto3" json:"cs,omitempty"`
-	//上报时间
+	// 上报时间
 	ReportTime           int64    `protobuf:"varint,16,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
 	ReportDayId          int64    `protobuf:"varint,17,opt,name=report_day_id,json=reportDayId,proto3" json:"report_day_id,omitempty"`
 	Status               int32    `protobuf:"varint,18,opt,name=status,proto3" json:"status,omitempty"`
 	Author               string   `protobuf:"bytes,19,opt,name=author,proto3" json:"author,omitempty"`
 	Remark               string   `protobuf:"bytes,20,opt,name=remark,proto3" json:"remark,omitempty"`
-=======
-	// ReportDetail ID.
-	// Will be set automatically on create.
-	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	GwMac                string   `protobuf:"bytes,2,opt,name=gw_mac,json=gwMac,proto3" json:"gw_mac,omitempty"`
-	DevId                string   `protobuf:"bytes,3,opt,name=dev_id,json=devId,proto3" json:"dev_id,omitempty"`
-	DevEui               string   `protobuf:"bytes,4,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
-	Amount               int64    `protobuf:"varint,5,opt,name=amount,proto3" json:"amount,omitempty"`
-	ReportTime           int64    `protobuf:"varint,6,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
-	Status               int32    `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -81,7 +69,6 @@ func (*ReportDetail) Descriptor() ([]byte, []int) {
 
 func (m *ReportDetail) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportDetail.Unmarshal(m, b)
-<<<<<<< HEAD
 }
 func (m *ReportDetail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ReportDetail.Marshal(b, m, deterministic)
@@ -173,98 +160,46 @@ func (m *ReportDetail) GetWaterVolume() float64 {
 		return m.WaterVolume
 	}
 	return 0
-=======
-}
-func (m *ReportDetail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ReportDetail.Marshal(b, m, deterministic)
-}
-func (m *ReportDetail) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ReportDetail.Merge(m, src)
-}
-func (m *ReportDetail) XXX_Size() int {
-	return xxx_messageInfo_ReportDetail.Size(m)
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
-}
-func (m *ReportDetail) XXX_DiscardUnknown() {
-	xxx_messageInfo_ReportDetail.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ReportDetail proto.InternalMessageInfo
-
-<<<<<<< HEAD
 func (m *ReportDetail) GetAmount() float64 {
 	if m != nil {
 		return m.Amount
-=======
-func (m *ReportDetail) GetId() int64 {
-	if m != nil {
-		return m.Id
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetail) GetSta() string {
 	if m != nil {
 		return m.Sta
-=======
-func (m *ReportDetail) GetGwMac() string {
-	if m != nil {
-		return m.GwMac
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetail) GetVer() string {
 	if m != nil {
 		return m.Ver
-=======
-func (m *ReportDetail) GetDevId() string {
-	if m != nil {
-		return m.DevId
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetail) GetCs() string {
 	if m != nil {
 		return m.Cs
-=======
-func (m *ReportDetail) GetDevEui() string {
-	if m != nil {
-		return m.DevEui
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetail) GetReportTime() int64 {
 	if m != nil {
 		return m.ReportTime
-=======
-func (m *ReportDetail) GetAmount() int64 {
-	if m != nil {
-		return m.Amount
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetail) GetReportDayId() int64 {
 	if m != nil {
 		return m.ReportDayId
-=======
-func (m *ReportDetail) GetReportTime() int64 {
-	if m != nil {
-		return m.ReportTime
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
@@ -276,7 +211,6 @@ func (m *ReportDetail) GetStatus() int32 {
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetail) GetAuthor() string {
 	if m != nil {
 		return m.Author
@@ -291,19 +225,17 @@ func (m *ReportDetail) GetRemark() string {
 	return ""
 }
 
-=======
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 type ReportDetailListItem struct {
 	// User ID.
 	// Will be set automatically on create.
 	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	//网关序列号
+	// 网关序列号
 	GwMac string `protobuf:"bytes,2,opt,name=gw_mac,json=gwMac,proto3" json:"gw_mac,omitempty"`
-	//设备编号
+	// 设备编号
 	DevId string `protobuf:"bytes,3,opt,name=dev_id,json=devId,proto3" json:"dev_id,omitempty"`
-	//设备序列号
+	// 设备序列号
 	DevEui string `protobuf:"bytes,4,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
-	//上报原数据
+	// 上报原数据
 	ReportData  string  `protobuf:"bytes,5,opt,name=report_data,json=reportData,proto3" json:"report_data,omitempty"`
 	FrameLength int32   `protobuf:"varint,6,opt,name=frame_length,json=frameLength,proto3" json:"frame_length,omitempty"`
 	Sn          int32   `protobuf:"varint,7,opt,name=sn,proto3" json:"sn,omitempty"`
@@ -315,7 +247,7 @@ type ReportDetailListItem struct {
 	Sta         string  `protobuf:"bytes,13,opt,name=sta,proto3" json:"sta,omitempty"`
 	Ver         string  `protobuf:"bytes,14,opt,name=ver,proto3" json:"ver,omitempty"`
 	Cs          string  `protobuf:"bytes,15,opt,name=cs,proto3" json:"cs,omitempty"`
-	//上报时间
+	// 上报时间
 	ReportTime  int64  `protobuf:"varint,16,opt,name=report_time,json=reportTime,proto3" json:"report_time,omitempty"`
 	ReportDayId int64  `protobuf:"varint,17,opt,name=report_day_id,json=reportDayId,proto3" json:"report_day_id,omitempty"`
 	Status      int32  `protobuf:"varint,18,opt,name=status,proto3" json:"status,omitempty"`
@@ -324,12 +256,7 @@ type ReportDetailListItem struct {
 	// Created at timestamp.
 	CreatedAt *timestamp.Timestamp `protobuf:"bytes,21,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-<<<<<<< HEAD
 	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,22,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-=======
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Remark               string               `protobuf:"bytes,11,opt,name=remark,proto3" json:"remark,omitempty"`
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -344,7 +271,6 @@ func (*ReportDetailListItem) Descriptor() ([]byte, []int) {
 
 func (m *ReportDetailListItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportDetailListItem.Unmarshal(m, b)
-<<<<<<< HEAD
 }
 func (m *ReportDetailListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ReportDetailListItem.Marshal(b, m, deterministic)
@@ -371,97 +297,45 @@ func (m *ReportDetailListItem) GetId() int64 {
 func (m *ReportDetailListItem) GetGwMac() string {
 	if m != nil {
 		return m.GwMac
-=======
-}
-func (m *ReportDetailListItem) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ReportDetailListItem.Marshal(b, m, deterministic)
-}
-func (m *ReportDetailListItem) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ReportDetailListItem.Merge(m, src)
-}
-func (m *ReportDetailListItem) XXX_Size() int {
-	return xxx_messageInfo_ReportDetailListItem.Size(m)
-}
-func (m *ReportDetailListItem) XXX_DiscardUnknown() {
-	xxx_messageInfo_ReportDetailListItem.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ReportDetailListItem proto.InternalMessageInfo
-
-func (m *ReportDetailListItem) GetId() int64 {
-	if m != nil {
-		return m.Id
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetDevId() string {
 	if m != nil {
 		return m.DevId
-=======
-func (m *ReportDetailListItem) GetGwMac() string {
-	if m != nil {
-		return m.GwMac
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetDevEui() string {
 	if m != nil {
 		return m.DevEui
-=======
-func (m *ReportDetailListItem) GetDevId() string {
-	if m != nil {
-		return m.DevId
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetReportData() string {
 	if m != nil {
 		return m.ReportData
-=======
-func (m *ReportDetailListItem) GetDevEui() string {
-	if m != nil {
-		return m.DevEui
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetFrameLength() int32 {
 	if m != nil {
 		return m.FrameLength
-=======
-func (m *ReportDetailListItem) GetAmount() int64 {
-	if m != nil {
-		return m.Amount
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetSn() int32 {
 	if m != nil {
 		return m.Sn
-=======
-func (m *ReportDetailListItem) GetReportTime() int64 {
-	if m != nil {
-		return m.ReportTime
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetFtp() string {
 	if m != nil {
 		return m.Ftp
@@ -472,68 +346,38 @@ func (m *ReportDetailListItem) GetFtp() string {
 func (m *ReportDetailListItem) GetVol() float64 {
 	if m != nil {
 		return m.Vol
-=======
-func (m *ReportDetailListItem) GetStatus() int32 {
-	if m != nil {
-		return m.Status
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetTpn() string {
 	if m != nil {
 		return m.Tpn
-=======
-func (m *ReportDetailListItem) GetAuthor() string {
-	if m != nil {
-		return m.Author
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetWaterVolume() float64 {
 	if m != nil {
 		return m.WaterVolume
-=======
-func (m *ReportDetailListItem) GetCreatedAt() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreatedAt
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetAmount() float64 {
 	if m != nil {
 		return m.Amount
-=======
-func (m *ReportDetailListItem) GetUpdatedAt() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdatedAt
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return 0
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetSta() string {
 	if m != nil {
 		return m.Sta
-=======
-func (m *ReportDetailListItem) GetRemark() string {
-	if m != nil {
-		return m.Remark
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return ""
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetVer() string {
 	if m != nil {
 		return m.Ver
@@ -586,49 +430,10 @@ func (m *ReportDetailListItem) GetRemark() string {
 func (m *ReportDetailListItem) GetCreatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.CreatedAt
-=======
-type CreateReportDetailRequest struct {
-	// Test object to create.
-	ReportDetail         *ReportDetail `protobuf:"bytes,1,opt,name=reportDetail,proto3" json:"reportDetail,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *CreateReportDetailRequest) Reset()         { *m = CreateReportDetailRequest{} }
-func (m *CreateReportDetailRequest) String() string { return proto.CompactTextString(m) }
-func (*CreateReportDetailRequest) ProtoMessage()    {}
-func (*CreateReportDetailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_65b16394cb4ffda9, []int{2}
-}
-
-func (m *CreateReportDetailRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateReportDetailRequest.Unmarshal(m, b)
-}
-func (m *CreateReportDetailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateReportDetailRequest.Marshal(b, m, deterministic)
-}
-func (m *CreateReportDetailRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateReportDetailRequest.Merge(m, src)
-}
-func (m *CreateReportDetailRequest) XXX_Size() int {
-	return xxx_messageInfo_CreateReportDetailRequest.Size(m)
-}
-func (m *CreateReportDetailRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateReportDetailRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateReportDetailRequest proto.InternalMessageInfo
-
-func (m *CreateReportDetailRequest) GetReportDetail() *ReportDetail {
-	if m != nil {
-		return m.ReportDetail
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	}
 	return nil
 }
 
-<<<<<<< HEAD
 func (m *ReportDetailListItem) GetUpdatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
@@ -703,35 +508,6 @@ func (m *CreateReportDetailResponse) XXX_Merge(src proto.Message) {
 func (m *CreateReportDetailResponse) XXX_Size() int {
 	return xxx_messageInfo_CreateReportDetailResponse.Size(m)
 }
-=======
-type CreateReportDetailResponse struct {
-	// Test ID.
-	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CreateReportDetailResponse) Reset()         { *m = CreateReportDetailResponse{} }
-func (m *CreateReportDetailResponse) String() string { return proto.CompactTextString(m) }
-func (*CreateReportDetailResponse) ProtoMessage()    {}
-func (*CreateReportDetailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_65b16394cb4ffda9, []int{3}
-}
-
-func (m *CreateReportDetailResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateReportDetailResponse.Unmarshal(m, b)
-}
-func (m *CreateReportDetailResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateReportDetailResponse.Marshal(b, m, deterministic)
-}
-func (m *CreateReportDetailResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateReportDetailResponse.Merge(m, src)
-}
-func (m *CreateReportDetailResponse) XXX_Size() int {
-	return xxx_messageInfo_CreateReportDetailResponse.Size(m)
-}
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *CreateReportDetailResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_CreateReportDetailResponse.DiscardUnknown(m)
 }
@@ -768,15 +544,6 @@ func (m *GetReportDetailRequest) XXX_Marshal(b []byte, deterministic bool) ([]by
 }
 func (m *GetReportDetailRequest) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GetReportDetailRequest.Merge(m, src)
-<<<<<<< HEAD
-=======
-}
-func (m *GetReportDetailRequest) XXX_Size() int {
-	return xxx_messageInfo_GetReportDetailRequest.Size(m)
-}
-func (m *GetReportDetailRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetReportDetailRequest.DiscardUnknown(m)
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *GetReportDetailRequest) XXX_Size() int {
 	return xxx_messageInfo_GetReportDetailRequest.Size(m)
@@ -787,11 +554,6 @@ func (m *GetReportDetailRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetReportDetailRequest proto.InternalMessageInfo
 
-<<<<<<< HEAD
-=======
-var xxx_messageInfo_GetReportDetailRequest proto.InternalMessageInfo
-
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *GetReportDetailRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -923,12 +685,6 @@ func (m *DeleteReportDetailRequest) XXX_Merge(src proto.Message) {
 }
 func (m *DeleteReportDetailRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteReportDetailRequest.Size(m)
-<<<<<<< HEAD
-=======
-}
-func (m *DeleteReportDetailRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteReportDetailRequest.DiscardUnknown(m)
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *DeleteReportDetailRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_DeleteReportDetailRequest.DiscardUnknown(m)
@@ -936,11 +692,6 @@ func (m *DeleteReportDetailRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteReportDetailRequest proto.InternalMessageInfo
 
-<<<<<<< HEAD
-=======
-var xxx_messageInfo_DeleteReportDetailRequest proto.InternalMessageInfo
-
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *DeleteReportDetailRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
@@ -976,12 +727,6 @@ func (m *ListReportDetailRequest) XXX_Merge(src proto.Message) {
 }
 func (m *ListReportDetailRequest) XXX_Size() int {
 	return xxx_messageInfo_ListReportDetailRequest.Size(m)
-<<<<<<< HEAD
-}
-func (m *ListReportDetailRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListReportDetailRequest.DiscardUnknown(m)
-=======
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListReportDetailRequest) XXX_DiscardUnknown() {
 	xxx_messageInfo_ListReportDetailRequest.DiscardUnknown(m)
@@ -989,11 +734,6 @@ func (m *ListReportDetailRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListReportDetailRequest proto.InternalMessageInfo
 
-<<<<<<< HEAD
-var xxx_messageInfo_ListReportDetailRequest proto.InternalMessageInfo
-
-=======
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListReportDetailRequest) GetLimit() int64 {
 	if m != nil {
 		return m.Limit
@@ -1033,15 +773,6 @@ func (m *ListReportDetailResponse) XXX_Marshal(b []byte, deterministic bool) ([]
 }
 func (m *ListReportDetailResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ListReportDetailResponse.Merge(m, src)
-<<<<<<< HEAD
-=======
-}
-func (m *ListReportDetailResponse) XXX_Size() int {
-	return xxx_messageInfo_ListReportDetailResponse.Size(m)
-}
-func (m *ListReportDetailResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListReportDetailResponse.DiscardUnknown(m)
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 }
 func (m *ListReportDetailResponse) XXX_Size() int {
 	return xxx_messageInfo_ListReportDetailResponse.Size(m)
@@ -1052,11 +783,6 @@ func (m *ListReportDetailResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListReportDetailResponse proto.InternalMessageInfo
 
-<<<<<<< HEAD
-=======
-var xxx_messageInfo_ListReportDetailResponse proto.InternalMessageInfo
-
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 func (m *ListReportDetailResponse) GetTotalCount() int64 {
 	if m != nil {
 		return m.TotalCount
@@ -1089,7 +815,6 @@ func init() {
 }
 
 var fileDescriptor_65b16394cb4ffda9 = []byte{
-<<<<<<< HEAD
 	// 865 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x56, 0xdd, 0x8e, 0xdb, 0x44,
 	0x14, 0x96, 0xe3, 0xdd, 0x94, 0x1d, 0x6f, 0x4b, 0x77, 0xba, 0xdd, 0xcc, 0xba, 0x2d, 0x49, 0x2d,
@@ -1145,54 +870,6 @@ var fileDescriptor_65b16394cb4ffda9 = []byte{
 	0x7a, 0xdf, 0x7d, 0x3e, 0x95, 0x30, 0x6b, 0xc7, 0x71, 0xa6, 0xca, 0x64, 0xdc, 0xa8, 0x8c, 0xf3,
 	0x26, 0xf9, 0x5b, 0xe7, 0xa1, 0x29, 0x35, 0x55, 0xc9, 0xfc, 0x51, 0xb2, 0xf2, 0x2d, 0x38, 0xee,
 	0xa2, 0x09, 0x8f, 0xfe, 0x0c, 0x00, 0x00, 0xff, 0xff, 0x4e, 0xcb, 0xe9, 0x11, 0x25, 0x0a, 0x00,
-=======
-	// 721 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x55, 0xcd, 0x6e, 0xd3, 0x4a,
-	0x14, 0x96, 0x93, 0x26, 0xbd, 0x3d, 0xa9, 0xae, 0xd4, 0xb9, 0xbd, 0x8d, 0xe3, 0xb6, 0x37, 0xb9,
-	0x16, 0x8b, 0x50, 0xa8, 0x2d, 0x52, 0x21, 0x04, 0xbb, 0xfe, 0xa9, 0xaa, 0x04, 0x52, 0x65, 0xca,
-	0x86, 0x4d, 0x34, 0xb1, 0xa7, 0xc9, 0xa8, 0xb6, 0xc7, 0xb5, 0xc7, 0x29, 0x08, 0x75, 0xc3, 0x2b,
-	0xb0, 0xe2, 0x45, 0x78, 0x04, 0x5e, 0x80, 0x57, 0xe8, 0x83, 0xa0, 0xf9, 0x89, 0x70, 0x13, 0x5b,
-	0x88, 0x8a, 0x0d, 0xcb, 0x33, 0xe7, 0x9b, 0xef, 0x3b, 0x3f, 0xdf, 0xd8, 0x60, 0xe3, 0xcc, 0x25,
-	0xef, 0x38, 0x49, 0x63, 0x1c, 0xba, 0x38, 0xa1, 0x6e, 0x4a, 0x12, 0x96, 0xf2, 0x23, 0xc2, 0x31,
-	0x0d, 0x9d, 0x24, 0x65, 0x9c, 0xa1, 0x3a, 0x4e, 0xa8, 0xb5, 0x35, 0x66, 0x6c, 0x1c, 0x12, 0x89,
-	0xc1, 0x71, 0xcc, 0x38, 0xe6, 0x94, 0xc5, 0x99, 0x82, 0x58, 0x5d, 0x9d, 0x95, 0xd1, 0x28, 0xbf,
-	0x70, 0x39, 0x8d, 0x48, 0xc6, 0x71, 0x94, 0x68, 0xc0, 0xe6, 0x3c, 0x80, 0x44, 0x09, 0x7f, 0xaf,
-	0x92, 0xf6, 0x17, 0x03, 0x56, 0xbd, 0x82, 0x2e, 0xfa, 0x1b, 0x6a, 0x34, 0x30, 0x8d, 0x9e, 0xd1,
-	0xaf, 0x7b, 0x35, 0x1a, 0xa0, 0x7f, 0xa1, 0x39, 0xbe, 0x1e, 0x46, 0xd8, 0x37, 0x6b, 0x3d, 0xa3,
-	0xbf, 0xe2, 0x35, 0xc6, 0xd7, 0xaf, 0xb0, 0x2f, 0x8e, 0x03, 0x32, 0x1d, 0xd2, 0xc0, 0xac, 0xab,
-	0xe3, 0x80, 0x4c, 0x4f, 0x03, 0xd4, 0x86, 0x65, 0x71, 0x4c, 0x72, 0x6a, 0x2e, 0xc9, 0x73, 0x81,
-	0x3a, 0xce, 0x29, 0xda, 0x80, 0x26, 0x8e, 0x58, 0x1e, 0x73, 0xb3, 0x21, 0xa9, 0x75, 0x84, 0xba,
-	0xd0, 0x52, 0x6d, 0x0f, 0x45, 0xd9, 0x66, 0x53, 0x26, 0x41, 0x1d, 0x9d, 0xd3, 0x88, 0x88, 0x8b,
-	0x19, 0xc7, 0x3c, 0xcf, 0xcc, 0xe5, 0x9e, 0xd1, 0x6f, 0x78, 0x3a, 0xb2, 0x6f, 0x6b, 0xb0, 0x5e,
-	0x2c, 0xfc, 0x25, 0xcd, 0xf8, 0x29, 0x27, 0xd1, 0x9f, 0xd2, 0x80, 0x24, 0xcc, 0xf9, 0x84, 0xa5,
-	0xe6, 0x5f, 0x4a, 0x48, 0x45, 0xe8, 0x39, 0x80, 0x9f, 0x12, 0xcc, 0x49, 0x30, 0xc4, 0xdc, 0x5c,
-	0xe9, 0x19, 0xfd, 0xd6, 0xc0, 0x72, 0xd4, 0x0e, 0x9d, 0xd9, 0x0e, 0x9d, 0xf3, 0xd9, 0x92, 0xbd,
-	0x15, 0x8d, 0xde, 0xe7, 0xe2, 0x6a, 0x9e, 0x04, 0xb3, 0xab, 0xf0, 0xf3, 0xab, 0x1a, 0xbd, 0xcf,
-	0x45, 0x35, 0x29, 0x89, 0x70, 0x7a, 0x69, 0xb6, 0x54, 0x35, 0x2a, 0xb2, 0x3d, 0xe8, 0x1c, 0x4a,
-	0xfe, 0xe2, 0xac, 0x3d, 0x72, 0x95, 0x93, 0x8c, 0xa3, 0xa7, 0xb0, 0x5a, 0xf4, 0xac, 0x1c, 0x7a,
-	0x6b, 0xb0, 0xe6, 0xe0, 0x84, 0x3a, 0x77, 0xf0, 0x77, 0x60, 0xf6, 0x63, 0xb0, 0xca, 0x38, 0xb3,
-	0x84, 0xc5, 0x19, 0x99, 0xdf, 0x9f, 0xdd, 0x87, 0x8d, 0x13, 0xc2, 0xcb, 0xe4, 0xe7, 0x91, 0x5f,
-	0x0d, 0x68, 0x2f, 0x40, 0x35, 0xeb, 0xfd, 0x4a, 0x9d, 0x5b, 0x46, 0xed, 0xfe, 0xcb, 0xa8, 0xff,
-	0xc2, 0x32, 0xc4, 0xd0, 0xdf, 0xc8, 0xe0, 0x37, 0x0e, 0xfd, 0x11, 0x74, 0x8e, 0x48, 0x48, 0xca,
-	0x39, 0xe7, 0x27, 0x79, 0x02, 0x6d, 0xf1, 0x9e, 0xca, 0xa0, 0xeb, 0xd0, 0x08, 0x69, 0x44, 0xb9,
-	0x46, 0xab, 0x40, 0xd8, 0x87, 0x5d, 0x5c, 0x64, 0x44, 0xcd, 0xa8, 0xee, 0xe9, 0xc8, 0x8e, 0xc1,
-	0x5c, 0x24, 0xd2, 0x2b, 0xe9, 0x42, 0x8b, 0x33, 0x8e, 0xc3, 0xa1, 0x2f, 0x9f, 0x95, 0xe2, 0x03,
-	0x79, 0x74, 0x28, 0x9f, 0xd6, 0x13, 0xe1, 0xc9, 0x2c, 0x0f, 0x05, 0x69, 0xbd, 0xdf, 0x1a, 0x74,
-	0x16, 0x7a, 0x9c, 0x3d, 0x7a, 0x4f, 0x03, 0x07, 0x9f, 0x97, 0xe0, 0x9f, 0x22, 0xe0, 0x35, 0x49,
-	0xa7, 0xd4, 0x27, 0x68, 0x02, 0x4d, 0x65, 0x39, 0xf4, 0x9f, 0x24, 0xa9, 0xf4, 0xb4, 0xd5, 0xad,
-	0xcc, 0xab, 0xb2, 0xed, 0xed, 0x8f, 0xdf, 0x6e, 0x3f, 0xd5, 0xda, 0x36, 0x2a, 0x7c, 0xb3, 0x77,
-	0x03, 0x89, 0x79, 0x61, 0xec, 0x20, 0x0c, 0xf5, 0x13, 0xc2, 0xd1, 0xa6, 0xa4, 0x29, 0x37, 0xae,
-	0xb5, 0x55, 0x9e, 0xd4, 0x02, 0x5d, 0x29, 0xd0, 0x41, 0xed, 0x45, 0x01, 0xf7, 0x03, 0x0d, 0x6e,
-	0xd0, 0x15, 0x34, 0x95, 0x3d, 0x74, 0x33, 0x95, 0x5e, 0xb1, 0x36, 0x16, 0xfc, 0x76, 0x2c, 0xbe,
-	0xfd, 0xb6, 0x2b, 0x25, 0x1e, 0x5a, 0x0f, 0xca, 0x24, 0xee, 0xfc, 0x86, 0x68, 0x70, 0xa3, 0xba,
-	0x6a, 0x2a, 0xf7, 0x68, 0xc9, 0x4a, 0x2b, 0x55, 0x4a, 0xea, 0xae, 0x76, 0x2a, 0xbb, 0x1a, 0xc2,
-	0x92, 0x58, 0x27, 0x52, 0xc3, 0xa9, 0xb0, 0x9f, 0xb5, 0x5d, 0x91, 0xd5, 0xb3, 0xb3, 0xa4, 0xca,
-	0x3a, 0x2a, 0x59, 0xce, 0xc1, 0x15, 0xfc, 0x4f, 0x99, 0xe3, 0x4f, 0x68, 0x9a, 0x64, 0x1c, 0xfb,
-	0x97, 0x92, 0x09, 0x67, 0xce, 0xec, 0x1f, 0x2c, 0xe2, 0x83, 0xb5, 0x22, 0xed, 0x99, 0x68, 0xe1,
-	0xcc, 0x78, 0xfb, 0x6c, 0x4c, 0xf9, 0x24, 0x1f, 0x39, 0x3e, 0x8b, 0xdc, 0x51, 0xca, 0x7c, 0x8c,
-	0x53, 0xf7, 0x07, 0xcf, 0xae, 0x90, 0x1a, 0x33, 0x77, 0xba, 0xe7, 0xce, 0xfd, 0xd1, 0x47, 0x4d,
-	0x39, 0x84, 0xbd, 0xef, 0x01, 0x00, 0x00, 0xff, 0xff, 0x5a, 0x58, 0x05, 0x0c, 0xeb, 0x07, 0x00,
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	0x00,
 }
 

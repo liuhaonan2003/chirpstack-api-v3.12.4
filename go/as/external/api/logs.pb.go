@@ -20,17 +20,6 @@ import (
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
-<<<<<<< HEAD
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
-
-//日志：记录某用户(author)的操作行为（行为名称，汉语描述，便于理解),其中，记录日志方法表示其操作的行为(post/get/delete/put),url表示API的路径，IP表示操作用户的电脑IP(192.168.1.18).
-//日志列表和日志详情：如果用户操作的行为没用数据变化（比如登录)，则不产生详情数据。如果操作前后又数据变化，则详情的数据（其实是个json）将记录前后的数据变化情况。
-=======
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
@@ -40,7 +29,6 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // 日志：记录某用户(author)的操作行为（行为名称，汉语描述，便于理解),其中，记录日志方法表示其操作的行为(post/get/delete/put),url表示API的路径，IP表示操作用户的电脑IP(192.168.1.18).
 // 日志列表和日志详情：如果用户操作的行为没用数据变化（比如登录)，则不产生详情数据。如果操作前后又数据变化，则详情的数据（其实是个json）将记录前后的数据变化情况。
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 type Log struct {
 	// log ID. Will be set automatically on create.
 	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -61,11 +49,7 @@ type Log struct {
 	// Last update timestamp.
 	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	Remark    string               `protobuf:"bytes,10,opt,name=remark,proto3" json:"remark,omitempty"`
-<<<<<<< HEAD
-	//API的请求路径
-=======
 	// API的请求路径
->>>>>>> 6cc6b2daf97682506a855dc9f40c2af6c5e29280
 	LogData              string   `protobuf:"bytes,11,opt,name=log_data,json=logData,proto3" json:"log_data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
