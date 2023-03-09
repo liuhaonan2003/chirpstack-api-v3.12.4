@@ -176,8 +176,8 @@ message ListWarningRequest {
     int64 organization_id = 3;
     int32 warning_level =4;
     string search = 5;//title或description的模糊匹配
-    google.protobuf.Timestamp startTime = 6;
-    google.protobuf.Timestamp endTime = 7;
+    string startTime = 6;
+    string endTime = 7;
 }
 
 message ListWarningResponse {

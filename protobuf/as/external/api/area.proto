@@ -1,0 +1,154 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "AreaProto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+
+// AreaService is the service managing the area.
+service AreaService {
+  // Create creates the given device.
+  rpc Create(CreateAreaRequest) returns (CreateAreaResponse) {
+    option(google.api.http) = {
+      post: "/api/area/create"
+      body: "*"
+    };
+  }
+
+  // Get returns the device matching the given DevEUI.
+  rpc Get(GetAreaRequest) returns (GetAreaResponse) {
+    option (google.api.http) = {
+      get: "/api/area/getById"
+    };
+  }
+  // Get returns the device matching the given DevEUI.
+  rpc GetByIndex(GetByIndexAreaRequest) returns (GetAreaResponse) {
+    option (google.api.http) = {
+      get: "/api/area/getByIndex"
+    };
+  }
+  // Get returns the area by the given name.
+  rpc GetByName(GetByNameAreaRequest) returns (GetAreaResponse) {
+    option (google.api.http) = {
+      get: "/api/area/getByName"
+    };
+  }
+
+
+  // List returns the available devices.
+  rpc List(ListAreaRequest) returns (ListAreaResponse) {
+    option (google.api.http) = {
+      get: "/api/area/list"
+    };
+  }
+
+  // List returns the available devices.
+  rpc AreaTreeView(AreaTreeViewAreaRequest) returns (AreaTreeViewAreaResponse) {
+    option (google.api.http) = {
+      get: "/api/area/tree-view"
+    };
+  }
+
+
+  // Delete deletes the device matching the given DevEUI.
+  rpc Delete(DeleteAreaRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/api/area/delete"
+    };
+  }
+
+  // Update updates the device matching the given DevEUI.
+  rpc Update(UpdateAreaRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      put: "/api/area/update/{area.index}"
+      body: "*"
+    };
+  }
+
+}
+
+
+message Area {
+  int64 index = 1;	//主键自增索引
+  int32 id = 2;	//城市编号，三级用int类型，四级用long类型；省市区三级为统计局的编号经过去除后缀的0{3,6,8}得到的短编号，港澳台编号为民政部的编号；如果是添加的数据（国外），此编号为自定义编号；镇级主要为腾讯地图行政区划的编号，大部分和统计局的数据一致，约7.5%（约3000个）的镇级不一致；如果某级缺失(如：省直辖县级市、新增城市)，会用上级数据进行补齐，编号为上级结尾添加0{2,3}，注意如果要恢复长编号时（简单的补上00）已有的ID会和添加的ID产生冲突，比如4位恢复到6位将导致部分上下级ID冲突，恢复时这些新加的数据要进行特殊处理。
+  int32 pid = 3;//上级ID
+  int32 deep = 4;//层级深度；0：省，1：市，2：区，3：镇
+  string name = 5;//城市名称；省市区三级为统计局的名称精简过后的，镇级主要为腾讯地图行政区划的名称精简过后的
+  string pinyin_prefix = 6;       //name的拼音前缀，取的是pinyin第一个字母，或港澳台、国外自定义前缀；用来排序时应当先根据拼音前缀的首字母来排序，相同的再根据前缀+名称进行排序
+  string pinyin = 7;//name的完整拼音
+  string ext_id = 8;//数据源原始的编号；如果是添加的数据，此编号为0
+  string ext_name = 9;//数据源原始的名称，为未精简的名称
+  string pinyin_prefix2 = 10;//name的完整拼音首字母
+}
+
+
+message CreateAreaRequest{
+    Area area = 1;
+}
+
+message CreateAreaResponse {
+  // Test ID.
+  int64 index = 1;
+}
+
+message GetAreaRequest {
+  //以下任意一种完整输入即可匹配，匹配时按照顺序检索到就停止往下检索
+  int32 id = 1;	//城市编号，三级用int类型，四级用long类型；省市区三级为统计局的编号经过去除后缀的0{3,6,8}得到的短编号，港澳台编号为民政部的编号；如果是添加的数据（国外），此编号为自定义编号；镇级主要为腾讯地图行政区划的编号，大部分和统计局的数据一致，约7.5%（约3000个）的镇级不一致；如果某级缺失(如：省直辖县级市、新增城市)，会用上级数据进行补齐，编号为上级结尾添加0{2,3}，注意如果要恢复长编号时（简单的补上00）已有的ID会和添加的ID产生冲突，比如4位恢复到6位将导致部分上下级ID冲突，恢复时这些新加的数据要进行特殊处理。
+}
+message GetByIndexAreaRequest {
+  int64 index = 1;	//主键自增索引
+}
+message GetAreaResponse {
+  Area area = 1;	//
+}
+
+
+message DeleteAreaRequest {
+  // Test ID.
+  int64 index = 1;
+}
+
+message ListAreaRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+
+  int32 pid = 3;//上级ID
+  int32 deep = 4;//层级深度；0：省，1：市，2：区，3：镇
+  string nameSearch = 5;//城市名称或数据源原始的名称匹配；省市区三级为统计局的名称精简过后的，镇级主要为腾讯地图行政区划的名称精简过后的
+  string pinyinSearch = 7; //name的完整拼音或缩写
+  string ext_id = 8;//数据源原始的编号；如果是添加的数据，此编号为0
+}
+
+message ListAreaResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated Area result = 2;
+}
+
+message UpdateAreaRequest {
+  Area area = 1;	//
+}
+
+message GetByNameAreaRequest {
+  string name = 1;	//
+}
+
+message AreaTreeViewAreaRequest {
+  int32 pid = 1;	//
+}
+message AreaTreeViewAreaResponse {
+  // Total number of areas.
+  int64 totalCount = 1 ;
+  string result = 2;
+}
+

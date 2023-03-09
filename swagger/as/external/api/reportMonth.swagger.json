@@ -127,43 +127,37 @@
         ]
       }
     },
-    "/api/report-month/{organization_id}/month-consumption": {
+    "/api/report-month/{id}/detail-list": {
       "get": {
-        "summary": "List lists the available report-Day.",
-        "operationId": "MonthAmount",
+        "summary": "GetDetailList returns the detail-list of the report-check-day  matching the given id.",
+        "operationId": "GetDetailList",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/apiReportMonthAmountResponse"
+              "$ref": "#/definitions/apiGetDetailListReportMonthResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "organization_id",
+            "name": "id",
+            "description": "Test ID.",
             "in": "path",
             "required": true,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "year",
-            "description": "Total number of test.",
+            "name": "limit",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "format": "int64"
           },
           {
-            "name": "month",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "userId",
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
             "in": "query",
             "required": false,
             "type": "string",
@@ -208,47 +202,6 @@
           "ReportMonthService"
         ]
       }
-    },
-    "/api/report-year-consumption": {
-      "get": {
-        "summary": "YearAmount the available report-Day.",
-        "operationId": "YearAmount",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/apiReportYearAmountResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "year",
-            "description": "Total number of test.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "organizationId",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
-          {
-            "name": "userId",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          }
-        ],
-        "tags": [
-          "ReportMonthService"
-        ]
-      }
     }
   },
   "definitions": {
@@ -268,6 +221,23 @@
           "type": "string",
           "format": "int64",
           "description": "Test ID."
+        }
+      }
+    },
+    "apiGetDetailListReportMonthResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportDayListItem"
+          },
+          "description": "Test within the result-set."
         }
       }
     },
@@ -304,6 +274,108 @@
             "$ref": "#/definitions/apiReportMonthListItem"
           },
           "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiReportDayListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "reportDetailIds": {
+          "type": "string"
+        },
+        "gwMac": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "devEui": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportGwDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportOrganizationDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportCheckDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
         }
       }
     },
@@ -353,16 +425,6 @@
         },
         "remark": {
           "type": "string"
-        }
-      }
-    },
-    "apiReportMonthAmountResponse": {
-      "type": "object",
-      "properties": {
-        "totalAmount": {
-          "type": "number",
-          "format": "double",
-          "description": "Total number of test."
         }
       }
     },
@@ -422,16 +484,6 @@
           "type": "string",
           "format": "date-time",
           "description": "Last update timestamp."
-        }
-      }
-    },
-    "apiReportYearAmountResponse": {
-      "type": "object",
-      "properties": {
-        "totalAmount": {
-          "type": "number",
-          "format": "double",
-          "description": "Total number of test."
         }
       }
     },

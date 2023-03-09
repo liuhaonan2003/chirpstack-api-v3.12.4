@@ -134,6 +134,8 @@ service InternalService {
     };
   }
 
+
+
   
 }
 
@@ -453,3 +455,4 @@ message GetReginSummaryResponse {
   int64 gateWayCount = 2;
   int64 deviceCount = 3;
 }
+

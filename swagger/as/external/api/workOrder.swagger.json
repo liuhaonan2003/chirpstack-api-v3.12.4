@@ -43,6 +43,64 @@
             "required": false,
             "type": "string",
             "format": "int64"
+          },
+          {
+            "name": "author",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "workType",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "servicePersonal",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "workLevel",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "isAuditing",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -68,6 +126,106 @@
             "schema": {
               "$ref": "#/definitions/apiCreateWorkOrderRequest"
             }
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    },
+    "/api/work-order/0/status_count": {
+      "get": {
+        "summary": "StatusCount 获取历史工单状态统计",
+        "operationId": "StatusCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiStatusCountWorkOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "workType",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "workLevel",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "servicePersonal",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WorkOrderService"
+        ]
+      }
+    },
+    "/api/work-order/0/week_status_count_list": {
+      "get": {
+        "summary": "WeekStatusList 七日内工单状态统计",
+        "operationId": "WeekStatusList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiWeekStatusListWorkOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "workType",
+            "description": "返回从该时间之前一天再往回追溯七日内的数据.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "workLevel",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "servicePersonal",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -253,6 +411,23 @@
         }
       }
     },
+    "apiDealInfo": {
+      "type": "object",
+      "properties": {
+        "toDealCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dealingCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dealedCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
     "apiGetWorkOrderResponse": {
       "type": "object",
       "properties": {
@@ -316,12 +491,36 @@
         }
       }
     },
+    "apiStatusCountWorkOrderResponse": {
+      "type": "object",
+      "properties": {
+        "dealInfo": {
+          "$ref": "#/definitions/apiDealInfo"
+        }
+      }
+    },
     "apiUpdateWorkOrderRequest": {
       "type": "object",
       "properties": {
         "workOrder": {
           "$ref": "#/definitions/apiWorkOrder",
           "description": "WorkOrder object to update."
+        }
+      }
+    },
+    "apiWeekStatusListWorkOrderResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of work-order."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiDealInfo"
+          }
         }
       }
     },
@@ -355,6 +554,20 @@
           "type": "string"
         },
         "servicePersonal": {
+          "type": "string"
+        },
+        "workLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isAuditing": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "planningTime": {
+          "type": "string"
+        },
+        "warningIds": {
           "type": "string"
         }
       }
@@ -400,6 +613,20 @@
           "type": "string",
           "format": "date-time",
           "description": "Last update timestamp."
+        },
+        "workLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isAuditing": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "planningTime": {
+          "type": "string"
+        },
+        "warningIds": {
+          "type": "string"
         }
       }
     }

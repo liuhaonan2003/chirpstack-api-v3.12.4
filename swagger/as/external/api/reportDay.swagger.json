@@ -127,6 +127,48 @@
         ]
       }
     },
+    "/api/report-day/{id}/detail-list": {
+      "get": {
+        "summary": "GetDetailList returns the detail-list of the report-check-day  matching the given id.",
+        "operationId": "GetDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetDetailListReportDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportDayService"
+        ]
+      }
+    },
     "/api/report-day/{reportDay.id}": {
       "put": {
         "summary": "Update updates the given report-day.",
@@ -179,6 +221,23 @@
           "type": "string",
           "format": "int64",
           "description": "Test ID."
+        }
+      }
+    },
+    "apiGetDetailListReportDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportDetailListItem"
+          },
+          "description": "Test within the result-set."
         }
       }
     },
@@ -388,6 +447,96 @@
         "scene": {
           "type": "integer",
           "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiReportDetailListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "gwMac": {
+          "type": "string",
+          "title": "网关序列号"
+        },
+        "devId": {
+          "type": "string",
+          "title": "设备编号"
+        },
+        "devEui": {
+          "type": "string",
+          "title": "设备序列号"
+        },
+        "reportData": {
+          "type": "string",
+          "title": "上报原数据"
+        },
+        "frameLength": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sn": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ftp": {
+          "type": "string"
+        },
+        "vol": {
+          "type": "number",
+          "format": "double"
+        },
+        "tpn": {
+          "type": "string"
+        },
+        "waterVolume": {
+          "type": "number",
+          "format": "double"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "sta": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "上报时间"
+        },
+        "reportDayId": {
+          "type": "string",
+          "format": "int64"
         },
         "status": {
           "type": "integer",

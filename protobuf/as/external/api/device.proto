@@ -40,12 +40,27 @@ service DeviceService {
         };
     }
 
-    // List returns the available devices.
-//    rpc GetCount(GetCountDeviceRequest) returns (GetCountDeviceResponse) {
-//        option (google.api.http) = {
-//            get: "/api/devices-count"
-//        };
-//    }
+
+    // cumulativeAmount 获取给定设备的指定日的日用水量
+    rpc DeviceDayConsumption(DeviceDayConsumptionRequest) returns (DeviceDayConsumptionResponse) {
+        option(google.api.http) = {
+            get: "/api/devices/{dev_eui}/day-consumption"
+        };
+    }
+
+    // MonthConsumption 获取给定组织指定月的用水量.考虑到未到月尾，月统计表还未生成，故需在天统计表累加
+    rpc DeviceMonthConsumption(DeviceMonthConsumptionRequest) returns (DeviceMonthConsumptionResponse) {
+        option(google.api.http) = {
+            get: "/api/devices/{dev_eui}/month-consumption"
+        };
+    }
+
+    // cumulativeAmount 获取给定组织指定年份的用水量.理由同上。不过需要先获取当前月份之前的月份的累加，然后在加上剩下的不满月的
+    rpc DeviceYearConsumption(DeviceYearConsumptionRequest) returns (DeviceYearConsumptionResponse) {
+        option(google.api.http) = {
+            get: "/api/devices/{dev_eui}/year-consumption"
+        };
+    }
 
     // Delete deletes the device matching the given DevEUI.
     rpc Delete(DeleteDeviceRequest) returns (google.protobuf.Empty) {
@@ -205,10 +220,23 @@ service DeviceService {
             body: "*"
         };
     }
+
+    // GetReginDevices returns 区域内所有设备列表
+    rpc GetReginDevices(GetReginDevicesRequest) returns (GetReginDevicesResponse) {
+        option(google.api.http) = {
+            get: "/api/devicesRegion/devices"
+        };
+    }
+
+    // DeviceReportData returns 根据设备eui获取设备上报明细、日用量、月用量、年用量、累计用量
+    rpc DeviceReportData(DeviceReportDataDevicesRequest) returns (DeviceReportDataDevicesResponse) {
+        option(google.api.http) = {
+            get: "/api/devices/{dev_eui}/reportData"
+        };
+    }
 }
 
 message Device {
-    
      // Device EUI (HEX encoded).
     string dev_eui = 1 [json_name = "devEUI"];
     // Name of the device (if left blank, it will be set to the DevEUI).
@@ -253,6 +281,13 @@ message Device {
 
     // Device is disabled.
     bool is_disabled = 18;
+
+    int32 fault = 19;//故障标志：0 正常  1 阀门故障，包括到位开关故障、控阀时电压过低或阀门本身不转，或者疏通阀门出现异常
+    int32 dev_exception = 20;//串口异常：0 正常  1 标示串口异常（两次抄读未返回数据）
+    int32 magnetic = 21;//磁攻击标志：0 正常 ; 1 有磁攻击。(有磁铁靠近)
+    int32 dev_power = 22;//掉电标志：0 电池正常; 1 电池已经去除或低电压
+    int32 der = 23;//DER状态：0:当前计量数据正确; 1:当前计量数据错误（抄读返回的值为非 BCD 码)
+    int32 valves = 24;//阀门状态：0:阀门开 ; 1:阀门关
 }
 
 message DeviceListItem {
@@ -306,6 +341,104 @@ message DeviceListItem {
     int32 status             = 18;
     string author            = 19;
     string remark            = 20;
+
+    int32 dr = 21; //设备数据速率使用
+    string dev_addr = 22;
+    double   total =23;
+    double latitude = 24;
+    double longitude = 25;
+    double altitude = 26;
+
+    int32 fault = 27;//故障标志：0 正常  1 阀门故障，包括到位开关故障、控阀时电压过低或阀门本身不转，或者疏通阀门出现异常
+    int32 dev_exception = 28;//串口异常：0 正常  1 标示串口异常（两次抄读未返回数据）
+    int32 magnetic = 29;//磁攻击标志：0 正常 ; 1 有磁攻击。(有磁铁靠近)
+    int32 dev_power = 30;//掉电标志：0 电池正常; 1 电池已经去除或低电压
+    int32 der = 31;//DER状态：0:当前计量数据正确; 1:当前计量数据错误（抄读返回的值为非 BCD 码)
+    int32 valves = 32;//阀门状态：0:阀门开 ; 1:阀门关
+
+}
+message ReginDeviceListItem{
+    int64 id = 1;
+    // Device EUI (HEX encoded).
+    string dev_eui = 2 [json_name = "devEUI"];
+
+    // Name of the device.
+    string name = 3;
+
+    // Application ID.
+    int64 application_id = 4 [json_name = "applicationID"];
+
+    // Description of the device.
+    string description = 5;
+
+    // Device-profile ID attached to the device.
+    string device_profile_id = 6 [json_name = "deviceProfileID"];
+
+    // Device-profile name.
+    string device_profile_name = 7 [json_name = "deviceProfileName"];
+
+    // The device battery status (deprecated, use device_status_battery_level).
+    // 0:      The end-device is connected to an external power source
+    // 1..254: The battery level, 1 being at minimum and 254 being at maximum
+    // 255:    The end-device was not able to measure the battery level
+    // 256:    The device-status is not available.
+    uint32 device_status_battery = 8 [json_name = "deviceStatusBattery"];
+
+    // The device margin status
+    // -32..32: The demodulation SNR ration in dB
+    // 256:     The device-status is not available.
+    int32  device_status_margin = 9 [json_name = "deviceStatusMargin"];
+
+    // Device is connected to an external power source.
+    bool device_status_external_power_source = 10 ;
+
+    // Device battery status is unavailable.
+    bool device_status_battery_level_unavailable = 11;
+
+    // Device battery level as a percentage.
+    float device_status_battery_level = 12;
+
+    // The last time the application-server received any data from the device,
+    // or an empty string when the device never sent any data.
+    google.protobuf.Timestamp last_seen_at = 13 [json_name = "lastSeenAt"];
+    int64 organization_id    =14 [json_name = "organizationId"];
+    int64 user_id            = 15 [json_name = "userId"];
+    int32 scene             = 16;
+    int64 parent             = 17;
+    int32 status             = 18;
+    string author            = 19;
+    string remark            = 20;
+
+    int32 fault = 42;//故障标志：0 正常  1 阀门故障，包括到位开关故障、控阀时电压过低或阀门本身不转，或者疏通阀门出现异常
+    int32 dev_exception = 43;//串口异常：0 正常  1 标示串口异常（两次抄读未返回数据）
+    int32 magnetic = 44;//磁攻击标志：0 正常 ; 1 有磁攻击。(有磁铁靠近)
+    int32 dev_power = 45;//掉电标志：0 电池正常; 1 电池已经去除或低电压
+    int32 der = 46;//DER状态：0:当前计量数据正确; 1:当前计量数据错误（抄读返回的值为非 BCD 码)
+    int32 valves = 47;//阀门状态：0:阀门开 ; 1:阀门关
+
+    int32 dr = 21; //设备数据速率使用
+    string dev_addr = 22 [json_name = "devAddr"];
+    double altitude = 23;
+    double   total =24;
+
+    double latitude = 25;
+    double longitude = 26;
+    int32 province_id = 27 [json_name = "provinceId"];
+    int32 city_id = 28 [json_name = "cityId"];
+    int32 area_id = 29 [json_name = "areaId"];
+
+    string locateAddress = 30;
+    string username = 31;
+    string email = 32;
+    string note = 33;
+    bool is_auditing = 34 [json_name = "isAuditing"];
+    string realName = 35;
+    string company_name = 36 [json_name = "companyName"];
+    string roles = 37;
+    int64 user_organization_id = 38 [json_name = "userOrganizationId"];
+    string phone = 39;
+    int32  type = 40;
+    int32 user_status = 41 [json_name = "userStatus"];
 }
 
 message DeviceKeys {
@@ -390,6 +523,9 @@ message ListDeviceRequest {
     // Service-profile ID to filter on (string formatted UUID).
     string service_profile_id = 10 [json_name = "serviceProfileID"];
     map<string, string> tags = 11;
+
+
+
     
 }
 
@@ -400,17 +536,40 @@ message ListDeviceResponse {
     // Devices within this result-set.
     repeated DeviceListItem result = 2;
 }
-//message GetCountDeviceRequest {
-//    int32 status = 1;//0:离线，1在线
-//    int64 application_id = 2 [json_name = "applicationID"];
-//    int64 organization_id    =3;
-////    int64 user_id            = 4;
-//    int32 scene             = 5;
-//    int64 parent             = 6;
-//}
-//message GetCountDeviceResponse {
-//    int64 total_count = 1;
-//}
+
+message DeviceDayConsumptionRequest {
+    // Device EUI (HEX encoded).
+    string dev_eui = 1 [json_name = "devEUI"];
+
+    int32 year = 2;
+    int32 month = 3;
+    int32 day = 4;
+}
+message DeviceDayConsumptionResponse {
+    // Total number of test.
+    double total_amount = 1;
+}
+message DeviceMonthConsumptionRequest {
+
+    string dev_eui = 1 [json_name = "devEUI"];
+    // Total number of test.
+    int32 year = 2;
+    int32 month = 3;
+}
+message DeviceMonthConsumptionResponse {
+    // Total number of test.
+    double total_amount = 1;
+}
+
+message DeviceYearConsumptionRequest {
+    // Total number of test.
+    string dev_eui = 1 [json_name = "devEUI"];
+    int32 year = 2;
+}
+message DeviceYearConsumptionResponse {
+    // Total number of test.
+    double total_amount = 1;
+}
 
 message DeleteDeviceRequest {
     // Device EUI (HEX encoded).
@@ -685,3 +844,35 @@ message SesionKeyResponse {
     string nwkSEncKey = 4;
 }
 
+message GetReginDevicesRequest {
+    int32 province_id = 1 ;
+    int32 city_id = 2 ;
+    int32 area_id = 3 ;
+
+    int64 limit = 4;
+    // Offset offset of the result-set (for pagination).
+    int64 offset = 5;
+}
+
+message GetReginDevicesResponse {
+    int64 total_count = 1;
+
+    // Devices within this result-set.
+    repeated ReginDeviceListItem result = 2;
+}
+
+message DeviceReportDataDevicesRequest {
+    string dev_eui = 1 [json_name = "devEUI"];
+}
+
+message DeviceReportDataDevicesResponse {
+//    上报时间
+    string reportTime = 1;
+    double vol = 2;//电池电量
+    double increment = 3;//幅度变化
+    double cumulativeAmount = 4;//累计生产量
+
+    double dayAmount = 5;
+    double monthAmount = 6;
+    double yearAmount = 7;
+}

@@ -80,6 +80,33 @@ service UserService {
 			body: "*"
 		};
 	}
+	rpc SetAreaById(SetUserAreaByIdRequest) returns (google.protobuf.Empty) {
+		option(google.api.http) = {
+			put: "/api/users/{user_id}/setAreaById"
+			body: "*"
+		};
+	}
+	rpc SetAreaByName(SetUserAreaByNameRequest) returns (google.protobuf.Empty) {
+		option(google.api.http) = {
+			put: "/api/users/{user_id}/setAreaByName"
+			body: "*"
+		};
+	}
+
+	// UserDistribution 获取根据用户类型用户分布统计
+	rpc UserDistribution(UserDistributionRequest) returns (UserDistributionResponse) {
+		option(google.api.http) = {
+			get: "/api/users/0/type-distribution"
+		};
+	}
+
+	// UserDistribution 获取根据用户类型用户分布统计
+	rpc UserTypeIncrease(UserTypeIncreaseRequest) returns (UserTypeIncreaseResponse) {
+		option(google.api.http) = {
+			get: "/api/users/0/type-increase"
+		};
+	}
+
 }
 
 message User {
@@ -190,9 +217,14 @@ message DeleteUserRequest {
 message ListUserRequest {
 	// 每页条数
 	int64 limit = 1;
-
 	// 页码
 	int64 offset = 2;
+
+	int32 province_id = 3 ;
+	int32 city_id = 4 ;
+	int32 area_id = 5 ;
+	int32 type = 6;
+	int64 organization_id = 8;
 }
 
 message ListUserResponse {
@@ -222,4 +254,55 @@ message UserAuditingRequest {
 message SetUserStatusRequest {
 	int64 user_id = 1;
 	int64 status = 2;//是否启用：0、未启用	1、已启用2、已停用
+}
+message SetUserAreaByIdRequest {
+	int64 user_id = 1;
+	int32  province_id  = 2;
+	int32 	city_id     = 3;
+	int32 	area_id     = 4;
+	string 	address     = 5;
+	double 	latitude    = 6;//纬度
+	double 	longitude   = 7;//经度
+}
+
+message SetUserAreaByNameRequest {
+	int64 user_id = 1;
+	string  province_name  = 2;
+	string 	city_name     = 3;
+	string 	area_name     = 4;
+	string 	address     = 5;
+	double 	latitude    = 6;//纬度
+	double 	longitude   = 7;//经度
+}
+message UserDistributionRequest {
+	int32 province_id = 1;
+	int32 city_id = 2;
+	int32 area_id = 3;
+	int64 organization_id = 4;
+}
+
+message UserDistributionResponse {
+	int32 personalCount = 1;
+	int32 propertyCount = 2;
+	int32 communityCount = 3;
+	int32 factoryCount = 4;
+	int32 shopCount = 5;
+}
+
+message UserTypeIncreaseRequest {
+	int32 province_id = 1;
+	int32 city_id = 2;
+	int32 area_id = 3;
+	int64 organization_id = 4;
+	int32 year =5;
+	int32 month =6;
+	int32 day =7;
+}
+
+message UserTypeIncreaseResponse {
+	int32 personalCount = 1;
+	int32 propertyCount = 2;
+	int32 communityCount = 3;
+	int32 factoryCount = 4;
+	int32 shopCount = 5;
 }

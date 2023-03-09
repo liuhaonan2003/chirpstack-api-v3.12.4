@@ -134,6 +134,48 @@
         ]
       }
     },
+    "/api/report-organization-month/{id}/detail-list": {
+      "get": {
+        "summary": "GetDetailList returns the detail-list of the report-check-day  matching the given id.",
+        "operationId": "GetDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetDetailListReportOrganizationMonthResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportOrganizationMonthService"
+        ]
+      }
+    },
     "/api/report-organization-month/{reportOrganizationMonth.id}": {
       "put": {
         "summary": "Update updates the given report-day.",
@@ -189,6 +231,23 @@
         }
       }
     },
+    "apiGetDetailListReportOrganizationMonthResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportOrganizationDayListItem"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
     "apiGetReportOrganizationMonthResponse": {
       "type": "object",
       "properties": {
@@ -222,6 +281,74 @@
             "$ref": "#/definitions/apiReportOrganizationMonthListItem"
           },
           "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiReportOrganizationDayListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportDayIds": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "deviceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statisticalTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
         }
       }
     },

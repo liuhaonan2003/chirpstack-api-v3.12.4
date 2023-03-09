@@ -53,6 +53,27 @@
             "format": "int64"
           },
           {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
             "name": "search",
             "description": "Search on name or gateway MAC (optional).",
             "in": "query",
@@ -195,6 +216,65 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "tags": [
+          "GatewayService"
+        ]
+      }
+    },
+    "/api/gateways/{gateway_id}/reportData": {
+      "get": {
+        "summary": "OrgReportData returns 根据网关id获取、日用量、网关名",
+        "operationId": "GatewayReportData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGatewayReportDataResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_id",
+            "description": "Total number of nodes available within the result-set.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "GatewayService"
+        ]
+      }
+    },
+    "/api/gateways/{gateway_id}/setAreaById": {
+      "put": {
+        "summary": "SetOrganizationArea 设置组织地址和坐标",
+        "operationId": "GatewayArea",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiGatewayAreaRequest"
+            }
           }
         ],
         "tags": [
@@ -442,6 +522,40 @@
         "areaId": {
           "type": "integer",
           "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGatewayAreaRequest": {
+      "type": "object",
+      "properties": {
+        "gatewayId": {
+          "type": "string"
+        },
+        "provinceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
         }
       }
     },
@@ -532,6 +646,30 @@
         "areaId": {
           "type": "integer",
           "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "apiGatewayReportDataResponse": {
+      "type": "object",
+      "properties": {
+        "cumulativeAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "dayAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "yearAmount": {
+          "type": "number",
+          "format": "double"
         }
       }
     },

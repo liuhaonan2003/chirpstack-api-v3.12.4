@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+option java_package = "io.chirpstack.api.as.external.api";
+option java_multiple_files = true;
+option java_outer_classname = "ReportProfilesProto";
+
+
+import "google/protobuf/timestamp.proto";
+
+
+message ReportDetailListItem {
+  // User ID.
+  // Will be set automatically on create.
+  int64 id = 1;
+  //网关序列号
+  string gw_mac = 2;
+  //设备编号
+  string dev_id = 3;
+  //设备序列号
+  string dev_eui = 4;
+  //上报原数据
+  string report_data = 5;
+  int32 frame_length = 6;
+  int32 sn = 7;//序列号
+  string ftp = 8;//数据包类型
+  double vol = 9;//电池电压
+  string tpn = 10;//表属性
+  double water_volume	= 11;//	总量
+  double amount	=12;//	设备当前生产量
+  string sta	=13;//	表状态
+  string ver	=14;//	版本日期
+  string cs	= 15;//	校验码
+  //上报时间
+  int64 report_time = 16;
+  int64 report_day_id = 17;//天统计关联编号
+  int32 status = 18;
+  string author = 19;
+  string remark  = 20;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 21;
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 22;
+}
+message ReportDayListItem {
+  // User ID.
+  // Will be set automatically on create.
+  int64 id = 1;	//主键ID
+  string report_detail_ids = 2;//统计上报数据明细ID集合
+  string  gw_mac =3;  //	网关序列号
+  string dev_id = 4;//设备编号
+  string dev_eui = 5;//设备序列号
+  double amount = 6;//设备生产量
+  int64 report_time = 7;//上报时间
+  int32 year = 8;
+  int32 month = 9;
+  int32 day = 10;
+  int64 report_gw_day_id = 11; //网关下设备天统计关联
+  int64 report_week_id = 12; //设备周统计关联
+  int64 report_month_id = 13; //设备月统计关联
+  int64 report_organization_day_id = 14; //组织设备天统计关联
+  int64 report_check_day_id = 15; //上下级统计天校验关联
+  int64 source_id = 16; //源设备ID
+  int64 parent = 17; //设备上下级关联
+  int64 organization_id = 18; //归属组织
+  int64 user_id = 19; //归属用户
+  int32 scene = 20; //应用场景:1、用户(1、设备周统计2、设备月统计3、组织设备天统计4、网关下设备天统计关联)2、物业及组3、街道办4、乡道
+  int32 status = 21;//是否审核0、否1、是>=2、无效
+
+  string author=22;
+  string remark  = 25;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 23;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 24;
+
+}
+
+message ReportOrganizationDayListItem {
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  int64  organization_id =3;  //	组织编号
+  double amount = 4;//设备生产量
+  int32 device_number = 5;//统计设备数
+  int64 statistical_time = 6;//统计时间
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+  int64 report_week_id = 10;//组织设备周统计关联
+  int64 report_month_id = 11;//组织设计月统计关联
+  int32 status = 12;//是否审核0、否1、是>=2、无效
+
+  string author=13;
+  string remark  = 16;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 14;
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 15;
+
+}
+
+message ReportCheckDayListItem {
+  // User ID.
+  // Will be set automatically on create.
+  int64 id = 1;	//主键ID
+  string report_day_ids = 2;//天统计ID集合
+  string dev_id = 4;//设备编号
+
+  double master_amount = 5;//父级设备当前生产量
+  double slave_amount = 6; //子级设备合计生产量
+  double loss_amount = 7; //父子间管道损耗计量
+  double loss_rate = 8; //损耗率
+  int32 slave_number = 9;//子统计设备数量
+
+  int64 statistical_time = 10;//统计校验时间
+  int32 year = 11;
+  int32 month = 12;
+  int32 day = 13;
+
+  int64 report_month_id = 14; //设备月统计关联
+  int64 warning_no = 15;//告警单号
+
+  int32 status = 21;//是否合格：0、未确认1、确认合格2、异常并发起告警
+
+  string author=22;
+  string remark  = 23;
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 24;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 25;
+
+}

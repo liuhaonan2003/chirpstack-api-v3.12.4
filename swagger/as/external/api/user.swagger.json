@@ -43,6 +43,41 @@
             "required": false,
             "type": "string",
             "format": "int64"
+          },
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
           }
         ],
         "tags": [
@@ -68,6 +103,121 @@
             "schema": {
               "$ref": "#/definitions/apiCreateUserRequest"
             }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/users/0/type-distribution": {
+      "get": {
+        "summary": "UserDistribution 获取根据用户类型用户分布统计",
+        "operationId": "UserDistribution",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiUserDistributionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/users/0/type-increase": {
+      "get": {
+        "summary": "UserDistribution 获取根据用户类型用户分布统计",
+        "operationId": "UserTypeIncrease",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiUserTypeIncreaseResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -231,6 +381,72 @@
         ]
       }
     },
+    "/api/users/{user_id}/setAreaById": {
+      "put": {
+        "operationId": "SetAreaById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetUserAreaByIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/users/{user_id}/setAreaByName": {
+      "put": {
+        "operationId": "SetAreaByName",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetUserAreaByNameRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
     "/api/users/{user_id}/setup": {
       "put": {
         "summary": "SetOrganization .",
@@ -364,6 +580,67 @@
             "$ref": "#/definitions/apiUser"
           },
           "description": "Result-set."
+        }
+      }
+    },
+    "apiSetUserAreaByIdRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "provinceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "apiSetUserAreaByNameRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "provinceName": {
+          "type": "string"
+        },
+        "cityName": {
+          "type": "string"
+        },
+        "areaName": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
         }
       }
     },
@@ -542,6 +819,31 @@
         }
       }
     },
+    "apiUserDistributionResponse": {
+      "type": "object",
+      "properties": {
+        "personalCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "communityCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "factoryCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "shopCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
     "apiUserOrganization": {
       "type": "object",
       "properties": {
@@ -564,6 +866,31 @@
           "type": "boolean",
           "format": "boolean",
           "description": "User is able to modify gateways."
+        }
+      }
+    },
+    "apiUserTypeIncreaseResponse": {
+      "type": "object",
+      "properties": {
+        "personalCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "communityCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "factoryCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "shopCount": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     }

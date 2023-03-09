@@ -10,6 +10,7 @@ option java_outer_classname = "ReportOrganizationMonthProto";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
+import "as/external/api/reportProfile.proto";
 
 
 // ReportDetailService is the service managing test.
@@ -48,6 +49,13 @@ service ReportOrganizationMonthService {
   rpc List(ListReportOrganizationMonthRequest) returns (ListReportOrganizationMonthResponse) {
     option(google.api.http) = {
       get: "/api/report-organization-month"
+    };
+  }
+
+  // GetDetailList returns the detail-list of the report-check-day  matching the given id.
+  rpc GetDetailList(GetDetailListReportOrganizationMonthRequest) returns (GetDetailListReportOrganizationMonthResponse) {
+    option(google.api.http) = {
+      get: "/api/report-organization-month/{id}/detail-list"
     };
   }
 }
@@ -146,4 +154,20 @@ message ListReportOrganizationMonthResponse {
 
   // Test within the result-set.
   repeated ReportOrganizationMonthListItem result = 2;
+}
+
+message GetDetailListReportOrganizationMonthRequest {
+  // Test ID.
+  int64 id = 1;
+  int64 limit = 2;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 3;
+}
+message GetDetailListReportOrganizationMonthResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportOrganizationDayListItem result = 2;
 }

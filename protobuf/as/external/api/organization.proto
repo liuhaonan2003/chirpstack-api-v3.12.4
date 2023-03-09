@@ -102,6 +102,26 @@ service OrganizationService {
 		};
 	}
 
+	//StatsList 获取组织统计信息和列表
+	rpc StatsList(StatsListOrganizationRequest) returns (StatsListOrganizationResponse) {
+		option(google.api.http) = {
+			get: "/api/organizations/0/stats-list"
+		};
+	}
+
+	//SetOrganizationArea 设置组织地址和坐标
+	rpc SetOrganizationArea(SetOrganizationAreaRequest) returns (google.protobuf.Empty) {
+		option(google.api.http) = {
+			put: "/api/organizations/{id}/setAreaById"
+			body: "*"
+		};
+	}
+	// OrgReportData returns 根据组织id获取、日用量、月用量、年用量、累计用量
+	rpc OrgReportData(OrgReportDataRequest) returns (OrgReportDataResponse) {
+		option(google.api.http) = {
+			get: "/api/organizations/{id}/reportData"
+		};
+	}
 
 }
 
@@ -211,6 +231,7 @@ message ListOrganizationRequest {
 	int32 province_id	= 4;
 	int32 city_id			= 5;
 	int32 area_id			= 6;
+	int32 type = 7;//水表电表、燃气表
 }
 
 message ListOrganizationResponse {
@@ -305,6 +326,8 @@ message OrganizationUserListItem {
 	string 	remark			= 24;
 }
 
+
+
 message AddOrganizationUserRequest {
 	// Organization-user object to create.
 	OrganizationUserListItem organization_user = 1;
@@ -378,3 +401,103 @@ message DeviceViewOrganizationResponse {
 	string result = 2;
 }
 
+
+message OrganizationStatsItem {
+	// Organization ID.
+	int64 id = 1;
+
+	// Organization name.
+	string name = 2;
+
+	// Organization display name.
+	string display_name = 3;
+
+	// Can the organization create and "own" Gateways?
+	bool can_have_gateways = 4;
+
+	// Max. gateway count for organization.
+	// When set to 0, the organization can have unlimited gateways.
+	uint32 max_gateway_count = 5;
+
+	// Max. device count for organization.
+	// When set to 0, the organization can have unlimited devices.
+	uint32 max_device_count = 6;
+	google.protobuf.Timestamp created_at 	= 7;
+	// Last update timestamp.
+	google.protobuf.Timestamp updated_at 	= 8;
+	int32 type													 	= 9;
+	string contacts												= 10;
+	string phone													= 11;
+	int32 province_id											= 12;
+	int32 city_id													= 13;
+	int32 area_id													= 14;
+	string address												= 15;
+	double latitude												= 16;
+	double longitude												= 17;
+	int32 status													= 18;
+	string author													= 19;
+	string remark													= 20;
+
+	double totalAmount = 21;//	当年用水量
+	double dayAmount = 22;//	当日用水量
+	double monthAmount = 23;//	当月用水量
+	double yearAmount = 24;//	当年用水量
+
+	double systemEfficiency = 25;//系统效率
+	int32 todayWarningCount = 26;
+
+}
+message StatsListOrganizationRequest {
+	// Total number of organizations.
+	// Max number of organizations to return in the result-set.
+	int64 limit = 1;
+
+	// Offset in the result-set (for pagination).
+	int64 offset = 2;
+
+	// When provided, the given string will be used to search on
+	// displayName.
+	string search = 3;
+	int32 province_id	= 4;
+	int32 city_id			= 5;
+	int32 area_id		 	= 6;
+	int32 type = 7;//组织类型。.1:水表，2：电表、3：燃气表。。。
+}
+
+message StatsListOrganizationResponse {
+	int32 totalCount = 1;//组织总数
+	double totalAmount = 2;//总用水量
+	int32 gatewayCount = 3;//在线网关
+	double dayAmount = 4;//	当日用水量
+	double monthAmount = 5;//	当月用水量
+	double yearAmount = 6;//	当年用水量
+
+
+	repeated OrganizationStatsItem result = 7;
+	int32 limitCount = 8;//	Result内数组个数
+}
+
+message SetOrganizationAreaRequest {
+	int64 id = 1;
+	int32  province_id  = 2;
+	int32 	city_id     = 3;
+	int32 	area_id     = 4;
+	string 	address     = 5;
+	double 	latitude    = 6;//纬度
+	double 	longitude   = 7;//经度
+}
+
+message OrgReportDataRequest {
+	int64 id = 1 ;
+}
+
+message OrgReportDataResponse {
+	//    上报时间
+	int32 gatewayCount = 1;
+	int32 deviceCount = 2;
+	double cumulativeAmount = 4;//累计生产量
+
+	double dayAmount = 5;
+	double monthAmount = 6;
+	double yearAmount = 7;
+}

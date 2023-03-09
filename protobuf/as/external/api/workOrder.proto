@@ -65,6 +65,20 @@ service WorkOrderService {
             body: "*"
         };
     }
+
+    // StatusCount 获取历史工单状态统计
+    rpc StatusCount(StatusCountWorkOrderRequest) returns (StatusCountWorkOrderResponse) {
+        option(google.api.http) = {
+            get: "/api/work-order/0/status_count"
+        };
+    }
+
+    // WeekStatusList 七日内工单状态统计
+    rpc WeekStatusList(WeekStatusListWorkOrderRequest) returns (WeekStatusListWorkOrderResponse) {
+        option(google.api.http) = {
+            get: "/api/work-order/0/week_status_count_list"
+        };
+    }
 }
 
 message WorkOrder {
@@ -79,6 +93,11 @@ message WorkOrder {
     string title = 6;
     string description = 7;
     string service_personal = 8;
+
+    int32 work_level = 9;
+    bool is_auditing = 10;
+    string planning_time = 11;
+    string warning_ids = 12;//告警转工单id集合
 }
 
 message WorkOrderListItem {
@@ -99,6 +118,11 @@ message WorkOrderListItem {
 
     // Last update timestamp.
     google.protobuf.Timestamp updated_at = 10;
+
+    int32 work_level = 11;
+    bool is_auditing = 12;
+    string planning_time = 13;
+    string warning_ids = 14;//告警转工单id集合
 }
 
 message CreateWorkOrderRequest {
@@ -143,6 +167,18 @@ message ListWorkOrderRequest {
 
     // Offset in the result-set (for pagination).
     int64 offset = 2;
+
+    string author = 3;
+    int32 status = 4;
+    int32 work_type = 5;
+    string search = 6;//title和描述、Remark类似
+    string service_personal = 7;
+
+    int32 work_level = 8;
+    bool is_auditing = 9;
+
+    string startTime = 10;
+    string endTime = 11;
 }
 
 message ListWorkOrderResponse {
@@ -162,4 +198,35 @@ message SetStatusWorkOrderRequest {
     // Total number of work-order.
     int64 id = 1;
     int32 status = 2;
+}
+
+message DealInfo{
+    int32 toDealCount = 1;
+    int32 dealingCount = 2;
+    int32 dealedCount = 3;
+}
+
+message StatusCountWorkOrderRequest {
+    int64 work_type = 1;//工单类型。0：不参与筛选
+    int32 work_level = 2;//紧急程度。0：不参与筛选
+    string service_personal =3;//服务人员
+}
+
+message StatusCountWorkOrderResponse {
+    DealInfo dealInfo =1;
+}
+
+message WeekStatusListWorkOrderRequest {
+    //返回从该时间之前一天再往回追溯七日内的数据
+    int32 work_type = 1;//工单类型。0：不参与筛选
+    int32 work_level = 2;//紧急程度。0：不参与筛选
+    string service_personal =3;//服务人员
+    int32 year = 4;
+    int32 month = 5;
+    int32 day = 6;
+}
+message WeekStatusListWorkOrderResponse {
+    // Total number of work-order.
+    int64 total_count = 1;
+    repeated DealInfo result = 2;
 }

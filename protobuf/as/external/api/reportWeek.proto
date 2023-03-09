@@ -10,6 +10,7 @@ option java_outer_classname = "ReportWeekProto";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
+import "as/external/api/reportProfile.proto";
 
 
 // ReportWeekService is the service managing test.
@@ -48,6 +49,13 @@ service ReportWeekService {
   rpc List(ListReportWeekRequest) returns (ListReportWeekResponse) {
     option(google.api.http) = {
       get: "/api/report-week"
+    };
+  }
+
+  // GetDetailList returns the detail-list of the report-check-day  matching the given id.
+  rpc GetDetailList(GetDetailListReportWeekRequest) returns (GetDetailListReportWeekResponse) {
+    option(google.api.http) = {
+      get: "/api/report-week/{id}/detail-list"
     };
   }
 }
@@ -145,4 +153,19 @@ message ListReportWeekResponse {
 
   // Test within the result-set.
   repeated ReportWeekListItem result = 2;
+}
+message GetDetailListReportWeekRequest {
+  // Test ID.
+  int64 id = 1;
+  int64 limit = 2;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 3;
+}
+message GetDetailListReportWeekResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportDayListItem result = 2;
 }

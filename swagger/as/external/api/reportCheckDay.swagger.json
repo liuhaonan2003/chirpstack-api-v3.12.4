@@ -127,6 +127,48 @@
         ]
       }
     },
+    "/api/report-check-day/{id}/detail-list": {
+      "get": {
+        "summary": "GetDetailList returns the detail-list of the report-check-day  matching the given id.",
+        "operationId": "GetDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetDetailListReportCheckDayResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportCheckDayService"
+        ]
+      }
+    },
     "/api/report-check-day/{reportCheckDay.id}": {
       "put": {
         "summary": "Update updates the given report-day.",
@@ -179,6 +221,23 @@
           "type": "string",
           "format": "int64",
           "description": "Test ID."
+        }
+      }
+    },
+    "apiGetDetailListReportCheckDayResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportDayListItem"
+          },
+          "description": "Test within the result-set."
         }
       }
     },
@@ -344,6 +403,108 @@
         "warningNo": {
           "type": "string",
           "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiReportDayListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "reportDetailIds": {
+          "type": "string"
+        },
+        "gwMac": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "devEui": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "reportTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportGwDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportWeekId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportOrganizationDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reportCheckDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
         },
         "status": {
           "type": "integer",

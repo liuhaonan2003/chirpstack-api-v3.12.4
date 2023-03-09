@@ -296,6 +296,53 @@
         ]
       }
     },
+    "/api/devices/{dev_eui}/day-consumption": {
+      "get": {
+        "summary": "cumulativeAmount 获取给定设备的指定日的日用水量",
+        "operationId": "DeviceDayConsumption",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiDeviceDayConsumptionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "Device EUI (HEX encoded).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
     "/api/devices/{dev_eui}/devnonce": {
       "delete": {
         "summary": "ClearDeviceNonces deletes the device older activation records for the given DevEUI.\n  * These are clear older DevNonce records from device activation records in Network Server\n  * These clears all DevNonce records but keeps latest 20 records for maintain device activation status",
@@ -476,6 +523,46 @@
         ]
       }
     },
+    "/api/devices/{dev_eui}/month-consumption": {
+      "get": {
+        "summary": "MonthConsumption 获取给定组织指定月的用水量.考虑到未到月尾，月统计表还未生成，故需在天统计表累加",
+        "operationId": "DeviceMonthConsumption",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiDeviceMonthConsumptionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "description": "Total number of test.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
     "/api/devices/{dev_eui}/organization": {
       "put": {
         "summary": "SetDeviceOrg 设置设备归属组织",
@@ -537,6 +624,31 @@
             "schema": {
               "$ref": "#/definitions/apiSetDeviceParentRequest"
             }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/devices/{dev_eui}/reportData": {
+      "get": {
+        "summary": "DeviceReportData returns 根据设备eui获取设备上报明细、日用量、月用量、年用量、累计用量",
+        "operationId": "DeviceReportData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiDeviceReportDataDevicesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -695,6 +807,39 @@
         ]
       }
     },
+    "/api/devices/{dev_eui}/year-consumption": {
+      "get": {
+        "summary": "cumulativeAmount 获取给定组织指定年份的用水量.理由同上。不过需要先获取当前月份之前的月份的累加，然后在加上剩下的不满月的",
+        "operationId": "DeviceYearConsumption",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiDeviceYearConsumptionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dev_eui",
+            "description": "Total number of test.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
     "/api/devices/{device.dev_eui}": {
       "put": {
         "summary": "Update updates the device matching the given DevEUI.",
@@ -828,6 +973,61 @@
           "DeviceService"
         ]
       }
+    },
+    "/api/devicesRegion/devices": {
+      "get": {
+        "summary": "GetReginDevices returns 区域内所有设备列表",
+        "operationId": "GetReginDevices",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetReginDevicesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset offset of the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -939,6 +1139,30 @@
           "type": "boolean",
           "format": "boolean",
           "description": "Device is disabled."
+        },
+        "fault": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devException": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "magnetic": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "der": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "valves": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
@@ -983,6 +1207,16 @@
           "type": "integer",
           "format": "int64",
           "description": "Downlink application frame-counter."
+        }
+      }
+    },
+    "apiDeviceDayConsumptionResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
         }
       }
     },
@@ -1094,6 +1328,96 @@
         },
         "remark": {
           "type": "string"
+        },
+        "dr": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devAddr": {
+          "type": "string"
+        },
+        "total": {
+          "type": "number",
+          "format": "double"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "altitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "fault": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devException": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "magnetic": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "der": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "valves": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "apiDeviceMonthConsumptionResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
+        }
+      }
+    },
+    "apiDeviceReportDataDevicesResponse": {
+      "type": "object",
+      "properties": {
+        "reportTime": {
+          "type": "string",
+          "title": "上报时间"
+        },
+        "vol": {
+          "type": "number",
+          "format": "double"
+        },
+        "increment": {
+          "type": "number",
+          "format": "double"
+        },
+        "cumulativeAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "dayAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "yearAmount": {
+          "type": "number",
+          "format": "double"
         }
       }
     },
@@ -1143,6 +1467,16 @@
             "format": "int64"
           },
           "description": "Error count."
+        }
+      }
+    },
+    "apiDeviceYearConsumptionResponse": {
+      "type": "object",
+      "properties": {
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Total number of test."
         }
       }
     },
@@ -1252,6 +1586,22 @@
         }
       }
     },
+    "apiGetReginDevicesResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReginDeviceListItem"
+          },
+          "description": "Devices within this result-set."
+        }
+      }
+    },
     "apiListDeviceResponse": {
       "type": "object",
       "properties": {
@@ -1283,6 +1633,195 @@
             "$ref": "#/definitions/apiGetDeviceLastRxInfoResponse"
           },
           "description": "Devices LastRxInfo within this result-set."
+        }
+      }
+    },
+    "apiReginDeviceListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the device."
+        },
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the device."
+        },
+        "deviceProfileID": {
+          "type": "string",
+          "description": "Device-profile ID attached to the device."
+        },
+        "deviceProfileName": {
+          "type": "string",
+          "description": "Device-profile name."
+        },
+        "deviceStatusBattery": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The device battery status (deprecated, use device_status_battery_level).\n0:      The end-device is connected to an external power source\n1..254: The battery level, 1 being at minimum and 254 being at maximum\n255:    The end-device was not able to measure the battery level\n256:    The device-status is not available."
+        },
+        "deviceStatusMargin": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The device margin status\n-32..32: The demodulation SNR ration in dB\n256:     The device-status is not available."
+        },
+        "deviceStatusExternalPowerSource": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Device is connected to an external power source."
+        },
+        "deviceStatusBatteryLevelUnavailable": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Device battery status is unavailable."
+        },
+        "deviceStatusBatteryLevel": {
+          "type": "number",
+          "format": "float",
+          "description": "Device battery level as a percentage."
+        },
+        "lastSeenAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last time the application-server received any data from the device,\nor an empty string when the device never sent any data."
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "scene": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "parent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "fault": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devException": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "magnetic": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "der": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "valves": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dr": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "devAddr": {
+          "type": "string"
+        },
+        "altitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "total": {
+          "type": "number",
+          "format": "double"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "provinceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locateAddress": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "isAuditing": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "realName": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "string"
+        },
+        "userOrganizationId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },

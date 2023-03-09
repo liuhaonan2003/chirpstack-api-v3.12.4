@@ -1,0 +1,383 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/area.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/area/create": {
+      "post": {
+        "summary": "Create creates the given device.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateAreaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateAreaRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/delete": {
+      "delete": {
+        "summary": "Delete deletes the device matching the given DevEUI.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "description": "Test ID.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/getById": {
+      "get": {
+        "summary": "Get returns the device matching the given DevEUI.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetAreaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "以下任意一种完整输入即可匹配，匹配时按照顺序检索到就停止往下检索.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/getByIndex": {
+      "get": {
+        "summary": "Get returns the device matching the given DevEUI.",
+        "operationId": "GetByIndex",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetAreaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/getByName": {
+      "get": {
+        "summary": "Get returns the area by the given name.",
+        "operationId": "GetByName",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetAreaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/list": {
+      "get": {
+        "summary": "List returns the available devices.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListAreaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "deep",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "nameSearch",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pinyinSearch",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "extId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/tree-view": {
+      "get": {
+        "summary": "List returns the available devices.",
+        "operationId": "AreaTreeView",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiAreaTreeViewAreaResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    },
+    "/api/area/update/{area.index}": {
+      "put": {
+        "summary": "Update updates the device matching the given DevEUI.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "area.index",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateAreaRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AreaService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiArea": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "string",
+          "format": "int64"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pid": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "deep": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pinyinPrefix": {
+          "type": "string"
+        },
+        "pinyin": {
+          "type": "string"
+        },
+        "extId": {
+          "type": "string"
+        },
+        "extName": {
+          "type": "string"
+        },
+        "pinyinPrefix2": {
+          "type": "string"
+        }
+      }
+    },
+    "apiAreaTreeViewAreaResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of areas."
+        },
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "apiCreateAreaRequest": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/apiArea"
+        }
+      }
+    },
+    "apiCreateAreaResponse": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "string",
+          "format": "int64",
+          "description": "Test ID."
+        }
+      }
+    },
+    "apiGetAreaResponse": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/apiArea"
+        }
+      }
+    },
+    "apiListAreaResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiArea"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiUpdateAreaRequest": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/apiArea"
+        }
+      }
+    }
+  }
+}

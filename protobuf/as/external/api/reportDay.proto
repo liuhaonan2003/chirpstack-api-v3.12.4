@@ -10,7 +10,7 @@ option java_outer_classname = "ReportDayProto";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
-
+import "as/external/api/reportProfile.proto";
 
 // ReportDetailService is the service managing test.
 service ReportDayService {
@@ -51,6 +51,14 @@ service ReportDayService {
     };
   }
 
+
+
+  // GetDetailList returns the detail-list of the report-check-day  matching the given id.
+  rpc GetDetailList(GetDetailListReportDayRequest) returns (GetDetailListReportDayResponse) {
+    option(google.api.http) = {
+      get: "/api/report-day/{id}/detail-list"
+    };
+  }
 }
 
 
@@ -82,41 +90,7 @@ message ReportDay {
   string remark  = 25;
 }
 
-message ReportDayListItem {
-  // User ID.
-  // Will be set automatically on create.
-  int64 id = 1;	//主键ID
-  string report_detail_ids = 2;//统计上报数据明细ID集合
-  string  gw_mac =3;  //	网关序列号
-  string dev_id = 4;//设备编号
-  string dev_eui = 5;//设备序列号
-  double amount = 6;//设备生产量
-  int64 report_time = 7;//上报时间
-  int32 year = 8;
-  int32 month = 9;
-  int32 day = 10;
-  int64 report_gw_day_id = 11; //网关下设备天统计关联
-  int64 report_week_id = 12; //设备周统计关联
-  int64 report_month_id = 13; //设备月统计关联
-  int64 report_organization_day_id = 14; //组织设备天统计关联
-  int64 report_check_day_id = 15; //上下级统计天校验关联
-  int64 source_id = 16; //源设备ID
-  int64 parent = 17; //设备上下级关联
-  int64 organization_id = 18; //归属组织
-  int64 user_id = 19; //归属用户
-  int32 scene = 20; //应用场景:1、用户(1、设备周统计2、设备月统计3、组织设备天统计4、网关下设备天统计关联)2、物业及组3、街道办4、乡道
-  int32 status = 21;//是否审核0、否1、是>=2、无效
 
-  string author=22;
-  string remark  = 25;
-
-  // Created at timestamp.
-  google.protobuf.Timestamp created_at = 23;
-
-  // Last update timestamp.
-  google.protobuf.Timestamp updated_at = 24;
-
-}
 
 message CreateReportDayRequest {
   // Test object to create.
@@ -168,5 +142,22 @@ message ListReportDayResponse {
 
   // Test within the result-set.
   repeated ReportDayListItem result = 2;
+}
+
+message GetDetailListReportDayRequest {
+  // Test ID.
+  int64 id = 1;
+  int64 limit = 2;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 3;
+}
+
+message GetDetailListReportDayResponse {
+  // Total number of test.
+  int64 total_count = 1;
+
+  // Test within the result-set.
+  repeated ReportDetailListItem result = 2;
 }
 

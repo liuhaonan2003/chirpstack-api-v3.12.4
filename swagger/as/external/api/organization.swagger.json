@@ -71,6 +71,13 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -159,6 +166,83 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "OrganizationService"
+        ]
+      }
+    },
+    "/api/organizations/0/stats-list": {
+      "get": {
+        "summary": "StatsList 获取组织统计信息和列表",
+        "operationId": "StatsList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiStatsListOrganizationResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Total number of organizations.\nMax number of organizations to return in the result-set.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "search",
+            "description": "When provided, the given string will be used to search on\ndisplayName.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "provinceId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "areaId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -211,6 +295,66 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "OrganizationService"
+        ]
+      }
+    },
+    "/api/organizations/{id}/reportData": {
+      "get": {
+        "summary": "OrgReportData returns 根据组织id获取、日用量、月用量、年用量、累计用量",
+        "operationId": "OrgReportData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiOrgReportDataResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "OrganizationService"
+        ]
+      }
+    },
+    "/api/organizations/{id}/setAreaById": {
+      "put": {
+        "summary": "SetOrganizationArea 设置组织地址和坐标",
+        "operationId": "SetOrganizationArea",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSetOrganizationAreaRequest"
+            }
           }
         ],
         "tags": [
@@ -591,6 +735,36 @@
         }
       }
     },
+    "apiOrgReportDataResponse": {
+      "type": "object",
+      "properties": {
+        "gatewayCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "上报时间"
+        },
+        "deviceCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cumulativeAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "dayAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "yearAmount": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
     "apiOrganization": {
       "type": "object",
       "properties": {
@@ -673,6 +847,115 @@
         },
         "remark": {
           "type": "string"
+        }
+      }
+    },
+    "apiOrganizationStatsItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "Organization ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Organization name."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Organization display name."
+        },
+        "canHaveGateways": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Can the organization create and \"own\" Gateways?"
+        },
+        "maxGatewayCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max. gateway count for organization.\nWhen set to 0, the organization can have unlimited gateways."
+        },
+        "maxDeviceCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max. device count for organization.\nWhen set to 0, the organization can have unlimited devices."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "contacts": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "provinceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "totalAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "dayAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "yearAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "systemEfficiency": {
+          "type": "number",
+          "format": "double"
+        },
+        "todayWarningCount": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
@@ -773,6 +1056,77 @@
         },
         "remark": {
           "type": "string"
+        }
+      }
+    },
+    "apiSetOrganizationAreaRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "provinceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "apiStatsListOrganizationResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "gatewayCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dayAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "yearAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiOrganizationStatsItem"
+          }
+        },
+        "limitCount": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },

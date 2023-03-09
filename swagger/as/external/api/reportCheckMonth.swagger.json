@@ -127,6 +127,48 @@
         ]
       }
     },
+    "/api/report-check-month/{id}/detail-list": {
+      "get": {
+        "summary": "GetDetailList returns the detail-list of the report-check-day  matching the given id.",
+        "operationId": "GetDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetDetailListReportCheckMonthResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ReportCheckMonthService"
+        ]
+      }
+    },
     "/api/report-check-month/{reportCheckMonth.id}": {
       "put": {
         "summary": "Update updates the given report-day.",
@@ -182,6 +224,23 @@
         }
       }
     },
+    "apiGetDetailListReportCheckMonthResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of test."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiReportCheckDayListItem"
+          },
+          "description": "Test within the result-set."
+        }
+      }
+    },
     "apiGetReportCheckMonthResponse": {
       "type": "object",
       "properties": {
@@ -215,6 +274,86 @@
             "$ref": "#/definitions/apiReportCheckMonthListItem"
           },
           "description": "Test within the result-set."
+        }
+      }
+    },
+    "apiReportCheckDayListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "description": "User ID.\nWill be set automatically on create."
+        },
+        "reportDayIds": {
+          "type": "string"
+        },
+        "devId": {
+          "type": "string"
+        },
+        "masterAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "slaveAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "lossAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "lossRate": {
+          "type": "number",
+          "format": "double"
+        },
+        "slaveNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statisticalTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reportMonthId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "warningNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "author": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
         }
       }
     },
